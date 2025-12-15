@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cioefrxbxsw60"]
+
+[ext_resource type="Script" uid="uid://bn7nj3elism1h" path="res://UI/Inventory/RunesInventoryUI.gd" id="1_kfn3j"]
+[ext_resource type="Texture2D" uid="uid://b3072hijs7gpq" path="res://Assets/UI/skill_template_bg.png" id="1_ukogu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukogu"]
+texture = ExtResource("1_ukogu")
+
+[node name="RunesInventoryUI" type="PanelContainer"]
+offset_right = 192.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ukogu")
+script = ExtResource("1_kfn3j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="InventoryNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " 
+符文仓库 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RunesGridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4

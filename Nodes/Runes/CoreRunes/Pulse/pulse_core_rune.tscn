@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=3 uid="uid://u2cmfy7gms1p"]
+
+[ext_resource type="Script" uid="uid://bq0joi5uml6ls" path="res://Nodes/Runes/CoreRunes/Pulse/PulseCoreRune.gd" id="1_mr72o"]
+[ext_resource type="SpriteFrames" uid="uid://bnriwnup0ony5" path="res://Resources/Animations/CoreRune/Pulse/pulse_sprite_frames.tres" id="2_hauou"]
+[ext_resource type="AudioStream" uid="uid://bc8mn3b1rwc2j" path="res://Audio/SFX/sfx_shoot.wav" id="3_p36ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plsh1"]
+
+[sub_resource type="Animation" id="Animation_vyrv5"]
+resource_name = "End"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.37003332, 0.43333334, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1.1), Vector2(0, 1.1), Vector2(11, 1.1), Vector2(11, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.37003332, 0.43333334, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(110, 0), Vector2(110, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p36ad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(110, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hauou"]
+resource_name = "Start"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.26666668, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1.1), Vector2(0, 1.1), Vector2(11, 1.1), Vector2(11, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.26666668, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(110, 0), Vector2(110, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyrv5"]
+_data = {
+&"End": SubResource("Animation_vyrv5"),
+&"RESET": SubResource("Animation_p36ad"),
+&"Start": SubResource("Animation_hauou")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hauou"]
+radius = 220.0
+
+[node name="PulseCoreRune" type="Area2D" node_paths=PackedStringArray("teleport_point")]
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_mr72o")
+speed = 0.0
+teleport_point = NodePath("TeleportPoint")
+metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(110, 0)
+scale = Vector2(11, 1.1)
+shape = SubResource("RectangleShape2D_plsh1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(117, -2)
+scale = Vector2(4.62, 2.2)
+sprite_frames = ExtResource("2_hauou")
+animation = &"Start"
+autoplay = "Start"
+frame = 2
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../CollisionShape2D")
+libraries = {
+&"": SubResource("AnimationLibrary_vyrv5")
+}
+autoplay = "Start"
+
+[node name="TrackingArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackingArea"]
+shape = SubResource("CircleShape2D_hauou")
+
+[node name="TeleportPoint" type="Node2D" parent="."]
+position = Vector2(223.33333, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_p36ad")
+volume_db = -15.0
+
+[connection signal="area_entered" from="TrackingArea" to="." method="_on_tracking_area_area_entered"]
+[connection signal="body_entered" from="TrackingArea" to="." method="_on_tracking_area_body_entered"]

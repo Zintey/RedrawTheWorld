@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cayp4ycwj1nar"]
+
+[ext_resource type="SpriteFrames" uid="uid://cu5tqlp6dhk6y" path="res://Resources/Animations/CoreRune/ArcaneOrb/arcane_orb_sprite_frames.tres" id="2_j08bd"]
+[ext_resource type="Script" uid="uid://b6hti6ohl0h6w" path="res://Nodes/Runes/CoreRunes/ArcaneOrb/ArcaneOrbCoreRune.gd" id="2_y4kjk"]
+[ext_resource type="AudioStream" uid="uid://bg6u5nu3hq471" path="res://Audio/SFX/sfx_orb.wav" id="3_j08bd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4kjk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j08bd"]
+radius = 600.0
+
+[node name="ArcaneOrbCoreRune" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+collision_mask = 48
+script = ExtResource("2_y4kjk")
+speed = 300.0
+metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_y4kjk")
+debug_color = Color(0.897163, 0.00019637347, 0.7744937, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -3)
+sprite_frames = ExtResource("2_j08bd")
+animation = &"Start"
+autoplay = "Start"
+frame = 5
+frame_progress = 1.0
+
+[node name="TrackingArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackingArea"]
+shape = SubResource("CircleShape2D_j08bd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j08bd")
+volume_db = -10.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="TrackingArea" to="." method="_on_tracking_area_area_entered"]
+[connection signal="body_entered" from="TrackingArea" to="." method="_on_tracking_area_body_entered"]

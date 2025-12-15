@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://bwdmgdr5ecjra"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_dkg25"]
+[ext_resource type="Texture2D" uid="uid://dht1jmg6t0412" path="res://Assets/RuneIcon/rune_list01.png" id="1_ymr4o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7axkd"]
+atlas = ExtResource("1_ymr4o")
+region = Rect2(116, 0, 116, 114)
+
+[resource]
+script = ExtResource("1_dkg25")
+rune_id = "pulse_core_rune"
+type = 2
+display_name = " 脉冲符文"
+stamina_cost = 1.0
+icon = SubResource("AtlasTexture_7axkd")
+description = " 发出一束脉冲，脉冲的能量很大，会将施法者向反方向推开
+
+能量越大，推力越大？
+"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

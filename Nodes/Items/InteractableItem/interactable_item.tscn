@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhydnbq6l5xef"]
+
+[ext_resource type="Script" uid="uid://dj40x0ir3e0ar" path="res://Nodes/Items/InteractableItem/InteractableItem.gd" id="1_3e8sd"]
+[ext_resource type="Shader" uid="uid://ccdvllbquj0fk" path="res://Shader/outline.gdshader" id="2_wv11d"]
+[ext_resource type="Texture2D" uid="uid://blhbd50v1rlph" path="res://Assets/Items/RuneEmitter/rune_emitter_fire.png" id="3_i7t3s"]
+[ext_resource type="PackedScene" uid="uid://u3ywr7qe5nkc" path="res://Nodes/Items/ProcessRelated/tip_area.tscn" id="4_wv11d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxdmg"]
+resource_local_to_scene = true
+shader = ExtResource("2_wv11d")
+shader_parameter/outline_size = 0.0
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30mjr"]
+resource_local_to_scene = true
+size = Vector2(220, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dihvy"]
+resource_local_to_scene = true
+size = Vector2(107, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv11d"]
+size = Vector2(106, 105)
+
+[node name="InteractableItem" type="Node2D"]
+script = ExtResource("1_3e8sd")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_xxdmg")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i7t3s")
+region_enabled = true
+region_rect = Rect2(136, 0, 128, 80)
+
+[node name="TipArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TipArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_30mjr")
+
+[node name="InteractableArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_dihvy")
+debug_color = Color(0.55991083, 0.5604257, 1.92523e-07, 0.41960785)
+
+[node name="TipTextArea" parent="." instance=ExtResource("4_wv11d")]
+unique_name_in_owner = true
+position = Vector2(0, 58)
+
+[node name="CollisionShape2D" parent="TipTextArea" index="0"]
+position = Vector2(0, -58.5)
+shape = SubResource("RectangleShape2D_wv11d")
+
+[node name="TipLabel" parent="TipTextArea" index="1"]
+text = "S 拾取"
+
+[connection signal="area_entered" from="TipArea" to="." method="_on_tip_area_area_entered"]
+[connection signal="area_exited" from="TipArea" to="." method="_on_tip_area_area_exited"]
+[connection signal="area_entered" from="InteractableArea" to="." method="_on_interactable_area_area_entered"]
+[connection signal="area_exited" from="InteractableArea" to="." method="_on_interactable_area_area_exited"]
+
+[editable path="TipTextArea"]

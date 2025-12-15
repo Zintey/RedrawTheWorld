@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://bh4bphpd58awh"]
+
+[ext_resource type="Texture2D" uid="uid://b6a3ulrpkfm1r" path="res://Assets/UI/main_menu.png" id="1_pybfu"]
+[ext_resource type="Texture2D" uid="uid://rhr5jjfpkx3h" path="res://Assets/UI/hourglass.png" id="2_x0uo6"]
+[ext_resource type="FontFile" uid="uid://uvosnydhl1kn" path="res://Assets/Fonts/WenQuanZhengHei-2.ttf" id="3_6mxa6"]
+[ext_resource type="AudioStream" uid="uid://dytvne8f6xm08" path="res://Audio/BGM/bgm_main_menu.wav" id="4_2lgqy"]
+
+[sub_resource type="GDScript" id="GDScript_6mxa6"]
+script/source = "extends Control
+
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	audio_stream_player.play()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_start_button_mouse_entered() -> void:
+	animated_sprite_2d.play(\"start\")
+
+
+func _on_start_button_mouse_exited() -> void:
+	animated_sprite_2d.stop()
+
+
+func _on_start_button_button_up() -> void:
+	get_tree().change_scene_to_file(\"uid://bubmv5k671ypc\")
+
+
+func _on_quit_button_button_up() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mxa6"]
+atlas = ExtResource("2_x0uo6")
+region = Rect2(0, 0, 272, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lgqy"]
+atlas = ExtResource("2_x0uo6")
+region = Rect2(272, 0, 272, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sphs1"]
+atlas = ExtResource("2_x0uo6")
+region = Rect2(544, 0, 272, 236)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76nds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lgqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sphs1")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_6mxa6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_pybfu")
+expand_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer"]
+unique_name_in_owner = true
+position = Vector2(230, 349)
+sprite_frames = SubResource("SpriteFrames_76nds")
+animation = &"start"
+frame_progress = 0.15781967
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 23.0
+offset_right = 39.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_6mxa6")
+text = "开始游戏"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_6mxa6")
+text = "退出游戏"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2lgqy")
+volume_db = -10.0
+
+[connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]

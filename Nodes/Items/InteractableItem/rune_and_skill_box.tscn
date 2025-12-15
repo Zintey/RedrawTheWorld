@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://ogqfy4visurn"]
+
+[ext_resource type="PackedScene" uid="uid://bhydnbq6l5xef" path="res://Nodes/Items/InteractableItem/interactable_item.tscn" id="1_kuhjc"]
+[ext_resource type="Script" uid="uid://lmnlngb4fef3" path="res://Nodes/Items/InteractableItem/RuneAndSkillBox.gd" id="2_3cuky"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="3_qnwva"]
+[ext_resource type="Shader" uid="uid://ccdvllbquj0fk" path="res://Shader/outline.gdshader" id="4_6gvyj"]
+[ext_resource type="Texture2D" uid="uid://bvovmwolrpyap" path="res://Assets/Items/RuneAndSkillBox/rune_and_skill_box.png" id="5_qnwva"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgndb"]
+resource_local_to_scene = true
+shader = ExtResource("4_6gvyj")
+shader_parameter/outline_size = 0.0
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnwva"]
+resource_local_to_scene = true
+size = Vector2(220, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gvyj"]
+resource_local_to_scene = true
+size = Vector2(107, 105)
+
+[node name="RuneAndSkillBox" instance=ExtResource("1_kuhjc")]
+script = ExtResource("2_3cuky")
+rune_list = Array[ExtResource("3_qnwva")]([])
+skill_list = Array[ExtResource("3_qnwva")]([])
+
+[node name="ItemSprite" parent="." index="0"]
+modulate = Color(0, 0.41568628, 1, 1)
+material = SubResource("ShaderMaterial_mgndb")
+scale = Vector2(1, 1)
+texture = ExtResource("5_qnwva")
+region_enabled = false
+region_rect = Rect2(2, 4, 37, 36)
+
+[node name="CollisionShape2D" parent="TipArea" index="0"]
+shape = SubResource("RectangleShape2D_qnwva")
+
+[node name="CollisionShape2D" parent="InteractableArea" index="0"]
+shape = SubResource("RectangleShape2D_6gvyj")
+
+[editable path="TipTextArea"]

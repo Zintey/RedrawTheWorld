@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cte1wladgtja5"]
+
+[ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="1_hkav2"]
+[ext_resource type="Script" uid="uid://bcbcyqts1jnye" path="res://UI/Rune/RuneSlotUI.gd" id="1_mh3ln"]
+[ext_resource type="Texture2D" uid="uid://dbjl5s4267xp5" path="res://Assets/RuneIcon/rune_slot_shape.png" id="2_rtjd7"]
+[ext_resource type="BitMap" uid="uid://cs4y054n7imor" path="res://Assets/RuneIcon/rune_slot_button_mask.png" id="3_rykew"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rykew"]
+texture = ExtResource("2_rtjd7")
+modulate_color = Color(0.22352941, 0.22352941, 0.22352941, 1)
+
+[node name="RuneSlotUI" type="PanelContainer" groups=["RuneSlot"]]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+mouse_behavior_recursive = 2
+theme = ExtResource("1_hkav2")
+theme_override_styles/panel = SubResource("StyleBoxTexture_rykew")
+script = ExtResource("1_mh3ln")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_behavior_recursive = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="rune_icon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+mouse_behavior_recursive = 2
+texture_click_mask = ExtResource("3_rykew")
+
+[connection signal="button_down" from="MarginContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MarginContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="MarginContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Button" to="." method="_on_button_mouse_exited"]

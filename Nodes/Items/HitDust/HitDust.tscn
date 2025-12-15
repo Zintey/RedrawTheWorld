@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx8r7rthdlfdm"]
+
+[ext_resource type="Texture2D" uid="uid://byglka8f4bmdc" path="res://Assets/Items/Dust/hit_dust2.png" id="1_c820s"]
+
+[sub_resource type="GDScript" id="GDScript_8jm7l"]
+script/source = "extends Node2D
+
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	await animated_sprite_2d.animation_finished
+	queue_free()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs8hc"]
+atlas = ExtResource("1_c820s")
+region = Rect2(0, 0, 77, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6to6"]
+atlas = ExtResource("1_c820s")
+region = Rect2(77, 0, 77, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrf3g"]
+atlas = ExtResource("1_c820s")
+region = Rect2(154, 0, 77, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_favnp"]
+atlas = ExtResource("1_c820s")
+region = Rect2(231, 0, 77, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sn1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs8hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6to6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrf3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_favnp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Dust" type="Node2D"]
+script = SubResource("GDScript_8jm7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 11
+position = Vector2(0, -35)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_6sn1j")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0

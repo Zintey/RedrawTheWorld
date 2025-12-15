@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=3 format=3 uid="uid://bx2g6cf7a1vvd"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_pwsql"]
+[ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="2_0pp35"]
+
+[resource]
+script = ExtResource("2_0pp35")
+skill_id = "medium_skill"
+skill_name = "中杯"
+skill_description = "三个辅助槽位刚刚好"
+trigger_rune_slot_count = 1
+trigger_rune_list = Array[ExtResource("1_pwsql")]([null])
+core_rune_slot_count = 1
+core_rune_list = Array[ExtResource("1_pwsql")]([null])
+modifier_rune_slot_count = 3
+modifier_rune_list = Array[ExtResource("1_pwsql")]([null, null, null])
+metadata/_custom_type_script = "uid://w3c70vl01a25"

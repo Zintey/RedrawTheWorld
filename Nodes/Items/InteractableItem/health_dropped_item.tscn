@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://sxfwf81u5tvf"]
+
+[ext_resource type="PackedScene" uid="uid://caqeyalei8giw" path="res://Nodes/Items/InteractableItem/emitter_dropped_item.tscn" id="1_h2npj"]
+[ext_resource type="Shader" uid="uid://ccdvllbquj0fk" path="res://Shader/outline.gdshader" id="2_7y6uf"]
+[ext_resource type="Texture2D" uid="uid://ds110dixv1fn4" path="res://Assets/UI/health_item.png" id="3_h2npj"]
+[ext_resource type="FontFile" uid="uid://dx5xndpot3dqu" path="res://Assets/Fonts/WenQuanZhengHei-1.ttf" id="4_j3e3l"]
+
+[sub_resource type="GDScript" id="GDScript_h2npj"]
+script/source = "extends InteractiveItem
+@export var cnt : int = 1
+
+func take_interact(body : Node2D):
+	EventBus.health_upper_limit_increased.emit(cnt)
+	queue_free()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sqpp"]
+resource_local_to_scene = true
+shader = ExtResource("2_7y6uf")
+shader_parameter/outline_size = 0.0
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y6uf"]
+atlas = ExtResource("3_h2npj")
+region = Rect2(54, 7, 141, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7vlb"]
+resource_local_to_scene = true
+size = Vector2(106, 98.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhvr5"]
+resource_local_to_scene = true
+size = Vector2(104, 96.5)
+
+[node name="HealthDroppedItem" instance=ExtResource("1_h2npj")]
+script = SubResource("GDScript_h2npj")
+cnt = 1
+
+[node name="ItemSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_2sqpp")
+position = Vector2(0, -6)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_7y6uf")
+region_enabled = false
+
+[node name="CollisionShape2D" parent="TipArea" index="0"]
+position = Vector2(0, -11.75)
+shape = SubResource("RectangleShape2D_f7vlb")
+
+[node name="CollisionShape2D" parent="InteractableArea" index="0"]
+position = Vector2(0, -10.75)
+shape = SubResource("RectangleShape2D_yhvr5")
+
+[node name="CollisionShape2D" parent="TipTextArea" index="0"]
+position = Vector2(0, -69.25)
+
+[node name="TipLabel" parent="TipTextArea" index="1"]
+offset_top = -164.0
+offset_bottom = -121.0
+theme_override_fonts/font = ExtResource("4_j3e3l")
+text = "S 拾取
+生命上限*1"
+
+[editable path="TipTextArea"]

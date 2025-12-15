@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgr6uyhq4pdl2"]
+
+[ext_resource type="PackedScene" uid="uid://bc500auljfdgd" path="res://Components/SkillComponent/skill _component.tscn" id="1_lkjqq"]
+[ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/Player.gd" id="1_q1ymb"]
+[ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="3_e0yf7"]
+[ext_resource type="PackedScene" uid="uid://k8jbptii3vuf" path="res://Components/StatusComponent/Status_component.tscn" id="3_lkjqq"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="4_tdvti"]
+[ext_resource type="Resource" uid="uid://kdt36bga48ri" path="res://Resources/RuneData/TriggerRune/key_trigger_rune.tres" id="5_ripo5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgt02"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1ymb"]
+width = 30
+height = 60
+
+[sub_resource type="Resource" id="Resource_7hu6s"]
+script = ExtResource("3_e0yf7")
+skill_id = "test_skill"
+trigger_rune_list = Array[ExtResource("4_tdvti")]([ExtResource("5_ripo5")])
+metadata/_custom_type_script = "uid://w3c70vl01a25"
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_q1ymb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lgt02")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = SubResource("NoiseTexture2D_q1ymb")
+offset = Vector2(0, -20)
+
+[node name="SkillComponent" parent="." node_paths=PackedStringArray("skill_owner") instance=ExtResource("1_lkjqq")]
+skill_owner = NodePath("..")
+skill_list = Array[ExtResource("3_e0yf7")]([SubResource("Resource_7hu6s")])
+
+[node name="StatusComponent" parent="." instance=ExtResource("3_lkjqq")]

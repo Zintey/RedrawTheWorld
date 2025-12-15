@@ -1,0 +1,1221 @@
+[gd_scene load_steps=43 format=4 uid="uid://delsnc5ls8k5u"]
+
+[ext_resource type="Script" uid="uid://cpn6b3jpe8v67" path="res://Maps/Level1/level_1_1_map.gd" id="1_2n354"]
+[ext_resource type="PackedScene" uid="uid://dgr6uyhq4pdl2" path="res://Nodes/Player/player.tscn" id="1_qs4nc"]
+[ext_resource type="Shader" uid="uid://bk02r84xb5avq" path="res://Shader/level_1_1_map.gdshader" id="1_s3juj"]
+[ext_resource type="Texture2D" uid="uid://eg5rt20ko45q" path="res://Assets/Map/Level1/wenshi night.png" id="2_ajpg6"]
+[ext_resource type="Texture2D" uid="uid://dxjjit8n6qmsw" path="res://Assets/Map/Level1/wupinzuhe.png" id="3_2pb22"]
+[ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="5_2g61s"]
+[ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="5_lajs4"]
+[ext_resource type="Resource" uid="uid://kic0lm8vvhsn" path="res://Resources/SkillData/old_skill_template.tres" id="9_7vk30"]
+[ext_resource type="PackedScene" uid="uid://cyy5l3bcgfxpm" path="res://Nodes/Items/ProcessRelated/switch_scene_area.tscn" id="9_8xxti"]
+[ext_resource type="PackedScene" uid="uid://ogqfy4visurn" path="res://Nodes/Items/InteractableItem/rune_and_skill_box.tscn" id="9_lx5ma"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="10_2n354"]
+[ext_resource type="PackedScene" uid="uid://de78ri77f86on" path="res://Nodes/Items/ProcessRelated/enter_point.tscn" id="10_lx5ma"]
+[ext_resource type="Resource" uid="uid://kdt36bga48ri" path="res://Resources/RuneData/TriggerRune/key_lbt_hit_trigger_rune.tres" id="11_7vk30"]
+[ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="11_umtsx"]
+[ext_resource type="Resource" uid="uid://d0p0sfomcw0pr" path="res://Resources/RuneData/ModifireRune/speed_up_modifier_rune.tres" id="13_n35am"]
+[ext_resource type="Texture2D" uid="uid://cyu4wf2hfvgfb" path="res://Assets/RuneIcon/Temp/rune_icon2.png" id="14_7vk30"]
+[ext_resource type="PackedScene" uid="uid://dak656fcyirif" path="res://Nodes/Enemy/TrackedCutter/tracked_cutter.tscn" id="14_8yslm"]
+[ext_resource type="PackedScene" uid="uid://ch062g0jdshvg" path="res://Nodes/Items/InteractableItem/switch.tscn" id="14_bta53"]
+[ext_resource type="Shader" uid="uid://ccdvllbquj0fk" path="res://Shader/outline.gdshader" id="15_jqbu3"]
+[ext_resource type="Resource" uid="uid://gw8l6noe3p5l" path="res://Resources/RuneData/ModifireRune/snip_modifier_rune.tres" id="15_qgc1n"]
+[ext_resource type="PackedScene" uid="uid://u3ywr7qe5nkc" path="res://Nodes/Items/ProcessRelated/tip_area.tscn" id="18_qhb86"]
+[ext_resource type="PackedScene" uid="uid://sxfwf81u5tvf" path="res://Nodes/Items/InteractableItem/health_dropped_item.tscn" id="19_ecv2h"]
+[ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/PlayerCamera.gd" id="19_faum8"]
+[ext_resource type="PackedScene" uid="uid://c1wkqlvoevgnr" path="res://Nodes/Enemy/Turret/turret.tscn" id="22_2osyj"]
+[ext_resource type="AudioStream" uid="uid://o1mdp2gsxp12" path="res://Audio/BGM/bgm_idle1.wav" id="26_ecv2h"]
+[ext_resource type="PackedScene" uid="uid://lsxw0pmv6l1" path="res://Nodes/Items/InteractableItem/stamina_dropped_item.tscn" id="26_q2uj6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lajs4"]
+shader = ExtResource("1_s3juj")
+
+[sub_resource type="Gradient" id="Gradient_q2uj6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8xxti"]
+gradient = SubResource("Gradient_q2uj6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.51282054, 0)
+
+[sub_resource type="Gradient" id="Gradient_ecv2h"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lx5ma"]
+gradient = SubResource("Gradient_ecv2h")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.47578347, 0)
+
+[sub_resource type="Gradient" id="Gradient_y66sq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2n354"]
+gradient = SubResource("Gradient_y66sq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.51282054, 0)
+
+[sub_resource type="Gradient" id="Gradient_p8t7g"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_umtsx"]
+gradient = SubResource("Gradient_p8t7g")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.47578347, 0)
+
+[sub_resource type="Resource" id="Resource_y66sq"]
+resource_local_to_scene = true
+script = ExtResource("11_umtsx")
+skill_id = "ordinary_skill_template"
+skill_name = "普通"
+skill_description = "普通型号的技能模板"
+skill_icon = ExtResource("14_7vk30")
+trigger_rune_slot_count = 1
+trigger_rune_list = Array[ExtResource("10_2n354")]([null])
+core_rune_slot_count = 1
+core_rune_list = Array[ExtResource("10_2n354")]([null])
+modifier_rune_slot_count = 2
+modifier_rune_list = Array[ExtResource("10_2n354")]([null, null])
+metadata/_custom_type_script = "uid://w3c70vl01a25"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2g61s"]
+resource_local_to_scene = true
+shader = ExtResource("15_jqbu3")
+shader_parameter/outline_size = 0.0
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqbu3"]
+resource_local_to_scene = true
+size = Vector2(103.33331, 105.66675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g61s"]
+resource_local_to_scene = true
+size = Vector2(107, 105)
+
+[sub_resource type="Gradient" id="Gradient_2y2u6"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m55ro"]
+gradient = SubResource("Gradient_2y2u6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2osyj"]
+resource_local_to_scene = true
+size = Vector2(401, 292)
+
+[node name="level1_1_map" type="Node2D"]
+script = ExtResource("1_2n354")
+
+[node name="Parallax" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax"]
+texture_filter = 1
+scroll_scale = Vector2(0, 0.01)
+
+[node name="BG_IMG" type="Sprite2D" parent="Parallax/Parallax2D"]
+light_mask = 16
+texture_filter = 1
+material = SubResource("ShaderMaterial_lajs4")
+position = Vector2(502, 266)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ajpg6")
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-307.49997, 97.49999)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 2.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-119.999985, -209.99997)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 2.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-1229.9999, -427.49997)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-950, -235.00003)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D5" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-495.00003, -332.5)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D6" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(152.49991, -462.5)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D7" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(857.5, -582.5)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D8" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(920, -210.00003)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D9" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(1192.5, -365)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D10" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(1490, -72.50003)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D11" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(677.50006, 47.499992)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D12" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-1182.4998, 377.49997)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D13" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(-1485, -197.49997)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D14" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(802.49976, 379.99997)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="PointLight2D15" type="PointLight2D" parent="Parallax/Parallax2D/BG_IMG"]
+position = Vector2(1105, 234.99998)
+color = Color(0.30980393, 0.25490198, 1, 1)
+energy = 1.2
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_8xxti")
+texture_scale = 1.71
+
+[node name="Parallax2D2" type="Parallax2D" parent="Parallax"]
+visible = false
+texture_filter = 1
+scroll_scale = Vector2(0.5, 1)
+
+[node name="BG_IMG" type="Sprite2D" parent="Parallax/Parallax2D2"]
+light_mask = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_lajs4")
+position = Vector2(82, 255)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(4090, 1660, 1060, 2640)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG"]
+light_mask = 2
+position = Vector2(299.9997, 524.9999)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG"]
+light_mask = 2
+position = Vector2(-275.00024, 665)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG"]
+light_mask = 2
+position = Vector2(-260.0003, -359.99997)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG"]
+light_mask = 2
+position = Vector2(209.9997, -254.99998)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="BG_IMG2" type="Sprite2D" parent="Parallax/Parallax2D2"]
+light_mask = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_lajs4")
+position = Vector2(644.99994, 255)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(4090, 1660, 1060, 2640)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG2"]
+light_mask = 2
+position = Vector2(299.9997, 524.9999)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG2"]
+light_mask = 2
+position = Vector2(-275.00024, 665)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG2"]
+light_mask = 2
+position = Vector2(-260.0003, -359.99997)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG2"]
+light_mask = 2
+position = Vector2(209.9997, -254.99998)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="BG_IMG3" type="Sprite2D" parent="Parallax/Parallax2D2"]
+light_mask = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_lajs4")
+position = Vector2(1352, 255)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(4090, 1660, 1060, 2640)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG3"]
+light_mask = 2
+position = Vector2(299.9997, 524.9999)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG3"]
+light_mask = 2
+position = Vector2(-275.00024, 665)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG3"]
+light_mask = 2
+position = Vector2(-260.0003, -359.99997)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG3"]
+light_mask = 2
+position = Vector2(209.9997, -254.99998)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="BG_IMG4" type="Sprite2D" parent="Parallax/Parallax2D2"]
+light_mask = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_lajs4")
+position = Vector2(1966, 255)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(4090, 1660, 1060, 2640)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG4"]
+light_mask = 2
+position = Vector2(299.9997, 524.9999)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG4"]
+light_mask = 2
+position = Vector2(-275.00024, 665)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG4"]
+light_mask = 2
+position = Vector2(-260.0003, -359.99997)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D2/BG_IMG4"]
+light_mask = 2
+position = Vector2(209.9997, -254.99998)
+color = Color(0.37065133, 0.99999994, 0.38020593, 1)
+energy = 0.4
+range_item_cull_mask = 14
+texture = SubResource("GradientTexture2D_lx5ma")
+texture_scale = 20.0
+
+[node name="Parallax2D4" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.6, 0.1)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax/Parallax2D4"]
+light_mask = 3
+position = Vector2(2584, 117)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3680, 970)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(-579.99963, -239.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(-579.99963, -165)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(-1428.9996, -248.99997)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(-1428.9996, -173.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(221.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(221.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(641.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(641.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(1520.9999, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D5"]
+position = Vector2(1520.9999, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax/Parallax2D4"]
+light_mask = 3
+position = Vector2(1924, 117)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3680, 970)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(-579.99963, -239.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(-579.99963, -165)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(-1428.9996, -248.99997)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(-1428.9996, -173.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(221.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(221.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(641.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(641.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(1520.9999, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D4"]
+position = Vector2(1520.9999, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax/Parallax2D4"]
+light_mask = 3
+position = Vector2(1286, 117)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3680, 970)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(-579.99963, -239.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(-579.99963, -165)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(-1428.9996, -248.99997)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(-1428.9996, -173.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(221.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(221.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(641.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(641.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(1520.9999, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D3"]
+position = Vector2(1520.9999, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax/Parallax2D4"]
+light_mask = 3
+position = Vector2(629, 117)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3680, 970)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(-579.99963, -239.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(-579.99963, -165)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(-1428.9996, -248.99997)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(-1428.9996, -173.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(221.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(221.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(641.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(641.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(1520.9999, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D2"]
+position = Vector2(1520.9999, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax/Parallax2D4"]
+light_mask = 3
+position = Vector2(-91, 117)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3680, 970)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(-579.99963, -239.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(-579.99963, -165)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(-1428.9996, -248.99997)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(-1428.9996, -173.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(221.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(221.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(641.00024, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(641.00024, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(1520.9999, -233.99998)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Parallax/Parallax2D4/Sprite2D6"]
+position = Vector2(1520.9999, -159)
+color = Color(1, 1, 0, 1)
+energy = 2.0
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_2n354")
+texture_scale = 3.0
+
+[node name="Parallax2D3" type="Parallax2D" parent="Parallax"]
+visible = false
+scroll_scale = Vector2(0.12, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Parallax2D3"]
+light_mask = 5
+position = Vector2(-145, 251.5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(5720, 2030, 1680, 2350)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D"]
+position = Vector2(-323.3333, -440)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D"]
+position = Vector2(-299.99997, 533.3333)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D"]
+position = Vector2(280, -330)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 13.68
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D"]
+position = Vector2(263.3333, 213.33334)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 12.82
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax/Parallax2D3"]
+light_mask = 5
+position = Vector2(1022, 251.5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(5720, 2030, 1680, 2350)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D2"]
+position = Vector2(-323.3333, -440)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D2"]
+position = Vector2(-299.99997, 533.3333)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D2"]
+position = Vector2(280, -330)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 13.68
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D2"]
+position = Vector2(263.3333, 213.33334)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 12.82
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax/Parallax2D3"]
+light_mask = 5
+position = Vector2(2264, 251.5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_2pb22")
+region_enabled = true
+region_rect = Rect2(5720, 2030, 1680, 2350)
+
+[node name="PointLight2D" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D3"]
+position = Vector2(-323.3333, -440)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 20.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D3"]
+position = Vector2(-299.99997, 533.3333)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D3"]
+position = Vector2(280, -330)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 13.68
+
+[node name="PointLight2D4" type="PointLight2D" parent="Parallax/Parallax2D3/Sprite2D3"]
+position = Vector2(263.3333, 213.33334)
+color = Color(0.28235295, 0.2627451, 0.83137256, 1)
+energy = 1.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_umtsx")
+texture_scale = 12.82
+
+[node name="Parallax2D5" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.9, 1)
+scroll_offset = Vector2(-4, 2)
+
+[node name="Door" parent="." node_paths=PackedStringArray("switch") instance=ExtResource("5_2g61s")]
+position = Vector2(227, 325)
+scale = Vector2(0.8, 0.8)
+switch = NodePath("../Items/Switch")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+light_mask = 9
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAHABAABAAEAAMAAAAHAA8ABAACAAIAAAAHAA4ABAAEAAIAAAAGABAABAAEAAMAAAAGAA8ABAADAAIAAAAGAA4ABAADAAIAAAAFABAABAADAAMAAAAFAA8ABAACAAIAAAAFAA4ABAAEAAIAAAAEABAABAAEAAMAAAAEAA8ABAACAAIAAAAEAA4ABAADAAIAAAADABAABAAEAAMAAAADAA8ABAADAAIAAAADAA4ABAADAAIAAAACABAABAAIAAEAAAACAA8ABAADAAIAAAACAA4ABAAEAAIAAAABABAABAAIAAEAAAABAA8ABAACAAIAAAABAA4ABAADAAIAAAAAABAABAABAAMAAAAAAA8ABAABAAIAAAAAAA4ABAAJAAIAAAAHAA0ABAADAAIAAAAGAA0ABAADAAIAAAAFAA0ABAADAAIAAAAEAA0ABAADAAIAAAADAA0ABAAEAAIAAAAHAAwABAAEAAIAAAAHAAsABAAEAAIAAAAGAAwABAADAAIAAAAGAAsABAAEAAIAAAAFAAwABAAEAAIAAAAFAAsABAACAAIAAAAEAAwABAACAAIAAAAEAAsABAADAAIAAAADAAwABAAEAAIAAAADAAsABAAEAAIAAAADAAoABAAIAAMAAAACAA0ABAADAAIAAAACAAwABAADAAIAAAACAAsABAAEAAIAAAACAAoABAADAAEAAAABAA0ABAACAAIAAAABAAwABAADAAIAAAABAAsABAADAAIAAAABAAoABAAIAAMAAAAAAA0ABAAJAAIAAAAAAAwABAAJAAIAAAAAAAsABAAJAAIAAAAAAAoABAABAAEAAAAIABAABAAIAAEAAAAIAA8ABAACAAIAAAAIAA4ABAACAAIAAAAIAA0ABAADAAIAAAAIAAwABAADAAIAAAAIAAsABAACAAIAAAAJABAABAAIAAEAAAAJAA8ABAADAAIAAAAJAA4ABAAEAAIAAAAJAA0ABAAEAAIAAAAJAAwABAACAAIAAAAJAAsABAAEAAIAAAANAAYABAACAAMAAAANAAUABAADAAEAAAAMAAYABAAEAAMAAAAMAAUABAAEAAEAAAALAAYABAADAAMAAAALAAUABAAEAAEAAAAKAAYABAADAAMAAAAKAAUABAACAAEAAAAJAAYABAAIAAEAAAAJAAUABAACAAEAAAAIAAYABAACAAMAAAAIAAUABAACAAEAAAAOAAYABAADAAMAAAAOAAUABAADAAEAAABZAAwABAAJAAEAAABZAAsABAADAAIAAABZAAoABAADAAIAAABZAAAABAACAAMAAABZAP//BAAJAAMAAABYAAwABAADAAMAAABYAAsABAADAAIAAABYAAoABAADAAIAAABYAAAABAAEAAMAAABYAP//BAADAAEAAABXAAwABAAEAAMAAABXAAsABAADAAIAAABXAAoABAAEAAIAAABXAAAABAAIAAEAAABXAP//BAACAAEAAABWAAwABAADAAMAAABWAAsABAADAAIAAABWAAoABAACAAIAAABWAAAABAAIAAEAAABWAP//BAAIAAMAAABVAAwABAADAAMAAABVAAsABAAEAAIAAABVAAoABAADAAIAAABVAAAABAAIAAEAAABVAP//BAADAAEAAABUAAwABAAEAAMAAABUAAsABAAEAAIAAABUAAoABAADAAIAAABUAAAABAADAAMAAABUAP//BAADAAEAAABTAAwABAAEAAMAAABTAAsABAADAAIAAABTAAoABAADAAIAAABTAAAABAAEAAMAAABTAP//BAACAAEAAABSAAwABAACAAMAAABSAAsABAACAAIAAABSAAoABAADAAIAAABSAAkABAAEAAIAAABSAAgABAADAAIAAABSAAcABAAEAAIAAABSAAYABAAHAAMAAABSAAUABAAHAAIAAABSAAQABAAFAAIAAABSAAMABAAHAAIAAABSAAIABAAFAAIAAABSAAEABAAFAAIAAABSAAAABAAHAAEAAABSAP//BAAEAAEAAABRAAwABAAIAAEAAABRAAsABAACAAIAAABRAAoABAADAAIAAABRAAkABAAEAAIAAABRAAgABAACAAIAAABRAAcABAAEAAIAAABRAAYABAADAAIAAABRAAUABAACAAIAAABRAAQABAACAAIAAABRAAMABAAEAAIAAABRAAIABAADAAIAAABRAAEABAADAAIAAABRAAAABAAEAAIAAABRAP//BAAEAAEAAABQAAwABAADAAMAAABQAAsABAAEAAIAAABQAAoABAADAAIAAABQAAkABAADAAIAAABQAAgABAADAAIAAABQAAcABAADAAIAAABQAAYABAADAAIAAABQAAUABAAEAAIAAABQAAQABAACAAIAAABQAAMABAACAAIAAABQAAIABAACAAIAAABQAAEABAACAAIAAABQAAAABAAEAAIAAABQAP//BAAEAAEAAABPAAwABAADAAMAAABPAAsABAADAAIAAABPAAoABAAEAAIAAABPAAkABAAEAAIAAABPAAgABAADAAIAAABPAAcABAADAAIAAABPAAYABAADAAIAAABPAAUABAAEAAIAAABPAAQABAAEAAIAAABPAAMABAAEAAIAAABPAAIABAACAAIAAABPAAEABAAEAAIAAABPAAAABAACAAIAAABPAP//BAAIAAMAAABOAAwABAAIAAEAAABOAAsABAAEAAIAAABOAAoABAAEAAIAAABOAAkABAACAAIAAABOAAgABAADAAIAAABOAAcABAAEAAIAAABOAAYABAACAAIAAABOAAUABAAEAAIAAABOAAQABAADAAIAAABOAAMABAAEAAIAAABOAAIABAACAAIAAABOAAEABAAEAAIAAABOAAAABAAEAAIAAABOAP//BAADAAEAAABNAAwABAAIAAEAAABNAAsABAACAAIAAABNAAoABAAEAAIAAABNAAkABAAEAAIAAABNAAgABAAEAAIAAABNAAcABAACAAIAAABNAAYABAADAAIAAABNAAUABAADAAIAAABNAAQABAADAAIAAABNAAMABAACAAIAAABNAAIABAADAAIAAABNAAEABAACAAIAAABNAAAABAACAAIAAABNAP//BAADAAEAAABMAAwABAAIAAEAAABMAAsABAAEAAIAAABMAAoABAACAAIAAABMAAkABAADAAIAAABMAAgABAAEAAIAAABMAAcABAACAAIAAABMAAYABAADAAIAAABMAAUABAACAAIAAABMAAQABAACAAIAAABMAAMABAACAAIAAABMAAIABAAEAAIAAABMAAEABAAEAAIAAABMAAAABAACAAIAAABMAP//BAAEAAEAAABLAAwABAABAAMAAABLAAsABAAJAAIAAABLAAoABAABAAIAAABLAAkABAABAAIAAABLAAgABAABAAIAAABLAAcABAAJAAEAAABLAAYABAACAAIAAABLAAUABAACAAIAAABLAAQABAACAAIAAABLAAMABAADAAIAAABLAAIABAACAAIAAABLAAEABAACAAIAAABLAAAABAADAAIAAABLAP//BAAEAAEAAABKAAcABAADAAMAAABKAAYABAACAAIAAABKAAUABAADAAIAAABKAAQABAADAAIAAABKAAMABAACAAIAAABKAAIABAACAAIAAABKAAEABAAEAAIAAABKAAAABAAEAAIAAABKAP//BAADAAEAAABSAPv/BAAEAAMAAABRAPv/BAACAAMAAABQAPv/BAAEAAMAAABPAPv/BAACAAMAAABOAPv/BAAIAAEAAABNAPv/BAABAAMAAABSAPr/BAAEAAEAAABRAPr/BAAEAAEAAABQAPr/BAAIAAMAAABPAPr/BAADAAEAAABOAPr/BAACAAEAAABNAPr/BAABAAEAAABTAPv/BAAFAAMAAABTAPr/BAAFAAEAAABgAP//BAADAAIAAABgAP7/BAADAAIAAABgAP3/BAADAAIAAABgAPz/BAACAAIAAABgAPv/BAACAAIAAABgAPr/BAADAAIAAABgAPn/BAACAAIAAABgAPj/BAAEAAEAAABfAP//BAADAAIAAABfAP7/BAACAAIAAABfAP3/BAADAAIAAABfAPz/BAADAAIAAABfAPv/BAADAAIAAABfAPr/BAACAAIAAABfAPn/BAADAAIAAABfAPj/BAAIAAMAAABeAP//BAACAAIAAABeAP7/BAAEAAIAAABeAP3/BAADAAIAAABeAPz/BAADAAIAAABeAPv/BAACAAIAAABeAPr/BAACAAIAAABeAPn/BAADAAIAAABeAPj/BAAEAAEAAABdAP//BAADAAIAAABdAP7/BAAEAAIAAABdAP3/BAAEAAIAAABdAPz/BAAEAAIAAABdAPv/BAAEAAIAAABdAPr/BAADAAIAAABdAPn/BAAEAAIAAABdAPj/BAADAAEAAABcAP//BAACAAIAAABcAP7/BAADAAIAAABcAP3/BAACAAIAAABcAPz/BAACAAIAAABcAPv/BAADAAIAAABcAPr/BAACAAIAAABcAPn/BAACAAIAAABcAPj/BAAIAAMAAABbAP//BAACAAIAAABbAP7/BAADAAIAAABbAP3/BAADAAIAAABbAPz/BAAEAAIAAABbAPv/BAACAAIAAABbAPr/BAAEAAIAAABbAPn/BAADAAIAAABbAPj/BAAEAAEAAABaAP//BAAEAAIAAABaAP7/BAAEAAIAAABaAP3/BAADAAIAAABaAPz/BAADAAIAAABaAPv/BAAEAAIAAABaAPr/BAAEAAIAAABaAPn/BAAEAAIAAABaAPj/BAACAAEAAABZAP7/BAABAAIAAABZAP3/BAABAAIAAABZAPz/BAABAAIAAABZAPv/BAAJAAIAAABZAPr/BAABAAIAAABZAPn/BAAJAAIAAABZAPj/BAABAAEAAABgAAwABAAHAAIAAABgAAsABAAHAAIAAABgAAoABAAFAAIAAABgAAAABAAEAAMAAABfAAwABAACAAIAAABfAAsABAACAAIAAABfAAoABAACAAIAAABfAAAABAADAAMAAABeAAwABAAEAAIAAABeAAsABAADAAIAAABeAAoABAACAAIAAABeAAAABAACAAMAAABdAAwABAAEAAIAAABdAAsABAACAAIAAABdAAoABAACAAIAAABdAAAABAADAAMAAABcAAwABAACAAIAAABcAAsABAADAAIAAABcAAoABAAEAAIAAABcAAAABAAEAAMAAABbAAwABAACAAIAAABbAAsABAACAAIAAABbAAoABAACAAIAAABbAAAABAACAAMAAABaAAwABAACAAIAAABaAAsABAADAAIAAABaAAoABAACAAIAAABaAAAABAAIAAEAAABiAAAABAAIAAEAAABiAP//BAADAAIAAABiAP7/BAAEAAIAAABiAP3/BAADAAIAAABiAPz/BAADAAIAAABiAPv/BAADAAIAAABiAPr/BAADAAIAAABiAPn/BAADAAIAAABiAPj/BAACAAEAAABhAAAABAACAAMAAABhAP//BAAEAAIAAABhAP7/BAADAAIAAABhAP3/BAADAAIAAABhAPz/BAAEAAIAAABhAPv/BAADAAIAAABhAPr/BAACAAIAAABhAPn/BAADAAIAAABhAPj/BAADAAEAAABnAAAABAAIAAEAAABnAP//BAACAAIAAABnAP7/BAACAAIAAABnAP3/BAADAAIAAABnAPz/BAADAAIAAABnAPv/BAAEAAIAAABnAPr/BAACAAIAAABnAPn/BAACAAIAAABnAPj/BAAJAAMAAABmAAAABAACAAMAAABmAP//BAACAAIAAABmAP7/BAADAAIAAABmAP3/BAADAAIAAABmAPz/BAACAAIAAABmAPv/BAAEAAIAAABmAPr/BAAEAAIAAABmAPn/BAADAAIAAABmAPj/BAAEAAEAAABlAAAABAAIAAEAAABlAP//BAACAAIAAABlAP7/BAACAAIAAABlAP3/BAAEAAIAAABlAPz/BAAEAAIAAABlAPv/BAACAAIAAABlAPr/BAADAAIAAABlAPn/BAADAAIAAABlAPj/BAAIAAMAAABkAAAABAAEAAMAAABkAP//BAADAAIAAABkAP7/BAACAAIAAABkAP3/BAADAAIAAABkAPz/BAACAAIAAABkAPv/BAAEAAIAAABkAPr/BAACAAIAAABkAPn/BAADAAIAAABkAPj/BAADAAEAAABjAAAABAAIAAEAAABjAP//BAADAAIAAABjAP7/BAAEAAIAAABjAP3/BAADAAIAAABjAPz/BAAEAAIAAABjAPv/BAADAAIAAABjAPr/BAADAAIAAABjAPn/BAACAAIAAABjAPj/BAAIAAMAAABqAPj/BAAEAAIAAABqAPf/BAAEAAIAAABqAPb/BAADAAIAAABqAPX/BAACAAIAAABqAPT/BAAEAAIAAABqAPP/BAAEAAIAAABqAPL/BAAEAAIAAABqAPH/BAADAAIAAABqAPD/BAADAAIAAABqAO//BAACAAIAAABqAO7/BAACAAIAAABqAO3/BAAEAAIAAABqAOz/BAAEAAIAAABqAOv/BAADAAIAAABqAOr/BAAEAAIAAABqAOn/BAADAAIAAABqAOj/BAADAAIAAABqAOf/BAADAAIAAABqAOb/BAAEAAIAAABqAOX/BAADAAIAAABqAOT/BAADAAIAAABqAOP/BAADAAIAAABqAOL/BAADAAIAAABqAOH/BAAEAAEAAABpAPj/BAAEAAIAAABpAPf/BAACAAIAAABpAPb/BAADAAIAAABpAPX/BAAEAAIAAABpAPT/BAADAAIAAABpAPP/BAADAAIAAABpAPL/BAACAAIAAABpAPH/BAACAAIAAABpAPD/BAACAAIAAABpAO//BAAEAAIAAABpAO7/BAADAAIAAABpAO3/BAACAAIAAABpAOz/BAADAAIAAABpAOv/BAACAAIAAABpAOr/BAAEAAIAAABpAOn/BAAEAAIAAABpAOj/BAADAAIAAABpAOf/BAACAAIAAABpAOb/BAACAAIAAABpAOX/BAAEAAIAAABpAOT/BAADAAIAAABpAOP/BAAEAAIAAABpAOL/BAADAAIAAABpAOH/BAACAAEAAABoAPj/BAAEAAIAAABoAPf/BAADAAIAAABoAPb/BAAEAAIAAABoAPX/BAAEAAIAAABoAPT/BAAEAAIAAABoAPP/BAAEAAIAAABoAPL/BAAEAAIAAABoAPH/BAACAAIAAABoAPD/BAADAAIAAABoAO//BAADAAIAAABoAO7/BAADAAIAAABoAO3/BAAEAAIAAABoAOz/BAADAAIAAABoAOv/BAADAAIAAABoAOr/BAACAAIAAABoAOn/BAAEAAIAAABoAOj/BAACAAIAAABoAOf/BAAEAAIAAABoAOb/BAADAAIAAABoAOX/BAACAAIAAABoAOT/BAAEAAIAAABoAOP/BAAEAAIAAABoAOL/BAAEAAIAAABoAOH/BAAEAAEAAABnAPf/BAABAAIAAABnAPb/BAABAAIAAABnAPX/BAAJAAIAAABnAPT/BAABAAIAAABnAPP/BAAJAAIAAABnAPL/BAABAAIAAABnAPH/BAAJAAIAAABnAPD/BAAJAAIAAABnAO//BAABAAIAAABnAO7/BAAJAAIAAABnAO3/BAAJAAIAAABnAOz/BAAJAAIAAABnAOv/BAAJAAIAAABnAOr/BAAJAAIAAABnAOn/BAAJAAIAAABnAOj/BAABAAIAAABnAOf/BAABAAIAAABnAOb/BAAJAAIAAABnAOX/BAABAAIAAABnAOT/BAABAAIAAABnAOP/BAAJAAIAAABnAOL/BAAJAAIAAABnAOH/BAABAAEAAABrAAwABAAHAAIAAABrAAsABAAHAAIAAABrAAoABAAFAAIAAABrAAkABAAFAAIAAABrAAgABAAFAAIAAABrAAcABAAHAAIAAABrAAYABAAFAAIAAABrAAUABAAFAAIAAABrAAQABAAHAAIAAABrAAMABAAHAAIAAABrAAIABAAFAAIAAABrAAEABAAHAAIAAABrAAAABAAHAAIAAABrAP//BAAFAAIAAABrAP7/BAAFAAIAAABrAP3/BAAHAAIAAABrAPz/BAAFAAIAAABrAPv/BAAHAAIAAABrAPr/BAAHAAIAAABrAPn/BAAFAAIAAABrAPj/BAAHAAIAAABrAPf/BAAHAAIAAABrAPb/BAAFAAIAAABrAPX/BAAHAAIAAABrAPT/BAAHAAIAAABrAPP/BAAHAAIAAABrAPL/BAAFAAIAAABrAPH/BAAFAAIAAABrAPD/BAAHAAIAAABrAO//BAAFAAIAAABrAO7/BAAHAAIAAABrAO3/BAAHAAIAAABrAOz/BAAFAAIAAABrAOv/BAAFAAIAAABrAOr/BAAFAAIAAABrAOn/BAAHAAIAAABrAOj/BAAFAAIAAABrAOf/BAAFAAIAAABrAOb/BAAHAAIAAABrAOX/BAAFAAIAAABrAOT/BAAFAAIAAABrAOP/BAAFAAIAAABrAOL/BAAHAAIAAABrAOH/BAAFAAEAAABqAAwABAADAAIAAABqAAsABAAEAAIAAABqAAoABAAEAAIAAABqAAkABAAEAAIAAABqAAgABAADAAIAAABqAAcABAACAAIAAABqAAYABAAEAAIAAABqAAUABAAEAAIAAABqAAQABAAEAAIAAABqAAMABAAEAAIAAABqAAIABAACAAIAAABqAAEABAACAAIAAABqAAAABAACAAIAAABqAP//BAADAAIAAABqAP7/BAACAAIAAABqAP3/BAADAAIAAABqAPz/BAAEAAIAAABqAPv/BAAEAAIAAABqAPr/BAACAAIAAABqAPn/BAACAAIAAABpAAwABAAJAAIAAABpAAsABAABAAIAAABpAAoABAAJAAIAAABpAAkABAABAAIAAABpAAgABAAJAAIAAABpAAcABAABAAIAAABpAAYABAAJAAIAAABpAAUABAABAAIAAABpAAQABAAJAAIAAABpAAMABAAJAAIAAABpAAIABAABAAIAAABpAAEABAAJAAIAAABpAAAABAAJAAEAAABpAP//BAAEAAIAAABpAP7/BAACAAIAAABpAP3/BAACAAIAAABpAPz/BAACAAIAAABpAPv/BAADAAIAAABpAPr/BAADAAIAAABpAPn/BAACAAIAAABoAAAABAADAAMAAABoAP//BAADAAIAAABoAP7/BAADAAIAAABoAP3/BAACAAIAAABoAPz/BAADAAIAAABoAPv/BAAEAAIAAABoAPr/BAADAAIAAABoAPn/BAACAAIAAABOABQABAAFAAMAAABOABMABAAFAAEAAABNABQABAADAAMAAABNABMABAACAAEAAABMABQABAAIAAEAAABMABMABAAEAAEAAABLABQABAAEAAMAAABLABMABAAIAAMAAABKABQABAAEAAMAAABKABMABAACAAEAAABgAAkABAAFAAIAAABgAAgABAAHAAIAAABgAAcABAAHAAIAAABgAAYABAAFAAEAAABfAAkABAAEAAIAAABfAAgABAADAAIAAABfAAcABAACAAIAAABfAAYABAADAAEAAABeAAkABAADAAIAAABeAAgABAAEAAIAAABeAAcABAAEAAIAAABeAAYABAADAAEAAABdAAkABAACAAIAAABdAAgABAADAAIAAABdAAcABAAEAAIAAABdAAYABAAEAAEAAABcAAkABAAEAAIAAABcAAgABAADAAIAAABcAAcABAACAAIAAABcAAYABAADAAEAAABbAAkABAACAAIAAABbAAgABAAEAAIAAABbAAcABAACAAIAAABbAAYABAADAAEAAABaAAkABAACAAIAAABaAAgABAACAAIAAABaAAcABAACAAIAAABaAAYABAADAAEAAABZAAkABAAEAAIAAABZAAgABAADAAIAAABZAAcABAAEAAIAAABZAAYABAADAAEAAABYAAkABAAEAAIAAABYAAgABAACAAIAAABYAAcABAACAAIAAABYAAYABAADAAEAAABXAAkABAACAAIAAABXAAgABAAEAAIAAABXAAcABAAEAAIAAABXAAYABAADAAEAAABWAAkABAADAAIAAABWAAgABAAEAAIAAABWAAcABAACAAIAAABWAAYABAAEAAEAAABVAAkABAADAAIAAABVAAgABAAEAAIAAABVAAcABAADAAIAAABVAAYABAADAAEAAABUAAkABAAEAAIAAABUAAgABAAEAAIAAABUAAcABAADAAIAAABUAAYABAACAAEAAABTAAkABAADAAIAAABTAAgABAACAAIAAABTAAcABAADAAIAAABTAAYABAACAAEAAABiAA0ABAADAAEAAABjAA0ABAACAAEAAABhAA0ABAADAAEAAABkAA4ABAAFAAMAAABkAA0ABAAFAAEAAABjAA4ABAACAAMAAABiAA4ABAAIAAEAAABhAA4ABAAEAAMAAABbABsABAADAAIAAABbABoABAADAAIAAABbABkABAACAAIAAABbABgABAADAAIAAABbABcABAAIAAMAAABaABsABAADAAIAAABaABoABAAJAAMAAABaABkABAAJAAIAAABaABgABAABAAIAAABaABcABAABAAEAAABZABsABAADAAIAAABZABoABAAIAAMAAABYABsABAADAAIAAABYABoABAADAAEAAABXABsABAADAAIAAABXABoABAAEAAEAAABWABsABAACAAIAAABWABoABAAIAAMAAABVABsABAAEAAIAAABVABoABAADAAEAAABUABsABAAEAAIAAABUABoABAADAAEAAABTABsABAACAAIAAABTABoABAAHAAMAAABSABsABAAEAAIAAABSABoABAACAAIAAABSABkABAADAAIAAABSABgABAADAAEAAABRABsABAADAAIAAABRABoABAADAAIAAABRABkABAADAAIAAABRABgABAADAAEAAABQABsABAAEAAIAAABQABoABAAEAAIAAABQABkABAACAAIAAABQABgABAAEAAEAAABPABsABAAEAAIAAABPABoABAACAAIAAABPABkABAACAAIAAABPABgABAAEAAEAAABOABsABAADAAIAAABOABoABAACAAIAAABOABkABAAEAAIAAABOABgABAADAAEAAABNABsABAADAAIAAABNABoABAACAAIAAABNABkABAADAAIAAABNABgABAAIAAMAAABMABsABAAEAAIAAABMABoABAADAAIAAABMABkABAADAAIAAABMABgABAAEAAEAAABLABsABAAEAAIAAABLABoABAADAAIAAABLABkABAACAAIAAABLABgABAADAAEAAABKABsABAAEAAIAAABKABoABAAEAAIAAABKABkABAACAAIAAABKABgABAADAAEAAABpABwABAAEAAIAAABpABsABAAEAAIAAABpABoABAACAAIAAABpABkABAAEAAIAAABpABgABAADAAIAAABpABcABAAEAAIAAABoABwABAADAAIAAABoABsABAAEAAIAAABoABoABAAEAAIAAABoABkABAAEAAIAAABoABgABAADAAIAAABoABcABAAEAAIAAABnABwABAACAAIAAABnABsABAADAAIAAABnABoABAADAAIAAABnABkABAACAAIAAABnABgABAACAAIAAABnABcABAADAAIAAABmABwABAADAAIAAABmABsABAAEAAIAAABmABoABAADAAIAAABmABkABAADAAIAAABmABgABAADAAIAAABmABcABAADAAIAAABlABwABAAEAAIAAABlABsABAACAAIAAABlABoABAACAAIAAABlABkABAACAAIAAABlABgABAAEAAIAAABlABcABAACAAIAAABkABwABAADAAIAAABkABsABAADAAIAAABkABoABAACAAIAAABkABkABAACAAIAAABkABgABAACAAIAAABkABcABAACAAIAAABjABwABAADAAIAAABjABsABAADAAIAAABjABoABAADAAIAAABjABkABAACAAIAAABjABgABAACAAIAAABjABcABAADAAIAAABiABwABAAEAAIAAABiABsABAACAAIAAABiABoABAADAAIAAABiABkABAAEAAIAAABiABgABAACAAIAAABiABcABAACAAIAAABhABwABAACAAIAAABhABsABAACAAIAAABhABoABAAEAAIAAABhABkABAADAAIAAABhABgABAAEAAIAAABhABcABAACAAIAAABgABwABAACAAIAAABgABsABAAEAAIAAABgABoABAADAAIAAABgABkABAACAAIAAABgABgABAACAAIAAABgABcABAAJAAMAAABfABwABAAEAAIAAABfABsABAACAAIAAABfABoABAACAAIAAABfABkABAADAAIAAABfABgABAACAAIAAABfABcABAADAAEAAABeABwABAADAAIAAABeABsABAAEAAIAAABeABoABAADAAIAAABeABkABAADAAIAAABeABgABAADAAIAAABeABcABAAIAAMAAABdABwABAACAAIAAABdABsABAACAAIAAABdABoABAADAAIAAABdABkABAACAAIAAABdABgABAACAAIAAABdABcABAADAAEAAABcABwABAADAAIAAABcABsABAACAAIAAABcABoABAAEAAIAAABcABkABAACAAIAAABcABgABAADAAIAAABcABcABAADAAEAAABbABwABAADAAIAAABaABwABAACAAIAAABZABwABAACAAIAAABYABwABAACAAIAAABXABwABAACAAIAAABWABwABAAEAAIAAABVABwABAADAAIAAABUABwABAAEAAIAAABTABwABAACAAIAAABSABwABAAEAAIAAABRABwABAADAAIAAABQABwABAACAAIAAABPABwABAADAAIAAABOABwABAAEAAIAAABNABwABAACAAIAAABMABwABAACAAIAAABLABwABAADAAIAAABKABwABAAEAAIAAABrABwABAAHAAIAAABrABsABAAHAAIAAABrABoABAAHAAIAAABrABkABAAFAAIAAABrABgABAAHAAIAAABrABcABAAFAAIAAABrABYABAAHAAIAAABrABUABAAFAAIAAABrABQABAAFAAIAAABrABMABAAFAAIAAABrABIABAAHAAIAAABrABEABAAHAAIAAABrABAABAAFAAIAAABrAA8ABAAFAAIAAABrAA4ABAAFAAIAAABrAA0ABAAHAAIAAABqABwABAACAAIAAABqABsABAADAAIAAABqABoABAACAAIAAABqABkABAADAAIAAABqABgABAADAAIAAABqABcABAAEAAIAAABqABYABAADAAIAAABqABUABAADAAIAAABqABQABAAEAAIAAABqABMABAAEAAIAAABqABIABAACAAIAAABqABEABAACAAIAAABqABAABAACAAIAAABqAA8ABAAEAAIAAABqAA4ABAACAAIAAABqAA0ABAADAAIAAABpABYABAACAAIAAABpABUABAAEAAIAAABpABQABAAJAAMAAABpABMABAABAAIAAABpABIABAABAAIAAABpABEABAABAAIAAABpABAABAAJAAIAAABpAA8ABAABAAIAAABpAA4ABAAJAAIAAABpAA0ABAABAAIAAABgAA4ABAAEAAMAAABgAA0ABAAHAAMAAABfAA4ABAACAAMAAABfAA0ABAACAAIAAABeAA4ABAADAAMAAABeAA0ABAAEAAIAAABdAA4ABAAIAAEAAABdAA0ABAAEAAIAAABcAA4ABAADAAMAAABcAA0ABAACAAIAAABbAA4ABAACAAMAAABbAA0ABAAEAAIAAABaAA4ABAADAAMAAABaAA0ABAAEAAIAAABZAA4ABAABAAMAAABZAA0ABAAJAAIAAABoABYABAACAAIAAABoABUABAADAAIAAABnABYABAACAAIAAABnABUABAADAAIAAABmABYABAAEAAIAAABmABUABAADAAIAAABlABYABAADAAIAAABlABUABAACAAIAAABkABYABAACAAIAAABkABUABAAJAAMAAABjABYABAACAAIAAABjABUABAACAAEAAABiABYABAAEAAIAAABiABUABAACAAEAAABhABYABAAEAAIAAABhABUABAAEAAEAAABgABYABAABAAIAAABgABUABAABAAEAAABTABkABAAHAAIAAABTABgABAAFAAEAAAAPAAUABAACAAEAAAAPAAYABAAEAAMAAAAPAA4ABAABAAEAAAAPAA8ABAAJAAIAAAAPABAABAABAAMAAAAQAAUABAAEAAEAAAAQAAYABAACAAMAAAAQAA4ABAACAAEAAAAQAA8ABAADAAIAAAAQABAABAAEAAMAAAARAAUABAACAAEAAAARAAYABAAJAAEAAAARAAcABAABAAIAAAARAAgABAABAAIAAAARAAkABAAJAAIAAAARAAoABAAJAAIAAAARAAsABAAJAAIAAAARAAwABAABAAIAAAARAA0ABAAJAAIAAAARAA4ABAAJAAMAAAARAA8ABAACAAIAAAARABAABAAIAAEAAAASAAUABAAFAAEAAAASAAYABAAHAAIAAAASAAcABAAFAAIAAAASAAgABAAHAAIAAAASAAkABAAHAAIAAAASAAoABAAHAAMAAAASAAsABAACAAIAAAASAAwABAACAAIAAAASAA0ABAAEAAIAAAASAA4ABAACAAIAAAASAA8ABAACAAIAAAASABAABAAEAAMAAAATAAsABAAEAAIAAAATAAwABAAEAAIAAAATAA0ABAAEAAIAAAATAA4ABAACAAIAAAATAA8ABAACAAIAAAATABAABAACAAMAAAAUAAsABAACAAIAAAAUAAwABAACAAIAAAAUAA0ABAAEAAIAAAAUAA4ABAACAAIAAAAUAA8ABAADAAIAAAAUABAABAAIAAEAAAAVAAsABAADAAIAAAAVAAwABAACAAIAAAAVAA0ABAAEAAIAAAAVAA4ABAADAAIAAAAVAA8ABAADAAIAAAAVABAABAAEAAMAAAAWAAsABAAEAAIAAAAWAAwABAADAAIAAAAWAA0ABAAEAAIAAAAWAA4ABAACAAIAAAAWAA8ABAAEAAIAAAAWABAABAAEAAMAAAAXAAsABAAEAAIAAAAXAAwABAAEAAIAAAAXAA0ABAADAAIAAAAXAA4ABAACAAIAAAAXAA8ABAADAAIAAAAXABAABAAEAAMAAAAYAAsABAAEAAIAAAAYAAwABAACAAIAAAAYAA0ABAADAAIAAAAYAA4ABAAEAAIAAAAYAA8ABAADAAIAAAAYABAABAAEAAMAAAAZAAsABAACAAIAAAAZAAwABAADAAIAAAAZAA0ABAACAAIAAAAZAA4ABAAEAAIAAAAZAA8ABAAEAAIAAAAZABAABAADAAMAAAAaAAsABAACAAIAAAAaAAwABAADAAIAAAAaAA0ABAAEAAIAAAAaAA4ABAADAAIAAAAaAA8ABAADAAIAAAAaABAABAADAAMAAAAbAAsABAAEAAIAAAAbAAwABAADAAIAAAAbAA0ABAACAAIAAAAbAA4ABAAEAAIAAAAbAA8ABAACAAIAAAAbABAABAADAAMAAAAcAAsABAACAAIAAAAcAAwABAADAAIAAAAcAA0ABAAEAAIAAAAcAA4ABAADAAIAAAAcAA8ABAACAAIAAAAcABAABAAIAAEAAAAdAAsABAAEAAIAAAAdAAwABAAEAAIAAAAdAA0ABAACAAIAAAAdAA4ABAACAAIAAAAdAA8ABAADAAIAAAAdABAABAACAAMAAAAeAAsABAAEAAIAAAAeAAwABAACAAIAAAAeAA0ABAACAAIAAAAeAA4ABAACAAIAAAAeAA8ABAADAAIAAAAeABAABAACAAMAAAAfAAsABAADAAIAAAAfAAwABAAEAAIAAAAfAA0ABAACAAIAAAAfAA4ABAACAAIAAAAfAA8ABAADAAIAAAAfABAABAAEAAMAAAAgAAsABAAEAAIAAAAgAA4ABAAEAAIAAAAgAA8ABAADAAIAAAAgABAABAACAAMAAAAhAAsABAAEAAIAAAAhAA4ABAADAAIAAAAhAA8ABAACAAIAAAAhABAABAAIAAEAAAAiAAgABAABAAEAAAAiAAkABAABAAIAAAAiAAoABAAJAAMAAAAiAAsABAAEAAIAAAAiAA4ABAAEAAIAAAAiAA8ABAADAAIAAAAiABAABAACAAMAAAAjAAgABAADAAEAAAAjAAkABAADAAIAAAAjAAoABAACAAIAAAAjAAsABAAHAAEAAAAjAA4ABAAFAAIAAAAjAA8ABAAHAAMAAAAjABAABAADAAMAAAAkAAgABAAIAAMAAAAkAA8ABAAIAAMAAAAkABAABAAEAAMAAAAlAAgABAADAAEAAAAlAA8ABAACAAEAAAAlABAABAAIAAEAAAAmAAgABAACAAEAAAAmAA8ABAAEAAEAAAAmABAABAAIAAEAAAAnAAgABAAIAAMAAAAnAA8ABAAEAAEAAAAnABAABAAEAAMAAAAoAAgABAAEAAEAAAAoAA8ABAACAAEAAAAoABAABAAEAAMAAAApAAgABAACAAEAAAApAA8ABAAEAAEAAAApABAABAAIAAEAAAAqAAgABAADAAEAAAAqAA8ABAADAAEAAAAqABAABAAIAAEAAAArAAMABAABAAEAAAArAAQABAABAAMAAAArAAgABAAEAAEAAAArAA8ABAAIAAMAAAArABAABAADAAMAAAAsAAMABAADAAEAAAAsAAQABAADAAMAAAAsAAgABAAIAAMAAAAsAA8ABAAIAAMAAAAsABAABAAEAAMAAAAtAAMABAAIAAMAAAAtAAQABAAEAAMAAAAtAAgABAACAAEAAAAtAA8ABAACAAEAAAAtABAABAAEAAMAAAAuAAMABAADAAEAAAAuAAQABAACAAMAAAAuAAgABAACAAEAAAAuAA8ABAAEAAEAAAAuABAABAAIAAEAAAAvAAMABAAIAAMAAAAvAAQABAAIAAEAAAAvAAgABAAEAAEAAAAvAA8ABAAIAAMAAAAvABAABAAEAAMAAAAwAAMABAACAAEAAAAwAAQABAACAAMAAAAwAAgABAADAAEAAAAwAA8ABAAIAAMAAAAwABAABAAEAAMAAAAxAAMABAAFAAEAAAAxAAQABAAFAAMAAAAxAAgABAADAAEAAAAxAA8ABAAIAAMAAAAxABAABAACAAMAAAAyAAgABAAEAAEAAAAyAA8ABAAEAAEAAAAyABAABAADAAMAAAAzAAgABAACAAEAAAAzAA8ABAAEAAEAAAAzABAABAACAAMAAAA0AP//BAABAAEAAAA0AAAABAABAAIAAAA0AAEABAAJAAIAAAA0AAIABAAJAAIAAAA0AAMABAABAAIAAAA0AAQABAAJAAIAAAA0AAUABAABAAIAAAA0AAYABAABAAIAAAA0AAcABAABAAIAAAA0AAgABAAJAAMAAAA0AAkABAACAAIAAAA0AAoABAAEAAIAAAA0AAsABAAJAAEAAAA0AAwABAAJAAIAAAA0AA4ABAAJAAIAAAA0AA8ABAAJAAMAAAA0ABAABAAIAAEAAAA1AP//BAACAAEAAAA1AAAABAAEAAIAAAA1AAEABAADAAIAAAA1AAIABAAEAAIAAAA1AAMABAACAAIAAAA1AAQABAADAAIAAAA1AAUABAACAAIAAAA1AAYABAACAAIAAAA1AAcABAAEAAIAAAA1AAgABAACAAIAAAA1AAkABAACAAIAAAA1AAoABAACAAIAAAA1AAsABAACAAIAAAA1AAwABAACAAIAAAA1AA4ABAACAAIAAAA1AA8ABAADAAIAAAA1ABAABAAIAAEAAAA2AP//BAACAAEAAAA2AAAABAAEAAIAAAA2AAEABAACAAIAAAA2AAIABAACAAIAAAA2AAMABAACAAIAAAA2AAQABAACAAIAAAA2AAUABAADAAIAAAA2AAYABAACAAIAAAA2AAcABAADAAIAAAA2AAgABAAEAAIAAAA2AAkABAADAAIAAAA2AAoABAACAAIAAAA2AAsABAADAAIAAAA2AAwABAAEAAIAAAA2AA4ABAACAAIAAAA2AA8ABAADAAIAAAA2ABAABAACAAMAAAA3AP//BAADAAEAAAA3AAAABAADAAIAAAA3AAEABAADAAIAAAA3AAIABAACAAIAAAA3AAMABAADAAIAAAA3AAQABAAEAAIAAAA3AAUABAADAAIAAAA3AAYABAAEAAIAAAA3AAcABAAEAAIAAAA3AAgABAADAAIAAAA3AAkABAACAAIAAAA3AAoABAACAAIAAAA3AAsABAAEAAIAAAA3AAwABAADAAIAAAA3AA4ABAACAAIAAAA3AA8ABAAEAAIAAAA3ABAABAADAAMAAAA4AP//BAAEAAEAAAA4AAAABAADAAIAAAA4AAEABAAEAAIAAAA4AAIABAAEAAIAAAA4AAMABAACAAIAAAA4AAQABAAEAAIAAAA4AAUABAADAAIAAAA4AAYABAAEAAIAAAA4AAcABAACAAIAAAA4AAgABAAEAAIAAAA4AAkABAACAAIAAAA4AAoABAADAAIAAAA4AAsABAADAAIAAAA4AAwABAAEAAIAAAA4AA0ABAAEAAIAAAA4AA4ABAADAAIAAAA4AA8ABAACAAIAAAA4ABAABAADAAMAAAA5AP//BAAIAAMAAAA5AAAABAADAAIAAAA5AAEABAACAAIAAAA5AAIABAAEAAIAAAA5AAMABAAEAAIAAAA5AAQABAACAAIAAAA5AAUABAADAAIAAAA5AAYABAACAAIAAAA5AAcABAACAAIAAAA5AAgABAADAAIAAAA5AAkABAADAAIAAAA5AAoABAADAAIAAAA5AAsABAACAAIAAAA5AAwABAAEAAIAAAA5AA0ABAAEAAIAAAA5AA4ABAADAAIAAAA5AA8ABAACAAIAAAA5ABAABAAIAAEAAAA6AP//BAADAAEAAAA6AAAABAADAAIAAAA6AAEABAACAAIAAAA6AAIABAACAAIAAAA6AAMABAAEAAIAAAA6AAQABAADAAIAAAA6AAUABAACAAIAAAA6AAYABAAEAAIAAAA6AAcABAAEAAIAAAA6AAgABAADAAIAAAA6AAkABAACAAIAAAA6AAoABAACAAIAAAA6AAsABAAEAAIAAAA6AAwABAACAAIAAAA6AA0ABAACAAIAAAA6AA4ABAACAAIAAAA6AA8ABAACAAIAAAA6ABAABAAIAAEAAAA7AP//BAAEAAEAAAA7AAAABAADAAIAAAA7AAEABAADAAIAAAA7AAIABAADAAIAAAA7AAMABAACAAIAAAA7AAQABAAEAAIAAAA7AAUABAAEAAIAAAA7AAYABAACAAIAAAA7AAcABAADAAIAAAA7AAgABAAEAAIAAAA7AAkABAAEAAIAAAA7AAoABAACAAIAAAA7AAsABAACAAIAAAA7AAwABAADAAIAAAA7AA0ABAACAAIAAAA7AA4ABAAEAAIAAAA7AA8ABAAEAAIAAAA7ABAABAACAAMAAAA8AP//BAAIAAMAAAA8AAAABAADAAIAAAA8AAEABAACAAIAAAA8AAIABAAEAAIAAAA8AAMABAADAAIAAAA8AAQABAACAAIAAAA8AAUABAAEAAIAAAA8AAYABAAEAAIAAAA8AAcABAACAAIAAAA8AAgABAADAAIAAAA8AAkABAAEAAIAAAA8AAoABAAEAAIAAAA8AAsABAAEAAIAAAA8AAwABAADAAIAAAA8AA0ABAACAAIAAAA8AA4ABAADAAIAAAA8AA8ABAACAAIAAAA8ABAABAADAAMAAAA9AP//BAAEAAEAAAA9AAAABAACAAIAAAA9AAEABAACAAIAAAA9AAIABAAEAAIAAAA9AAMABAAEAAIAAAA9AAQABAAEAAIAAAA9AAUABAADAAIAAAA9AAYABAAEAAIAAAA9AAcABAADAAIAAAA9AAgABAACAAIAAAA9AAkABAACAAIAAAA9AAoABAACAAIAAAA9AAsABAACAAIAAAA9AAwABAADAAIAAAA9AA0ABAAEAAIAAAA9AA4ABAAEAAIAAAA9AA8ABAAEAAIAAAA9ABAABAAEAAMAAAA+AP//BAAIAAMAAAA+AAAABAADAAIAAAA+AAEABAAEAAIAAAA+AAIABAAEAAIAAAA+AAMABAAEAAIAAAA+AAQABAADAAIAAAA+AAUABAAEAAIAAAA+AAYABAAEAAIAAAA+AAcABAAEAAIAAAA+AAgABAADAAIAAAA+AAkABAAEAAIAAAA+AAoABAADAAIAAAA+AAsABAAEAAIAAAA+AAwABAAEAAIAAAA+AA0ABAACAAIAAAA+AA4ABAAEAAIAAAA+AA8ABAADAAIAAAA+ABAABAADAAMAAAA/AP//BAAFAAEAAAA/AAAABAAHAAIAAAA/AAEABAAHAAIAAAA/AAIABAAHAAMAAAA/AAMABAAHAAEAAAA/AAQABAAFAAIAAAA/AAUABAAHAAIAAAA/AAYABAAHAAIAAAA/AAcABAAFAAIAAAA/AAgABAAHAAIAAAA/AAkABAAHAAIAAAA/AAoABAAHAAMAAAA/AAsABAAHAAEAAAA/AAwABAAFAAIAAAA/AA0ABAAFAAIAAAA/AA4ABAAHAAIAAAA/AA8ABAAHAAMAAAA/ABAABAAEAAMAAABAAAIABAADAAEAAABAAAMABAACAAMAAABAAAoABAAEAAEAAABAAAsABAAIAAEAAABAAA8ABAACAAEAAABAABAABAADAAMAAABBAAIABAAFAAEAAABBAAMABAAFAAMAAABBAAoABAAFAAEAAABBAAsABAAFAAMAAABBAA8ABAAIAAMAAABBABAABAADAAMAAABCAA8ABAADAAEAAABCABAABAADAAMAAABDAA8ABAACAAEAAABDABAABAAEAAMAAABEAP//BAABAAIAAABEAAAABAABAAMAAABEAAYABAABAAEAAABEAAcABAABAAMAAABEAA8ABAAFAAEAAABEABAABAAFAAMAAABFAP//BAAHAAMAAABFAAAABAADAAMAAABFAAYABAAIAAMAAABFAAcABAAEAAMAAABGAP//BAACAAEAAABGAAAABAAJAAEAAABGAAEABAAJAAIAAABGAAIABAAJAAIAAABGAAMABAABAAIAAABGAAQABAAJAAIAAABGAAUABAABAAIAAABGAAYABAAJAAMAAABGAAcABAADAAMAAABGABgABAABAAEAAABGABkABAABAAIAAABGABoABAABAAIAAABGABsABAABAAIAAABGABwABAAJAAIAAABHAP//BAAEAAEAAABHAAAABAADAAIAAABHAAEABAAEAAIAAABHAAIABAADAAIAAABHAAMABAADAAIAAABHAAQABAADAAIAAABHAAUABAAEAAIAAABHAAYABAAEAAIAAABHAAcABAAEAAMAAABHABgABAAEAAEAAABHABkABAACAAIAAABHABoABAAEAAIAAABHABsABAAEAAIAAABHABwABAAEAAIAAABIAP//BAADAAEAAABIAAAABAACAAIAAABIAAEABAADAAIAAABIAAIABAACAAIAAABIAAMABAACAAIAAABIAAQABAACAAIAAABIAAUABAAEAAIAAABIAAYABAAEAAIAAABIAAcABAACAAMAAABIABMABAABAAEAAABIABQABAABAAMAAABIABgABAAIAAMAAABIABkABAADAAIAAABIABoABAADAAIAAABIABsABAACAAIAAABIABwABAACAAIAAABJAP//BAADAAEAAABJAAAABAAEAAIAAABJAAEABAAEAAIAAABJAAIABAADAAIAAABJAAMABAADAAIAAABJAAQABAADAAIAAABJAAUABAAEAAIAAABJAAYABAACAAIAAABJAAcABAAEAAMAAABJABMABAAIAAMAAABJABQABAAIAAEAAABJABgABAADAAEAAABJABkABAADAAIAAABJABoABAADAAIAAABJABsABAACAAIAAABJABwABAADAAIAAABrACEABAAFAAMAAABrACAABAAHAAIAAABrAB8ABAAFAAIAAABrAB4ABAAHAAIAAABrAB0ABAAFAAIAAABqACEABAAEAAMAAABqACAABAACAAIAAABqAB8ABAAEAAIAAABqAB4ABAACAAIAAABqAB0ABAAEAAIAAABpACEABAAEAAMAAABpACAABAADAAIAAABpAB8ABAACAAIAAABpAB4ABAACAAIAAABpAB0ABAAEAAIAAABoACEABAAIAAEAAABoACAABAACAAIAAABoAB8ABAACAAIAAABoAB4ABAADAAIAAABoAB0ABAADAAIAAABnACEABAADAAMAAABnACAABAAEAAIAAABnAB8ABAADAAIAAABnAB4ABAADAAIAAABnAB0ABAAEAAIAAABmACEABAAIAAEAAABmACAABAACAAIAAABmAB8ABAADAAIAAABmAB4ABAAEAAIAAABmAB0ABAACAAIAAABlACEABAADAAMAAABlACAABAACAAIAAABlAB8ABAACAAIAAABlAB4ABAADAAIAAABlAB0ABAACAAIAAABkACEABAAEAAMAAABkACAABAAEAAIAAABkAB8ABAAEAAIAAABkAB4ABAADAAIAAABkAB0ABAADAAIAAABjACEABAAIAAEAAABjACAABAAEAAIAAABjAB8ABAAEAAIAAABjAB4ABAACAAIAAABjAB0ABAAEAAIAAABiACEABAAIAAEAAABiACAABAACAAIAAABiAB8ABAADAAIAAABiAB4ABAACAAIAAABiAB0ABAAEAAIAAABhACEABAAIAAEAAABhACAABAACAAIAAABhAB8ABAACAAIAAABhAB4ABAACAAIAAABhAB0ABAACAAIAAABgACEABAAIAAEAAABgACAABAACAAIAAABgAB8ABAACAAIAAABgAB4ABAAEAAIAAABgAB0ABAACAAIAAABfACEABAACAAMAAABfACAABAADAAIAAABfAB8ABAADAAIAAABfAB4ABAACAAIAAABfAB0ABAADAAIAAABeACEABAAIAAEAAABeACAABAAEAAIAAABeAB8ABAADAAIAAABeAB4ABAAEAAIAAABeAB0ABAACAAIAAABdACEABAAIAAEAAABdACAABAADAAIAAABdAB8ABAACAAIAAABdAB4ABAAEAAIAAABdAB0ABAACAAIAAABcACEABAAIAAEAAABcACAABAAEAAIAAABcAB8ABAADAAIAAABcAB4ABAAEAAIAAABcAB0ABAADAAIAAABbACEABAADAAMAAABbACAABAAEAAIAAABbAB8ABAACAAIAAABbAB4ABAADAAIAAABbAB0ABAACAAIAAABaACEABAAIAAEAAABaACAABAADAAIAAABaAB8ABAAEAAIAAABaAB4ABAADAAIAAABaAB0ABAACAAIAAABZACEABAADAAMAAABZACAABAAEAAIAAABZAB8ABAADAAIAAABZAB4ABAADAAIAAABZAB0ABAACAAIAAABYACEABAAIAAEAAABYACAABAADAAIAAABYAB8ABAACAAIAAABYAB4ABAACAAIAAABYAB0ABAADAAIAAABXACEABAAEAAMAAABXACAABAAEAAIAAABXAB8ABAACAAIAAABXAB4ABAACAAIAAABXAB0ABAACAAIAAABWACEABAACAAMAAABWACAABAADAAIAAABWAB8ABAACAAIAAABWAB4ABAACAAIAAABWAB0ABAAEAAIAAABVACEABAADAAMAAABVACAABAADAAIAAABVAB8ABAAEAAIAAABVAB4ABAAEAAIAAABVAB0ABAADAAIAAABUACEABAADAAMAAABUACAABAAEAAIAAABUAB8ABAADAAIAAABUAB4ABAADAAIAAABUAB0ABAADAAIAAABTACEABAAEAAMAAABTACAABAAEAAIAAABTAB8ABAADAAIAAABTAB4ABAAEAAIAAABTAB0ABAAEAAIAAABSACEABAAEAAMAAABSACAABAADAAIAAABSAB8ABAADAAIAAABSAB4ABAAEAAIAAABSAB0ABAAEAAIAAABRACEABAAEAAMAAABRACAABAADAAIAAABRAB8ABAADAAIAAABRAB4ABAAEAAIAAABRAB0ABAADAAIAAABQACEABAAIAAEAAABQACAABAAEAAIAAABQAB8ABAACAAIAAABQAB4ABAACAAIAAABQAB0ABAAEAAIAAABPACEABAACAAMAAABPACAABAAEAAIAAABPAB8ABAAEAAIAAABPAB4ABAAEAAIAAABPAB0ABAADAAIAAABOACEABAADAAMAAABOACAABAAEAAIAAABOAB8ABAACAAIAAABOAB4ABAAEAAIAAABOAB0ABAACAAIAAABNACEABAACAAMAAABNACAABAADAAIAAABNAB8ABAADAAIAAABNAB4ABAADAAIAAABNAB0ABAAEAAIAAABMACEABAADAAMAAABMACAABAAEAAIAAABMAB8ABAACAAIAAABMAB4ABAAEAAIAAABMAB0ABAAEAAIAAABLACEABAACAAMAAABLACAABAACAAIAAABLAB8ABAACAAIAAABLAB4ABAAEAAIAAABLAB0ABAADAAIAAABKACEABAAEAAMAAABKACAABAACAAIAAABKAB8ABAADAAIAAABKAB4ABAAEAAIAAABKAB0ABAADAAIAAABJACEABAAIAAEAAABJACAABAAEAAIAAABJAB8ABAADAAIAAABJAB4ABAADAAIAAABJAB0ABAADAAIAAABIACEABAADAAMAAABIACAABAACAAIAAABIAB8ABAACAAIAAABIAB4ABAAEAAIAAABIAB0ABAAEAAIAAABHACEABAACAAMAAABHACAABAADAAIAAABHAB8ABAAEAAIAAABHAB4ABAAEAAIAAABHAB0ABAACAAIAAABGACEABAACAAMAAABGACAABAAEAAIAAABGAB8ABAAEAAIAAABGAB4ABAADAAIAAABGAB0ABAAJAAMAAABFACEABAAIAAEAAABFACAABAACAAIAAABFAB8ABAADAAIAAABFAB4ABAADAAIAAABFAB0ABAACAAEAAABEACEABAAEAAMAAABEACAABAADAAIAAABEAB8ABAACAAIAAABEAB4ABAADAAIAAABEAB0ABAAIAAMAAABDACEABAAEAAMAAABDACAABAAEAAIAAABDAB8ABAAEAAIAAABDAB4ABAAEAAIAAABDAB0ABAADAAEAAABCACEABAADAAMAAABCACAABAADAAIAAABCAB8ABAACAAIAAABCAB4ABAAEAAIAAABCAB0ABAACAAEAAABBACEABAACAAMAAABBACAABAADAAIAAABBAB8ABAAEAAIAAABBAB4ABAACAAIAAABBAB0ABAAEAAEAAABAACEABAAIAAEAAABAACAABAACAAIAAABAAB8ABAACAAIAAABAAB4ABAAEAAIAAABAAB0ABAAEAAEAAAA/ACEABAADAAMAAAA/ACAABAACAAIAAAA/AB8ABAADAAIAAAA/AB4ABAADAAIAAAA/AB0ABAAIAAMAAAA+ACEABAACAAMAAAA+ACAABAACAAIAAAA+AB8ABAADAAIAAAA+AB4ABAAEAAIAAAA+AB0ABAACAAEAAAA9ACEABAACAAMAAAA9ACAABAADAAIAAAA9AB8ABAADAAIAAAA9AB4ABAADAAIAAAA9AB0ABAACAAEAAAA8ACEABAAEAAMAAAA8ACAABAADAAIAAAA8AB8ABAAEAAIAAAA8AB4ABAAEAAIAAAA8AB0ABAADAAEAAAA7ACEABAADAAMAAAA7ACAABAAEAAIAAAA7AB8ABAACAAIAAAA7AB4ABAACAAIAAAA7AB0ABAADAAEAAAA6ACEABAACAAMAAAA6ACAABAADAAIAAAA6AB8ABAACAAIAAAA6AB4ABAAEAAIAAAA6AB0ABAAEAAEAAAA5ACEABAAEAAMAAAA5ACAABAAEAAIAAAA5AB8ABAAEAAIAAAA5AB4ABAAEAAIAAAA5AB0ABAADAAEAAAA4ACEABAACAAMAAAA4ACAABAAEAAIAAAA4AB8ABAAEAAIAAAA4AB4ABAAEAAIAAAA4AB0ABAAEAAEAAAA3ACEABAACAAMAAAA3ACAABAACAAIAAAA3AB8ABAAEAAIAAAA3AB4ABAAEAAIAAAA3AB0ABAADAAEAAAA2ACEABAACAAMAAAA2ACAABAAEAAIAAAA2AB8ABAAEAAIAAAA2AB4ABAACAAIAAAA2AB0ABAAIAAMAAAA1ACEABAAEAAMAAAA1ACAABAAEAAIAAAA1AB8ABAAEAAIAAAA1AB4ABAACAAIAAAA1AB0ABAACAAEAAAA0ACEABAACAAMAAAA0ACAABAACAAIAAAA0AB8ABAAEAAIAAAA0AB4ABAACAAIAAAA0AB0ABAACAAEAAAAzACEABAAEAAMAAAAzACAABAAEAAIAAAAzAB8ABAAEAAIAAAAzAB4ABAAEAAIAAAAzAB0ABAADAAEAAAAyACEABAAIAAEAAAAyACAABAADAAIAAAAyAB8ABAACAAIAAAAyAB4ABAACAAIAAAAyAB0ABAAIAAMAAAAxACEABAAEAAMAAAAxACAABAACAAIAAAAxAB8ABAADAAIAAAAxAB4ABAAEAAIAAAAxAB0ABAACAAEAAAAwACEABAAEAAMAAAAwACAABAADAAIAAAAwAB8ABAAEAAIAAAAwAB4ABAACAAIAAAAwAB0ABAADAAEAAAAvACEABAAEAAMAAAAvACAABAAEAAIAAAAvAB8ABAAEAAIAAAAvAB4ABAADAAIAAAAvAB0ABAAEAAEAAAAuACEABAAEAAMAAAAuACAABAADAAIAAAAuAB8ABAAEAAIAAAAuAB4ABAACAAIAAAAuAB0ABAAIAAMAAAAtACEABAADAAMAAAAtACAABAACAAIAAAAtAB8ABAACAAIAAAAtAB4ABAAEAAIAAAAtAB0ABAACAAEAAAAsACEABAACAAMAAAAsACAABAACAAIAAAAsAB8ABAAEAAIAAAAsAB4ABAAEAAIAAAAsAB0ABAAEAAEAAAArACEABAAIAAEAAAArACAABAACAAIAAAArAB8ABAACAAIAAAArAB4ABAAEAAIAAAArAB0ABAACAAEAAAAqACEABAADAAMAAAAqACAABAADAAIAAAAqAB8ABAAEAAIAAAAqAB4ABAAEAAIAAAAqAB0ABAAHAAMAAAApACEABAACAAMAAAApACAABAACAAIAAAApAB8ABAADAAIAAAApAB4ABAACAAIAAAApAB0ABAACAAIAAAAoACEABAACAAMAAAAoACAABAADAAIAAAAoAB8ABAADAAIAAAAoAB4ABAAEAAIAAAAoAB0ABAACAAIAAAAnACEABAADAAMAAAAnACAABAAEAAIAAAAnAB8ABAACAAIAAAAnAB4ABAADAAIAAAAnAB0ABAACAAIAAAAmACEABAAIAAEAAAAmACAABAADAAIAAAAmAB8ABAADAAIAAAAmAB4ABAADAAIAAAAmAB0ABAADAAIAAAAlACEABAADAAMAAAAlACAABAAEAAIAAAAlAB8ABAADAAIAAAAlAB4ABAACAAIAAAAlAB0ABAAEAAIAAAAKABAABAAFAAMAAAAKAA8ABAAFAAIAAAAKAA4ABAAHAAIAAAAKAA0ABAAHAAIAAAAKAAwABAAFAAIAAAAKAAsABAAFAAIAAAAkACEABAADAAMAAAAkACAABAADAAIAAAAkAB8ABAACAAIAAAAkAB4ABAADAAIAAAAkAB0ABAADAAIAAAAjACEABAAIAAEAAAAjACAABAADAAIAAAAjAB8ABAACAAIAAAAjAB4ABAAEAAIAAAAjAB0ABAAJAAMAAAAiACEABAACAAMAAAAiACAABAADAAIAAAAiAB8ABAACAAIAAAAiAB4ABAAEAAIAAAAiAB0ABAAEAAEAAAAhACEABAACAAMAAAAhACAABAACAAIAAAAhAB8ABAAEAAIAAAAhAB4ABAADAAIAAAAhAB0ABAAIAAMAAAAgACEABAADAAMAAAAgACAABAADAAIAAAAgAB8ABAAEAAIAAAAgAB4ABAACAAIAAAAgAB0ABAAEAAEAAAAfACEABAACAAMAAAAfACAABAACAAIAAAAfAB8ABAACAAIAAAAfAB4ABAACAAIAAAAfAB0ABAAEAAEAAAAeACEABAAEAAMAAAAeACAABAADAAIAAAAeAB8ABAADAAIAAAAeAB4ABAACAAIAAAAeAB0ABAADAAEAAAAdACEABAACAAMAAAAdACAABAACAAIAAAAdAB8ABAACAAIAAAAdAB4ABAAEAAIAAAAdAB0ABAADAAEAAAAcACEABAAIAAEAAAAcACAABAACAAIAAAAcAB8ABAADAAIAAAAcAB4ABAADAAIAAAAcAB0ABAACAAEAAAAbACEABAACAAMAAAAbACAABAAEAAIAAAAbAB8ABAACAAIAAAAbAB4ABAADAAIAAAAbAB0ABAAIAAMAAAAaACEABAADAAMAAAAaACAABAADAAIAAAAaAB8ABAADAAIAAAAaAB4ABAACAAIAAAAaAB0ABAAIAAMAAAAZACEABAADAAMAAAAZACAABAACAAIAAAAZAB8ABAADAAIAAAAZAB4ABAACAAIAAAAZAB0ABAAEAAEAAAAYACEABAAEAAMAAAAYACAABAAEAAIAAAAYAB8ABAADAAIAAAAYAB4ABAADAAIAAAAYAB0ABAADAAEAAAAXACEABAACAAMAAAAXACAABAACAAIAAAAXAB8ABAADAAIAAAAXAB4ABAADAAIAAAAXAB0ABAAIAAMAAAAWACEABAAIAAEAAAAWACAABAACAAIAAAAWAB8ABAAEAAIAAAAWAB4ABAADAAIAAAAWAB0ABAADAAEAAAAVACEABAAIAAEAAAAVACAABAACAAIAAAAVAB8ABAADAAIAAAAVAB4ABAADAAIAAAAVAB0ABAAEAAEAAAAUACEABAACAAMAAAAUACAABAAEAAIAAAAUAB8ABAAEAAIAAAAUAB4ABAADAAIAAAAUAB0ABAAEAAEAAAATACEABAAIAAEAAAATACAABAADAAIAAAATAB8ABAADAAIAAAATAB4ABAADAAIAAAATAB0ABAADAAEAAAASACEABAAEAAMAAAASACAABAAEAAIAAAASAB8ABAACAAIAAAASAB4ABAAEAAIAAAASAB0ABAACAAEAAAARACEABAADAAMAAAARACAABAAEAAIAAAARAB8ABAACAAIAAAARAB4ABAAEAAIAAAARAB0ABAACAAEAAAAQACEABAADAAMAAAAQACAABAAEAAIAAAAQAB8ABAACAAIAAAAQAB4ABAACAAIAAAAQAB0ABAADAAEAAAAPACEABAACAAMAAAAPACAABAAEAAIAAAAPAB8ABAACAAIAAAAPAB4ABAAEAAIAAAAPAB0ABAAEAAEAAAAOACEABAACAAMAAAAOACAABAADAAIAAAAOAB8ABAACAAIAAAAOAB4ABAADAAIAAAAOAB0ABAACAAEAAAANACEABAACAAMAAAANACAABAAEAAIAAAANAB8ABAADAAIAAAANAB4ABAAEAAIAAAANAB0ABAACAAEAAAAMACEABAAIAAEAAAAMACAABAACAAIAAAAMAB8ABAADAAIAAAAMAB4ABAACAAIAAAAMAB0ABAAEAAEAAAALACEABAAIAAEAAAALACAABAADAAIAAAALAB8ABAAEAAIAAAALAB4ABAAEAAIAAAALAB0ABAAIAAMAAAAKACEABAADAAMAAAAKACAABAADAAIAAAAKAB8ABAACAAIAAAAKAB4ABAACAAIAAAAKAB0ABAAHAAMAAAAKABwABAAFAAIAAAAKABsABAAHAAIAAAAKABoABAAFAAIAAAAKABkABAAFAAIAAAAKABgABAAFAAIAAAAKABcABAAHAAIAAAAKABYABAAHAAEAAAAKABUABAACAAEAAAAJACEABAAEAAMAAAAJACAABAAEAAIAAAAJAB8ABAACAAIAAAAJAB4ABAADAAIAAAAJAB0ABAACAAIAAAAJABwABAADAAIAAAAJABsABAAEAAIAAAAJABoABAADAAIAAAAJABkABAAEAAIAAAAJABgABAADAAIAAAAJABcABAACAAIAAAAJABYABAAEAAIAAAAJABUABAACAAEAAAAIACEABAAIAAEAAAAIACAABAACAAIAAAAIAB8ABAAEAAIAAAAIAB4ABAACAAIAAAAIAB0ABAADAAIAAAAIABwABAADAAIAAAAIABsABAACAAIAAAAIABoABAACAAIAAAAIABkABAACAAIAAAAIABgABAADAAIAAAAIABcABAACAAIAAAAIABYABAACAAIAAAAIABUABAADAAEAAAAHACEABAACAAMAAAAHACAABAAEAAIAAAAHAB8ABAACAAIAAAAHAB4ABAACAAIAAAAHAB0ABAADAAIAAAAHABwABAACAAIAAAAHABsABAACAAIAAAAHABoABAADAAIAAAAHABkABAACAAIAAAAHABgABAAEAAIAAAAHABcABAACAAIAAAAHABYABAAEAAIAAAAHABUABAACAAEAAAAGACEABAACAAMAAAAGACAABAAEAAIAAAAGAB8ABAADAAIAAAAGAB4ABAADAAIAAAAGAB0ABAADAAIAAAAGABwABAACAAIAAAAGABsABAADAAIAAAAGABoABAADAAIAAAAGABkABAADAAIAAAAGABgABAAEAAIAAAAGABcABAAEAAIAAAAGABYABAADAAIAAAAGABUABAAIAAMAAAAFACEABAAIAAEAAAAFACAABAAEAAIAAAAFAB8ABAADAAIAAAAFAB4ABAADAAIAAAAFAB0ABAACAAIAAAAFABwABAADAAIAAAAFABsABAAEAAIAAAAFABoABAAEAAIAAAAFABkABAACAAIAAAAFABgABAACAAIAAAAFABcABAACAAIAAAAFABYABAADAAIAAAAFABUABAADAAEAAAAEACEABAAIAAEAAAAEACAABAADAAIAAAAEAB8ABAAEAAIAAAAEAB4ABAAEAAIAAAAEAB0ABAADAAIAAAAEABwABAAEAAIAAAAEABsABAACAAIAAAAEABoABAACAAIAAAAEABkABAACAAIAAAAEABgABAADAAIAAAAEABcABAACAAIAAAAEABYABAAEAAIAAAAEABUABAADAAEAAAADACEABAAEAAMAAAADACAABAAEAAIAAAADAB8ABAAEAAIAAAADAB4ABAADAAIAAAADAB0ABAADAAIAAAADABwABAACAAIAAAADABsABAADAAIAAAADABoABAACAAIAAAADABkABAADAAIAAAADABgABAAEAAIAAAADABcABAACAAIAAAADABYABAAEAAIAAAADABUABAAIAAMAAAACACEABAAIAAEAAAACACAABAACAAIAAAACAB8ABAACAAIAAAACAB4ABAACAAIAAAACAB0ABAAEAAIAAAACABwABAADAAIAAAACABsABAACAAIAAAACABoABAAEAAIAAAACABkABAACAAIAAAACABgABAADAAIAAAACABcABAADAAIAAAACABYABAACAAIAAAACABUABAAIAAMAAAABACEABAAIAAEAAAABACAABAADAAIAAAABAB8ABAACAAIAAAABAB4ABAACAAIAAAABAB0ABAADAAIAAAABABwABAADAAIAAAABABsABAADAAIAAAABABoABAADAAIAAAABABkABAADAAIAAAABABgABAAEAAIAAAABABcABAACAAIAAAABABYABAACAAIAAAABABUABAACAAEAAAAAACEABAABAAMAAAAAACAABAABAAIAAAAAAB8ABAABAAIAAAAAAB4ABAABAAIAAAAAAB0ABAABAAIAAAAAABwABAABAAIAAAAAABsABAABAAIAAAAAABoABAABAAIAAAAAABkABAABAAIAAAAAABgABAAJAAIAAAAAABcABAAJAAIAAAAAABYABAABAAIAAAAAABUABAABAAEAAAANABUABAAFAAEAAAAMABUABAACAAEAAAALABUABAAIAAMAAAAtABYABAAFAAMAAAAsABYABAAEAAMAAAArABYABAACAAMAAAAqABYABAAEAAMAAAApABYABAACAAMAAAAoABYABAADAAMAAAAnABYABAADAAMAAAAmABYABAADAAMAAAAlABYABAAIAAEAAAAkABYABAAEAAMAAAAjABYABAAIAAEAAAAiABYABAACAAMAAAAhABYABAAIAAEAAAAgABYABAABAAMAAAA8ABkABAAFAAMAAAA8ABgABAAFAAEAAAA7ABkABAAEAAMAAAA7ABgABAAIAAMAAAA6ABkABAAEAAMAAAA6ABgABAACAAEAAAA5ABkABAAEAAMAAAA5ABgABAACAAEAAAA4ABkABAACAAMAAAA4ABgABAAIAAMAAAA3ABkABAACAAMAAAA3ABgABAAEAAEAAAA2ABkABAACAAMAAAA2ABgABAACAAEAAAA1ABkABAABAAMAAAA1ABgABAABAAEAAAAtABUABAAFAAEAAAAsABUABAACAAEAAAArABUABAADAAEAAAAqABUABAAIAAMAAAApABUABAACAAEAAAAoABUABAAEAAEAAAAnABUABAAIAAMAAAAmABUABAAEAAEAAAAlABUABAACAAEAAAAkABUABAACAAEAAAAjABUABAAEAAEAAAAiABUABAAEAAEAAAAhABUABAAIAAMAAAAgABUABAABAAEAAAAHAAYABAACAAMAAAAHAAUABAADAAEAAAAGAAYABAABAAMAAAAGAAUABAABAAEAAAAEAAoABAAEAAEAAAAKAAoABAAFAAEAAAAJAAoABAADAAEAAAAIAAoABAACAAEAAAAHAAoABAACAAEAAAAGAAoABAAIAAMAAAAFAAoABAAIAAMAAAALABYABAADAAMAAAAMABYABAACAAMAAAANABYABAAFAAMAAABEAP7/BAABAAEAAABFAP7/BAAFAAEAAAAkABwABAAEAAEAAAAlABwABAAIAAMAAAAmABwABAADAAEAAAAnABwABAAIAAMAAAAoABwABAAIAAMAAAApABwABAAEAAEAAAA3AA0ABAADAAIAAAA2AA0ABAACAAIAAAA1AA0ABAADAAIAAAA0AA0ABAABAAIAAAAjAA0ABAAFAAIAAAAjAAwABAAHAAIAAAAiAA0ABAADAAIAAAAiAAwABAAEAAIAAAAhAA0ABAADAAIAAAAhAAwABAACAAIAAAAgAA0ABAACAAIAAAAgAAwABAADAAIAAAAzAAsABAACAAMAAAAyAAsABAADAAMAAAAxAAsABAAIAAEAAAAwAAsABAACAAMAAAAvAAsABAAEAAMAAAAuAAsABAAEAAMAAAAtAAsABAADAAMAAAAsAAsABAAIAAEAAAArAAsABAADAAMAAAAqAAsABAAEAAMAAAApAAsABAAIAAEAAAAoAAsABAADAAMAAAAnAAsABAAIAAEAAAAmAAsABAAEAAMAAAAlAAsABAAIAAEAAAAkAAsABAADAAMAAAAzAAoABAADAAIAAAAzAAkABAADAAIAAAAyAAoABAAEAAIAAAAyAAkABAADAAIAAAAxAAoABAACAAIAAAAxAAkABAACAAIAAAAwAAoABAACAAIAAAAwAAkABAAEAAIAAAAvAAoABAACAAIAAAAvAAkABAACAAIAAAAuAAoABAACAAIAAAAuAAkABAADAAIAAAAtAAoABAAEAAIAAAAtAAkABAAEAAIAAAAsAAoABAACAAIAAAAsAAkABAAEAAIAAAArAAoABAAEAAIAAAArAAkABAADAAIAAAAqAAoABAACAAIAAAAqAAkABAAEAAIAAAApAAoABAADAAIAAAApAAkABAAEAAIAAAAoAAoABAAEAAIAAAAoAAkABAACAAIAAAAnAAoABAACAAIAAAAnAAkABAAEAAIAAAAmAAoABAAEAAIAAAAmAAkABAACAAIAAAAlAAoABAACAAIAAAAlAAkABAACAAIAAAAkAAoABAADAAIAAAAkAAkABAAEAAIAAAATAAoABAADAAEAAAAXAAoABAAIAAMAAAAWAAoABAAEAAEAAAAVAAoABAAEAAEAAAAUAAoABAACAAEAAAAhAAoABAADAAEAAAAgAAoABAACAAEAAAAfAAoABAAEAAEAAAAeAAoABAADAAEAAAAdAAoABAAEAAEAAAAcAAoABAAIAAMAAAAbAAoABAADAAEAAAAaAAoABAADAAEAAAAZAAoABAACAAEAAAAYAAoABAADAAEAAAAjABwABAABAAEAAAAqABwABAAFAAEAAABoABQABAADAAEAAABnABQABAAIAAMAAABmABQABAAIAAMAAABlABQABAAIAAMAAABkABQABAABAAEAAAA=")
+tile_set = ExtResource("5_lajs4")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="RuneAndSkillBox" parent="Items" instance=ExtResource("9_lx5ma")]
+position = Vector2(365, 133)
+skill_list = Array[ExtResource("11_umtsx")]([ExtResource("9_7vk30")])
+tip_text = "S 拾取
+技能模版"
+
+[node name="RuneAndSkillBox2" parent="Items" instance=ExtResource("9_lx5ma")]
+position = Vector2(507, 133)
+rune_list = Array[ExtResource("10_2n354")]([ExtResource("11_7vk30")])
+tip_text = "S 拾取
+符文"
+
+[node name="RuneAndSkillBox3" parent="Items" instance=ExtResource("9_lx5ma")]
+position = Vector2(1847, -58)
+rune_list = Array[ExtResource("10_2n354")]([ExtResource("15_qgc1n")])
+tip_text = "S 拾取
+符文"
+
+[node name="RuneAndSkillBox6" parent="Items" instance=ExtResource("9_lx5ma")]
+position = Vector2(2783, 806)
+rune_list = Array[ExtResource("10_2n354")]([ExtResource("13_n35am")])
+tip_text = "S 拾取
+符文"
+
+[node name="RuneAndSkillBox7" parent="Items" instance=ExtResource("9_lx5ma")]
+position = Vector2(423, 902)
+skill_list = Array[ExtResource("11_umtsx")]([SubResource("Resource_y66sq")])
+tip_text = "S 拾取
+技能模板"
+
+[node name="Switch" parent="Items" instance=ExtResource("14_bta53")]
+position = Vector2(317, 301)
+scale = Vector2(0.6, 0.6)
+tip_text = "S 开启"
+one_shot = false
+
+[node name="ItemSprite" parent="Items/Switch" index="0"]
+material = SubResource("ShaderMaterial_2g61s")
+
+[node name="CollisionShape2D" parent="Items/Switch/TipArea" index="0"]
+position = Vector2(0, -18.333323)
+shape = SubResource("RectangleShape2D_jqbu3")
+
+[node name="CollisionShape2D" parent="Items/Switch/InteractableArea" index="0"]
+position = Vector2(0, -18.333353)
+shape = SubResource("RectangleShape2D_2g61s")
+
+[node name="TipTextArea" parent="Items/Switch" index="3"]
+unique_name_in_owner = false
+
+[node name="CollisionShape2D" parent="Items/Switch/TipTextArea" index="0"]
+position = Vector2(-1.6666666, -76.3333)
+
+[node name="StaminaDroppedItem" parent="Items" instance=ExtResource("26_q2uj6")]
+position = Vector2(2761, 189)
+
+[node name="StaminaDroppedItem2" parent="Items" instance=ExtResource("26_q2uj6")]
+position = Vector2(1286, 478)
+
+[node name="StaminaDroppedItem3" parent="Items" instance=ExtResource("26_q2uj6")]
+position = Vector2(362, 666)
+
+[node name="HealthDroppedItem" parent="Items" instance=ExtResource("19_ecv2h")]
+position = Vector2(3118, -272)
+
+[node name="enemy" type="Node" parent="."]
+
+[node name="TrackedCutter4" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(2592.0002, -217)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter5" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(2753, -56)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter2" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(1219, 227.99998)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter3" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(1527, 45)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter7" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(2313, 741)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter10" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(2467, 571)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter8" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(1249, 867)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter9" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(1827, 743)
+scale = Vector2(0.7, 0.7)
+
+[node name="TrackedCutter11" parent="enemy" instance=ExtResource("14_8yslm")]
+position = Vector2(1207.0001, 644)
+scale = Vector2(0.7, 0.7)
+
+[node name="Turret" parent="enemy" instance=ExtResource("22_2osyj")]
+position = Vector2(2905, -259)
+
+[node name="Turret2" parent="enemy" instance=ExtResource("22_2osyj")]
+position = Vector2(1249, 735)
+rotation = 3.1415927
+enable_gravity = false
+
+[node name="Player" parent="." instance=ExtResource("1_qs4nc")]
+z_index = 10
+position = Vector2(61, 285)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(13, -1)
+zoom = Vector2(0.8, 0.8)
+position_smoothing_speed = 8.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+script = ExtResource("19_faum8")
+
+[node name="bg1l" type="PointLight2D" parent="Player/Camera2D"]
+energy = 0.8
+blend_mode = 1
+range_layer_min = -100
+range_layer_max = 100
+range_item_cull_mask = 16
+texture = SubResource("GradientTexture2D_m55ro")
+texture_scale = 50.0
+
+[node name="bg2l" type="PointLight2D" parent="Player/Camera2D"]
+energy = 0.6
+blend_mode = 1
+range_layer_min = -100
+range_layer_max = 100
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_m55ro")
+texture_scale = 50.0
+
+[node name="mgl" type="PointLight2D" parent="Player/Camera2D"]
+energy = 0.5
+blend_mode = 1
+range_layer_min = -100
+range_layer_max = 100
+range_item_cull_mask = 4
+texture = SubResource("GradientTexture2D_m55ro")
+texture_scale = 50.0
+
+[node name="gamel" type="PointLight2D" parent="Player/Camera2D"]
+position = Vector2(454, 141)
+energy = 0.3
+blend_mode = 1
+range_layer_min = -100
+range_layer_max = 100
+range_item_cull_mask = 8
+texture = SubResource("GradientTexture2D_m55ro")
+texture_scale = 50.0
+
+[node name="EnterPoint1" parent="." instance=ExtResource("10_lx5ma")]
+position = Vector2(49, 288)
+
+[node name="SwitchSceneArea" parent="." instance=ExtResource("9_8xxti")]
+position = Vector2(-88, -26)
+scale = Vector2(1, 2)
+switch_scene = "uid://bubmv5k671ypc"
+enter_point_name = "EnterPoint1"
+
+[node name="TipArea" parent="." instance=ExtResource("18_qhb86")]
+position = Vector2(446, 206)
+
+[node name="CollisionShape2D" parent="TipArea" index="0"]
+position = Vector2(-15, -137)
+shape = SubResource("RectangleShape2D_2osyj")
+
+[node name="TipLabel" parent="TipArea" index="1"]
+offset_top = -261.0
+offset_right = 81.0
+offset_bottom = -195.0
+text = "Tab 打开仓库
+拖拽符文组合技能
+并装备技能"
+
+[node name="EnterPoint2" parent="." instance=ExtResource("10_lx5ma")]
+position = Vector2(40, 642)
+
+[node name="SwitchSceneArea2" parent="." instance=ExtResource("9_8xxti")]
+position = Vector2(-88, 679)
+switch_scene = "uid://cvhh1w1ugra5"
+enter_point_name = "EnterPoint1"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("26_ecv2h")
+
+[editable path="Items/Switch"]
+[editable path="Items/Switch/TipTextArea"]
+[editable path="TipArea"]

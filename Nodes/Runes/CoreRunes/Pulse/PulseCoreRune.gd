@@ -1,0 +1,44 @@
+class_name PulseCoreRune extends CoreRuneBase
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+
+func _start_action():
+	# can_tracking = false
+	var timer = get_tree().create_timer(0.5, false)
+	timer.timeout.connect(_finish_rune_action)
+	EventBus.camera_shake.emit(Vector2(2.0,2.0),0.01)
+	audio_stream_player.play()
+	scale.x *= speed_mul
+	
+	if caster as Player:
+		caster = caster as Player
+		caster.status_component.add_force(
+		-Vector2(velocity_direction.x * 22, velocity_direction.y * 20) * speed_mul)
+	
+	
+
+# func _process(delta: float) -> void:
+	# if caster.has_node("StatusComponent"):
+		# caster.status_component.enable_move = false
+		# caster.status_component.enable_jump = false
+
+func _finish_rune_action():	
+	try_emit_teleport_signal()
+	animated_sprite_2d.play("End")
+	animation_player.play_backwards("End")
+	await animation_player.animation_finished
+	# caster.status_component.enable_move = true
+	# caster.status_component.enable_jump = true
+	super()
+
+
+
+func _on_tracking_area_body_entered(body: Node2D) -> void:
+	tracking_target = body
+	# print("in ", body.name)
+
+func _on_tracking_area_area_entered(area: Area2D) -> void:
+	tracking_target = area.owner
+	# print("in ", area.name)

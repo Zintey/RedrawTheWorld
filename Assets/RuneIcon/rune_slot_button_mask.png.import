@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cs4y054n7imor"
+path="res://.godot/imported/rune_slot_button_mask.png-0ee64d6f64fa693115ef0e3e5ca7d439.res"
+
+[deps]
+
+source_file="res://Assets/RuneIcon/rune_slot_button_mask.png"
+dest_files=["res://.godot/imported/rune_slot_button_mask.png-0ee64d6f64fa693115ef0e3e5ca7d439.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

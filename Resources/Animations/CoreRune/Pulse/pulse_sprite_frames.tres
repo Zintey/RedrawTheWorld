@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bnriwnup0ony5"]
+
+[ext_resource type="Texture2D" uid="uid://6evahc76tlt7" path="res://Assets/CoreRune/Pulse/pulse_core_rune.png" id="1_nofuo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqerf"]
+atlas = ExtResource("1_nofuo")
+region = Rect2(252, 0, 63, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q52xx"]
+atlas = ExtResource("1_nofuo")
+region = Rect2(315, 0, 63, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdvng"]
+atlas = ExtResource("1_nofuo")
+region = Rect2(189, 0, 63, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr1se"]
+atlas = ExtResource("1_nofuo")
+region = Rect2(126, 0, 63, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wjd1"]
+atlas = ExtResource("1_nofuo")
+region = Rect2(63, 0, 63, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r3ei"]
+atlas = ExtResource("1_nofuo")
+region = Rect2(0, 0, 63, 55)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqerf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q52xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdvng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr1se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wjd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r3ei")
+}],
+"loop": false,
+"name": &"End",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdvng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqerf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q52xx")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 12.0
+}]

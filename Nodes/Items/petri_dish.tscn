@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://uco4gf215ppk"]
+
+[ext_resource type="Texture2D" uid="uid://d2g73oh1f1xy1" path="res://Assets/Map/Level1/peiyangmin donghua.png" id="1_denve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fqwi"]
+atlas = ExtResource("1_denve")
+region = Rect2(0, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yupcu"]
+atlas = ExtResource("1_denve")
+region = Rect2(180, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pubug"]
+atlas = ExtResource("1_denve")
+region = Rect2(360, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7efg"]
+atlas = ExtResource("1_denve")
+region = Rect2(540, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_342ja"]
+atlas = ExtResource("1_denve")
+region = Rect2(720, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtkxt"]
+atlas = ExtResource("1_denve")
+region = Rect2(900, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmhup"]
+atlas = ExtResource("1_denve")
+region = Rect2(1080, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ycyh"]
+atlas = ExtResource("1_denve")
+region = Rect2(1260, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyyb0"]
+atlas = ExtResource("1_denve")
+region = Rect2(1440, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnddk"]
+atlas = ExtResource("1_denve")
+region = Rect2(1620, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb738"]
+atlas = ExtResource("1_denve")
+region = Rect2(1800, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf1fw"]
+atlas = ExtResource("1_denve")
+region = Rect2(1980, 0, 180, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njuvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fqwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yupcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pubug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7efg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_342ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtkxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmhup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ycyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyyb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnddk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb738")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf1fw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PetriDish" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -79)
+sprite_frames = SubResource("SpriteFrames_njuvl")
+autoplay = "default"
+frame_progress = 0.6309498

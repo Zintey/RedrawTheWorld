@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b75ta34eshgfu"]
+
+[ext_resource type="Script" uid="uid://bu0rpyqtyfm0h" path="res://UI/Inventory/InventoryUI.gd" id="1_gka8b"]
+[ext_resource type="PackedScene" uid="uid://cioefrxbxsw60" path="res://UI/Inventory/runes_inventory_ui.tscn" id="1_qpvb7"]
+[ext_resource type="PackedScene" uid="uid://ck5ntqm0ddncj" path="res://UI/Inventory/equipped_skill_list_ui.tscn" id="2_v74nj"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gka8b")
+
+[node name="RunesInventoryUI" parent="." instance=ExtResource("1_qpvb7")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 720.0
+offset_top = 135.0
+offset_right = 896.0
+offset_bottom = 327.0
+
+[node name="EquippedSkillListUI" parent="." instance=ExtResource("2_v74nj")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 135.0
+offset_right = 392.0
+offset_bottom = 311.0

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://dep0cg4sks11m"]
+
+[ext_resource type="Texture2D" uid="uid://dht1jmg6t0412" path="res://Assets/RuneIcon/rune_list01.png" id="1_kma0u"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_3de32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dhyi"]
+atlas = ExtResource("1_kma0u")
+region = Rect2(232, 0, 116, 114)
+
+[resource]
+script = ExtResource("2_3de32")
+rune_id = "heal_orb_core_rune"
+type = 2
+display_name = "治愈球"
+stamina_cost = 12.0
+icon = SubResource("AtlasTexture_2dhyi")
+description = "发射一个自愈球
+听说在球附近就能恢复生命
+
+这个很消耗能量！"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

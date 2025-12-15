@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://de78ri77f86on"]
+
+[ext_resource type="Script" uid="uid://dy4po6smh2kl0" path="res://Nodes/Items/ProcessRelated/EnterPoint.gd" id="1_bbh8f"]
+
+[node name="EnterPoint" type="Marker2D" groups=["EnterPoint"]]
+script = ExtResource("1_bbh8f")

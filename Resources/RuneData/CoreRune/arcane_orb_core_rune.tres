@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://ri15ria72rcx"]
+
+[ext_resource type="Texture2D" uid="uid://dht1jmg6t0412" path="res://Assets/RuneIcon/rune_list01.png" id="1_3656n"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_i6a2p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ue13"]
+atlas = ExtResource("1_3656n")
+region = Rect2(2, 4, 111, 108)
+
+[resource]
+script = ExtResource("1_i6a2p")
+rune_id = "arcane_orb_core_rune"
+type = 2
+display_name = "法球符文"
+stamina_cost = 1.0
+icon = SubResource("AtlasTexture_5ue13")
+description = " 发出一个法球"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

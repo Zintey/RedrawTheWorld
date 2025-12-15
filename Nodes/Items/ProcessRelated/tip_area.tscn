@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://u3ywr7qe5nkc"]
+
+[ext_resource type="Script" uid="uid://caih3ba7og1km" path="res://Nodes/Items/ProcessRelated/tip_area.gd" id="1_fb31e"]
+[ext_resource type="FontFile" uid="uid://uvosnydhl1kn" path="res://Assets/Fonts/WenQuanZhengHei-2.ttf" id="2_ad5af"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad5af"]
+resource_local_to_scene = true
+size = Vector2(401, 292)
+
+[node name="TipArea" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_fb31e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -133)
+shape = SubResource("RectangleShape2D_ad5af")
+
+[node name="TipLabel" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -47.0
+offset_top = -155.0
+offset_right = 44.0
+offset_bottom = -132.0
+theme_override_fonts/font = ExtResource("2_ad5af")
+text = "A D左右移动"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

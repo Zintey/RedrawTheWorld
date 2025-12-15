@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://dvm5l7xa4xyxo"]
+
+[ext_resource type="Texture2D" uid="uid://dht1jmg6t0412" path="res://Assets/RuneIcon/rune_list01.png" id="1_bhh6e"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_3arth"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3arth"]
+atlas = ExtResource("1_bhh6e")
+region = Rect2(812, 0, 116, 114)
+
+[resource]
+script = ExtResource("2_3arth")
+rune_id = "teleport_modifier_rune"
+type = 3
+display_name = "传送符文"
+stamina_cost = 3.0
+parameters = {
+"teleport": true
+}
+icon = SubResource("AtlasTexture_3arth")
+description = "若是发射的符文打到场景，就会把施法者传送过去
+
+原理未知，耗能挺高"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

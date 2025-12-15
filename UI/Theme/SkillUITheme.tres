@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ccgnr7do5lk08"]
+
+[ext_resource type="FontFile" uid="uid://dx5xndpot3dqu" path="res://Assets/Fonts/WenQuanZhengHei-1.ttf" id="1_t384f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t384f"]
+bg_color = Color(0.05490196, 0.13725491, 0.15294118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yfdy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.05490196, 0.13725491, 0.15294118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1di2"]
+bg_color = Color(0.05490196, 0.13725491, 0.15294118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbso4"]
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxFlat_t384f")
+Button/styles/hover = SubResource("StyleBoxFlat_7yfdy")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_7yfdy")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_7yfdy")
+Button/styles/normal = SubResource("StyleBoxFlat_n1di2")
+Button/styles/pressed = SubResource("StyleBoxFlat_t384f")
+CoreRuneButton/base_type = &"Button"
+CoreRuneButton/styles/disabled = null
+CoreRuneButton/styles/normal = SubResource("StyleBoxFlat_gbso4")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_t384f")
+ModifireRuneButton/base_type = &"Button"

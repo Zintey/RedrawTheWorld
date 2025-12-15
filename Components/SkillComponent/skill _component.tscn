@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc500auljfdgd"]
+
+[ext_resource type="Script" uid="uid://o4a5mwuwpqh5" path="res://Components/SkillComponent/SkillComponent.gd" id="1_cofk8"]
+
+[node name="SkillComponent" type="Node"]
+script = ExtResource("1_cofk8")

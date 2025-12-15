@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvgot7gb2lt2x"]
+
+[ext_resource type="Script" uid="uid://drpf70m4a2fpp" path="res://Nodes/Runes/CoreRunes/CoreRuneBase.gd" id="1_t4wsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4wsb"]
+
+[node name="CoreRuneBase" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_t4wsb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t4wsb")

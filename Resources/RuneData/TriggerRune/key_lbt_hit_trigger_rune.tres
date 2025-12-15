@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://kdt36bga48ri"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_4rm5k"]
+[ext_resource type="Texture2D" uid="uid://dht1jmg6t0412" path="res://Assets/RuneIcon/rune_list01.png" id="1_sc6dk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw3p0"]
+atlas = ExtResource("1_sc6dk")
+region = Rect2(928, 0, 116, 114)
+
+[resource]
+script = ExtResource("1_4rm5k")
+rune_id = "key_lbt_hit_trigger_rune"
+display_name = "按键触发符文"
+icon = SubResource("AtlasTexture_xw3p0")
+description = "鼠标左键
+按下时将激活该符文所在的技能"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

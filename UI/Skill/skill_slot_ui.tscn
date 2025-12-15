@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://u352m21vevl7"]
+
+[ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="1_lrfxk"]
+[ext_resource type="Script" uid="uid://q5r8vt26oadr" path="res://UI/Skill/SkillSlotUI.gd" id="2_5y37y"]
+[ext_resource type="Texture2D" uid="uid://b3072hijs7gpq" path="res://Assets/UI/skill_template_bg.png" id="2_gllit"]
+[ext_resource type="PackedScene" uid="uid://x46trdy6pepf" path="res://UI/Skill/SkillTemplate/skill_template_ui.tscn" id="3_5y37y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14v48"]
+texture = ExtResource("2_gllit")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="SkillSlotUI" type="PanelContainer" groups=["SkillSlot"]]
+custom_minimum_size = Vector2(150, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_lrfxk")
+theme_override_styles/panel = SubResource("StyleBoxTexture_14v48")
+script = ExtResource("2_5y37y")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="SkillTemplateUI" parent="MarginContainer/MarginContainer2" instance=ExtResource("3_5y37y")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="button_down" from="MarginContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MarginContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="MarginContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Button" to="." method="_on_button_mouse_exited"]

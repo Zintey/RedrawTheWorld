@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqkcy725qe8jq"]
+
+[ext_resource type="FontFile" uid="uid://dx5xndpot3dqu" path="res://Assets/Fonts/WenQuanZhengHei-1.ttf" id="1_r4yec"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4yec"]
+bg_color = Color(0.15594886, 0.15594886, 0.15594886, 0.95000005)
+
+[sub_resource type="GDScript" id="GDScript_r4yec"]
+script/source = "extends PanelContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()
+	queue_free()
+"
+
+[node name="RestartUI" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4yec")
+script = SubResource("GDScript_r4yec")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_r4yec")
+text = "你死了!"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_r4yec")
+text = "重试
+（回到当前场景起点）
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "退出游戏
+（没做存档！）"
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

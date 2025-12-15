@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfjmp77tsjwgt"]
+
+[ext_resource type="Script" uid="uid://cvs7ivpoi06gk" path="res://UI/Rune/RuneBriefUI.gd" id="1_geebo"]
+[ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="2_8y4o1"]
+[ext_resource type="Texture2D" uid="uid://b3072hijs7gpq" path="res://Assets/UI/skill_template_bg.png" id="3_acunl"]
+
+[node name="RuneBriefUI" type="PanelContainer"]
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme = ExtResource("2_8y4o1")
+script = ExtResource("1_geebo")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+color = Color(0, 0, 0, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_acunl")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RuneNameLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_8y4o1")
+theme_override_font_sizes/font_size = 18
+text = "rune name"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="StaminaCostLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_8y4o1")
+theme_override_font_sizes/font_size = 14
+text = "stamina cost"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RuneDescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("2_8y4o1")
+theme_override_font_sizes/font_size = 12
+text = "rune description"
+autowrap_mode = 3

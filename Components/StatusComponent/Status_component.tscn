@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://k8jbptii3vuf"]
+
+[ext_resource type="Script" uid="uid://b4fqef5sc1yhg" path="res://Components/StatusComponent/StatusComponent.gd" id="1_obnfm"]
+
+[node name="StateComponent" type="Node"]
+script = ExtResource("1_obnfm")

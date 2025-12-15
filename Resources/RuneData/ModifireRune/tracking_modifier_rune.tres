@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://dil31cdbwe6p6"]
+
+[ext_resource type="Texture2D" uid="uid://dht1jmg6t0412" path="res://Assets/RuneIcon/rune_list01.png" id="1_kgfg5"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_uu62g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kejfd"]
+atlas = ExtResource("1_kgfg5")
+region = Rect2(580, 0, 116, 114)
+
+[resource]
+script = ExtResource("2_uu62g")
+rune_id = "tracking_modifier_rune"
+type = 3
+display_name = "追踪符文"
+parameters = {
+"tracking": 1000.0
+}
+icon = SubResource("AtlasTexture_kejfd")
+description = "使发射出去的符文有追踪效果"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

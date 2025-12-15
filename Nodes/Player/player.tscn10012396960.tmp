@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgr6uyhq4pdl2"]
+
+[ext_resource type="PackedScene" uid="uid://bc500auljfdgd" path="res://Components/SkillComponent/skill_component.tscn" id="1_lkjqq"]
+[ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
+[ext_resource type="Script" path="res://Resources/skill_data.gd" id="2_q1ymb"]
+[ext_resource type="Script" path="res://Resources/rune_data.gd" id="3_sldgk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgt02"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1ymb"]
+width = 30
+height = 60
+
+[sub_resource type="Resource" id="Resource_sldgk"]
+script = ExtResource("3_sldgk")
+metadata/_custom_type_script = "uid://cthciqetyk8ti"
+
+[sub_resource type="Resource" id="Resource_e0yf7"]
+script = ExtResource("3_sldgk")
+metadata/_custom_type_script = "uid://cthciqetyk8ti"
+
+[sub_resource type="Resource" id="Resource_q1ymb"]
+script = ExtResource("2_q1ymb")
+rune_list = Array[ExtResource("3_sldgk")]([SubResource("Resource_sldgk"), SubResource("Resource_e0yf7")])
+metadata/_custom_type_script = "uid://dulo1iqtqfcs6"
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_q1ymb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lgt02")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = SubResource("NoiseTexture2D_q1ymb")
+offset = Vector2(0, -20)
+
+[node name="SkillComponent" parent="." node_paths=PackedStringArray("caster") instance=ExtResource("1_lkjqq")]
+caster = NodePath("..")
+skill_list = Array[ExtResource("2_q1ymb")]([SubResource("Resource_q1ymb")])
