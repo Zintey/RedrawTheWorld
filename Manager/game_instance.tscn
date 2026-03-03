@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciuk1njcrg8lo"]
+
+[ext_resource type="Script" uid="uid://bsopi83qxp3cw" path="res://Manager/GameInstance.gd" id="1_grhlc"]
+[ext_resource type="Script" uid="uid://4twnrh5cup0w" path="res://Components/InventoryComponent/InventoryComponent.gd" id="2_18nyd"]
+[ext_resource type="Script" uid="uid://o4a5mwuwpqh5" path="res://Components/SkillComponent/SkillComponent.gd" id="13_buwi6"]
+[ext_resource type="Script" uid="uid://b4fqef5sc1yhg" path="res://Components/StatusComponent/StatusComponent.gd" id="14_5p4jj"]
+
+[node name="GameInstance" type="Node"]
+script = ExtResource("1_grhlc")
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("2_18nyd")
+rune_count = 50
+skill_count = 15
+equipped_skill_count = 5
+metadata/_custom_type_script = "uid://4twnrh5cup0w"
+
+[node name="SkillComponent" type="Node" parent="." node_paths=PackedStringArray("status_component", "inventory_component")]
+script = ExtResource("13_buwi6")
+status_component = NodePath("../StatusComponent")
+inventory_component = NodePath("../InventoryComponent")
+metadata/_custom_type_script = "uid://o4a5mwuwpqh5"
+
+[node name="StatusComponent" type="Node" parent="."]
+script = ExtResource("14_5p4jj")
+hp = 5
+stamina_recovery_time = 0.8
+stamina = 12
+has_emitter = true
+metadata/_custom_type_script = "uid://b4fqef5sc1yhg"

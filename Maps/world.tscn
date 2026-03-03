@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://biv54y4eif17v"]
+
+[ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
+[ext_resource type="PackedScene" uid="uid://dgr6uyhq4pdl2" path="res://Nodes/Player/player.tscn" id="2_qacqj"]
+[ext_resource type="Script" uid="uid://2m4ob8dvog0h" path="res://Nodes/Camera/camera_player.gd" id="3_qacqj"]
+[ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
+
+[sub_resource type="GDScript" id="GDScript_qacqj"]
+script/source = "# World.gd (主场景脚本示例)
+extends Node2D
+
+@onready var map_generator: MapGenerator = $MapGenerator
+@onready var game_camera: Camera2D = $Camera2D # 确保它挂载了 GameCamera.gd
+@onready var player: CharacterBody2D = $Player
+
+func _ready():
+	# 1. 生成地图
+	map_generator.generate_new_map()
+	
+	# 2. 将所有生成的房间的信号连接到摄像机
+	for room in map_generator.spawned_rooms.values():
+		if room is RoomBase:
+			room.player_entered.connect(game_camera.transition_to_room)
+			
+	# 3. (可选) 手动触发一次起点房间的摄像机设置
+	var start_room = map_generator.spawned_rooms.get(Vector2i.ZERO)
+	if start_room:
+		game_camera.transition_to_room(start_room.boundary, start_room.global_position)
+		# 瞬移玩家到起点
+		player.global_position = start_room.global_position
+"
+
+[sub_resource type="Environment" id="Environment_wux6d"]
+background_mode = 1
+background_color = Color(1, 0.48761034, 0.9450621, 1)
+background_energy_multiplier = 7.55
+ambient_light_source = 2
+ambient_light_color = Color(0.69185084, 0.6358722, 0.811826, 1)
+ambient_light_energy = 6.5
+glow_enabled = true
+glow_intensity = 5.9
+glow_bloom = 0.74
+glow_hdr_threshold = 1.35
+glow_hdr_scale = 2.4
+glow_hdr_luminance_cap = 27.25
+fog_enabled = true
+fog_light_color = Color(0.8071317, 0.4294544, 0.3072407, 1)
+fog_height_density = 0.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wux6d"]
+shader = ExtResource("1_1h05d")
+shader_parameter/curvature = 0.2
+shader_parameter/scanline_count = 300.0
+
+[node name="World" type="Node2D"]
+texture_filter = 1
+script = SubResource("GDScript_qacqj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wux6d")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="PostProcessLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessLayer"]
+material = SubResource("ShaderMaterial_wux6d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_qacqj")]
+unique_name_in_owner = true
+position = Vector2(171, 241)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
+unique_name_in_owner = true
+zoom = Vector2(0.8, 0.8)
+script = ExtResource("3_qacqj")
+target_node = NodePath("../Player")
+
+[node name="RoomContainer" type="Node2D" parent="."]
+
+[node name="MapGenerator" type="Node2D" parent="." node_paths=PackedStringArray("room_container")]
+unique_name_in_owner = true
+script = ExtResource("4_oeksg")
+room_container = NodePath("../RoomContainer")
+map_config = {
+"leaf_cnt": 3,
+"room_cnt": 7
+}
+map_prefab_dir_path = "res://Maps/Level1/Prefabs"
