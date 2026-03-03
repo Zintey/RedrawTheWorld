@@ -1,5 +1,5 @@
-extends LevelBase
+# extends LevelBase
 
 
-func _ready() -> void:
-	super()
+# func _ready() -> void:
+	# super()

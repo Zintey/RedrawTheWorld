@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlaf7nic4l1pf"]
+[gd_scene load_steps=2 format=3 uid="uid://dlaf7nic4l1pf"]
 
-[ext_resource type="PackedScene" uid="uid://bubmv5k671ypc" path="res://Maps/Level1/level_1_0_map.tscn" id="1_0q06x"]
-[ext_resource type="PackedScene" uid="uid://delsnc5ls8k5u" path="res://Maps/Level1/level_1_1_map.tscn" id="2_n67de"]
+[ext_resource type="PackedScene" uid="uid://dv36pw76opo81" path="res://Maps/Level1/Prefabs/L_1.tscn" id="1_nplnk"]
 
 [node name="Level1World" type="Node2D"]
 
-[node name="level1_0" parent="." instance=ExtResource("1_0q06x")]
-
-[node name="level1_1" parent="." instance=ExtResource("2_n67de")]
-position = Vector2(2505, -3)
+[node name="Level1Lru1" parent="." instance=ExtResource("1_nplnk")]
+position = Vector2(-1670, -65)

@@ -8,7 +8,12 @@ class_name Door
 func _ready() -> void:
 	if switch:
 		switch.switch_to_open.connect(on_open_door)
+	on_open_door()
 
 func on_open_door():
 	animation_player.play("open")
+	audio_stream_player.play()
+
+func on_close_door():
+	animation_player.play("close")
 	audio_stream_player.play()

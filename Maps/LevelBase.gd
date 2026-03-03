@@ -12,7 +12,7 @@ func _ready() -> void:
 	var tile_size : = tile_map_layer.tile_set.tile_size
 	if (audio_stream_player) :
 		audio_stream_player.play()
-	camera_2d.limit_top = (used.position.y + 1) * tile_size.y
-	camera_2d.limit_bottom = (used.end.y - 1) * tile_size.y
-	camera_2d.limit_left = (used.position.x + 1) * tile_size.x
-	camera_2d.limit_right = (used.end.x - 1)  * tile_size.x 
+	# camera_2d.limit_top = (used.position.y + 1) * tile_size.y
+	# camera_2d.limit_bottom = (used.end.y - 1) * tile_size.y
+	# camera_2d.limit_left = (used.position.x + 1) * tile_size.x
+	# camera_2d.limit_right = (used.end.x - 1)  * tile_size.x 

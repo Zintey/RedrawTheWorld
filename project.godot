@@ -11,18 +11,18 @@ config_version=5
 [application]
 
 config/name="RedrawTheWorld"
-run/main_scene="uid://bh4bphpd58awh"
+run/main_scene="uid://biv54y4eif17v"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 run/stdout/print_fps=true
 
 [autoload]
 
-EventBus="*res://AutoLoadNode/EventBus.gd"
-InventoryManager="*res://AutoLoadNode/InventoryManager.gd"
-UIManager="*res://AutoLoadNode/UIManager.gd"
-SceneManager="*res://AutoLoadNode/SceneManager.gd"
-GameInstance="*res://AutoLoadNode/game_instance.tscn"
+EventBus="*res://Manager/EventBus.gd"
+InventoryManager="*res://Manager/InventoryManager.gd"
+UIManager="*res://Manager/UIManager.gd"
+SceneManager="*res://Manager/SceneManager.gd"
+GameInstance="*res://Manager/game_instance.tscn"
 
 [display]
 

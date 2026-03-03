@@ -43,7 +43,7 @@ var floor_accelerate : float = run_speed / 0.2
 var air_accelerate : float = floor_accelerate * 2.0
 var current_accelerate : float = floor_accelerate
 
-var jump_speed : float = -700.0
+var jump_speed : float = -1000.0
 var drag_force : float = 1.38
 var enable_jump = true
 var can_jump = false

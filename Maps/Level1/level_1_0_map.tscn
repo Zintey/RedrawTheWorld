@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bubmv5k671ypc"]
+[gd_scene load_steps=28 format=4 uid="uid://bubmv5k671ypc"]
 
 [ext_resource type="Shader" uid="uid://bk02r84xb5avq" path="res://Shader/level_1_1_map.gdshader" id="1_63rhj"]
 [ext_resource type="Script" uid="uid://cl2jw7a0cu83" path="res://Maps/Level1/level_1_0_map.gd" id="1_xhlgh"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://uco4gf215ppk" path="res://Nodes/Items/petri_dish.tscn" id="5_ubv62"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="5_xhlgh"]
 [ext_resource type="PackedScene" uid="uid://ogqfy4visurn" path="res://Nodes/Items/InteractableItem/rune_and_skill_box.tscn" id="7_viwkn"]
-[ext_resource type="PackedScene" uid="uid://dgr6uyhq4pdl2" path="res://Nodes/Player/player.tscn" id="8_1fofq"]
 [ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="8_kao5e"]
 [ext_resource type="Resource" uid="uid://bjoc2hm2do8y8" path="res://Resources/SkillData/lost_skill_template.tres" id="9_dtk0f"]
 [ext_resource type="PackedScene" uid="uid://u3ywr7qe5nkc" path="res://Nodes/Items/ProcessRelated/tip_area.tscn" id="9_ihxjr"]
@@ -62,13 +61,6 @@ size = Vector2(401, 292)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41dmf"]
 size = Vector2(421, 289.91663)
-
-[sub_resource type="Gradient" id="Gradient_41dmf"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m55ro"]
-gradient = SubResource("Gradient_41dmf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fofq"]
 
@@ -1046,56 +1038,6 @@ position = Vector2(2014, -39)
 scale = Vector2(1, 2)
 switch_scene = "uid://delsnc5ls8k5u"
 enter_point_name = "EnterPoint1"
-
-[node name="Player" parent="." instance=ExtResource("8_1fofq")]
-z_index = 10
-position = Vector2(219, 342)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-unique_name_in_owner = true
-texture_filter = 1
-position = Vector2(13, -1)
-position_smoothing_speed = 8.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-editor_draw_drag_margin = true
-
-[node name="bg1l" type="PointLight2D" parent="Player/Camera2D"]
-energy = 0.8
-blend_mode = 1
-range_layer_min = -100
-range_layer_max = 100
-range_item_cull_mask = 16
-texture = SubResource("GradientTexture2D_m55ro")
-texture_scale = 50.0
-
-[node name="bg2l" type="PointLight2D" parent="Player/Camera2D"]
-energy = 0.6
-blend_mode = 1
-range_layer_min = -100
-range_layer_max = 100
-range_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_m55ro")
-texture_scale = 50.0
-
-[node name="mgl" type="PointLight2D" parent="Player/Camera2D"]
-energy = 0.5
-blend_mode = 1
-range_layer_min = -100
-range_layer_max = 100
-range_item_cull_mask = 4
-texture = SubResource("GradientTexture2D_m55ro")
-texture_scale = 50.0
-
-[node name="gamel" type="PointLight2D" parent="Player/Camera2D"]
-position = Vector2(434, 142)
-energy = 0.3
-blend_mode = 1
-range_layer_min = -100
-range_layer_max = 100
-range_item_cull_mask = 8
-texture = SubResource("GradientTexture2D_m55ro")
-texture_scale = 50.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

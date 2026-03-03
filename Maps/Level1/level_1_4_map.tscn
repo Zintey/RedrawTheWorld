@@ -1937,7 +1937,7 @@ text = "S 拾取
 
 [node name="Player" parent="." instance=ExtResource("22_77475")]
 z_index = 10
-position = Vector2(886, -158)
+position = Vector2(1128, 730)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
