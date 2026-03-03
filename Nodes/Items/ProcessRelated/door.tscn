@@ -344,4 +344,4 @@ autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_o6ely")
-volume_db = 10.0
+volume_db = -73.143

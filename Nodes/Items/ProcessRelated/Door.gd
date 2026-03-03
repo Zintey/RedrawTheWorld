@@ -6,9 +6,10 @@ class_name Door
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
+	# pass
 	if switch:
 		switch.switch_to_open.connect(on_open_door)
-	on_open_door()
+	# on_open_door()
 
 func on_open_door():
 	animation_player.play("open")

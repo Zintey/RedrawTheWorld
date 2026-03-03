@@ -93,7 +93,9 @@ unique_name_in_owner = true
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
 map_config = {
-"leaf_cnt": 3,
-"room_cnt": 7
+"leaf_cnt": 10,
+"room_cnt": 20
 }
 map_prefab_dir_path = "res://Maps/Level1/Prefabs"
+normal_room_prefix = "normal"
+leaf_room_allocation = {}

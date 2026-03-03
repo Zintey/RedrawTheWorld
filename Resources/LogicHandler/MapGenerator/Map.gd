@@ -1,6 +1,8 @@
 extends RefCounted
 class_name Map
 
+var room_types : Dictionary = {} # 记录索引到类型的映射 { index: "attack" }
+
 const mx : Array[int] = [0, 0, -1, 1]
 const my : Array[int] = [-1, 1, 0, 0]
 
@@ -16,8 +18,10 @@ var point_map : Dictionary = {}
 var target_room_cnt : int = 0
 var target_leaf_cnt : int = 0
 
+
 func generate_map(config : Dictionary) -> Map:
 	_reset()
+	room_types.clear()
 	target_room_cnt = config.get("room_cnt", 20)
 	target_leaf_cnt = config.get("leaf_cnt", 5)
 	target_leaf_cnt = clamp(target_leaf_cnt, 2, target_room_cnt - 1)
@@ -94,6 +98,39 @@ func get_direction_string(u_idx: int) -> String:
 		elif diff == Vector2i(1, 0): dirs += "R"
 		i = edges[i].next
 	return dirs
+
+func assign_room_logic_types(leaf_config: Dictionary, normal_prefix: String):
+	var all_indices = range(points.size())
+	var leaf_indices = []
+	
+	# 1. 分类：找出所有叶子节点（连接数为1且不是起点） 
+	for i in all_indices:
+		if i == 0: 
+			room_types[i] = "start"
+			continue
+		if _get_conn_count(i) == 1:
+			leaf_indices.append(i)
+		else:
+			room_types[i] = normal_prefix # 非叶子房统一设为普通房前缀
+
+	# 2. 距离排序：让 Boss 房占据最远的叶子
+	leaf_indices.sort_custom(func(a, b): 
+		return points[a].length_squared() > points[b].length_squared()
+	)
+
+	# 3. 填充配置：根据用户填写的字典数量分配类型
+	var current_leaf_pool = leaf_indices.duplicate()
+	
+	for type_key in leaf_config.keys():
+		var count = leaf_config[type_key]
+		for n in range(count):
+			if current_leaf_pool.is_empty(): break
+			var idx = current_leaf_pool.pop_front() # 从最远或随机处分配
+			room_types[idx] = type_key
+
+	# 4. 兜底：剩余没分配到的叶子房，填充为第一个出现的配置类型或默认值
+	for idx in current_leaf_pool:
+		room_types[idx] = leaf_config.keys()[0] if not leaf_config.is_empty() else normal_prefix
 
 # --- 内部工具函数 ---
 func _update_node_status(p_idx: int, n_idx: int, leaves: Array, internals: Array):

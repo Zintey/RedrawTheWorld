@@ -1,12 +1,16 @@
 extends Node2D
 class_name RoomBase
 
-# 定义信号，当玩家进入房间时发出，传递房间的边界和全局位置信息
 signal player_entered(boundary: Boundary, room_global_pos: Vector2)
 
+@export var door_scene: PackedScene
+## better-terrain 面板里 platform_4 的索引（从0开始数）
+@export var terrain_type: int = 3
+@export var door_width_tiles: int = 4
+@export var door_depth_tiles: int = 4
+
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
-# 确保你的预制体里有这些节点
-@onready var room_area: Area2D = $RoomArea 
+@onready var room_area: Area2D = $RoomArea
 @onready var collision_shape: CollisionShape2D = $RoomArea/CollisionShape2D
 
 class Boundary:
@@ -16,57 +20,102 @@ class Boundary:
 	var bottom : int
 
 var boundary : Boundary
+var _pending_dirs: String = ""
 
 func _ready() -> void:
-	# 1. 确保边界已计算
 	calculate_boundary()
-	
-	# 2. 根据边界设置碰撞区域
-	_setup_collision_area()
-	
-	# 3. 连接信号监听玩家进入
-	# 假设你的玩家节点名字叫 "Player"，或者你可以用 group 来判断
 	room_area.body_entered.connect(func(body):
 		if body.name == "Player":
 			emit_signal("player_entered", boundary, global_position)
-			print("玩家进入房间: ", name)
-		else:
-			print("jin ru fangjian")
 	)
 
-# --- 新增：公开的边界计算函数 ---
-# 这个函数现在可以在 _ready 之前被外部调用
 func calculate_boundary() -> void:
-	if boundary: return # 避免重复计算
-
+	if boundary: return
 	boundary = Boundary.new()
-	var used : Rect2i = tile_map_layer.get_used_rect()
+	var used := tile_map_layer.get_used_rect()
 	var tile_size := tile_map_layer.tile_set.tile_size
+	boundary.top    = used.position.y * tile_size.y
+	boundary.bottom = used.end.y      * tile_size.y
+	boundary.left   = used.position.x * tile_size.x
+	boundary.right  = used.end.x      * tile_size.x
 
-	# 计算相对于TileMapLayer原点的像素坐标
-	boundary.top = (used.position.y) * tile_size.y
-	boundary.bottom = (used.end.y) * tile_size.y
-	boundary.left = (used.position.x) * tile_size.x
-	boundary.right = (used.end.x) * tile_size.x
-	
-	# 注意：这里计算的是 TileMap 内容相对于其自身原点的边界。
-	# 只要你的 TileMapLayer 节点相对于 RoomBase根节点没有位移，这个就是准的。
+func setup_doors(connection_string: String) -> void:
+	if not tile_map_layer: return
+	_pending_dirs = connection_string
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_do_setup_doors()
 
-# --- 新增：设置碰撞区域 ---
-func _setup_collision_area():
-	return
-	var shape = RectangleShape2D.new()
-	var width = boundary.right - boundary.left
-	var height = boundary.bottom - boundary.top
-	shape.size = Vector2(width, height)
-	collision_shape.shape = shape
-	
-	# 计算中心点偏移量
-	var center_x = boundary.left + width / 2.0
-	var center_y = boundary.top + height / 2.0
-	collision_shape.position = Vector2(center_x, center_y)
+func _do_setup_doors() -> void:
+	var used_rect := tile_map_layer.get_used_rect()
+	var all_cleared: Array[Vector2i] = []
 
-# (可选) 调试绘图，查看计算出的边界和碰撞区是否一致
-func _draw():
-	if not boundary: return
-	draw_rect(Rect2(boundary.left, boundary.top, boundary.right-boundary.left, boundary.bottom-boundary.top), Color.YELLOW, false, 2.0)
+	# 删所有门口格子，收集被删的坐标
+	for dir in _pending_dirs:
+		var cleared = _clear_door(dir, used_rect)
+		all_cleared.append_array(cleared)
+
+	# 用 better-terrain 更新受影响区域
+	# update_terrain_cells 会自动连带更新邻居
+	BetterTerrain.update_terrain_cells(tile_map_layer, all_cleared)
+
+	# 放门预制体
+	for dir in _pending_dirs:
+		_place_door(dir, used_rect)
+
+func _clear_door(dir: String, rect: Rect2i) -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+	var half_w = door_width_tiles / 2
+	match dir:
+		"L":
+			var mid_y = rect.position.y + rect.size.y / 2 - half_w
+			for w in range(door_width_tiles):
+				for d in range(door_depth_tiles):
+					cells.append(Vector2i(rect.position.x + d, mid_y + w))
+		"R":
+			var mid_y = rect.position.y + rect.size.y / 2 - half_w
+			for w in range(door_width_tiles):
+				for d in range(door_depth_tiles):
+					cells.append(Vector2i(rect.end.x - 1 - d, mid_y + w))
+		"U":
+			var mid_x = rect.position.x + rect.size.x / 2 - half_w
+			for w in range(door_width_tiles):
+				for d in range(door_depth_tiles):
+					cells.append(Vector2i(mid_x + w, rect.position.y + d))
+		"D":
+			var mid_x = rect.position.x + rect.size.x / 2 - half_w
+			for w in range(door_width_tiles):
+				for d in range(door_depth_tiles):
+					cells.append(Vector2i(mid_x + w, rect.end.y - 1 - d))
+	for cell in cells:
+		tile_map_layer.erase_cell(cell)
+	return cells
+
+func _place_door(dir: String, rect: Rect2i) -> void:
+	if not door_scene: return
+	var tile_size = tile_map_layer.tile_set.tile_size
+	var half_w = door_width_tiles / 2
+	var door_pos_tile: Vector2i
+	match dir:
+		"L": door_pos_tile = Vector2i(rect.position.x,     rect.position.y + rect.size.y / 2 - half_w)
+		"R": door_pos_tile = Vector2i(rect.end.x - 1,      rect.position.y + rect.size.y / 2 - half_w)
+		"U": door_pos_tile = Vector2i(rect.position.x + rect.size.x / 2 - half_w, rect.position.y)
+		"D": door_pos_tile = Vector2i(rect.position.x + rect.size.x / 2 - half_w, rect.end.y - 1)
+
+	var door_inst = door_scene.instantiate()
+	add_child(door_inst)
+	var door_local_pos = tile_map_layer.position + tile_map_layer.map_to_local(door_pos_tile)
+	# 门的轴心在 (0, -64)，需要偏移 64px 补偿，让视觉中心对齐门口
+	var pivot_offset := Vector2(0, -64)
+	match dir:
+		"L", "R":
+			door_local_pos.y += tile_size.y * (door_width_tiles - 1) / 2.0
+			door_inst.rotation_degrees = 0.0
+			# L/R 门竖向放置，pivot 的 y 偏移直接补偿
+			door_local_pos -= pivot_offset
+		"U", "D":
+			door_local_pos.x += tile_size.x * (door_width_tiles - 1) / 2.0
+			door_inst.rotation_degrees = 90.0
+			# 旋转 90 度后，原来的 y 偏移变成 x 方向
+			door_local_pos.x += pivot_offset.y
+	door_inst.position = door_local_pos

@@ -23,6 +23,7 @@ InventoryManager="*res://Manager/InventoryManager.gd"
 UIManager="*res://Manager/UIManager.gd"
 SceneManager="*res://Manager/SceneManager.gd"
 GameInstance="*res://Manager/game_instance.tscn"
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]
 
@@ -34,6 +35,10 @@ window/stretch/mode="canvas_items"
 [editor]
 
 script/templates_search_path="res://ScriptTemplates"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [input]
 

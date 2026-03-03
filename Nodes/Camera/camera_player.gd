@@ -8,11 +8,12 @@ var is_transitioning: bool = false
 var _current_tween: Tween
 
 func _ready():
-	# 初始状态：如果不希望一开始就看到黑色背景，可以先禁用限制
+	# return
 	limit_smoothed = true # 开启平滑限制转换
 	position_smoothing_enabled = false # 我们自己控制平滑，或者开启这个也行
 
 func _physics_process(delta: float) -> void:
+	# return
 	if is_transitioning or not target_node:
 		return
 	
@@ -20,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	global_position = global_position.lerp(target_node.global_position, follow_speed * delta)
 
 func transition_to_room(boundary: RoomBase.Boundary, room_global_pos: Vector2):
+	# return
 	is_transitioning = true
 	
 	if _current_tween:
