@@ -23,7 +23,7 @@ func _ready():
 	_load_map_prefabs()
 	# generate_new_map() # 暂时注释掉，建议手动触发或在主场景调用
 
-func generate_new_map():
+func generate_new_map() -> Map:
 	map = Map.new().generate_map(map_config)
 	map.assign_room_logic_types(leaf_room_allocation, normal_room_prefix)
 	
@@ -32,6 +32,7 @@ func generate_new_map():
 			child.queue_free()
 	spawned_rooms.clear()
 	_spawn_rooms()
+	return map
 
 # --- 核心：基于边界衔接的生成逻辑 ---
 func _spawn_rooms():
@@ -44,6 +45,8 @@ func _spawn_rooms():
 	var start_pos = map.points[0]
 	# 【修复】：先实例化房间但不开门
 	var start_room = _instantiate_room_no_doors(0)
+	start_room.grid_pos = start_pos
+	
 	if not start_room: 
 		push_error("起点房间生成失败！")
 		return
@@ -63,6 +66,7 @@ func _spawn_rooms():
 		
 		var neighbors = map.get_neighbors(current_idx) 
 		
+		
 		for neighbor_info in neighbors:
 			var neighbor_idx = neighbor_info[0]
 			var dir_vec: Vector2i = neighbor_info[1]
@@ -72,6 +76,7 @@ func _spawn_rooms():
 			
 			# 【修复】：先实例化但不开门，等位置确定后再开门
 			var neighbor_room_inst = _instantiate_room_no_doors(neighbor_idx)
+			neighbor_room_inst.grid_pos = neighbor_grid_pos
 			if not neighbor_room_inst: continue
 			
 			# --- 计算无缝衔接位置 ---
@@ -157,22 +162,3 @@ func _get_normalized_key(input_str: String) -> String:
 	return result
 
 
-# --- 调试绘图 ---
-func _draw():
-	if not map: return
-	
-	var spacing = 50
-	var drawn_edges = {}
-	map.iter_map(func(u, v):
-			var edge_key = [u, v]
-			edge_key.sort()
-			if not drawn_edges.has(edge_key):
-					draw_line(Vector2(map.points[u])*spacing, Vector2(map.points[v])*spacing, Color.ORANGE, 2.0)
-					drawn_edges[edge_key] = true
-	)
-	
-	for i in range(map.points.size()):
-			var color = Color.WHITE
-			if i == 0: color = Color.TOMATO
-			elif map.get_direction_string(i).length() == 1: color = Color.SPRING_GREEN
-			draw_circle(Vector2(map.points[i]) * spacing, 20.0, color)

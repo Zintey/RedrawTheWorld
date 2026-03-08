@@ -1,70 +1,58 @@
-[gd_scene load_steps=8 format=3 uid="uid://biv54y4eif17v"]
+[gd_scene load_steps=11 format=3 uid="uid://biv54y4eif17v"]
 
 [ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
+[ext_resource type="Script" uid="uid://duvuwsn4gxx2d" path="res://Maps/world.gd" id="1_jlatx"]
 [ext_resource type="PackedScene" uid="uid://dgr6uyhq4pdl2" path="res://Nodes/Player/player.tscn" id="2_qacqj"]
 [ext_resource type="Script" uid="uid://2m4ob8dvog0h" path="res://Nodes/Camera/camera_player.gd" id="3_qacqj"]
 [ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
+[ext_resource type="PackedScene" uid="uid://bxntwdm6qndd3" path="res://Maps/Level1/Prefabs/start_1.tscn" id="5_jlatx"]
+[ext_resource type="PackedScene" uid="uid://cx786vokdk3qp" path="res://UI/Map/minimap.tscn" id="7_g6xbe"]
 
-[sub_resource type="GDScript" id="GDScript_qacqj"]
-script/source = "# World.gd (主场景脚本示例)
-extends Node2D
-
-@onready var map_generator: MapGenerator = $MapGenerator
-@onready var game_camera: Camera2D = $Camera2D # 确保它挂载了 GameCamera.gd
-@onready var player: CharacterBody2D = $Player
-
-func _ready():
-	# 1. 生成地图
-	map_generator.generate_new_map()
-	
-	# 2. 将所有生成的房间的信号连接到摄像机
-	for room in map_generator.spawned_rooms.values():
-		if room is RoomBase:
-			room.player_entered.connect(game_camera.transition_to_room)
-			
-	# 3. (可选) 手动触发一次起点房间的摄像机设置
-	var start_room = map_generator.spawned_rooms.get(Vector2i.ZERO)
-	if start_room:
-		game_camera.transition_to_room(start_room.boundary, start_room.global_position)
-		# 瞬移玩家到起点
-		player.global_position = start_room.global_position
-"
-
-[sub_resource type="Environment" id="Environment_wux6d"]
-background_mode = 1
-background_color = Color(1, 0.48761034, 0.9450621, 1)
-background_energy_multiplier = 7.55
-ambient_light_source = 2
-ambient_light_color = Color(0.69185084, 0.6358722, 0.811826, 1)
-ambient_light_energy = 6.5
+[sub_resource type="Environment" id="Environment_jlatx"]
+background_mode = 3
 glow_enabled = true
-glow_intensity = 5.9
-glow_bloom = 0.74
-glow_hdr_threshold = 1.35
-glow_hdr_scale = 2.4
-glow_hdr_luminance_cap = 27.25
-fog_enabled = true
-fog_light_color = Color(0.8071317, 0.4294544, 0.3072407, 1)
-fog_height_density = 0.03
+glow_intensity = 0.5
+glow_bloom = 0.1
+glow_hdr_threshold = 0.89
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 71.45
+fog_light_color = Color(0.76088196, 0.43831852, 0.51650727, 1)
+fog_light_energy = 5.25
+fog_sun_scatter = 0.32
+fog_density = 0.6241
+adjustment_enabled = true
+adjustment_brightness = 0.85
+adjustment_contrast = 1.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wux6d"]
 shader = ExtResource("1_1h05d")
 shader_parameter/curvature = 0.2
-shader_parameter/scanline_count = 300.0
+shader_parameter/scanline_count = 500.00002375
+shader_parameter/scanline_speed = 1.0
+shader_parameter/is_hit = false
+shader_parameter/aberration = 0.0
+shader_parameter/noise_strength = 1.0
+shader_parameter/scan_line_width = 0.005
+
+[sub_resource type="Curve" id="Curve_qacqj"]
+_data = [Vector2(0, 0.030601382), 0.0, 0.0, 0, 0, Vector2(0.9884726, 0.9954273), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="World" type="Node2D"]
 texture_filter = 1
-script = SubResource("GDScript_qacqj")
+script = ExtResource("1_jlatx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wux6d")
+environment = SubResource("Environment_jlatx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="PostProcessLayer" type="CanvasLayer" parent="."]
-layer = 10
+layer = 100
 
-[node name="ColorRect" type="ColorRect" parent="PostProcessLayer"]
+[node name="ScreenRect" type="ColorRect" parent="PostProcessLayer"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_wux6d")
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +61,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -85,17 +75,34 @@ unique_name_in_owner = true
 zoom = Vector2(0.8, 0.8)
 script = ExtResource("3_qacqj")
 target_node = NodePath("../Player")
+shake_decay_curve = SubResource("Curve_qacqj")
 
 [node name="RoomContainer" type="Node2D" parent="."]
+
+[node name="Level1Lru1" parent="RoomContainer" instance=ExtResource("5_jlatx")]
+position = Vector2(343, 175)
 
 [node name="MapGenerator" type="Node2D" parent="." node_paths=PackedStringArray("room_container")]
 unique_name_in_owner = true
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
 map_config = {
-"leaf_cnt": 10,
-"room_cnt": 20
+"leaf_cnt": 3,
+"room_cnt": 10
 }
 map_prefab_dir_path = "res://Maps/Level1/Prefabs"
 normal_room_prefix = "normal"
-leaf_room_allocation = {}
+leaf_room_allocation = {
+"boss": 1
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Minimap" parent="CanvasLayer" instance=ExtResource("7_g6xbe")]
+unique_name_in_owner = true
+offset_left = 341.0
+offset_top = -227.0
+offset_right = 441.0
+offset_bottom = -127.0
+
+[editable path="CanvasLayer/Minimap"]

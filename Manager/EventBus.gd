@@ -17,7 +17,7 @@ signal interact_request(body : Node2D)
 signal enter_scene(param : Dictionary)
 
 
-signal camera_shake(strength : float, during : float)
+signal camera_shake(strength : Vector2, during : float)
 
 # signal health_change(val : int)
 # signal stamina_change(val : int)

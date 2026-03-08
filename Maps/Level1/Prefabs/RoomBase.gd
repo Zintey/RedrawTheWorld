@@ -1,7 +1,7 @@
 extends Node2D
 class_name RoomBase
 
-signal player_entered(boundary: Boundary, room_global_pos: Vector2)
+# signal player_entered(boundary: Boundary, room_global_pos: Vector2)
 
 @export var door_scene: PackedScene
 ## better-terrain 面板里 platform_4 的索引（从0开始数）
@@ -12,6 +12,12 @@ signal player_entered(boundary: Boundary, room_global_pos: Vector2)
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
 @onready var room_area: Area2D = $RoomArea
 @onready var collision_shape: CollisionShape2D = $RoomArea/CollisionShape2D
+
+# 在 RoomBase.gd 中增加变量 [cite: 2]
+var grid_pos: Vector2i  # 记录该房间在 Map 数据中的坐标
+
+# 修改信号，增加房间实例参数
+signal player_entered_room(room: RoomBase)
 
 class Boundary:
 	var left : int
@@ -26,7 +32,8 @@ func _ready() -> void:
 	calculate_boundary()
 	room_area.body_entered.connect(func(body):
 		if body.name == "Player":
-			emit_signal("player_entered", boundary, global_position)
+			# 发送整个房间实例，方便获取 grid_pos 和 boundary [cite: 2]
+			emit_signal("player_entered_room", self) 
 	)
 
 func calculate_boundary() -> void:
@@ -42,7 +49,6 @@ func calculate_boundary() -> void:
 func setup_doors(connection_string: String) -> void:
 	if not tile_map_layer: return
 	_pending_dirs = connection_string
-	await get_tree().process_frame
 	await get_tree().process_frame
 	_do_setup_doors()
 

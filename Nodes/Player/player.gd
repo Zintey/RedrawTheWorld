@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal on_hit(flag : bool)
+
 var skill_component: SkillComponent = GameInstance.skill_component
 var status_component: StatusComponent = GameInstance.status_component
 var inventory_component: InventoryComponent = GameInstance.inventory_component
@@ -148,25 +150,28 @@ func _process(delta: float) -> void:
 
 var is_switch_die_state : bool = false
 
+
 func _on_hit_box_area_entered(area: HurtBox) -> void:
 	if status_component.is_die:
 		return
 
 	sprite_2d.material.set_shader_parameter("hit", true)
 	status_component.decrease_hp(area.damage)
-	EventBus.camera_shake.emit(Vector2(5,5), 0.05)
+	EventBus.camera_shake.emit(Vector2(10.0, 10.0), 0.3)
+	on_hit.emit(true)
 	hit_sfx.play()
 	hit_box.set_collision_mask_value(3,false)
+
 
 	if status_component.is_die and !is_switch_die_state:
 		is_switch_die_state = true
 		state_machine.switch_to("die")
 		EventBus.player_die.emit()
 
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(1.5).timeout
 
 	hit_box.set_collision_mask_value(3,true)
-
+	on_hit.emit(false)
 	sprite_2d.material.set_shader_parameter("hit", false)
 
 	if status_component.is_die and !is_switch_die_state:

@@ -11,6 +11,8 @@ func _start_action():
 	audio_stream_player.play()
 	var timer = get_tree().create_timer(1.0, false)
 	timer.timeout.connect(_finish_rune_action)
+	EventBus.camera_shake.emit(Vector2(20.0,20.0),0.2)
+
 	await animated_sprite_2d.animation_finished
 	if !die:
 		animated_sprite_2d.play("Idle")

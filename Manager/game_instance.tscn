@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciuk1njcrg8lo"]
+[gd_scene load_steps=11 format=3 uid="uid://ciuk1njcrg8lo"]
 
 [ext_resource type="Script" uid="uid://bsopi83qxp3cw" path="res://Manager/GameInstance.gd" id="1_grhlc"]
 [ext_resource type="Script" uid="uid://4twnrh5cup0w" path="res://Components/InventoryComponent/InventoryComponent.gd" id="2_18nyd"]
+[ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="3_taij3"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="4_cfcml"]
+[ext_resource type="Resource" uid="uid://ri15ria72rcx" path="res://Resources/RuneData/CoreRune/arcane_orb_core_rune.tres" id="5_25aer"]
+[ext_resource type="Resource" uid="uid://gw8l6noe3p5l" path="res://Resources/RuneData/ModifireRune/snip_modifier_rune.tres" id="6_24684"]
+[ext_resource type="Resource" uid="uid://kdt36bga48ri" path="res://Resources/RuneData/TriggerRune/key_lbt_hit_trigger_rune.tres" id="7_3xveb"]
 [ext_resource type="Script" uid="uid://o4a5mwuwpqh5" path="res://Components/SkillComponent/SkillComponent.gd" id="13_buwi6"]
 [ext_resource type="Script" uid="uid://b4fqef5sc1yhg" path="res://Components/StatusComponent/StatusComponent.gd" id="14_5p4jj"]
+
+[sub_resource type="Resource" id="Resource_jgjx4"]
+script = ExtResource("3_taij3")
+trigger_rune_slot_count = 1
+trigger_rune_list = Array[ExtResource("4_cfcml")]([ExtResource("7_3xveb")])
+core_rune_slot_count = 1
+core_rune_list = Array[ExtResource("4_cfcml")]([ExtResource("5_25aer")])
+modifier_rune_slot_count = 3
+modifier_rune_list = Array[ExtResource("4_cfcml")]([ExtResource("6_24684"), null, null])
+metadata/_custom_type_script = "uid://w3c70vl01a25"
 
 [node name="GameInstance" type="Node"]
 script = ExtResource("1_grhlc")
@@ -13,6 +28,7 @@ script = ExtResource("2_18nyd")
 rune_count = 50
 skill_count = 15
 equipped_skill_count = 5
+equipped_skills = Array[ExtResource("3_taij3")]([SubResource("Resource_jgjx4")])
 metadata/_custom_type_script = "uid://4twnrh5cup0w"
 
 [node name="SkillComponent" type="Node" parent="." node_paths=PackedStringArray("status_component", "inventory_component")]

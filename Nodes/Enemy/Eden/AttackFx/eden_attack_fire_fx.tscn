@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://bysbru44iq2b7"]
+
+[ext_resource type="Texture2D" uid="uid://buccstwdg3kdr" path="res://Assets/Enemy/Eden/fire_effect.png" id="1_a2l7w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehijl"]
+
+[sub_resource type="Animation" id="Animation_1pdco"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_txnlf"]
+resource_name = "end"
+length = 0.60001004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_65tfs"]
+resource_name = "idle"
+length = 0.40002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a2l7w"]
+resource_name = "start"
+length = 1.00002
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pdco"]
+_data = {
+&"RESET": SubResource("Animation_1pdco"),
+&"end": SubResource("Animation_txnlf"),
+&"idle": SubResource("Animation_65tfs"),
+&"start": SubResource("Animation_a2l7w")
+}
+
+[node name="EdenAttackFireFx" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ehijl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1pdco")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_a2l7w")
+hframes = 6
+vframes = 3

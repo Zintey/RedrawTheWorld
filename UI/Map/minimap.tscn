@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx786vokdk3qp"]
+
+[ext_resource type="Script" uid="uid://krk3jsfm3dnn" path="res://UI/Map/minimap.gd" id="1_5tnv4"]
+[ext_resource type="Shader" uid="uid://c3vqkgtu1o1me" path="res://UI/Map/minimap.gdshader" id="1_5xsye"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s5ebu"]
+shader = ExtResource("1_5xsye")
+shader_parameter/size = Vector2(100, 100)
+shader_parameter/radius = 20.0
+shader_parameter/bg_color = Color(0.09411765, 0.21568628, 0.23921569, 1)
+
+[node name="Minimap" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_s5ebu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5tnv4")
