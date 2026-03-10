@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://bev5sv3cemq8x"]
 
 [node name="HitBox" type="Area2D"]
+collision_layer = 24
+collision_mask = 0

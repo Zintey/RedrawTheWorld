@@ -1,5 +1,9 @@
 extends Node
 
+# --- 新增：玩家组件就绪信号 ---
+# 传递四大核心组件，彻底替代 GameInstance
+signal player_components_ready(health_comp: Node, stats_comp: Node, inv_comp: Node, skill_comp: Node)
+
 # UI 管理符文和技能拖拽的信号
 signal rune_drag_started(rune_data : RuneData, start_slot : RuneSlotUI)
 signal rune_drag_ended(rune_data : RuneData, start_slot : RuneSlotUI)

@@ -33,6 +33,6 @@ func take_process(delta : float) -> void:
 	if player.velocity.y < 0:
 		switched_to.emit(self, "up_to_air")
 
-	if player.coyote_timer.time_left > 0 and player.status_component.can_jump and player.jump_request_timer.time_left > 0:
+	if player.coyote_timer.time_left > 0 and player.stats_component.can_jump and player.jump_request_timer.time_left > 0:
 		switched_to.emit(self, "jump")
 	super.take_process(delta)

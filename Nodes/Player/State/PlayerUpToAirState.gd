@@ -3,7 +3,7 @@ class_name PlayerUpToAirState
 
 func enter() -> void:
 	player.animation_player.play("Kaer/jump")
-	player.status_component.current_accelerate = player.status_component.air_accelerate
+	player.stats_component.current_accelerate = player.stats_component.air_accelerate
 	# print("velocity y :", player.velocity.y)
 
 func exit() -> void:

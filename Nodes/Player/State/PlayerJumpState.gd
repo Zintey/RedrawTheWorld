@@ -2,10 +2,10 @@ extends PlayerState
 class_name PlayerJumpState
 
 func enter() -> void:
-	player.velocity.y = player.status_component.jump_speed
+	player.velocity.y = player.stats_component.jump_speed
 	player.jump_request_timer.stop()
 	player.coyote_timer.stop()
-	player.status_component.can_jump = false
+	player.stats_component.can_jump = false
 
 func exit() -> void:
 	pass

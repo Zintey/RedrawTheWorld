@@ -9,7 +9,11 @@ const UI_Map : Dictionary = {
 	"StaminaExhaustTip" : preload("uid://c117x7o152qfa")
 }
 
-
+# --- 新增：用于缓存玩家的四大组件 ---
+var player_health: HealthComponent
+var player_stats: PlayerStatsComponent
+var player_inventory: InventoryComponent
+var player_skill: SkillComponent
 
 func _ready() -> void:
 	layer = 100
@@ -31,6 +35,17 @@ func _ready() -> void:
 
 	stamina_exhaust_tip_request.connect(_on_stamina_exhaust_tip_request)
 
+	EventBus.player_components_ready.connect(_on_player_components_ready)
+
+# 接收并存储玩家发送来的组件
+func _on_player_components_ready(h: Node, s: Node, i: Node, sk: Node) -> void:
+	player_health = h as HealthComponent
+	player_stats = s as PlayerStatsComponent
+	player_inventory = i as InventoryComponent
+	player_skill = sk as SkillComponent
+	
+	# 组件拿到后，立刻初始化常驻的 StateUI (血条/精力条)
+	_on_state_ui_request()
 
 var ui_stack : Array[Node] = []
 var ui_stack_top_index : int = -1
@@ -97,9 +112,11 @@ func _on_inventory_ui_requested(inventory_component : Node) -> void:
 		if ui_stack[ui_stack_top_index] == inventory_ui:
 			pop_ui()
 		return
-
-	inventory_ui = UI_Map["InventoryUI"].instantiate() as InventoryUI
-	inventory_ui.init(inventory_component)
+	
+	inventory_ui = UI_Map["InventoryUI"].instantiate()
+	# 注入玩家的真实背包组件
+	inventory_ui.init(player_inventory)
+	
 	push_ui(inventory_ui)
 func _on_inventory_ui_close():
 	if inventory_ui:
@@ -144,12 +161,14 @@ func _scene_switch_transition(to_black: bool):
 # 管理玩家状态的ui
 signal state_ui_request(status_component : StatusComponent)
 var state_ui : StateUI
-func _on_state_ui_request(status_component : StatusComponent) -> void:
-	if state_ui:
-		return
-	state_ui = UI_Map["StateUI"].instantiate() as StateUI
-	state_ui.init(status_component)
-	self.add_child(state_ui)
+func _on_state_ui_request() -> void:
+	if not is_instance_valid(state_ui):
+		state_ui = UI_Map["StateUI"].instantiate()
+		state_ui.init(player_health, player_stats)
+		add_child(state_ui)
+	# 把新的双组件塞给它
+	
+
 
 
 signal restart_ui_request()

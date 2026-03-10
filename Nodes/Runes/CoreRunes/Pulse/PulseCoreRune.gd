@@ -5,7 +5,6 @@ class_name PulseCoreRune extends CoreRuneBase
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 func _start_action():
-	# can_tracking = false
 	var timer = get_tree().create_timer(0.5, false)
 	timer.timeout.connect(_finish_rune_action)
 	EventBus.camera_shake.emit(Vector2(2.0,2.0),0.01)
@@ -14,7 +13,8 @@ func _start_action():
 	
 	if caster as Player:
 		caster = caster as Player
-		caster.status_component.add_force(
+		# 修改点：把 status_component 改成 stats_component
+		caster.stats_component.add_force(
 		-Vector2(velocity_direction.x * 22, velocity_direction.y * 20) * speed_mul)
 	
 	

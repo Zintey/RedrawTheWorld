@@ -1,4 +1,4 @@
-class_name CoreRuneBase extends HurtBox
+class_name CoreRuneBase extends HitBox
 
 const PROBE_DISTANCE : float = 5.0 # 反弹探测距离
 const MIN_SPEED_EPS: float = 0.0001
@@ -43,7 +43,7 @@ func init(_data: RuneData, _caster: Node2D, _modifiers: Array[RuneData]):
 	modifier_handler = ModifierRuneHandler.new()
 	
 	global_position = caster.rune_emitter.emitter_point.global_position
-	velocity_direction =  Vector2.LEFT if caster.status_component.fire_facing_left else Vector2.RIGHT
+	velocity_direction =  Vector2.LEFT if caster.stats_component.fire_facing_left else Vector2.RIGHT
 	
 	_apply_modifiers(_modifiers)
 	

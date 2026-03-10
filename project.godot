@@ -22,7 +22,6 @@ EventBus="*res://Manager/EventBus.gd"
 InventoryManager="*res://Manager/InventoryManager.gd"
 UIManager="*res://Manager/UIManager.gd"
 SceneManager="*res://Manager/SceneManager.gd"
-GameInstance="*res://Manager/game_instance.tscn"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]

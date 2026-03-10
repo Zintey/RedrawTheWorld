@@ -19,7 +19,7 @@ func take_physics_process(delta: float) -> void:
 	super.take_physics_process(delta)
 
 func take_process(delta : float) -> void:
-	if abs(player.velocity.x) > abs(player.status_component.get_force().x * 1.5):
+	if abs(player.velocity.x) > abs(player.stats_component.get_force().x * 1.5):
 		switched_to.emit(self, "run")
 	
 	if player.velocity.y < -18:

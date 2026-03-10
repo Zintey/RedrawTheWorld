@@ -1,7 +1,8 @@
 class_name SkillComponent extends Node
 
 @export var skill_owner : PhysicsBody2D
-@export var status_component : StatusComponent
+# 替换为新的组件
+@export var stats_component : PlayerStatsComponent
 @export var inventory_component : InventoryComponent
 
 var skill_list : Array[SkillData]
@@ -9,13 +10,13 @@ var skill_list : Array[SkillData]
 var trigger_rune_handler : TriggerRuneHandler
 
 func _ready() -> void:
-	# if skill_owner == null:
-		# printerr(owner.name, " 的 SkillComponent 没有设置 skill_owner 属性！")
-	# await skill_owner.ready
-	if status_component == null:
-		printerr(skill_owner.name, " 的 SkillComponent 没有设置 status_component 属性！")
+	# 安全获取名字，防止 skill_owner 为空导致游戏崩溃
+	var owner_name: String = skill_owner.name if skill_owner else "未知节点"
+	
+	if stats_component == null:
+		printerr(owner_name, " 的 SkillComponent 没有设置 stats_component 属性！(节点路径: ", get_path(), ")")
 	if inventory_component == null:
-		printerr(skill_owner.name, " 的 SkillComponent 没有设置 inventory_component 属性！")
+		printerr(owner_name, " 的 SkillComponent 没有设置 inventory_component 属性！(节点路径: ", get_path(), ")")
 	else:
 		skill_list = inventory_component.equipped_skills
 
@@ -23,8 +24,9 @@ func _ready() -> void:
 
 func check_skills_triggered() -> SkillData:
 	# 遍历技能列表，检查每个技能的触发符文是否被触发
-	if !skill_owner.status_component.has_emitter:
-		return
+	if !skill_owner.stats_component.has_emitter:
+		return null
+		
 	var triggered_skill : SkillData = null
 	for skill in skill_list:
 		if skill == null:
@@ -33,8 +35,11 @@ func check_skills_triggered() -> SkillData:
 		
 		if is_triggered:
 			triggered_skill = skill
+			# 【修复：把你被我误删的法术工厂逻辑加回来了！】
+			var skill_circle = SkillCircleHandler.new(skill, skill_owner)
+			add_child(skill_circle)
 			# print_debug(skill_owner.name, "技能 ", skill.skill_id, " 被触发")
-			pass
+			
 	return triggered_skill
 
 func check_skill_triggered(skill : SkillData) -> bool:
@@ -63,20 +68,12 @@ func check_skill_triggered(skill : SkillData) -> bool:
 		
 		skill_stamina_cost += trigger_rune.stamina_cost
 	
-	if status_component:
-		
-		if is_skill_trigger and status_component.get_current_stamina() >= skill_stamina_cost:
+	# 修改：使用新的 stats_component 和 current_stamina 属性
+	if stats_component:
+		if is_skill_trigger and stats_component.current_stamina >= skill_stamina_cost:
 			# print_debug(skill_owner.name, "释放了 ","技能：", skill.skill_id)
-			status_component.reduce_stamina(skill_stamina_cost)
-			# print_debug("精力减少：", skill_stamina_cost, "  现在的精力值为", status_component.get_current_stamina())
-			
-			var skill_handler = SkillCircleHandler.new(skill, skill_owner)
-			skill_owner.add_child(skill_handler)
+			stats_component.reduce_stamina(skill_stamina_cost)
+			# print_debug("精力减少：", skill_stamina_cost)
 			return true
-
-		else:
-			if is_skill_trigger:
-				UIManager.stamina_exhaust_tip_request.emit()
-				# print_debug("没有足够的精力释放技能： ", skill.skill_id, " 当前精力：", status_component.get_current_stamina())
-	
+			
 	return false

@@ -10,7 +10,7 @@ func enter() -> void:
 	
 
 func exit() -> void:
-	player.rune_emitter.visible = player.status_component.has_emitter
+	player.rune_emitter.visible = player.stats_component.has_emitter
 
 func take_input(event: InputEvent) -> void:
 	return
@@ -27,4 +27,3 @@ func take_physics_process(delta: float) -> void:
 func take_process(delta : float) -> void:
 	return
 	super.take_process(delta)
-
