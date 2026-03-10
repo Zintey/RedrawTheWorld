@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# 平滑跟随玩家 (使用 global_position)
+	
 	global_position = global_position.lerp(target_node.global_position, follow_speed * delta)
 
 

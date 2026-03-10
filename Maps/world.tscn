@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://biv54y4eif17v"]
+[gd_scene load_steps=10 format=3 uid="uid://biv54y4eif17v"]
 
 [ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
 [ext_resource type="Script" uid="uid://duvuwsn4gxx2d" path="res://Maps/world.gd" id="1_jlatx"]
 [ext_resource type="PackedScene" uid="uid://dgr6uyhq4pdl2" path="res://Nodes/Player/player.tscn" id="2_qacqj"]
 [ext_resource type="Script" uid="uid://2m4ob8dvog0h" path="res://Nodes/Camera/camera_player.gd" id="3_qacqj"]
 [ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
-[ext_resource type="PackedScene" uid="uid://bxntwdm6qndd3" path="res://Maps/Level1/Prefabs/start_1.tscn" id="5_jlatx"]
 [ext_resource type="PackedScene" uid="uid://cx786vokdk3qp" path="res://UI/Map/minimap.tscn" id="7_g6xbe"]
 
 [sub_resource type="Environment" id="Environment_jlatx"]
@@ -79,16 +78,13 @@ shake_decay_curve = SubResource("Curve_qacqj")
 
 [node name="RoomContainer" type="Node2D" parent="."]
 
-[node name="Level1Lru1" parent="RoomContainer" instance=ExtResource("5_jlatx")]
-position = Vector2(343, 175)
-
 [node name="MapGenerator" type="Node2D" parent="." node_paths=PackedStringArray("room_container")]
 unique_name_in_owner = true
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
 map_config = {
-"leaf_cnt": 3,
-"room_cnt": 10
+"leaf_cnt": 2,
+"room_cnt": 3
 }
 map_prefab_dir_path = "res://Maps/Level1/Prefabs"
 normal_room_prefix = "normal"

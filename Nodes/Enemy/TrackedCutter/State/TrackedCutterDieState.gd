@@ -9,6 +9,7 @@ func enter() -> void:
 	agent.current_speed = 0.0
 	agent.hurt_box.queue_free()
 	agent.hit_box.queue_free()
+	agent.queue_free()
 func exit() -> void:
 	pass
 

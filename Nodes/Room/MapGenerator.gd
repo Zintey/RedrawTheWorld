@@ -122,9 +122,12 @@ func _instantiate_room_no_doors(index: int) -> RoomBase:
 	
 	var scene = pool.pick_random()
 	var room_inst = scene.instantiate() as RoomBase
-	room_container.add_child(room_inst)
 	
+	# 【修改点】：在加入节点树之前分配房间类型
 	room_inst.name = "Room_%d_%s" % [index, type_key]
+	room_inst.room_type = type_key 
+	
+	room_container.add_child(room_inst)
 	room_inst.calculate_boundary() # 计算边界用于拼接，此时 position 为零点
 	
 	return room_inst
