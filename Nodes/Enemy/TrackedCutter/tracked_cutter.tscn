@@ -14,11 +14,11 @@
 [ext_resource type="Script" uid="uid://56eo75c6ougq" path="res://Nodes/Enemy/TrackedCutter/State/TrackedCutterFollowState.gd" id="9_pviwp"]
 [ext_resource type="Script" uid="uid://fmvantkhjv7h" path="res://Nodes/Enemy/TrackedCutter/State/TrackedCutterAttack1State.gd" id="10_sihqx"]
 [ext_resource type="Script" uid="uid://v8tg6qmcg4v2" path="res://Nodes/Enemy/TrackedCutter/State/TrackedCutterAttack2State.gd" id="11_7vyrx"]
-[ext_resource type="Script" uid="uid://b4fqef5sc1yhg" path="res://Components/StatusComponent/StatusComponent.gd" id="13_u0h3d"]
 [ext_resource type="Script" uid="uid://pc5lgyl8cxt1" path="res://Nodes/Enemy/TrackedCutter/State/TrackedCutterHitState.gd" id="13_v0pgh"]
 [ext_resource type="Script" uid="uid://dil4iqovvlnnv" path="res://Nodes/Enemy/TrackedCutter/State/TrackedCutterStopState.gd" id="14_6jtkp"]
 [ext_resource type="Script" uid="uid://cfkm8aa27bx5w" path="res://Nodes/Enemy/TrackedCutter/State/TrackedCutterDieState.gd" id="15_u8s3y"]
 [ext_resource type="AudioStream" uid="uid://c0i1r00r872h" path="res://Audio/SFX/sfx_tracked_cutter_attack.wav" id="19_f1xfg"]
+[ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="19_fqp5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov4us"]
 size = Vector2(80, 18.5)
@@ -97,7 +97,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CenterPoint/HurtBox/AttackShape:shape")
+tracks/5/path = NodePath("CenterPoint/HitBox/AttackShape:shape")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -109,7 +109,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CenterPoint/HurtBox/AttackShape:position")
+tracks/6/path = NodePath("CenterPoint/HitBox/AttackShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -121,7 +121,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CenterPoint/HurtBox/AttackShape:rotation")
+tracks/7/path = NodePath("CenterPoint/HitBox/AttackShape:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -133,7 +133,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CenterPoint/HurtBox/BodyShape:shape")
+tracks/8/path = NodePath("CenterPoint/HitBox/BodyShape:shape")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -145,7 +145,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CenterPoint/HurtBox/BodyShape:position")
+tracks/9/path = NodePath("CenterPoint/HitBox/BodyShape:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -157,7 +157,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CenterPoint/HurtBox/BodyShape:rotation")
+tracks/10/path = NodePath("CenterPoint/HitBox/BodyShape:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -169,7 +169,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CenterPoint/HitBox/CollisionShape2D:shape")
+tracks/11/path = NodePath("CenterPoint/HurtBox/CollisionShape2D:shape")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -181,7 +181,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("CenterPoint/HitBox/CollisionShape2D:position")
+tracks/12/path = NodePath("CenterPoint/HurtBox/CollisionShape2D:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -193,7 +193,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("CenterPoint/HitBox/CollisionShape2D:rotation")
+tracks/13/path = NodePath("CenterPoint/HurtBox/CollisionShape2D:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -205,7 +205,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("CenterPoint/HurtBox/AttackShape:shape:size")
+tracks/14/path = NodePath("CenterPoint/HitBox/AttackShape:shape:size")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -293,7 +293,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CenterPoint/HurtBox/AttackShape:shape")
+tracks/5/path = NodePath("CenterPoint/HitBox/AttackShape:shape")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -305,7 +305,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CenterPoint/HurtBox/AttackShape:position")
+tracks/6/path = NodePath("CenterPoint/HitBox/AttackShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -317,7 +317,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CenterPoint/HurtBox/AttackShape:rotation")
+tracks/7/path = NodePath("CenterPoint/HitBox/AttackShape:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -329,7 +329,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CenterPoint/HurtBox/AttackShape:shape:size")
+tracks/8/path = NodePath("CenterPoint/HitBox/AttackShape:shape:size")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -431,7 +431,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CenterPoint/HurtBox/AttackShape:shape")
+tracks/5/path = NodePath("CenterPoint/HitBox/AttackShape:shape")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -443,7 +443,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CenterPoint/HurtBox/AttackShape:position")
+tracks/6/path = NodePath("CenterPoint/HitBox/AttackShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -455,7 +455,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CenterPoint/HurtBox/AttackShape:rotation")
+tracks/7/path = NodePath("CenterPoint/HitBox/AttackShape:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -467,7 +467,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CenterPoint/HurtBox/BodyShape:shape")
+tracks/8/path = NodePath("CenterPoint/HitBox/BodyShape:shape")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -479,7 +479,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CenterPoint/HurtBox/BodyShape:position")
+tracks/9/path = NodePath("CenterPoint/HitBox/BodyShape:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -491,7 +491,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CenterPoint/HurtBox/BodyShape:rotation")
+tracks/10/path = NodePath("CenterPoint/HitBox/BodyShape:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -503,7 +503,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CenterPoint/HitBox/CollisionShape2D:shape")
+tracks/11/path = NodePath("CenterPoint/HurtBox/CollisionShape2D:shape")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -515,7 +515,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("CenterPoint/HitBox/CollisionShape2D:position")
+tracks/12/path = NodePath("CenterPoint/HurtBox/CollisionShape2D:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -527,7 +527,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("CenterPoint/HitBox/CollisionShape2D:rotation")
+tracks/13/path = NodePath("CenterPoint/HurtBox/CollisionShape2D:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -539,7 +539,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("CenterPoint/HurtBox/AttackShape:shape:size")
+tracks/14/path = NodePath("CenterPoint/HitBox/AttackShape:shape:size")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -696,15 +696,15 @@ tracks/4/path = NodePath("CenterPoint/Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-0.033333328, 7.450581e-09, 0.033333346, 0.06666668, 0.10000001, 0.13333336, 0.16666669, 0.20000002, 0.23333335, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CenterPoint/HurtBox/AttackShape:shape")
+tracks/5/path = NodePath("CenterPoint/HitBox/AttackShape:shape")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -716,11 +716,11 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CenterPoint/HurtBox/AttackShape:position")
+tracks/6/path = NodePath("CenterPoint/HitBox/AttackShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.12201011, 0.40000334),
+"times": PackedFloat32Array(0, 0.05534345, 0.33333668),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(70.99999, -27.999998), Vector2(44, -64), Vector2(59, -34)]
@@ -728,11 +728,11 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CenterPoint/HurtBox/AttackShape:rotation")
+tracks/7/path = NodePath("CenterPoint/HitBox/AttackShape:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.12201011, 0.40000334),
+"times": PackedFloat32Array(0, 0.05534345, 0.33333668),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.0095599145, -0.8313378, -0.1431182]
@@ -806,7 +806,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CenterPoint/HurtBox/AttackShape:shape")
+tracks/5/path = NodePath("CenterPoint/HitBox/AttackShape:shape")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -818,7 +818,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CenterPoint/HurtBox/AttackShape:position")
+tracks/6/path = NodePath("CenterPoint/HitBox/AttackShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -830,7 +830,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CenterPoint/HurtBox/AttackShape:rotation")
+tracks/7/path = NodePath("CenterPoint/HitBox/AttackShape:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -842,7 +842,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CenterPoint/HurtBox/BodyShape:shape")
+tracks/8/path = NodePath("CenterPoint/HitBox/BodyShape:shape")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -854,7 +854,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CenterPoint/HurtBox/BodyShape:position")
+tracks/9/path = NodePath("CenterPoint/HitBox/BodyShape:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -866,7 +866,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CenterPoint/HurtBox/BodyShape:rotation")
+tracks/10/path = NodePath("CenterPoint/HitBox/BodyShape:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -878,7 +878,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CenterPoint/HurtBox/AttackShape:shape:size")
+tracks/11/path = NodePath("CenterPoint/HitBox/AttackShape:shape:size")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -910,6 +910,8 @@ shader_parameter/hit_color = Color(1, 1, 1, 1)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_o78sm")
+has_gravity = null
+is_summoned = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
@@ -972,30 +974,31 @@ target_position = Vector2(-1.0000324, 707)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="HitBox" type="Area2D" parent="CenterPoint"]
+[node name="HurtBox" type="Area2D" parent="CenterPoint" node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_4krq4")
-metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
+script = ExtResource("9_goa4n")
+health_component = NodePath("../../HealthComponent")
+metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/HurtBox"]
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_bivvb")
 
-[node name="HurtBox" type="Area2D" parent="CenterPoint"]
+[node name="HitBox" type="Area2D" parent="CenterPoint"]
 unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("9_goa4n")
-metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
+script = ExtResource("8_4krq4")
+metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 
-[node name="BodyShape" type="CollisionShape2D" parent="CenterPoint/HurtBox"]
+[node name="BodyShape" type="CollisionShape2D" parent="CenterPoint/HitBox"]
 position = Vector2(-1, -15.5)
 shape = SubResource("RectangleShape2D_tmi8u")
 debug_color = Color(0.99215686, 0, 0, 0.41960785)
 
-[node name="AttackShape" type="CollisionShape2D" parent="CenterPoint/HurtBox"]
+[node name="AttackShape" type="CollisionShape2D" parent="CenterPoint/HitBox"]
 position = Vector2(76, -30)
 rotation = -0.059517782
 shape = SubResource("RectangleShape2D_pviwp")
@@ -1012,6 +1015,7 @@ position = Vector2(60, 0)
 collision_mask = 32
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]
+unique_name_in_owner = true
 script = ExtResource("7_6c10e")
 agent = NodePath("..")
 initial_state = NodePath("idle")
@@ -1057,14 +1061,13 @@ unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[node name="StatusComponent" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("13_u0h3d")
-hp = 4
-metadata/_custom_type_script = "uid://b4fqef5sc1yhg"
-
 [node name="attack_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_f1xfg")
 volume_db = -8.0
 
-[connection signal="area_entered" from="CenterPoint/HitBox" to="." method="_on_hit_box_area_entered"]
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("19_fqp5f")
+max_hp = 4
+metadata/_custom_type_script = "uid://b7cpenmly2med"
+
+[connection signal="area_entered" from="CenterPoint/HurtBox" to="." method="_on_hit_box_area_entered"]

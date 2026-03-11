@@ -77,8 +77,8 @@ func _start_action():
 	printerr("Error: _start_action must be implemented by subclass.")
 
 func try_emit_teleport_signal():
-	if teleport_point:
-		print("has teleport point")
+	# if teleport_point:
+		# print("has teleport point")
 	if is_teleport:
 		if teleport_point == null:
 			EventBus.player_teleport_request.emit(global_position)

@@ -5,7 +5,7 @@ uniform float curvature : hint_range(0.0, 1.0) = 0.2;
 uniform float scanline_count : hint_range(0.0, 1000.0) = 200.0;
 uniform float scanline_speed : hint_range(0.0, 10.0) = 1.0;
 
-uniform bool is_hurt = false;
+uniform bool is_hit = false;
 uniform float aberration : hint_range(0.0, 0.1) = 0.000; // 色散强度
 
 uniform float noise_strength : hint_range(0.0, 10) = 1; // 噪点强度
@@ -32,7 +32,7 @@ void fragment() {
 
     // 2. 色散效果 (Chromatic Aberration)
     // 分别采样红、绿、蓝三个通道，并在坐标上做微小偏移
-	float aberration_offset = 0.005 * float(is_hurt) * (sin(TIME * 10.0) + 1.0) / 2.0;
+	float aberration_offset = 0.005 * float(is_hit) * (sin(TIME * 10.0) + 1.0) / 2.0;
     float r = texture(screen_texture, curved_uv + vec2(aberration + aberration_offset, 0.0)).r;
     float g = texture(screen_texture, curved_uv).g;
     float b = texture(screen_texture, curved_uv - vec2(aberration + aberration_offset, 0.0)).b;
@@ -58,12 +58,12 @@ void fragment() {
     float vignette = length(centered_uv * 0.5);
     col.rgb *= smoothstep(1.0, 0.3, vignette);
 
-	col.a -= float(is_hurt) * 0.1 * fract(TIME);
+	col.a -= float(is_hit) * 0.1 * fract(TIME);
 
 	float noise_grid = 200.0;
 	float hurt_uv = fract(random(ceil(curved_uv * noise_grid) / noise_grid) * TIME);
-	col.a -= hurt_uv * 0.45 * (float(is_hurt) + 0.1);
-	col.r += hurt_uv * 0.1 * float(is_hurt);
+	col.a -= hurt_uv * 0.45 * (float(is_hit) + 0.1);
+	col.r += hurt_uv * 0.1 * float(is_hit);
 	//col.g *= hit_uv * 0.8 * float(is_hit);
 	//col.b *= hit_uv * 0.8 * float(is_hit);
     COLOR = col;

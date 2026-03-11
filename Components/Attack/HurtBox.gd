@@ -9,7 +9,6 @@ signal took_damage(amount: int)
 @export var is_invincible: bool = false
 
 func _ready() -> void:
-	# 代码里自动连接信号，省去你在编辑器里手动连线的麻烦
 	area_entered.connect(_on_area_entered)
 
 func _on_area_entered(area: Area2D) -> void:

@@ -688,7 +688,7 @@ metadata/_custom_type_script = "uid://o4a5mwuwpqh5"
 unique_name_in_owner = true
 autostart = true
 
-[node name="hurt_sfx" type="AudioStreamPlayer" parent="."]
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_mrjgt")
 volume_db = -10.0
 

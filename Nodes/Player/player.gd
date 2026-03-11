@@ -73,6 +73,16 @@ func _on_took_damage(amount: int) -> void:
 	
 	hurt_box.is_invincible = true
 	hurt_box.set_deferred("monitorable", false)
+	
+	var recover_timer = get_tree().create_timer(0.8)
+	recover_timer.timeout.connect(func():
+		if is_instance_valid(sprite_2d):
+			sprite_2d.material.set_shader_parameter("hit", false)
+		if is_instance_valid(hurt_box):
+			hurt_box.is_invincible = false
+			on_hit.emit(false)
+			hurt_box.set_deferred("monitorable", true)
+	)
 
 func _on_player_died() -> void:
 	state_machine.switch_to("die")

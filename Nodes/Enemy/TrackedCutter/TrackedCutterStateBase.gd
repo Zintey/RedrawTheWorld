@@ -1,7 +1,8 @@
-extends StateBase
+extends EnemyStateBase
 class_name TrackedCutterStateBase
 
-@export var agent : TrackedCutter
+var cutter : TrackedCutter :
+	get: return agent as TrackedCutter
 
 func enter() -> void:
 	pass
@@ -10,28 +11,18 @@ func exit() -> void:
 	pass
 
 func take_input(event: InputEvent) -> void:
-
 	super.take_input(event)
 
 func take_unhandled_input(event: InputEvent) -> void:
-	
 	super.take_unhandled_input(event)
 
 func take_physics_process(delta: float) -> void:
-	if not agent.is_on_floor():
-		agent.velocity += agent.get_gravity() * delta
-	
-	if agent.move_direction:
-		agent.velocity.x = agent.move_direction * agent.current_speed
+	if cutter.move_direction:
+		cutter.velocity.x = cutter.move_direction * cutter.current_speed
 	else:
-		agent.velocity.x = agent.move_toward(agent.velocity.x, 0, agent.current_speed)
+		cutter.velocity.x = move_toward(cutter.velocity.x, 0, cutter.current_speed)
 
-	agent.velocity += agent.status_component.get_force()
-	agent.move_and_slide()
 	super.take_physics_process(delta)
 
 func take_process(delta : float) -> void:
-	
-	
-
 	super.take_process(delta)
