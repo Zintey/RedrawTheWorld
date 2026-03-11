@@ -909,9 +909,8 @@ shader_parameter/hit_color = Color(1, 1, 1, 1)
 [node name="TrackedCutter" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 0
 collision_mask = 32
+velocity = Vector2(0, 20426.512)
 script = ExtResource("1_o78sm")
-has_gravity = null
-is_summoned = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
