@@ -26,9 +26,9 @@ adjustment_contrast = 1.2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wux6d"]
 shader = ExtResource("1_1h05d")
 shader_parameter/curvature = 0.2
-shader_parameter/scanline_count = 500.00002375
+shader_parameter/scanline_count = 200.0
 shader_parameter/scanline_speed = 1.0
-shader_parameter/is_hit = false
+shader_parameter/is_hurt = false
 shader_parameter/aberration = 0.0
 shader_parameter/noise_strength = 1.0
 shader_parameter/scan_line_width = 0.005

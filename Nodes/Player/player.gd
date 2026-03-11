@@ -32,9 +32,13 @@ func _ready() -> void:
 	hurt_box.took_damage.connect(_on_took_damage)
 	health_component.died.connect(_on_player_died)
 	
-	# --- 修复：精力自动恢复的计时器连线 ---
 	if recovery_stamina_timer:
 		recovery_stamina_timer.timeout.connect(_on_recovery_stamina_timeout)
+		
+	# --- 修复：把被删掉的传送和属性成长信号监听加回来！ ---
+	EventBus.player_teleport_request.connect(_on_player_teleport_request)
+	EventBus.health_upper_limit_increased.connect(func(val): health_component.max_hp += val; health_component.recover_hp(val))
+	EventBus.stamina_upper_limit_increased.connect(func(val): stats_component.max_stamina += val; stats_component.recover_stamina(val))
 	
 	# 通知 UIManager 玩家已就绪，并把组件引用全交出去
 	EventBus.player_components_ready.emit(health_component, stats_component, inventory_component, skill_component)
@@ -43,13 +47,11 @@ func _process(delta: float) -> void:
 	stats_component.fire_facing_left = (rune_emitter.sprites.global_rotation_degrees >= -90.0 
 										and rune_emitter.sprites.global_rotation_degrees < 90.0)
 
-# --- 修复：把被我吞掉的输入控制全部加回来 ---
+# --- 输入控制 ---
 func _input(event: InputEvent) -> void:
 	if health_component.is_dead:
 		return 
 	if event.is_action_pressed("OpenInventoryUI"):
-		# 注意：因为我们前面在 UIManager 里已经缓存了玩家组件，
-		# 这里不需要再把 inventory_component 作为参数传过去了，直接 emit 即可打开。
 		UIManager.inventory_ui_requested.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -59,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if triggered_skill_data != null:
 		rune_emitter.fire(triggered_skill_data)
 
-# --- 战斗与状态逻辑 ---
+# --- 战斗、状态与事件响应逻辑 ---
 func _on_took_damage(amount: int) -> void:
 	if health_component.is_dead:
 		return
@@ -75,8 +77,15 @@ func _on_took_damage(amount: int) -> void:
 func _on_player_died() -> void:
 	state_machine.switch_to("die")
 
-# --- 修复：精力的具体恢复逻辑 ---
+# --- 传送机制 ---
+func _on_player_teleport_request(teleport_position: Vector2) -> void:
+	if health_component.is_dead:
+		return
+	# 改变坐标，并切入你的传送状态（PlayerTeleportState）
+	global_position = teleport_position
+	state_machine.switch_to("teleport")
+
+# --- 精力恢复逻辑 ---
 func _on_recovery_stamina_timeout() -> void:
 	if not health_component.is_dead:
-		# 每次计时器结束，恢复 1 点精力（你可以根据实际设计修改数值）
 		stats_component.recover_stamina(1)

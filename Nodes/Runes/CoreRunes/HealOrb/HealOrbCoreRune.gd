@@ -26,13 +26,13 @@ func _on_area_entered(area: Area2D) -> void:
 	var body = area.owner
 	if body as Player:
 		body  = body as Player
-		body.status_component.recover_hp(2)
+		body.health_component.recover_hp(2)
 		var heal_fx : Node2D = Heal_FX.instantiate()
 		heal_fx.global_position = body.global_position
 		get_tree().current_scene.add_child(heal_fx)
-	elif body.has_node("StatusComponent"):
-		var status_component = body.get_node("StatusComponent") as StatusComponent
-		status_component.recover_hp(2)
+	elif body.has_node("HealthComponent"):
+		var health_component = body.get_node("HealthComponent") as HealthComponent
+		health_component.recover_hp(2)
 		var heal_fx : Node2D = Heal_FX.instantiate()
 		heal_fx.global_position = body.global_position
 		get_tree().current_scene.add_child(heal_fx)

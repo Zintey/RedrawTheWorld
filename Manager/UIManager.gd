@@ -104,10 +104,10 @@ func _close_skill_brief() -> void:
 
 
 # UI 管理打开背包界面的信号
-signal inventory_ui_requested(inventory_component : Node)
+signal inventory_ui_requested()
 signal inventory_ui_close()
 var inventory_ui : InventoryUI = null
-func _on_inventory_ui_requested(inventory_component : Node) -> void:
+func _on_inventory_ui_requested() -> void:
 	if inventory_ui:
 		if ui_stack[ui_stack_top_index] == inventory_ui:
 			pop_ui()
