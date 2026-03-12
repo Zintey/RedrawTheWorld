@@ -3,8 +3,9 @@ class_name CannonStop2State
 
 var timer : Timer
 @export var stop_time : float = 0.1
+
 func enter() -> void:
-	agent.animation_player.play("idle")
+	cannon.animation_player.play("idle")
 	timer = Timer.new()
 	timer.wait_time = stop_time
 	timer.one_shot = true
@@ -12,26 +13,20 @@ func enter() -> void:
 	timer.start()
 	await timer.timeout
 	switched_to.emit(self, "idle")
-	agent.on_follow = false
+	cannon.on_follow = false
 
 func exit() -> void:
 	if timer:
 		timer.stop()
 
 func take_input(event: InputEvent) -> void:
-
 	super.take_input(event)
 
 func take_unhandled_input(event: InputEvent) -> void:
-	
 	super.take_unhandled_input(event)
 
 func take_physics_process(delta: float) -> void:
-
 	super.take_physics_process(delta)
 
 func take_process(delta : float) -> void:
-	if agent.check_on_hit():
-		switched_to.emit(self, "hit")
-		return 
 	super.take_process(delta)

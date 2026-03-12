@@ -16,9 +16,9 @@
 [ext_resource type="Script" uid="uid://dcs5i171db7p7" path="res://Nodes/Enemy/Cannon/State/CannonAttack2State.gd" id="12_yqym3"]
 [ext_resource type="Script" uid="uid://doh771p7tjg23" path="res://Nodes/Enemy/Cannon/State/CannonStop1State.gd" id="13_yqym3"]
 [ext_resource type="Script" uid="uid://dn86f76b8n8ue" path="res://Nodes/Enemy/Cannon/State/CannonStop2State.gd" id="14_56g8j"]
-[ext_resource type="Script" uid="uid://b4fqef5sc1yhg" path="res://Components/StatusComponent/StatusComponent.gd" id="15_ioqel"]
 [ext_resource type="Script" uid="uid://b1k2a3vcgvgjs" path="res://Nodes/Enemy/Cannon/State/CannonHitState.gd" id="15_n86kw"]
 [ext_resource type="Script" uid="uid://c4a6yfyoyyosp" path="res://Nodes/Enemy/Cannon/State/CannonDieState.gd" id="16_e41ib"]
+[ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="19_741v5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8l5d"]
 size = Vector2(99, 20)
@@ -1106,8 +1106,8 @@ region_rect = Rect2(1430, 78, 161, 79)
 
 [node name="HitBox" type="Area2D" parent="CenterPoint"]
 unique_name_in_owner = true
-collision_layer = 16
-collision_mask = 8
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("8_741v5")
 metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 
@@ -1116,11 +1116,12 @@ position = Vector2(53.5, -1.5)
 shape = SubResource("RectangleShape2D_vu51p")
 disabled = true
 
-[node name="HurtBox" type="Area2D" parent="CenterPoint"]
+[node name="HurtBox" type="Area2D" parent="CenterPoint" node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 2
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("9_f0ux1")
+health_component = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/HurtBox"]
@@ -1177,6 +1178,7 @@ unique_name_in_owner = true
 position = Vector2(109.99999, 0)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]
+unique_name_in_owner = true
 script = ExtResource("8_pg0wg")
 agent = NodePath("..")
 initial_state = NodePath("idle")
@@ -1223,11 +1225,10 @@ script = ExtResource("16_e41ib")
 agent = NodePath("../..")
 metadata/_custom_type_script = "uid://c4a6yfyoyyosp"
 
-[node name="StatusComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("15_ioqel")
-hp = 2
-metadata/_custom_type_script = "uid://b4fqef5sc1yhg"
+script = ExtResource("19_741v5")
+metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [connection signal="area_entered" from="CenterPoint/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="CenterPoint/WarnArea" to="." method="_on_warn_area_body_entered"]

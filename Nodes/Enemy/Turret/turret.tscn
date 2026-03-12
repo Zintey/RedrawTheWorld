@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://f268qaqp76cr" path="res://Nodes/Enemy/Cannon/cannon.tscn" id="2_iq3nj"]
 
 [sub_resource type="GDScript" id="GDScript_6lndl"]
-script/source = "extends CharacterBody2D
+script/source = "extends EnemyBase
 
 @export var enable_gravity : bool = true
 #const SPEED = 300.0
@@ -42,9 +42,8 @@ position = Vector2(0, -39)
 texture = ExtResource("1_hpxcc")
 
 [node name="Cannon" parent="." instance=ExtResource("2_iq3nj")]
-position = Vector2(-2, -72)
-rotation = 1.5869715
-scale = Vector2(0.63, 0.63)
+position = Vector2(0, -70.99999)
+has_gravity = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-50, -1)

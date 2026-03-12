@@ -2,13 +2,13 @@ extends CannonState
 class_name CannonIdleState
 
 func enter() -> void:
-	agent.animation_player.play("idle")
-	agent.sprite_2d.material.set_shader_parameter("outline_size", 0.0)
+	cannon.animation_player.play("idle")
+	cannon.sprite_2d.material.set_shader_parameter("outline_size", 0.0)
+
 func exit() -> void:
 	pass
 
 func take_input(event: InputEvent) -> void:
-
 	super.take_input(event)
 
 func take_unhandled_input(event: InputEvent) -> void:
@@ -18,10 +18,8 @@ func take_physics_process(delta: float) -> void:
 	super.take_physics_process(delta)
 
 func take_process(delta : float) -> void:
-	if agent.check_on_hit():
-		switched_to.emit(self, "hit")
-		return 
-	if agent.check_is_warning():
+	# 受击跳转已由基类接管，彻底删除 check_on_hit()
+	if cannon.check_is_warning():
 		switched_to.emit(self, "follow")
 		return
 	super.take_process(delta)

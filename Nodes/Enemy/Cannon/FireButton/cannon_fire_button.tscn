@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bnriwnup0ony5" path="res://Resources/Animations/CoreRune/Pulse/pulse_sprite_frames.tres" id="2_lcrvs"]
 
 [sub_resource type="GDScript" id="GDScript_60tud"]
-script/source = "extends HurtBox
+script/source = "extends HitBox
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
@@ -128,7 +128,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 2
 script = SubResource("GDScript_60tud")
-metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
+metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(110, 0)
