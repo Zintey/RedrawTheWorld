@@ -13,6 +13,7 @@ size = Vector2(1270, 942)
 script = ExtResource("1_w0bhp")
 door_scene = ExtResource("2_uags0")
 terrain_type = 4
+total_waves = 2
 metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -30,6 +31,14 @@ shape = SubResource("RectangleShape2D_4wfah")
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(26, 267)
 script = ExtResource("4_2vnhe")
 enemy_pool = Array[PackedScene]([ExtResource("4_uags0")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners"]
+position = Vector2(26, 442)
+script = ExtResource("4_2vnhe")
+enemy_pool = Array[PackedScene]([ExtResource("4_uags0")])
+active_waves = Array[int]([1, 2])
 metadata/_custom_type_script = "uid://cu61rdx8i48iw"

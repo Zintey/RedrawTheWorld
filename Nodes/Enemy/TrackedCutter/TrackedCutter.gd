@@ -16,7 +16,6 @@ var current_speed : float = idle_speed
 @onready var player_ray_cast: RayCast2D = %FollowRayCast
 @onready var attack_interval_timer: Timer = %AttackIntervalTimer
 
-# 【修复】：明确获取负责打人的 HitBox
 @onready var hit_box: HitBox = %HitBox 
 
 func check_find_player() -> bool:

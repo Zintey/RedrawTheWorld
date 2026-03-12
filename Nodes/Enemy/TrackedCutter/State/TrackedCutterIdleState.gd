@@ -11,6 +11,7 @@ func exit() -> void:
 
 func take_physics_process(delta: float) -> void:
 	if !cutter.check_can_forward():
+		switched_to.emit(self, "stop")
 		if cutter.move_direction == cutter.Direction.Left:
 			cutter.turn_right()
 		else:

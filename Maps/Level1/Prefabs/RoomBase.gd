@@ -29,7 +29,10 @@ var grid_pos: Vector2i
 var boundary: Boundary
 var _pending_dirs: String = ""
 
-var _is_transitioning_wave: bool = false 
+# --- 精确计数器和状态控制 ---
+var alive_enemies_count: int = 0
+var enemies_spawning_count: int = 0
+var is_waiting_for_next_wave: bool = false
 
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
 @onready var room_area: Area2D = $RoomArea
@@ -55,9 +58,11 @@ func _ready() -> void:
 		
 	if has_node("Spawners"):
 		spawners_root = $Spawners
+		for spawner in spawners_root.get_children():
+			if spawner is EnemySpawner:
+				spawner.spawn_started.connect(_on_spawner_spawn_started)
+				spawner.enemy_spawned.connect(_on_spawner_enemy_spawned)
 		
-	enemy_container.child_exiting_tree.connect(_on_enemy_removed)
-	
 	room_area.body_entered.connect(func(body):
 		if body.name == "Player":
 			_on_player_entered()
@@ -87,53 +92,61 @@ func _has_any_spawners() -> bool:
 func _lock_room() -> void:
 	for door in instantiated_doors:
 		if door.has_method("close"):
-			door.close(true) # 正常播放动画和声音
+			door.close(true) 
 
 func _unlock_room() -> void:
 	current_state = RoomState.CLEARED
 	for door in instantiated_doors:
 		if door.has_method("open"):
-			door.open(true) # 正常播放动画和声音
+			door.open(true) 
 	spawn_rewards()
 
 func _start_next_wave() -> void:
-	_is_transitioning_wave = true
-	current_wave += 1
-	
-	if current_wave > total_waves:
+	if current_wave >= total_waves:
 		emit_signal("combat_ended")
 		_unlock_room()
 		return
 		
-	if wave_interval > 0:
+	is_waiting_for_next_wave = true
+	
+	if current_wave > 0 and wave_interval > 0:
 		await get_tree().create_timer(wave_interval).timeout
 		
+	current_wave += 1
+	is_waiting_for_next_wave = false
+	
 	if spawners_root:
 		for spawner in spawners_root.get_children():
 			if spawner is EnemySpawner:
 				spawner.spawn_enemy(current_wave, enemy_container)
 				
 	await get_tree().process_frame
-	_is_transitioning_wave = false
-	
 	_check_wave_cleared()
 
-func _on_enemy_removed(_node: Node) -> void:
-	if current_state != RoomState.ACTIVE:
-		return
-	_check_wave_cleared.call_deferred()
+func _on_spawner_spawn_started() -> void:
+	enemies_spawning_count += 1
+
+func _on_spawner_enemy_spawned(enemy: Node) -> void:
+	enemies_spawning_count -= 1
+	alive_enemies_count += 1
+	
+	if enemy.has_signal("died"):
+		enemy.died.connect(_on_enemy_died)
+	else:
+		push_warning("Enemy 节点缺少 'died' 信号: ", enemy.name)
+
+func _on_enemy_died(enemy : EnemyBase) -> void:
+	alive_enemies_count -= 1
+	_check_wave_cleared()
 
 func _check_wave_cleared() -> void:
-	if _is_transitioning_wave or current_state != RoomState.ACTIVE:
+	if current_state != RoomState.ACTIVE:
 		return
 		
-	var alive_enemies = 0
-	for child in enemy_container.get_children():
-		if child.is_in_group("Enemy") and not child.is_queued_for_deletion():
-			alive_enemies += 1
-			
-	if alive_enemies == 0:
-		_start_next_wave()
+	if is_waiting_for_next_wave or enemies_spawning_count > 0 or alive_enemies_count > 0:
+		return
+		
+	_start_next_wave()
 
 func spawn_rewards() -> void:
 	if reward_pool.is_empty():
@@ -148,9 +161,33 @@ func spawn_rewards() -> void:
 		
 		var center_x = (boundary.left + boundary.right) / 2.0
 		var center_y = (boundary.top + boundary.bottom) / 2.0
-		
 		var local_center = tile_map_layer.map_to_local(tile_map_layer.local_to_map(Vector2(center_x, center_y)))
+		
+		# --- 新增：动态掉落物表现 (抛物线喷出) ---
 		reward_inst.position = local_center
+		
+		# 计算随机落点 (以中心点为圆心，随机半径的圆内)
+		var random_angle = randf() * TAU
+		var drop_radius = randf_range(20.0, 50.0) # 物品散开的范围
+		var target_pos = local_center + Vector2(cos(random_angle), sin(random_angle)) * drop_radius
+		
+		var original_scale = reward_inst.scale
+		
+		# 使用 Tween 制作平滑的动画效果
+		var tween_scale = create_tween()
+		var tween_pos = create_tween().set_parallel(true)
+		var tween_jump = create_tween() # 专门处理 Y 轴的抛物线
+		
+		# 1. 缩放动画：从0弹到原大小
+		tween_scale.tween_property(reward_inst, "scale", original_scale, 0.4).from(Vector2.ZERO).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		
+		# 2. X轴平移动画：平滑移向目标点
+		tween_pos.tween_property(reward_inst, "position:x", target_pos.x, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		
+		# 3. Y轴抛物线动画：先往上抛，再砸向地面（模拟重力和弹跳）
+		var jump_height = 40.0 # 抛物线高度
+		tween_jump.tween_property(reward_inst, "position:y", local_center.y - jump_height, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween_jump.tween_property(reward_inst, "position:y", target_pos.y, 0.25).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 
 func calculate_boundary() -> void:
 	if boundary: return
@@ -225,7 +262,6 @@ func _place_door(dir: String, rect: Rect2i) -> void:
 	
 	if door_inst.has_method("open"):
 		instantiated_doors.append(door_inst)
-		# --- 修改点：增加 true 参数，瞬间完成开门动画，玩家视野内不会看到门在乱动 ---
 		if current_state == RoomState.UNVISITED or current_state == RoomState.CLEARED:
 			door_inst.open(false, true)
 			
