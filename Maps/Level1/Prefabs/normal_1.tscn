@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://cfqiqipgn5rp4"]
+[gd_scene load_steps=8 format=4 uid="uid://cfqiqipgn5rp4"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/Level1/Prefabs/RoomBase.gd" id="1_i0vei"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_35ovd"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_c07fl"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="4_c07fl"]
+[ext_resource type="PackedScene" uid="uid://b8y4oaxrm7tj6" path="res://Nodes/Enemy/Drone/drone.tscn" id="5_tc28n"]
+[ext_resource type="PackedScene" uid="uid://dak656fcyirif" path="res://Nodes/Enemy/TrackedCutter/tracked_cutter.tscn" id="6_fas11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1274, 949)
@@ -23,3 +26,11 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
 position = Vector2(-2, 163.5)
 shape = SubResource("RectangleShape2D_4wfah")
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(26, 178)
+script = ExtResource("4_c07fl")
+enemy_pool = Array[PackedScene]([ExtResource("5_tc28n"), ExtResource("6_fas11")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
