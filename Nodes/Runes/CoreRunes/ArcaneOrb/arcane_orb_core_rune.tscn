@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cayp4ycwj1nar"]
+[gd_scene load_steps=8 format=3 uid="uid://cayp4ycwj1nar"]
 
+[ext_resource type="Shader" uid="uid://tfnce25bmpoe" path="res://Shader/Orb.gdshader" id="2_eermd"]
 [ext_resource type="SpriteFrames" uid="uid://cu5tqlp6dhk6y" path="res://Resources/Animations/CoreRune/ArcaneOrb/arcane_orb_sprite_frames.tres" id="2_j08bd"]
 [ext_resource type="Script" uid="uid://b6hti6ohl0h6w" path="res://Nodes/Runes/CoreRunes/ArcaneOrb/ArcaneOrbCoreRune.gd" id="2_y4kjk"]
 [ext_resource type="AudioStream" uid="uid://bg6u5nu3hq471" path="res://Audio/SFX/sfx_orb.wav" id="3_j08bd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4kjk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88g7d"]
+shader = ExtResource("2_eermd")
+shader_parameter/time_scale = 0.1
+shader_parameter/waver_intensity = 0.0010000000475
+shader_parameter/waver_freq = 7.155
+shader_parameter/pulse_intensity = 0.066000003135
+shader_parameter/pulse_freq = 10.83
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j08bd"]
 radius = 600.0
@@ -25,6 +34,7 @@ debug_color = Color(0.897163, 0.00019637347, 0.7744937, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 unique_name_in_owner = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_88g7d")
 position = Vector2(0, -3)
 sprite_frames = ExtResource("2_j08bd")
 animation = &"Start"

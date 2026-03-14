@@ -14,16 +14,15 @@ var in_obstacle : bool = false
 @onready var warn_area: Area2D = $WarnArea
 
 func _ready() -> void:
-	super._ready() # <--- 就是缺了这一句致命的代码！！！
+	super._ready()
 	has_gravity = false
 	
-	# 下面保留你之前加的检测玩家的代码
 	if warn_area:
 		warn_area.body_entered.connect(func(body: Node2D): 
-			if body is Player: target_body = body
+			if body is Player: acquire_target(body)
 		)
 		warn_area.body_exited.connect(func(body: Node2D): 
-			if body == target_body: target_body = null
+			lose_target(body)
 		)
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +32,8 @@ func _physics_process(delta: float) -> void:
 	if is_instance_valid(cannon):
 		target_body = cannon.target_body
 
+
+
 func check_can_move() -> bool:
 	return !in_obstacle
 
@@ -41,5 +42,7 @@ func check_is_warn() -> bool:
 
 func check_lose_target() -> bool:
 	return target_body == null
+
+
 
 # check_on_hit() 和 check_is_die() 等受击判断已被 EnemyBase 完美接管并删除！

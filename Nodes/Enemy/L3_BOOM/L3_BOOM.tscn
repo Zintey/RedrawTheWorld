@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ca17gdi25piqu"]
+[gd_scene load_steps=24 format=3 uid="uid://ca17gdi25piqu"]
 
 [ext_resource type="Shader" uid="uid://b2ymucj6mewkj" path="res://Shader/L3_BOOM.gdshader" id="1_8s3uh"]
 [ext_resource type="Texture2D" uid="uid://cwx6biy3h4ioc" path="res://Assets/Enemy/L3_BOOM/L3_BOOM.png" id="1_bqpey"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c1t5mi3qakf37" path="res://Assets/Shader/noise.png" id="2_klg28"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="3_1l05k"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="4_8s3uh"]
+[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="4_66lt2"]
 [ext_resource type="Script" uid="uid://dwudoyjtb3y7t" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomIdleState.gd" id="8_byaoi"]
 [ext_resource type="Script" uid="uid://bef6lfopl8fwn" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomWarningState.gd" id="9_usq6q"]
 [ext_resource type="Script" uid="uid://dclacuyll5qve" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomBoomDieState.gd" id="10_66lt2"]
@@ -24,6 +25,13 @@ shader_parameter/noise_strength = 0.05
 shader_parameter/noise_scale = 3.0
 shader_parameter/breath_speed = 2.0
 shader_parameter/breath_strength = 0.015
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_snei6"]
+shader = ExtResource("4_66lt2")
+shader_parameter/outline_size = 1.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hit = false
+shader_parameter/hit_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_8s3uh"]
 length = 0.001
@@ -74,6 +82,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [30.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
 }
 
 [sub_resource type="Animation" id="Animation_k8mk2"]
@@ -127,6 +159,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [30.0, 330.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
 }
 
 [sub_resource type="Animation" id="Animation_1l05k"]
@@ -182,6 +238,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [30.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="Animation" id="Animation_klg28"]
 resource_name = "warning"
@@ -236,6 +316,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [30.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_klg28"]
 _data = {
@@ -258,6 +362,8 @@ radius = 450.0
 [node name="L3Boom" type="CharacterBody2D"]
 script = ExtResource("1_k8mk2")
 warning_speed = 240.0
+has_gravity = false
+lose_target_delay = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_imp23")
@@ -279,9 +385,11 @@ offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
+mouse_behavior_recursive = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterPoint"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_snei6")
 texture = ExtResource("1_bqpey")
 hframes = 9
 
@@ -290,11 +398,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_klg28")
 }
+autoplay = "idle"
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 2
+collision_layer = 12
+collision_mask = 18
 script = ExtResource("2_bqpey")
 metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 

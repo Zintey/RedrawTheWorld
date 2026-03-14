@@ -103,4 +103,4 @@ tile_set = ExtResource("3_pngn1")
 [node name="L3Boom" parent="." instance=ExtResource("4_x02hi")]
 position = Vector2(-343, -136)
 scale = Vector2(0.4, 0.4)
-has_gravity = false
+lose_target_delay = 2.0

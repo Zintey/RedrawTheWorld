@@ -21,11 +21,11 @@ func _ready() -> void:
 
 func _on_warn_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		target_body = body
+		acquire_target(body) # 立刻变红并追击
 
 func _on_warn_area_body_exited(body: Node2D) -> void:
-	# 【核心修改】：什么都不做！死咬着玩家不放！
-	pass
+	pass # <--- 不调用 lose_target，所以它永远不会遗忘玩家，直到自爆！
+
 
 func _on_died() -> void:
 	remove_from_group("Enemy")

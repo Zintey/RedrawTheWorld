@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b8y4oaxrm7tj6"]
+[gd_scene load_steps=27 format=3 uid="uid://b8y4oaxrm7tj6"]
 
 [ext_resource type="Texture2D" uid="uid://cu46uxlq31uw5" path="res://Assets/Enemy/Drone/drone_safe_move.png" id="1_p3owp"]
 [ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="1_puimb"]
@@ -571,10 +571,6 @@ size = Vector2(57, 51)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nv5x2"]
 size = Vector2(66, 58)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tdkl3"]
-resource_local_to_scene = true
-radius = 600.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_sot41"]
 resource_local_to_scene = true
 radius = 450.0
@@ -585,6 +581,7 @@ collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_r84n8")
 has_gravity = false
+lose_target_delay = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -641,24 +638,12 @@ position = Vector2(-1, -28)
 shape = SubResource("RectangleShape2D_nv5x2")
 disabled = true
 
-[node name="LoseArea" type="Area2D" parent="CenterPoint"]
-unique_name_in_owner = true
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/LoseArea"]
-visible = false
-shape = SubResource("CircleShape2D_tdkl3")
-debug_color = Color(2.9841065e-06, 0.650196, 0.12317177, 0.41960785)
-
 [node name="WarnArea" type="Area2D" parent="CenterPoint"]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/WarnArea"]
-visible = false
 shape = SubResource("CircleShape2D_sot41")
 debug_color = Color(0.56194204, 0.5596352, 9.5298885e-05, 0.41960785)
 
@@ -696,5 +681,4 @@ max_hp = 3
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [connection signal="area_entered" from="CenterPoint/HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="body_exited" from="CenterPoint/LoseArea" to="." method="_on_lose_area_body_exited"]
 [connection signal="body_entered" from="CenterPoint/WarnArea" to="." method="_on_warn_area_body_entered"]

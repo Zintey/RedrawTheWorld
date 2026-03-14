@@ -41,13 +41,13 @@ func check_is_warning() -> bool:
 func check_lose_warning() -> bool:
 	return target_body == null
 
+
 func _on_warn_area_body_entered(body: Node2D) -> void:
-	if body is Player: # 确保只锁定玩家
-		target_body = body
+	if body is Player:
+		acquire_target(body) # <--- 自动触发红边、打断遗忘计时
 
 func _on_warn_area_body_exited(body: Node2D) -> void:
-	if body == target_body:
-		target_body = null
+	lose_target(body) # <--- 自动开启遗忘倒计时，时间到了才会解除红边并丢失目标
 
 func rotate_left() -> void:
 	rotate_direction = RotateDirection.Left

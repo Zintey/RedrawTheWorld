@@ -11,10 +11,15 @@ func enter() -> void:
 	var hit_dust :Node2D = Hit_SCENE.instantiate()
 	hit_dust.global_position = drone.global_position
 	get_tree().current_scene.add_child(hit_dust)
+	if is_instance_valid(agent.hurt_box):
+		agent.hurt_box.is_invincible = true
+		
 	super()
 
 func exit() -> void:
 	drone.sprite_2d.material.set_shader_parameter("hit", false)
+	if is_instance_valid(agent.hurt_box):
+		agent.hurt_box.is_invincible = false
 	super()
 
 func take_input(event: InputEvent) -> void:
