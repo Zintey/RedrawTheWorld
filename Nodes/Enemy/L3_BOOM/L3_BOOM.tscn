@@ -360,10 +360,10 @@ resource_local_to_scene = true
 radius = 450.0
 
 [node name="L3Boom" type="CharacterBody2D"]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_k8mk2")
 warning_speed = 240.0
 has_gravity = false
-lose_target_delay = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_imp23")
