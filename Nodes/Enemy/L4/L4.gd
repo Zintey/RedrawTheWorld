@@ -43,3 +43,5 @@ func fire_poison_orb() -> void:
 	
 	# 调用发射，传入玩家的坐标（最好打在玩家脚下所以可以稍微往下偏移一点）
 	orb.launch(target_body.global_position + Vector2(0, 15), flight_time)
+	
+ 

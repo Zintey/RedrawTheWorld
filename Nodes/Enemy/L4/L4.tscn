@@ -83,7 +83,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -365,6 +365,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterPoint/Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wufwi"]
 _data = {
@@ -389,10 +401,9 @@ radius = 500.0
 [node name="L4" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 32
-velocity = Vector2(0, 6803087.5)
+velocity = Vector2(0, 7226472.5)
 script = ExtResource("1_ke1a8")
 safe_distance = 500.0
-flight_time = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-10, 42)
@@ -436,7 +447,6 @@ collision_layer = 16
 collision_mask = 8
 script = ExtResource("2_0rj8r")
 health_component = NodePath("../HealthComponent")
-is_invincible = true
 metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

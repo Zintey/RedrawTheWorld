@@ -21,7 +21,13 @@ func launch(target_pos: Vector2, flight_time: float = 0.8) -> void:
 	var delta_x = target_pos.x - global_position.x
 	var delta_y = target_pos.y - global_position.y
 	
-	# 根据 x = v_x * t 推导
-	velocity.x = delta_x / flight_time
-	# 根据 y = v_y * t + 0.5 * g * t^2 推导
-	velocity.y = (delta_y - 0.5 * gravity * flight_time * flight_time) / flight_time
+	# 1. 按照你的原版公式，算出完美命中需要的 x 和 y 速度
+	var ideal_vx = delta_x / flight_time
+	var ideal_vy = (delta_y - 0.5 * gravity * flight_time * flight_time) / flight_time
+	
+	# 2. 【核心提取】：我们只要这个抛物线速度的“大小（力道）”
+	var speed = Vector2(ideal_vx, ideal_vy).length()
+	
+	# 3. 【视觉强扭】：强制将实际速度的方向，设为毒球自身的全局旋转角度！
+	# 这样就算算出来的抛物线是往后抛的，也会被强行掰到炮管的正前方！
+	velocity = Vector2.RIGHT.rotated(global_rotation) * speed

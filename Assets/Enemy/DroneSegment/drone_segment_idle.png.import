@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfpy5kqhgfmgc"
-path="res://.godot/imported/cannon_segment_die.png-a5479c6c0db06fb39e39993ef1f6f225.ctex"
+uid="uid://v3dmjv36g8wk"
+path="res://.godot/imported/drone_segment_idle.png-151c6d40b979611dfb7889710ac3caf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/CannonSegment/cannon_segment_die.png"
-dest_files=["res://.godot/imported/cannon_segment_die.png-a5479c6c0db06fb39e39993ef1f6f225.ctex"]
+source_file="res://Assets/Enemy/DroneSegment/drone_segment_idle.png"
+dest_files=["res://.godot/imported/drone_segment_idle.png-151c6d40b979611dfb7889710ac3caf5.ctex"]
 
 [params]
 

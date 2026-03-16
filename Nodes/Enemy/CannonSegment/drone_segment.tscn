@@ -1,0 +1,529 @@
+[gd_scene load_steps=27 format=3 uid="uid://bt1ofw67bk74q"]
+
+[ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="1_8nsy4"]
+[ext_resource type="Texture2D" uid="uid://v3dmjv36g8wk" path="res://Assets/Enemy/DroneSegment/drone_segment_idle.png" id="1_a876g"]
+[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="1_j576n"]
+[ext_resource type="Script" uid="uid://bg8r4e027f7mt" path="res://Nodes/Enemy/CannonSegment/DroneSegment.gd" id="1_o461q"]
+[ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_a876g"]
+[ext_resource type="PackedScene" uid="uid://dn0nvdqp5vgwb" path="res://Nodes/Enemy/PoisonCannon/PoisonCannon.tscn" id="2_hldvy"]
+[ext_resource type="Texture2D" uid="uid://bfpy5kqhgfmgc" path="res://Assets/Enemy/DroneSegment/drone_segment_die.png" id="2_hpy74"]
+[ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="3_hpy74"]
+[ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="4_hldvy"]
+[ext_resource type="Script" uid="uid://vemgb1clu6xe" path="res://Nodes/Enemy/CannonSegment/State/DroneSegmentIdleState.gd" id="10_tq01f"]
+[ext_resource type="Script" uid="uid://2kjskm0noh84" path="res://Nodes/Enemy/CannonSegment/State/DroneSegmentWarningState.gd" id="11_e6b0w"]
+[ext_resource type="Script" uid="uid://bj1j3xsxeidqu" path="res://Nodes/Enemy/CannonSegment/State/DroneSegmentFireState.gd" id="12_w6xx1"]
+[ext_resource type="Script" uid="uid://dhvx60jg2mse2" path="res://Nodes/Enemy/UniversalState/UniversalHitState.gd" id="13_vqjsr"]
+[ext_resource type="Script" uid="uid://df3hxho5yf4qn" path="res://Nodes/Enemy/UniversalState/UniversalDieState.gd" id="14_v2fb3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_debm6"]
+radius = 85.12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o461q"]
+shader = ExtResource("1_j576n")
+shader_parameter/outline_size = 1.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hit = false
+shader_parameter/hit_color = Color(0.81960785, 0.81960785, 0.81960785, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j576n"]
+size = Vector2(104, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o461q"]
+size = Vector2(104, 32)
+
+[sub_resource type="Animation" id="Animation_hpy74"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPoint/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a876g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterPoint/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterPoint/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hldvy"]
+resource_name = "die"
+length = 0.450005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPoint/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hpy74")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterPoint/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterPoint/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_j576n"]
+resource_name = "fire"
+length = 0.90000504
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPoint/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a876g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterPoint/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterPoint/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55, 0.6, 0.65000004, 0.7, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterPoint/Sprite2D/PoisonCannon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tq01f"]
+resource_name = "hit"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPoint/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a876g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterPoint/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterPoint/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.81960785, 0.81960785, 0.81960785, 1), Color(0.55, 0.55, 0.55, 1), Color(0.7490196, 0.7490196, 0.7490196, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8nsy4"]
+resource_name = "idle"
+length = 0.90000504
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPoint/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a876g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterPoint/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterPoint/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55, 0.6, 0.65000004, 0.7, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o461q"]
+resource_name = "warning"
+length = 0.90000504
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPoint/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_a876g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterPoint/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterPoint/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45000002, 0.5, 0.55, 0.6, 0.65000004, 0.7, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a876g"]
+_data = {
+&"RESET": SubResource("Animation_hpy74"),
+&"die": SubResource("Animation_hldvy"),
+&"fire": SubResource("Animation_j576n"),
+&"hit": SubResource("Animation_tq01f"),
+&"idle": SubResource("Animation_8nsy4"),
+&"warning": SubResource("Animation_o461q")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tq01f"]
+resource_local_to_scene = true
+radius = 700.85
+
+[node name="DroneSegment" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_o461q")
+min_dist = 200.0
+max_dist = 500.0
+turn_speed = null
+has_gravity = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_debm6")
+
+[node name="CenterPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterPoint"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_o461q")
+texture = ExtResource("1_a876g")
+hframes = 5
+vframes = 4
+
+[node name="PoisonCannon" parent="CenterPoint/Sprite2D" instance=ExtResource("2_hldvy")]
+unique_name_in_owner = true
+position = Vector2(-6, 52)
+
+[node name="HitBox" type="Area2D" parent="CenterPoint"]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_8nsy4")
+metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/HitBox"]
+position = Vector2(10, 2.5)
+shape = SubResource("RectangleShape2D_j576n")
+
+[node name="HurtBox" type="Area2D" parent="CenterPoint" node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("2_a876g")
+health_component = NodePath("../../HealthComponent")
+metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/HurtBox"]
+position = Vector2(10, 2)
+shape = SubResource("RectangleShape2D_o461q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_a876g")
+}
+
+[node name="WarnArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarnArea"]
+shape = SubResource("CircleShape2D_tq01f")
+debug_color = Color(0.56194204, 0.5596352, 9.5298885e-05, 0.41960785)
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_hpy74")
+metadata/_custom_type_script = "uid://b7cpenmly2med"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]
+unique_name_in_owner = true
+script = ExtResource("4_hldvy")
+agent = NodePath("..")
+initial_state = NodePath("idle")
+metadata/_custom_type_script = "uid://cl2vbjlgrwysh"
+
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("10_tq01f")
+agent = NodePath("../..")
+metadata/_custom_type_script = "uid://vemgb1clu6xe"
+
+[node name="warning" type="Node" parent="StateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("11_e6b0w")
+agent = NodePath("../..")
+metadata/_custom_type_script = "uid://2kjskm0noh84"
+
+[node name="fire" type="Node" parent="StateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("12_w6xx1")
+agent = NodePath("../..")
+metadata/_custom_type_script = "uid://bj1j3xsxeidqu"
+
+[node name="hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("13_vqjsr")
+agent = NodePath("../..")
+metadata/_custom_type_script = "uid://dhvx60jg2mse2"
+
+[node name="die" type="Node" parent="StateMachine" node_paths=PackedStringArray("agent")]
+script = ExtResource("14_v2fb3")
+agent = NodePath("../..")
+metadata/_custom_type_script = "uid://df3hxho5yf4qn"
