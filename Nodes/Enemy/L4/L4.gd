@@ -32,16 +32,24 @@ func check_left_floor() -> bool:
 func check_right_floor() -> bool:
 	return floor_ray_cast_r.is_colliding()
 
-# 供 AnimationPlayer 的 attack1 动画轨道调用
 func fire_poison_orb() -> void:
-	if not is_instance_valid(target_body): 
+	if not is_instance_valid(target_body):
 		return
 	
 	var orb: PoisonOrb = POISON_ORB_SCENE.instantiate()
-	orb.global_position = fire_point.global_position
 	get_tree().current_scene.add_child(orb)
+	orb.global_position = fire_point.global_position
 	
-	# 调用发射，传入玩家的坐标（最好打在玩家脚下所以可以稍微往下偏移一点）
-	orb.launch(target_body.global_position + Vector2(0, 15), flight_time)
+	# --- 提取出真实的“枪管方向” ---
+	# (只要你把 FirePoint 节点放在了枪口，这个方向就是绝对正确的)
+	var dir = fire_point.global_position - global_position
+	if dir.length() < 1.0: # 防呆兜底
+		dir = Vector2.RIGHT.rotated(global_rotation)
+		
+	# 让毒球本身的贴图也顺着枪管转过去（如果有的话）
+	orb.global_rotation = dir.angle() 
+	
+	# 调用发射：传目标、传方向、传时间
+	orb.launch(target_body.global_position + Vector2(0, -15), dir, flight_time)
 	
  

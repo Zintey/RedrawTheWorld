@@ -16,18 +16,15 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area is HurtBox and state_machine.current_state.name == "start":
 		state_machine.switch_to("end")
 
-# --- 核心：固定时间抛物线初速度计算 ---
-func launch(target_pos: Vector2, flight_time: float = 0.8) -> void:
+# --- 核心：抛物线初速度计算（L4和无人机全部通用） ---
+func launch(target_pos: Vector2, dir: Vector2, flight_time: float = 0.8) -> void:
 	var delta_x = target_pos.x - global_position.x
 	var delta_y = target_pos.y - global_position.y
 	
-	# 1. 按照你的原版公式，算出完美命中需要的 x 和 y 速度
+	# 1. 算出力道（原本完美命中需要的速度大小）
 	var ideal_vx = delta_x / flight_time
 	var ideal_vy = (delta_y - 0.5 * gravity * flight_time * flight_time) / flight_time
-	
-	# 2. 【核心提取】：我们只要这个抛物线速度的“大小（力道）”
 	var speed = Vector2(ideal_vx, ideal_vy).length()
 	
-	# 3. 【视觉强扭】：强制将实际速度的方向，设为毒球自身的全局旋转角度！
-	# 这样就算算出来的抛物线是往后抛的，也会被强行掰到炮管的正前方！
-	velocity = Vector2.RIGHT.rotated(global_rotation) * speed
+	# 2. 终极一刀切：抛弃数学角度，强行顺着传进来的炮管方向飞！
+	velocity = dir.normalized() * speed

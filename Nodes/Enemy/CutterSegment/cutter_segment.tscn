@@ -27,7 +27,7 @@ size = Vector2(109.5, 29)
 shader = ExtResource("2_ifgw3")
 shader_parameter/outline_size = 0.0
 shader_parameter/outline_color = Color(1, 0, 0, 1)
-shader_parameter/hit = true
+shader_parameter/hit = false
 shader_parameter/hit_color = Color(0.81960785, 0.81960785, 0.81960785, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d127l"]
@@ -387,7 +387,19 @@ tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("RotatablePivot/Sprite2D:material:shader_parameter/hit")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifgw3"]
@@ -1542,6 +1554,18 @@ tracks/25/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("RotatablePivot/Sprite2D:material:shader_parameter/hit")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b44yc"]
 _data = {
@@ -1612,7 +1636,6 @@ collision_layer = 16
 collision_mask = 8
 script = ExtResource("2_2g36o")
 health_component = NodePath("../../HealthComponent")
-is_invincible = true
 metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RotatablePivot/HurtBox"]
@@ -1630,6 +1653,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarnArea"]
+visible = false
 shape = SubResource("CircleShape2D_0cnu0")
 debug_color = Color(0.56194204, 0.5596352, 9.5298885e-05, 0.41960785)
 

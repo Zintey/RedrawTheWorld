@@ -19,20 +19,17 @@ func fire_poison_orb() -> void:
 		return
 	
 	var orb: PoisonOrb = POISON_ORB_SCENE.instantiate()
-	# 先添加到场景树，确保能获取和设置 global_ 属性
 	get_tree().current_scene.add_child(orb)
-	
 	orb.global_position = fire_point.global_position
 	
-	# --- 强行获取炮管原点指向 FirePoint 的真实方向 ---
+	# --- 提取出真实的“枪管方向” ---
+	# (只要你把 FirePoint 节点放在了枪口，这个方向就是绝对正确的)
 	var dir = fire_point.global_position - global_position
-	if dir.length() > 1.0:
-		# 如果你把 FirePoint 拖出了一段距离，就用两点之间的真实连线方向
-		orb.global_rotation = dir.angle()
-	else:
-		# 【防暴毙兜底】：如果你的 FirePoint 刚好在原点(0,0)没动过
-		# 直接用炮管自身的全局旋转角度，绝对安全！
-		orb.global_rotation = global_rotation
+	if dir.length() < 1.0: # 防呆兜底
+		dir = Vector2.RIGHT.rotated(global_rotation)
+		
+	# 让毒球本身的贴图也顺着枪管转过去（如果有的话）
+	orb.global_rotation = dir.angle() 
 	
-	# 完美还原你的原始参数调用！
-	orb.launch(target_body.global_position + Vector2(0, 15), flight_time)
+	# 调用发射：传目标、传方向、传时间
+	orb.launch(target_body.global_position + Vector2(0, 15), dir, flight_time)

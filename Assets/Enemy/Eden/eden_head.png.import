@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddpd1jiot7nji"
-path="res://.godot/imported/eden_heads.png-34288f42998a17aaba00ce0d00aa0181.ctex"
+path="res://.godot/imported/eden_head.png-0a63a9f3ecc33ab99a2399a221de7075.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/Eden/eden_heads.png"
-dest_files=["res://.godot/imported/eden_heads.png-34288f42998a17aaba00ce0d00aa0181.ctex"]
+source_file="res://Assets/Enemy/Eden/eden_head.png"
+dest_files=["res://.godot/imported/eden_head.png-0a63a9f3ecc33ab99a2399a221de7075.ctex"]
 
 [params]
 

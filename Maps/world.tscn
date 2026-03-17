@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://biv54y4eif17v"]
+[gd_scene load_steps=13 format=3 uid="uid://biv54y4eif17v"]
 
 [ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
 [ext_resource type="Script" uid="uid://duvuwsn4gxx2d" path="res://Maps/world.gd" id="1_jlatx"]
 [ext_resource type="PackedScene" uid="uid://dgr6uyhq4pdl2" path="res://Nodes/Player/player.tscn" id="2_qacqj"]
+[ext_resource type="Shader" uid="uid://bmrpc4jctbp5h" path="res://Maps/back.gdshader" id="3_4h5vl"]
 [ext_resource type="Script" uid="uid://2m4ob8dvog0h" path="res://Nodes/Camera/camera_player.gd" id="3_qacqj"]
 [ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
 [ext_resource type="PackedScene" uid="uid://bxntwdm6qndd3" path="res://Maps/Level1/Prefabs/start_1.tscn" id="5_g6xbe"]
@@ -24,19 +25,31 @@ adjustment_enabled = true
 adjustment_brightness = 0.85
 adjustment_contrast = 1.2
 
+[sub_resource type="Curve" id="Curve_qacqj"]
+_data = [Vector2(0, 0.030601382), 0.0, 0.0, 0, 0, Vector2(0.9884726, 0.9954273), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y565o"]
+shader = ExtResource("3_4h5vl")
+shader_parameter/bg_color = Color(0.01, 0.05, 0.07, 1)
+shader_parameter/glow_color = Color(0.8, 0.8, 1, 1)
+shader_parameter/box_color = Color(0, 0.3, 0.35, 1)
+shader_parameter/line_color = Color(0.2, 0.8, 0.9, 1)
+shader_parameter/alpha = 0.16
+shader_parameter/layers = 4.7810000845975
+shader_parameter/scroll_speed = 0.038000001805
+shader_parameter/center_gap_width = 0.2650000125875
+shader_parameter/line_thickness = 0.04100000124898
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wux6d"]
 shader = ExtResource("1_1h05d")
 shader_parameter/curvature = 0.2
-shader_parameter/scanline_count = 500.00002375
+shader_parameter/scanline_count = 200.0
 shader_parameter/scanline_speed = 1.0
 shader_parameter/is_hit = false
 shader_parameter/aberration = 0.0
 shader_parameter/noise_strength = 1.0
 shader_parameter/scan_line_width = 0.005
-
-[sub_resource type="Curve" id="Curve_qacqj"]
-_data = [Vector2(0, 0.030601382), 0.0, 0.0, 0, 0, Vector2(0.9884726, 0.9954273), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="World" type="Node2D"]
 texture_filter = 1
@@ -47,6 +60,30 @@ environment = SubResource("Environment_jlatx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_qacqj")]
+unique_name_in_owner = true
+position = Vector2(171, 241)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
+unique_name_in_owner = true
+zoom = Vector2(0.8, 0.8)
+script = ExtResource("3_qacqj")
+target_node = NodePath("../Player")
+shake_decay_curve = SubResource("Curve_qacqj")
+
+[node name="BackLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="BackLayer"]
+material = SubResource("ShaderMaterial_y565o")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PostProcessLayer" type="CanvasLayer" parent="."]
 layer = 100
@@ -63,19 +100,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 1
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_qacqj")]
-unique_name_in_owner = true
-position = Vector2(171, 241)
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
-unique_name_in_owner = true
-zoom = Vector2(0.8, 0.8)
-script = ExtResource("3_qacqj")
-target_node = NodePath("../Player")
-shake_decay_curve = SubResource("Curve_qacqj")
 
 [node name="RoomContainer" type="Node2D" parent="."]
 

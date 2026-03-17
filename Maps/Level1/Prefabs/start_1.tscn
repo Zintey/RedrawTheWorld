@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bxntwdm6qndd3"]
+[gd_scene load_steps=11 format=4 uid="uid://bxntwdm6qndd3"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/Level1/Prefabs/RoomBase.gd" id="1_hw4n5"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_ge5ui"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ca17gdi25piqu" path="res://Nodes/Enemy/L3_BOOM/L3_BOOM.tscn" id="4_x02hi"]
 [ext_resource type="PackedScene" uid="uid://h3ynu06ghxbi" path="res://Nodes/Enemy/CutterSegment/cutter_segment.tscn" id="5_irkd7"]
 [ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="6_ojhb1"]
+[ext_resource type="PackedScene" uid="uid://bm5hch1y4yk3s" path="res://Nodes/Enemy/Eden/eden.tscn" id="7_dt1lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1273, 947)
@@ -105,18 +106,13 @@ tile_set = ExtResource("3_pngn1")
 [node name="L3Boom" parent="." instance=ExtResource("4_x02hi")]
 position = Vector2(-343, -136)
 
-[node name="L3Boom2" parent="." instance=ExtResource("4_x02hi")]
-position = Vector2(-414, 99.999985)
-
-[node name="L3Boom3" parent="." instance=ExtResource("4_x02hi")]
-position = Vector2(-249.00002, 54.000004)
-
-[node name="L3Boom4" parent="." instance=ExtResource("4_x02hi")]
-position = Vector2(-156, -51.99999)
+[node name="DroneSegment" parent="." instance=ExtResource("6_ojhb1")]
+position = Vector2(420, 65)
+scale = Vector2(0.5, 0.5)
 
 [node name="CutterSegment" parent="." instance=ExtResource("5_irkd7")]
 position = Vector2(-483, -122)
 
-[node name="DroneSegment" parent="CutterSegment" instance=ExtResource("6_ojhb1")]
-position = Vector2(1806, 374)
-has_gravity = false
+[node name="Eden" parent="." instance=ExtResource("7_dt1lc")]
+position = Vector2(0, 244)
+scale = Vector2(0.5, 0.5)

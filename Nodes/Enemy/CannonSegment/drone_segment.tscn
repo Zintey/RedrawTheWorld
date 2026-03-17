@@ -218,7 +218,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_tq01f"]
 resource_name = "hit"
 length = 0.4
-loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -433,7 +432,6 @@ collision_mask = 32
 script = ExtResource("1_o461q")
 min_dist = 200.0
 max_dist = 500.0
-turn_speed = null
 has_gravity = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
