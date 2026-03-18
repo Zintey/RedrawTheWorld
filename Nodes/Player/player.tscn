@@ -26,7 +26,6 @@
 [ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="23_cr8vb"]
 [ext_resource type="Resource" uid="uid://dep0cg4sks11m" path="res://Resources/RuneData/CoreRune/heal_orb_core_rune.tres" id="23_l15v1"]
 [ext_resource type="Resource" uid="uid://ri15ria72rcx" path="res://Resources/RuneData/CoreRune/arcane_orb_core_rune.tres" id="24_482wx"]
-[ext_resource type="Resource" uid="uid://bwdmgdr5ecjra" path="res://Resources/RuneData/CoreRune/pulse_core_rune.tres" id="24_cr8vb"]
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="24_wfvtl"]
 [ext_resource type="Resource" uid="uid://b167b3woxelxu" path="res://Resources/RuneData/ModifireRune/rebound_modifier_rune.tres" id="25_gcfxi"]
 [ext_resource type="Resource" uid="uid://dvm5l7xa4xyxo" path="res://Resources/RuneData/ModifireRune/teleport_modifier_rune.tres" id="26_rgjfc"]
@@ -39,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://ciqv5nboptaws" path="res://Resources/RuneData/ModifireRune/split_modifier_rune.tres" id="31_rgjfc"]
 [ext_resource type="Resource" uid="uid://bygfavcgilmq3" path="res://Resources/RuneData/ModifireRune/swirl_modifier_rune.tres" id="32_6bxkd"]
 [ext_resource type="Resource" uid="uid://cyrmne77djpgx" path="res://Resources/RuneData/ModifireRune/penetrate_modifier_rune.tres" id="33_i0nyt"]
+[ext_resource type="Resource" uid="uid://hlsg3v54h60l" path="res://Resources/RuneData/TriggerRune/on_hit_trigger_rune.tres" id="34_vmkah"]
 [ext_resource type="Resource" uid="uid://cyg5svovdpl0a" path="res://Resources/SkillData/exquisite_skill_template.tres" id="35_kvwmt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7km3q"]
@@ -800,10 +800,12 @@ format = 3
 
 [sub_resource type="Resource" id="Resource_jgjx4"]
 script = ExtResource("23_cr8vb")
-trigger_rune_slot_count = 1
-trigger_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("27_uk6c8")])
+type = 1
+base_cooldown = null
+trigger_rune_slot_count = 2
+trigger_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("27_uk6c8"), ExtResource("34_vmkah")])
 core_rune_slot_count = 1
-core_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("24_cr8vb")])
+core_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1")])
 modifier_rune_slot_count = 3
 modifier_rune_list = Array[ExtResource("24_wfvtl")]([null, null, null])
 metadata/_custom_type_script = "uid://w3c70vl01a25"
@@ -929,7 +931,7 @@ metadata/_custom_type_script = "uid://b7cpenmly2med"
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("22_owx2l")
 rune_count = 50
-all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt")])
+all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah")])
 skill_count = 15
 equipped_skill_count = 5
 equipped_skills = Array[ExtResource("23_cr8vb")]([SubResource("Resource_jgjx4"), ExtResource("35_kvwmt")])

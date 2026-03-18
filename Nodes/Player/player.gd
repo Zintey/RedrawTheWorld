@@ -59,24 +59,34 @@ func _input(event: InputEvent) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if health_component.is_dead:
 		return 
-	var triggered_skill_data : SkillData = skill_component.check_skills_triggered()
-	if triggered_skill_data != null:
-		rune_emitter.fire(triggered_skill_data)
+		
+	# 【修改】：不再直接检查技能，而是向黑板发送 0.1秒(手感最佳)的缓冲事件
+	if event.is_action_pressed("LMB"):
+		skill_component.post_event("LMB", 0.1)
+	elif event.is_action_pressed("RMB"):
+		skill_component.post_event("RMB", 0.1)
+	elif event.is_action_pressed("Key_Space"):
+		skill_component.post_event("SPACE", 0.1)
 
 # --- 战斗、状态与事件响应逻辑 ---
 func _on_took_damage(amount: int) -> void:
 	if health_component.is_dead:
 		return
 
+	# 【新增】：受击时向黑板发送 0.5秒 的状态便签，供技能读取
+	skill_component.post_event("took_damage", 0.5)
+
 	sprite_2d.material.set_shader_parameter("hit", true)
 	EventBus.camera_shake.emit(Vector2(10.0, 10.0), 0.3)
 	on_hit.emit(true)
 	hit_sfx.play()
 	
+	# 【恢复】：开启无敌与碰撞体禁用
 	hurt_box.is_invincible = true
 	hurt_collision_shape.disabled = true
 	hurt_box.set_deferred("monitorable", false)
 	
+	# 【恢复】：0.8秒后的无敌帧结束与表现重置
 	var recover_timer = get_tree().create_timer(0.8)
 	recover_timer.timeout.connect(func():
 		if is_instance_valid(sprite_2d):

@@ -12,17 +12,21 @@ enum SkillType {
 @export_multiline var skill_description : String = ""
 @export var skill_icon : Texture2D
 
+# 【新增】：技能的基础冷却时间（秒）
+@export var base_cooldown : float = 0.5 
+
 @export var trigger_rune_slot_count : int = 0 :
 	set(val):
 		trigger_rune_slot_count = max(1, val)
 		trigger_rune_list.resize(trigger_rune_slot_count)
 @export var trigger_rune_list : Array[RuneData] = []
-# @export var core_rune_data : RuneData
+
 @export var core_rune_slot_count : int = 0:
 	set(val):
 		core_rune_slot_count = max(0, val)
 		core_rune_list.resize(core_rune_slot_count)
 @export var core_rune_list : Array[RuneData] = []
+
 @export var modifier_rune_slot_count : int = 0:
 	set(val):
 		modifier_rune_slot_count = max(0, val)

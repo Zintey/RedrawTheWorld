@@ -1,7 +1,6 @@
 extends RefCounted
 class_name TriggerRuneLogicBase
 
-
-func check_is_triggered(caster : Node2D) -> bool:
-	# This method should be overridden in subclasses to implement specific trigger logic.
-	return false
+# 【修改】：接收 blackboard 参数
+func check_is_triggered(blackboard : Dictionary, caster : Node2D) -> bool:
+    return false
