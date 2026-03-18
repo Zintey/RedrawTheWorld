@@ -8,8 +8,8 @@ func enter() -> void:
 	cutter.animation_player.play("hit")
 	# cutter.sprite_2d.material.set_shader_parameter("hit", true)
 	
-	if is_instance_valid(cutter.hurt_box):
-		cutter.hurt_box.is_invincible = true
+	# if is_instance_valid(cutter.hurt_box):
+		# cutter.hurt_box.is_invincible = true
 	
 	var hit_dust: Node2D = Hit_SCENE.instantiate()
 	hit_dust.global_position = cutter.global_position
@@ -19,8 +19,8 @@ func enter() -> void:
 
 func exit() -> void:
 	# cutter.sprite_2d.material.set_shader_parameter("hit", false)
-	if is_instance_valid(cutter.hurt_box):
-		cutter.hurt_box.is_invincible = false
+	# if is_instance_valid(cutter.hurt_box):
+		# cutter.hurt_box.is_invincible = false
 	super()
 
 func take_process(delta: float) -> void:

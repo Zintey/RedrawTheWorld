@@ -16,5 +16,5 @@ trigger_rune_list = Array[ExtResource("1_lk4gf")]([ExtResource("3_ag7vh"), null]
 core_rune_slot_count = 2
 core_rune_list = Array[ExtResource("1_lk4gf")]([null, null])
 modifier_rune_slot_count = 3
-modifier_rune_list = Array[ExtResource("1_lk4gf")]([ExtResource("2_q72nu"), null, null])
+modifier_rune_list = Array[ExtResource("1_lk4gf")]([ExtResource("2_q72nu"), null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://w3c70vl01a25"

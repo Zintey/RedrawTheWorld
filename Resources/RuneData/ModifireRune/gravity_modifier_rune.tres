@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://chrml6v4rgxlw"]
+
+[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_ywf4t"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_3urps"]
+
+[resource]
+script = ExtResource("2_3urps")
+rune_id = "gravity_modifier_rune"
+type = 3
+display_name = "重力符文"
+stamina_cost = -3.0
+description = "使核心受到重力影响
+恢复3点精力"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

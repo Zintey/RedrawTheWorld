@@ -301,7 +301,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("HurtBox:is_invincible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -401,7 +401,7 @@ radius = 500.0
 [node name="L4" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 32
-velocity = Vector2(0, 9386597)
+velocity = Vector2(0, 9955613)
 script = ExtResource("1_ke1a8")
 safe_distance = 500.0
 

@@ -7,6 +7,10 @@ const MODIFIER_LOGIC_MAP : Dictionary = {
 	"tracking_modifier_rune" : preload("uid://cg1xsa3y27gth"),
 	"rebound_modifier_rune" : preload("uid://cpaar1x8oacnx"),
 	"teleport_modifier_rune" : preload("uid://bloomrubxbfhc"),
+	"gravity_modifier_rune" : preload("uid://dwlpiog6ppvgf"),
+	"split_modifier_rune" : preload("uid://cyu7f5mlhvknb"),
+	"swirl_modifier_rune" : preload("uid://c5gaixmdqp6gm"),
+	"penetrate_modifier_rune" : preload("uid://cxwim0182c2h5"),
 }
 
 

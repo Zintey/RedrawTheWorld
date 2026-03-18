@@ -46,16 +46,19 @@ func check_skill_triggered(skill : SkillData) -> bool:
 	var trigger_rune_list : Array[RuneData] = skill.trigger_rune_list
 	var is_skill_trigger : bool = true if skill.type == skill.SkillType.AND_TRIGGER else false
 	var skill_stamina_cost : float = 0.0
+	var skill_stamina_cost_multiple : float = 1.0
 	
 	for rune in skill.modifier_rune_list:
 		if rune == null:
 			continue
 		skill_stamina_cost += rune.stamina_cost
+		skill_stamina_cost_multiple *= rune.stamina_cost_multiple
 	
 	for rune in skill.core_rune_list:
 		if rune == null:
 			continue
 		skill_stamina_cost += rune.stamina_cost
+		skill_stamina_cost_multiple *= rune.stamina_cost_multiple
 
 	for trigger_rune in trigger_rune_list:
 		if trigger_rune == null:
@@ -67,10 +70,11 @@ func check_skill_triggered(skill : SkillData) -> bool:
 			is_skill_trigger = is_skill_trigger or is_rune_trigger
 		
 		skill_stamina_cost += trigger_rune.stamina_cost
+		skill_stamina_cost_multiple *= trigger_rune.stamina_cost_multiple
 	
 	# 修改：使用新的 stats_component 和 current_stamina 属性
 	if stats_component:
-		if is_skill_trigger and stats_component.current_stamina >= skill_stamina_cost:
+		if is_skill_trigger and stats_component.current_stamina >= skill_stamina_cost * skill_stamina_cost_multiple:
 			# print_debug(skill_owner.name, "释放了 ","技能：", skill.skill_id)
 			stats_component.reduce_stamina(skill_stamina_cost)
 			# print_debug("精力减少：", skill_stamina_cost)

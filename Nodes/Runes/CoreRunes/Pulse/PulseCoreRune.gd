@@ -4,7 +4,11 @@ class_name PulseCoreRune extends CoreRuneBase
 
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+
 func _start_action():
+	can_gravity = false
+	can_swirl = false
+
 	var timer = get_tree().create_timer(0.5, false)
 	timer.timeout.connect(_finish_rune_action)
 	EventBus.camera_shake.emit(Vector2(2.0,2.0),0.01)

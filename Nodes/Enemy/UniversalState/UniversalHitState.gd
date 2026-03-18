@@ -12,8 +12,8 @@ func enter() -> void:
 	enemy.velocity = Vector2.ZERO
 	enemy.animation_player.play("hit")
 	
-	if is_instance_valid(enemy.hurt_box):
-		enemy.hurt_box.is_invincible = true
+	# if is_instance_valid(enemy.hurt_box):
+		# enemy.hurt_box.is_invincible = true
 		
 	var hit_dust: Node2D = Hit_SCENE.instantiate()
 	hit_dust.global_position = enemy.global_position
@@ -22,8 +22,8 @@ func enter() -> void:
 	super()
 
 func exit() -> void:
-	if is_instance_valid(enemy.hurt_box):
-		enemy.hurt_box.is_invincible = false
+	# if is_instance_valid(enemy.hurt_box):
+		# enemy.hurt_box.is_invincible = false
 	super()
 
 func take_process(delta: float) -> void:
