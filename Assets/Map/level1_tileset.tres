@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c3dek2vgef631" path="res://Assets/Map/Level1/level1_tileset.png" id="1_6ee4p"]
 [ext_resource type="Texture2D" uid="uid://2qvrdnb0pd3x" path="res://Assets/Map/platform1set.png" id="1_t2pbf"]
 [ext_resource type="PackedScene" uid="uid://uco4gf215ppk" path="res://Nodes/Items/petri_dish.tscn" id="2_vg2w4"]
-[ext_resource type="Texture2D" uid="uid://r0i8kew1t4ad" path="res://Assets/Map/CityLevel/city_tileset.png" id="3_p5swr"]
+[ext_resource type="Texture2D" uid="uid://r0i8kew1t4ad" path="res://Assets/Map/Level_city/city_tileset.png" id="3_p5swr"]
 [ext_resource type="PackedScene" uid="uid://dg1760uyb401x" path="res://Nodes/Items/level_1_map_item_01.tscn" id="3_t2pbf"]
 [ext_resource type="PackedScene" uid="uid://ce1n51qffeo5d" path="res://Nodes/Items/level_1_map_item_02.tscn" id="4_p5swr"]
 [ext_resource type="Texture2D" uid="uid://bp2mkaa2i0jp6" path="res://Assets/Map/level1_tileset2.png" id="5_vg2w4"]
@@ -1242,6 +1242,7 @@ polygon = PackedVector2Array(-5.909092, -16, -5.5980873, 16, 16, 16, 16, -16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fha2s"]
 texture = ExtResource("3_p5swr")
+margins = Vector2i(0, 1)
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0

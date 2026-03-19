@@ -163,5 +163,3 @@ func _get_normalized_key(input_str: String) -> String:
 	var result = ""
 	for c in chars: result += c
 	return result
-
-

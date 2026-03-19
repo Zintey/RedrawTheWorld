@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bxntwdm6qndd3"]
+[gd_scene load_steps=12 format=4 uid="uid://bxntwdm6qndd3"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_hw4n5"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_ge5ui"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://h3ynu06ghxbi" path="res://Nodes/Enemy/CutterSegment/cutter_segment.tscn" id="5_irkd7"]
 [ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="6_ojhb1"]
 [ext_resource type="PackedScene" uid="uid://bm5hch1y4yk3s" path="res://Nodes/Enemy/Eden/eden.tscn" id="7_dt1lc"]
+[ext_resource type="Texture2D" uid="uid://cesomituujuh0" path="res://Assets/Map/Level_city/city_back.png" id="8_vk7y6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1273, 947)
@@ -116,3 +117,11 @@ position = Vector2(-483, -122)
 [node name="Eden" parent="." instance=ExtResource("7_dt1lc")]
 position = Vector2(0, 283)
 scale = Vector2(0.5, 0.5)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.01, 0.01)
+
+[node name="CityBack" type="Sprite2D" parent="Parallax2D"]
+z_index = -1
+position = Vector2(87, 166)
+texture = ExtResource("8_vk7y6")

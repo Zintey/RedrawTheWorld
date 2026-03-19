@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxp1bhqphokfs"
-path="res://.godot/imported/biliboard.png-13d1d8a0f5ed4a638285df17d0af4fb0.ctex"
+uid="uid://5vvgjv7b72d1"
+path="res://.godot/imported/city_buildingback.png-0eb78d88f8bdbde71691705ca4ef38ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Map/CityLevel/biliboard.png"
-dest_files=["res://.godot/imported/biliboard.png-13d1d8a0f5ed4a638285df17d0af4fb0.ctex"]
+source_file="res://Assets/Map/Level_city/city_buildingback.png"
+dest_files=["res://.godot/imported/city_buildingback.png-0eb78d88f8bdbde71691705ca4ef38ab.ctex"]
 
 [params]
 
