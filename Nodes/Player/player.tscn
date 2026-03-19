@@ -862,6 +862,7 @@ position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_7km3q")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(0, -22)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_mrjgt")
