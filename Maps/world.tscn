@@ -56,6 +56,7 @@ shake_decay_curve = SubResource("Curve_qacqj")
 layer = -100
 
 [node name="ColorRect" type="ColorRect" parent="BackLayer"]
+visible = false
 material = SubResource("ShaderMaterial_y565o")
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,6 +70,7 @@ layer = 100
 
 [node name="ScreenRect" type="ColorRect" parent="PostProcessLayer"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_wux6d")
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,7 +95,7 @@ map_config = {
 "leaf_cnt": 4,
 "room_cnt": 10
 }
-map_prefab_dir_path = "res://Maps/Level1/Prefabs"
+map_prefab_dir_path = "res://Maps/Level_city/Prefabs"
 normal_room_prefix = "normal"
 leaf_room_allocation = {
 "boss": 1
