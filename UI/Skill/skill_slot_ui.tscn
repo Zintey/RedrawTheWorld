@@ -29,10 +29,11 @@ theme_override_constants/margin_bottom = 3
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
-mouse_filter = 2
 mouse_behavior_recursive = 1
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3

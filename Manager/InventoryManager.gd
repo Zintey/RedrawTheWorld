@@ -12,14 +12,15 @@ var mouse_under_skill_slot : SkillSlotUI = null
 
 
 func _ready() -> void:
-	EventBus.rune_drag_started.connect(drag_rune_begin)
-	EventBus.rune_drag_ended.connect(drag_rune_end)
-	EventBus.skill_drag_started.connect(drag_skill_begin)
-	EventBus.skill_drag_ended.connect(drag_skill_end)
-	EventBus.mouse_in_rune_slot.connect(set_mouse_under_rune_slot)
-	EventBus.mouse_out_rune_slot.connect(clear_mouse_under_rune_slot)
-	EventBus.mouse_in_skill_slot.connect(set_mouse_under_skill_slot)
-	EventBus.mouse_out_skill_slot.connect(clear_mouse_under_skill_slot)
+	# EventBus.rune_drag_started.connect(drag_rune_begin)
+	# EventBus.rune_drag_ended.connect(drag_rune_end)
+	
+	# 【把下面这四行也注释掉！】
+	# EventBus.skill_drag_started.connect(drag_skill_begin)
+	# EventBus.skill_drag_ended.connect(drag_skill_end)
+	# EventBus.mouse_in_skill_slot.connect(set_mouse_under_skill_slot)
+	# EventBus.mouse_out_skill_slot.connect(clear_mouse_under_skill_slot)
+	pass
 	
 func drag_rune_begin(rune_data: RuneData, start_slot : RuneSlotUI) -> void:
 	if drag_rune_item != null:

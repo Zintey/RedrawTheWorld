@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cte1wladgtja5"]
+[gd_scene load_steps=7 format=3 uid="uid://cte1wladgtja5"]
 
 [ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="1_hkav2"]
 [ext_resource type="Script" uid="uid://bcbcyqts1jnye" path="res://UI/Rune/RuneSlotUI.gd" id="1_mh3ln"]
@@ -9,11 +9,26 @@
 texture = ExtResource("2_rtjd7")
 modulate_color = Color(0.22352941, 0.22352941, 0.22352941, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtjd7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(16.797, 18.892, 0, 0.784)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [node name="RuneSlotUI" type="PanelContainer" groups=["RuneSlot"]]
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 1
-mouse_behavior_recursive = 2
 theme = ExtResource("1_hkav2")
 theme_override_styles/panel = SubResource("StyleBoxTexture_rykew")
 script = ExtResource("1_mh3ln")
@@ -35,8 +50,13 @@ stretch_mode = 5
 
 [node name="Button" type="TextureButton" parent="MarginContainer"]
 layout_mode = 2
-mouse_behavior_recursive = 2
+mouse_behavior_recursive = 1
 texture_click_mask = ExtResource("3_rykew")
+
+[node name="HighlightBorder" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rtjd7")
 
 [connection signal="button_down" from="MarginContainer/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="MarginContainer/Button" to="." method="_on_button_button_up"]

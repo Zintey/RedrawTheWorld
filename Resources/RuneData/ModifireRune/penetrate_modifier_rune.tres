@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://cyrmne77djpgx"]
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://cyrmne77djpgx"]
 
-[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_joysh"]
+[ext_resource type="Texture2D" uid="uid://cxa02e5lxul3f" path="res://Assets/RuneIcon/rune_list2.png" id="1_joysh"]
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_outaq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_outaq"]
+atlas = ExtResource("1_joysh")
+region = Rect2(116, 0, 116, 0)
 
 [resource]
 script = ExtResource("2_outaq")
@@ -9,5 +13,6 @@ rune_id = "penetrate_modifier_rune"
 type = 3
 display_name = "穿透符文"
 stamina_cost = 1.0
+icon = SubResource("AtlasTexture_outaq")
 description = "使发射出去的符文有追踪效果"
 metadata/_custom_type_script = "uid://d05jh4768kl1k"

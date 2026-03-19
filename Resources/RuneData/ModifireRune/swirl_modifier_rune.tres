@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://bygfavcgilmq3"]
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://bygfavcgilmq3"]
 
-[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_d1mtv"]
+[ext_resource type="Texture2D" uid="uid://cxa02e5lxul3f" path="res://Assets/RuneIcon/rune_list2.png" id="1_d1mtv"]
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_jdl71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdl71"]
+atlas = ExtResource("1_d1mtv")
+region = Rect2(348, 0, 116, 0)
 
 [resource]
 script = ExtResource("2_jdl71")
 rune_id = "swirl_modifier_rune"
 type = 3
 display_name = "回旋符文"
+icon = SubResource("AtlasTexture_jdl71")
 metadata/_custom_type_script = "uid://d05jh4768kl1k"

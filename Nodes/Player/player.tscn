@@ -801,7 +801,6 @@ format = 3
 [sub_resource type="Resource" id="Resource_jgjx4"]
 script = ExtResource("23_cr8vb")
 type = 1
-base_cooldown = null
 trigger_rune_slot_count = 2
 trigger_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("27_uk6c8"), ExtResource("34_vmkah")])
 core_rune_slot_count = 1
