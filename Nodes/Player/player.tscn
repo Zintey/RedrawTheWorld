@@ -802,11 +802,11 @@ format = 3
 script = ExtResource("23_cr8vb")
 type = 1
 trigger_rune_slot_count = 2
-trigger_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("27_uk6c8"), ExtResource("34_vmkah")])
+trigger_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("27_uk6c8")])
 core_rune_slot_count = 1
-core_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1")])
+core_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("24_482wx")])
 modifier_rune_slot_count = 3
-modifier_rune_list = Array[ExtResource("24_wfvtl")]([null, null, null])
+modifier_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("29_gcfxi"), ExtResource("27_kvwmt"), ExtResource("30_rgjfc"), ExtResource("33_i0nyt")])
 metadata/_custom_type_script = "uid://w3c70vl01a25"
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]

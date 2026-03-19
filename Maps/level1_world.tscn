@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlaf7nic4l1pf"]
-
-[ext_resource type="PackedScene" uid="uid://dv36pw76opo81" path="res://Maps/Level1/Prefabs/L_1.tscn" id="1_nplnk"]
-
-[node name="Level1World" type="Node2D"]
-
-[node name="Level1Lru1" parent="." instance=ExtResource("1_nplnk")]
-position = Vector2(-1670, -65)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://cfqiqipgn5rp4"]
+[gd_scene load_steps=8 format=4 uid="uid://cfqiqipgn5rp4"]
 
-[ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/Level1/Prefabs/RoomBase.gd" id="1_i0vei"]
+[ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_i0vei"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_35ovd"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_c07fl"]
+[ext_resource type="PackedScene" uid="uid://355nyhp43l6y" path="res://Nodes/Items/TreasureChest/treasure_chest.tscn" id="3_tc28n"]
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="4_c07fl"]
 [ext_resource type="PackedScene" uid="uid://ctb3ctu00aarg" path="res://Nodes/Enemy/L4/L4.tscn" id="5_c07fl"]
 
@@ -12,6 +13,7 @@ size = Vector2(1274, 949)
 [node name="Level1Lru1" type="Node2D"]
 script = ExtResource("1_i0vei")
 door_scene = ExtResource("2_35ovd")
+reward_pool = Array[PackedScene]([ExtResource("3_tc28n")])
 metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

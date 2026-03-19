@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://bxntwdm6qndd3"]
 
-[ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/Level1/Prefabs/RoomBase.gd" id="1_hw4n5"]
+[ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_hw4n5"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_ge5ui"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_pngn1"]
 [ext_resource type="PackedScene" uid="uid://ca17gdi25piqu" path="res://Nodes/Enemy/L3_BOOM/L3_BOOM.tscn" id="4_x02hi"]

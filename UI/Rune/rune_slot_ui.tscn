@@ -54,6 +54,7 @@ mouse_behavior_recursive = 1
 texture_click_mask = ExtResource("3_rykew")
 
 [node name="HighlightBorder" type="Panel" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rtjd7")
