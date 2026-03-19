@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://biv54y4eif17v"]
+[gd_scene load_steps=12 format=3 uid="uid://biv54y4eif17v"]
 
 [ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
 [ext_resource type="Script" uid="uid://duvuwsn4gxx2d" path="res://Maps/world.gd" id="1_jlatx"]
@@ -8,22 +8,6 @@
 [ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
 [ext_resource type="PackedScene" uid="uid://bxntwdm6qndd3" path="res://Maps/Level1/Prefabs/start_1.tscn" id="5_g6xbe"]
 [ext_resource type="PackedScene" uid="uid://cx786vokdk3qp" path="res://UI/Map/minimap.tscn" id="7_g6xbe"]
-
-[sub_resource type="Environment" id="Environment_jlatx"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 0.5
-glow_bloom = 0.1
-glow_hdr_threshold = 0.89
-glow_hdr_scale = 0.0
-glow_hdr_luminance_cap = 71.45
-fog_light_color = Color(0.76088196, 0.43831852, 0.51650727, 1)
-fog_light_energy = 5.25
-fog_sun_scatter = 0.32
-fog_density = 0.6241
-adjustment_enabled = true
-adjustment_brightness = 0.85
-adjustment_contrast = 1.2
 
 [sub_resource type="Curve" id="Curve_qacqj"]
 _data = [Vector2(0, 0.030601382), 0.0, 0.0, 0, 0, Vector2(0.9884726, 0.9954273), 0.0, 0.0, 0, 0]
@@ -55,17 +39,11 @@ shader_parameter/scan_line_width = 0.005
 texture_filter = 1
 script = ExtResource("1_jlatx")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jlatx")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.8, 0.8, 0.8, 1)
-
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_qacqj")]
 unique_name_in_owner = true
-position = Vector2(171, 241)
+position = Vector2(-288, 241)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
 unique_name_in_owner = true

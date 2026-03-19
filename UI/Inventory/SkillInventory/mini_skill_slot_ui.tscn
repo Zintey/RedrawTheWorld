@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbasap1tp2h6e"]
+
+[ext_resource type="Script" uid="uid://cbqjwejov8xle" path="res://UI/Inventory/SkillInventory/MiniSkillSlotUI.gd" id="1_bubpw"]
+
+[node name="MiniSkillSlotUi" type="PanelContainer"]
+script = ExtResource("1_bubpw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5

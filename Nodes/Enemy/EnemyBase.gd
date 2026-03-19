@@ -90,30 +90,30 @@ func check_line_of_sight(target: Node2D) -> bool:
 	
 	var result = space_state.intersect_ray(query)
 	
-	print("==================================")
-	print("📡 [视线测试] ", self.name, " 正在看向 -> ", target.name)
+	# print("==================================")
+	# print("📡 [视线测试] ", self.name, " 正在看向 -> ", target.name)
 	# print("起点: ", start_pos, " | 终点: ", end_pos)
 	
 	if result.is_empty():
-		print("✅ 结果：畅通无阻！什么都没撞到。")
+		# print("✅ 结果：畅通无阻！什么都没撞到。")
 		return true 
 	else:
 		var hit_obj = result.collider
-		var hit_name = hit_obj.name if hit_obj else "未知节点"
-		var hit_class = hit_obj.get_class() if hit_obj else "未知类"
+		# var hit_name = hit_obj.name if hit_obj else "未知节点"
+		# var hit_class = hit_obj.get_class() if hit_obj else "未知类"
 		
 		var hit_layer = "未知"
 		if hit_obj is CollisionObject2D:
 			hit_layer = str(hit_obj.collision_layer)
 			
-		print("❌ 结果：被挡住了！挡路者是 -> 名字: [", hit_name, "] | 类型: [", hit_class, "] | 碰撞层 Layer: [", hit_layer, "]")
+		# print("❌ 结果：被挡住了！挡路者是 -> 名字: [", hit_name, "] | 类型: [", hit_class, "] | 碰撞层 Layer: [", hit_layer, "]")
 		
 		# 如果撞到的刚好是玩家本人，或者玩家身上的 HurtBox (它的 owner 是玩家)
 		if hit_obj == target or (hit_obj.owner and hit_obj.owner == target):
-			print("🎯 结论：这个挡路者就是玩家自己！视线确认连通！")
+			# print("🎯 结论：这个挡路者就是玩家自己！视线确认连通！")
 			return true
 		
-		print("🧱 结论：这是真正的障碍物，视线中断！")
+		# print("🧱 结论：这是真正的障碍物，视线中断！")
 		return false
 
 # --- 统一视野与描边 API ---

@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="4_2vnhe"]
 [ext_resource type="PackedScene" uid="uid://f268qaqp76cr" path="res://Nodes/Enemy/Cannon/cannon.tscn" id="6_ns6r7"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1270, 942)
 

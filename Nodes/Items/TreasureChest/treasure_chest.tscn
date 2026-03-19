@@ -1,9 +1,49 @@
-[gd_scene load_steps=7 format=3 uid="uid://355nyhp43l6y"]
+[gd_scene load_steps=9 format=3 uid="uid://355nyhp43l6y"]
 
 [ext_resource type="Texture2D" uid="uid://c7wivt5v0euah" path="res://Assets/Items/TreasureChest/treasure_chest.png" id="1_1xmvu"]
 
+[sub_resource type="GDScript" id="GDScript_1xmvu"]
+script/source = "extends RigidBody2D
+
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var interact_area: Area2D = $InteractArea
+
+var is_opened: bool = false
+
+func _ready() -> void:
+	# 初始状态播放 idle 动画
+	anim_player.play(\"idle\")
+	
+	# 绑定 Area2D 的进入信号
+	if interact_area:
+		interact_area.body_entered.connect(_on_interact_area_body_entered)
+	else:
+		push_warning(\"未找到 InteractArea！请确保添加了该节点。\")
+
+func _on_interact_area_body_entered(body: Node2D) -> void:
+	# 如果已经打开过了，直接忽略
+	if is_opened:
+		return
+		
+	# 判断进入区域的是不是玩家
+	# 注意：这里的 \"Player\" 需要和你的玩家节点名称一致。
+	# 如果你使用 group 来区分玩家，可以换成 if body.is_in_group(\"player\"):
+	if body.name == \"Player\": 
+		open_chest()
+
+func open_chest() -> void:
+	is_opened = true
+	anim_player.play(\"open\")
+	
+	# 关闭检测区域，防止后续重复触发或占用性能
+	interact_area.set_deferred(\"monitoring\", false)
+	
+	# 这里可以留个口子，之后用来生成掉落物
+	# spawn_loot()
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4fik"]
-size = Vector2(48, 40)
+size = Vector2(34, 15.5)
 
 [sub_resource type="Animation" id="Animation_1xmvu"]
 resource_name = "idle"
@@ -169,16 +209,20 @@ _data = {
 &"open": SubResource("Animation_8lhsy")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xmvu"]
+size = Vector2(108.5, 66.5)
+
 [node name="TreasureChest" type="RigidBody2D"]
-scale = Vector2(0.6, 0.6)
 collision_layer = 32
 collision_mask = 32
+script = SubResource("GDScript_1xmvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 11.75)
 shape = SubResource("RectangleShape2D_b4fik")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_1xmvu")
 hframes = 17
 
@@ -186,3 +230,12 @@ hframes = 17
 libraries = {
 &"": SubResource("AnimationLibrary_8lhsy")
 }
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+visible = false
+position = Vector2(0.25, -13.75)
+shape = SubResource("RectangleShape2D_1xmvu")

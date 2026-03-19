@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bxntwdm6qndd3"]
+[gd_scene load_steps=12 format=4 uid="uid://bxntwdm6qndd3"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_hw4n5"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_ge5ui"]
@@ -7,6 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://h3ynu06ghxbi" path="res://Nodes/Enemy/CutterSegment/cutter_segment.tscn" id="5_irkd7"]
 [ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="6_ojhb1"]
 [ext_resource type="PackedScene" uid="uid://bm5hch1y4yk3s" path="res://Nodes/Enemy/Eden/eden.tscn" id="7_dt1lc"]
+
+[sub_resource type="Environment" id="Environment_dt1lc"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+glow_bloom = 0.1
+glow_hdr_threshold = 0.89
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 71.45
+fog_light_color = Color(0.76088196, 0.43831852, 0.51650727, 1)
+fog_light_energy = 5.25
+fog_sun_scatter = 0.32
+fog_density = 0.6241
+adjustment_enabled = true
+adjustment_brightness = 0.85
+adjustment_contrast = 1.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1273, 947)
@@ -23,7 +39,14 @@ fill_to = Vector2(0.5014245, 0)
 [node name="StartRoom" type="Node2D"]
 script = ExtResource("1_hw4n5")
 door_scene = ExtResource("2_ge5ui")
+terrain_type = 0
 metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dt1lc")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="RoomArea" type="Area2D" parent="."]
 collision_mask = 3
