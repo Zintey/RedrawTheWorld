@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bxntwdm6qndd3"]
+[gd_scene load_steps=13 format=4 uid="uid://bxntwdm6qndd3"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_hw4n5"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_ge5ui"]
