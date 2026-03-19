@@ -5,7 +5,9 @@ class_name InventoryComponent
 @export var all_runes : Array[RuneData] = []
 @export var skill_count : int = 10
 @export var all_skills : Array[SkillData] = []
-@export var equipped_skill_count : int = 3
+
+# 【核心修改】：将技能栏容量固定为 8
+@export var equipped_skill_count : int = 8 
 @export var equipped_skills : Array[SkillData] = []
 
 signal data_changed()
@@ -19,9 +21,7 @@ func load_data():
 	if data.has("equipped_skills"):
 		equipped_skills = data["equipped_skills"]
 
-
 func save_data():
-	
 	var data : Dictionary = {
 		"all_runes" : all_runes.duplicate_deep(),
 		"all_skills" : all_skills.duplicate_deep(),
@@ -34,10 +34,24 @@ func _ready() -> void:
 	all_skills.resize(skill_count)
 	equipped_skills.resize(equipped_skill_count)
 	load_data()
+	
+	for i in range(equipped_skill_count):
+		if equipped_skills[i] == null:
+			equipped_skills[i] = SkillData.new()
 
-func _exit_tree() -> void:
-	save_data()
+	# 【新增】：监听快捷装卸事件
+	if not EventBus.rune_quick_unequip_requested.is_connected(_on_rune_quick_unequip_requested):
+		EventBus.rune_quick_unequip_requested.connect(_on_rune_quick_unequip_requested)
+	if not EventBus.rune_auto_equipped.is_connected(_on_rune_auto_equipped):
+		EventBus.rune_auto_equipped.connect(_on_rune_auto_equipped)
 
+# 【新增】：将卸下的符文塞回仓库
+func _on_rune_quick_unequip_requested(rune_data: RuneData) -> void:
+	add_rune(rune_data)
+
+# 【新增】：自动装配成功后，将其从仓库彻底扣除
+func _on_rune_auto_equipped(rune_data: RuneData) -> void:
+	remove_rune(rune_data)
 
 func add_rune(rune_data : RuneData) -> bool:
 	for i in all_runes.size():
@@ -76,7 +90,6 @@ func add_skills(skill_list : Array[SkillData]) -> bool:
 		flag = flag and add_skill(skill)
 	return flag
 
-
 func remove_skill(skill_data : SkillData) -> bool:
 	if skill_data in all_skills:
 		all_skills.erase(skill_data)
@@ -101,16 +114,3 @@ func unequip_skill(skill_data : SkillData) -> bool:
 		data_changed.emit()
 		return true
 	return false
-
-
-#func show_inventory_ui() -> void:
-	#var ui_canvase
-	#if get_tree().get_nodes_in_group("UICanvas") != []:
-		#ui_canvase = get_tree().get_nodes_in_group("UICanvas")[0] as CanvasLayer
-	#else:
-		#printerr("没有找到UICanvas分组的节点，无法添加符文拖拽项")
-		#return
-	#var inventory_ui_scene = preload("res://UI/Inventory/inventory_ui.tscn")
-	#var inventory_ui = inventory_ui_scene.instantiate()
-	#ui_canvase.add_child(inventory_ui)
-	#

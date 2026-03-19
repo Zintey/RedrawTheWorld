@@ -3,7 +3,7 @@ extends PanelContainer
 
 signal slot_clicked(slot_node: MiniSkillSlotUI)
 
-@export var default_empty_icon: Texture2D # 在编辑器里把你的“空技能”底图拖给它
+@export var default_empty_icon: Texture2D = preload("res://Assets/UI/health_item.png")
 @export var skill_data: SkillData
 
 @onready var skill_icon: TextureRect = $MarginContainer/Icon

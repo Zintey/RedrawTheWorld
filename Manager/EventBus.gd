@@ -15,6 +15,11 @@ signal mouse_in_skill_slot(skill_slot : SkillSlotUI)
 signal mouse_out_skill_slot()
 
 
+# --- 快捷装卸信号 ---
+signal rune_quick_unequip_requested(rune_data : RuneData)
+signal rune_auto_equip_requested(rune_data : RuneData)
+signal rune_auto_equipped(rune_data : RuneData)
+
 signal interact_request(body : Node2D)
 
 

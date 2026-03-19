@@ -10,6 +10,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 2
+mouse_behavior_recursive = 1
 theme = ExtResource("2_8y4o1")
 script = ExtResource("1_geebo")
 
@@ -26,6 +27,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 texture = ExtResource("3_acunl")
 expand_mode = 2
 
@@ -58,6 +61,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_behavior_recursive = 1
 theme = ExtResource("2_8y4o1")
 text = "rune name"
 
@@ -75,6 +79,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_behavior_recursive = 1
 theme = ExtResource("2_8y4o1")
 text = "stamina cost"
 
@@ -91,6 +96,8 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 theme = ExtResource("2_8y4o1")
 bbcode_enabled = true
 text = "rune description"

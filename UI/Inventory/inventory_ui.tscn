@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75ta34eshgfu"]
+[gd_scene load_steps=7 format=3 uid="uid://b75ta34eshgfu"]
 
 [ext_resource type="Script" uid="uid://bu0rpyqtyfm0h" path="res://UI/Inventory/InventoryUI.gd" id="1_gka8b"]
 [ext_resource type="PackedScene" uid="uid://cioefrxbxsw60" path="res://UI/Inventory/runes_inventory_ui.tscn" id="1_qpvb7"]
-[ext_resource type="PackedScene" uid="uid://ck5ntqm0ddncj" path="res://UI/Inventory/skill_list_ui.tscn" id="2_v74nj"]
 [ext_resource type="PackedScene" uid="uid://x46trdy6pepf" path="res://UI/Skill/SkillTemplate/skill_template_ui.tscn" id="4_enobt"]
+[ext_resource type="Script" uid="uid://cchfyhrp4mcuh" path="res://UI/Inventory/SkillInventory/LeftSkillPanel.gd" id="4_gifqc"]
 [ext_resource type="PackedScene" uid="uid://dbasap1tp2h6e" path="res://UI/Inventory/SkillInventory/mini_skill_slot_ui.tscn" id="5_b8an0"]
+[ext_resource type="Resource" uid="uid://cyg5svovdpl0a" path="res://Resources/SkillData/exquisite_skill_template.tres" id="5_gifqc"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -17,14 +18,17 @@ mouse_filter = 1
 script = ExtResource("1_gka8b")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(380, 250)
+custom_minimum_size = Vector2(192, 448)
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_top = 30.0
-offset_right = 350.0
-offset_bottom = -32.475006
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -224.0
+offset_bottom = 224.0
+grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 
@@ -43,79 +47,13 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 color = Color(0, 0, 0, 0.85)
 
-[node name="EquippedSkillListUI" parent="PanelContainer" instance=ExtResource("2_v74nj")]
-unique_name_in_owner = true
-layout_mode = 2
-list_name = "已装备的技能"
-
-[node name="PanelContainer2" type="PanelContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(350, 250)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -250.0
-offset_right = 350.0
-grow_vertical = 0
-mouse_filter = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
-layout_mode = 2
-mouse_filter = 2
-mouse_behavior_recursive = 1
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ColorRect" type="ColorRect" parent="PanelContainer2/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-mouse_behavior_recursive = 1
-color = Color(0, 0, 0, 0.85)
-
-[node name="ALLSkillListUI" parent="PanelContainer2" instance=ExtResource("2_v74nj")]
-unique_name_in_owner = true
-layout_mode = 2
-list_name = "技能仓库"
-
-[node name="PanelContainer3" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(192, 448)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -224.0
-offset_bottom = 224.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer3"]
-layout_mode = 2
-mouse_filter = 2
-mouse_behavior_recursive = 1
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ColorRect" type="ColorRect" parent="PanelContainer3/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-mouse_behavior_recursive = 1
-color = Color(0, 0, 0, 0.85)
-
-[node name="RunesInventoryUI" parent="PanelContainer3" instance=ExtResource("1_qpvb7")]
+[node name="RunesInventoryUI" parent="PanelContainer" instance=ExtResource("1_qpvb7")]
 unique_name_in_owner = true
 layout_mode = 2
 inventory_name = "符文仓库"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="LeftSkillPanel" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -124,36 +62,39 @@ offset_top = -140.0
 offset_right = 212.0
 offset_bottom = 140.0
 grow_vertical = 2
+script = ExtResource("4_gifqc")
 
-[node name="SkillTemplateUI" parent="VBoxContainer" instance=ExtResource("4_enobt")]
+[node name="SkillTemplateUI" parent="LeftSkillPanel" instance=ExtResource("4_enobt")]
 unique_name_in_owner = true
 layout_mode = 2
+skill_data = ExtResource("5_gifqc")
 
-[node name="SkillGridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="SkillGridContainer" type="GridContainer" parent="LeftSkillPanel"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 4
 
-[node name="MiniSkillSlotUi1" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi1" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi2" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi2" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi3" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi3" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi4" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi4" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi5" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi5" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi6" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi6" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi7" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi7" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi8" parent="VBoxContainer/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi8" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2

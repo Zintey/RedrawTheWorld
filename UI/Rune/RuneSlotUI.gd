@@ -22,6 +22,10 @@ signal rune_data_changed(rune_data : RuneData, slot_id : int)
 # 获取高光边框 (如果你场景里没加这个，可以注释掉高光相关的代码)
 @onready var highlight_border: Panel = $MarginContainer/HighlightBorder
 
+# 【新增】：手搓双击的时间变量
+var last_click_time: float = 0.0
+const DOUBLE_CLICK_TIME: float = 0.3 # 0.3秒内连点算双击
+
 func init(_rune_data : RuneData, _slot_id : int, _slot_type : RuneData.RuneType = RuneData.RuneType.ALL) -> void:
 	rune_data = _rune_data
 	slot_id = _slot_id
@@ -34,7 +38,7 @@ func _ready() -> void:
 	if rune_data:
 		rune_icon.texture = rune_data.icon
 		
-	# 【关键修复】：强制绑定根节点的悬停信号，不再依赖 Button
+	# 强制绑定根节点的悬停信号，不再依赖 Button
 	if not mouse_entered.is_connected(_on_mouse_entered):
 		mouse_entered.connect(_on_mouse_entered)
 	if not mouse_exited.is_connected(_on_mouse_exited):
@@ -42,6 +46,31 @@ func _ready() -> void:
 	
 	EventBus.rune_drag_started.connect(_on_global_drag_started)
 	EventBus.rune_drag_ended.connect(_on_global_drag_ended)
+
+# ==================== 快捷交互：双击装配 & 右键卸下 ====================
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		
+		# 【1. 右键一键卸下】 -> 仅限左侧工作台里的符文（slot_type 不是 ALL）
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if slot_type != RuneData.RuneType.ALL and rune_data != null and rune_data.type != RuneData.RuneType.LOCKON:
+				var temp = rune_data
+				self.rune_data = null # 清空自己，引发底层数据刷新
+				UIManager.rune_brief_closed.emit()
+				EventBus.rune_quick_unequip_requested.emit(temp) # 叫大管家收回仓库
+				
+		# 【2. 左键手搓双击装配】 -> 仅限右侧仓库里的符文（slot_type 是 ALL）
+		elif event.button_index == MOUSE_BUTTON_LEFT:
+			var current_time = Time.get_ticks_msec() / 1000.0
+			if current_time - last_click_time < DOUBLE_CLICK_TIME:
+				# 确认是双击！
+				last_click_time = 0.0 
+				if slot_type == RuneData.RuneType.ALL and rune_data != null:
+					print("【测试成功】仓库符文被双击：", rune_data.display_name)
+					EventBus.rune_auto_equip_requested.emit(rune_data)
+			else:
+				# 记录第一次点击的时间
+				last_click_time = current_time
 
 # ==================== 全局高亮逻辑 ====================
 func _on_global_drag_started(dragged_rune: RuneData, start_slot: RuneSlotUI) -> void:
@@ -104,7 +133,7 @@ func _notification(what: int) -> void:
 # ==================== 悬停显示简介 ====================
 func _on_mouse_entered() -> void:
 	if rune_data == null: return
-	# 【双保险】：强行关掉技能简介，确保符文简介独占显示
+	# 强行关掉技能简介，确保符文简介独占显示
 	UIManager.skill_brief_closed.emit() 
 	UIManager.rune_brief_requested.emit(rune_data)
 	EventBus.mouse_in_rune_slot.emit(self)
