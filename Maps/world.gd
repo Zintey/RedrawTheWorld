@@ -1,35 +1,12 @@
-# World.gd (主场景脚本示例)
-# World.gd (主场景脚本示例)
 extends Node2D
 
-@onready var map_generator: MapGenerator = $MapGenerator
-@onready var game_camera: Camera2D = $Camera2D # 确保它挂载了 GameCamera.gd
-@onready var player: Player = $Player
+@onready var map_generator: MapGenerator = %MapGenerator
+@onready var game_camera: Camera2D = %Camera2D 
+@onready var player: Player = %Player
 @onready var screen_rect: ColorRect = %ScreenRect
 @onready var minimap: MiniMap = %Minimap/MapLayer
 
-# # world.gd 中的 _ready 函数 [cite: 1]
-# func _ready():
-# 	# 1. 生成地图并赋值给小地图
-# 	var generated_map = map_generator.generate_new_map()
-# 	minimap.map = generated_map
-	
-# 	# 2. 连接信号
-# 	for room in map_generator.spawned_rooms.values():
-# 		if room is RoomBase:
-# 			# 原有的摄像机连接
-# 			room.player_entered_room.connect(func(r): 
-# 				game_camera.transition_to_room(r.boundary, r.global_position)
-# 				# 新增：更新小地图状态
-# 				minimap.update_minimap(r)
-# 			)
-			
-# 	# 3. 初始化起点 [cite: 1]
-
-	
-	
 func _ready():
-	# [cite: 23] 初始化地图
 	var generated_map = map_generator.generate_new_map()
 	minimap.map = generated_map
 	
@@ -40,36 +17,52 @@ func _ready():
 	var start_room = map_generator.spawned_rooms.get(Vector2i.ZERO)
 	if start_room:
 		game_camera.transition_to_room(start_room.boundary, start_room.global_position)
-		player.global_position = start_room.global_position
-		# 起点默认进入
+		
+		# ==========================================
+		# 【核心修复 2】：精准寻找策划配置的锚点
+		# ==========================================
+		var spawn_point = start_room.find_child("PlayerSpawnPoint", true, false)
+		if spawn_point:
+			# 如果你放了节点，就精准生在节点位置
+			player.global_position = spawn_point.global_position
+		else:
+			# 兜底：如果你忘了放，尽量居中，但容易坠落
+			push_warning("警告：StartRoom 缺少 PlayerSpawnPoint 节点！")
+			var center_x = start_room.global_position.x + (start_room.boundary.left + start_room.boundary.right) / 2.0
+			var center_y = start_room.global_position.y + (start_room.boundary.top + start_room.boundary.bottom) / 2.0
+			player.global_position = Vector2(center_x, center_y)
+			
 		minimap.update_minimap(start_room)
 	
-	
-	player.on_hit.connect(func(flag : bool) :
+	player.on_hit.connect(func(flag : bool):
 		var mat = screen_rect.material as ShaderMaterial
 		mat.set_shader_parameter("is_hit", flag)
-		)
+	)
 
 func _input(event):
 	if event.is_action_pressed("OpenMap"):
 		_toggle_map()
-		# 可以根据需要暂停游戏
-		# get_tree().paused = is_opening 
 
 func _toggle_map():
 	var is_opening = minimap.current_mode == MiniMap.Mode.MINI
 	minimap.toggle_map_mode(is_opening)
 
 func _on_room_entered(room: RoomBase):
-	# 摄像机过渡 
 	game_camera.transition_to_room(room.boundary, room.global_position)
-	# 小地图平滑更新
 	minimap.update_minimap(room)
 
 func _on_teleport(grid_pos: Vector2i):
 	var target = map_generator.spawned_rooms[grid_pos]
 	
-	player.global_position = target.global_position
+	# 传送也一样找安全锚点
+	var spawn_point = target.find_child("PlayerSpawnPoint", true, false)
+	if spawn_point:
+		player.global_position = spawn_point.global_position
+	else:
+		var center_x = target.global_position.x + (target.boundary.left + target.boundary.right) / 2.0
+		var center_y = target.global_position.y + (target.boundary.top + target.boundary.bottom) / 2.0
+		player.global_position = Vector2(center_x, center_y)
+	
 	player.state_machine.switch_to("teleport")
 	
 	_on_room_entered(target)

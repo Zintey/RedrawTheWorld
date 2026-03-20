@@ -1,216 +1,155 @@
 extends RefCounted
 class_name Map
 
-var room_types : Dictionary = {} # 记录索引到类型的映射 { index: "attack" }
+const DIR_OFFSETS = {
+	"U": Vector2i(0, -1), "D": Vector2i(0, 1),
+	"L": Vector2i(-1, 0), "R": Vector2i(1, 0)
+}
+const OPPOSITE_DIR = { "U": "D", "D": "U", "L": "R", "R": "L" }
 
-const mx : Array[int] = [0, 0, -1, 1]
-const my : Array[int] = [-1, 1, 0, 0]
+class RoomData:
+	var id: int
+	var grid_pos: Vector2i       
+	var grid_size: Vector2i      
+	var type: String = "normal"
+	var depth: int = 0           
+	var required_doors: Array = [] 
 
-class Edge:
-    var v : int
-    var next : int
+var rooms: Array[RoomData] = []
+var grid_map: Dictionary = {} 
 
-var head : Array[int] = []
-var edges : Array[Edge] = []
-var points : Array[Vector2i] = []
-var point_map : Dictionary = {}
+var min_rooms: int = 10
+var max_rooms: int = 15
+var min_critical_path: int = 5
 
-var target_room_cnt : int = 0
-var target_leaf_cnt : int = 0
+# 【新增】：动态形状池，不再写死
+var available_shapes: Array[Vector2i] = [Vector2i(1, 1)] 
 
-func generate_map(config : Dictionary) -> Map:
-    # 1. 必须调用 randomize()，确保每次运行种子不同
-    randomize() 
-    
-    _reset()
-    room_types.clear()
-    target_room_cnt = config.get("room_cnt", 20)
-    target_leaf_cnt = config.get("leaf_cnt", 5)
-    
-    # 边界检查
-    if target_room_cnt < 1: target_room_cnt = 1
-    target_leaf_cnt = clamp(target_leaf_cnt, 1, target_room_cnt)
-    
-    _generate_core()
-    return self
+func generate_map(config: Dictionary) -> Map:
+	randomize()
+	min_rooms = config.get("min_rooms", 10)
+	max_rooms = config.get("max_rooms", 15)
+	min_critical_path = config.get("min_critical_path", 5)
+	
+	# 【新增】：接收来自 Generator 扫描好的动态形状池
+	available_shapes = config.get("available_shapes", [Vector2i(1, 1)])
+	
+	var attempts = 0
+	var max_attempts = 100 
+	
+	while attempts < max_attempts:
+		if _try_generate_blueprint():
+			if _assign_special_rooms(config.get("leaf_room_allocation", {}), config.get("normal_room_prefix", "normal")):
+				print("地图蓝图生成成功！尝试次数: ", attempts + 1, " 总房间数: ", rooms.size(), " 支持的形状: ", available_shapes)
+				return self
+		attempts += 1
+		
+	push_error("生成失败！超过最大重试次数，请检查约束配置是否过于苛刻。")
+	return self
 
-func _reset():
-    edges.clear()
-    points.clear()
-    point_map.clear()
-    head.clear()
+func _try_generate_blueprint() -> bool:
+	rooms.clear()
+	grid_map.clear()
+	
+	var start_room = _create_room(Vector2i.ZERO, Vector2i(1, 1), 0)
+	start_room.type = "start" 
+	
+	var open_edges = _get_room_perimeters(start_room)
+	
+	while rooms.size() < max_rooms and not open_edges.is_empty():
+		var edge_idx = randi() % open_edges.size()
+		var edge = open_edges[edge_idx]
+		open_edges.remove_at(edge_idx)
+		
+		var target_grid = edge.grid_pos + DIR_OFFSETS[edge.dir]
+		if grid_map.has(target_grid): continue 
+		
+		# 【修改】：从动态形状池里随机抽取尺寸
+		var shape = available_shapes.pick_random()
+		var local_align = Vector2i(randi() % shape.x, randi() % shape.y)
+		var new_room_origin = target_grid - local_align
+		
+		if _can_place_room(new_room_origin, shape):
+			var new_depth = rooms[edge.room_id].depth + 1
+			var new_room = _create_room(new_room_origin, shape, new_depth)
+			
+			rooms[edge.room_id].required_doors.append({
+				"local_pos": edge.local_pos,
+				"dir": edge.dir
+			})
+			new_room.required_doors.append({
+				"local_pos": local_align,
+				"dir": OPPOSITE_DIR[edge.dir]
+			})
+			
+			open_edges.append_array(_get_room_perimeters(new_room))
+			
+	if rooms.size() < min_rooms: return false
+	
+	var max_depth = 0
+	for r in rooms: max_depth = max(max_depth, r.depth)
+	if max_depth < min_critical_path: return false
+	
+	return true
 
-func _generate_core():
-    # --- 修改点：只固定原点，不固定第二个点 ---
-    var p1 = Vector2i(0, 0)
-    _add_point(p1)
-    
-    var leaves = [0]
-    var internals = []
-    var current_count = 1 # 当前已有 1 个房间
-    
-    while current_count < target_room_cnt:
-        var parent_idx : int = -1
-        var can_increase_leaf = leaves.size() < target_leaf_cnt
-        var candidates = []
-        
-        # 筛选逻辑
-        if can_increase_leaf:
-            candidates = _filter_has_space(internals)
-            if candidates.is_empty(): 
-                candidates = _filter_has_space(leaves)
-        else:
-            candidates = _filter_has_space(leaves)
-        
-        if candidates.is_empty():
-            if current_count < target_room_cnt:
-                printerr("Map generation: Space exhausted at count ", current_count)
-            break
-            
-        # 随机挑选一个父节点
-        parent_idx = candidates.pick_random()
-        
-        # 获取可用位置（内部已 shuffle）
-        var pos_list = _get_available_positions(points[parent_idx])
-        
-        # 从可用位置中随机选一个
-        var new_pos = pos_list.pick_random()
-        
-        # 添加新点和边
-        var new_idx = _add_point(new_pos)
-        _add_bidirectional_edge(parent_idx, new_idx)
-        current_count += 1
-        
-        # 更新节点状态（叶子节点 vs 内部节点）
-        _update_node_status(parent_idx, new_idx, leaves, internals)
+func _can_place_room(origin: Vector2i, size: Vector2i) -> bool:
+	for x in range(size.x):
+		for y in range(size.y):
+			if grid_map.has(origin + Vector2i(x, y)):
+				return false
+	return true
 
-# --- 核心随机探测函数 ---
-func _get_available_positions(u_pos: Vector2i) -> Array[Vector2i]:
-    var list : Array[Vector2i] = []
-    var index_order = Array(range(4))
-    index_order.shuffle() # 关键：随机化探测方向顺序
-    
-    for i in index_order:
-        var p = u_pos + Vector2i(mx[i], my[i])
-        if not point_map.has(p): 
-            list.append(p)
-    return list
+func _create_room(origin: Vector2i, size: Vector2i, depth: int) -> RoomData:
+	var room = RoomData.new()
+	room.id = rooms.size()
+	room.grid_pos = origin
+	room.grid_size = size
+	room.depth = depth
+	
+	for x in range(size.x):
+		for y in range(size.y):
+			grid_map[origin + Vector2i(x, y)] = room.id
+			
+	rooms.append(room)
+	return room
 
-func get_neighbors(u_idx: int) -> Array:
-    var neighbors = []
-    var u_pos = points[u_idx]
-    var i = head[u_idx]
-    while i != -1:
-        var v_idx = edges[i].v
-        var v_pos = points[v_idx]
-        var diff = v_pos - u_pos 
-        neighbors.append([v_idx, diff])
-        i = edges[i].next
-    return neighbors
+func _get_room_perimeters(room: RoomData) -> Array:
+	var edges = []
+	for x in range(room.grid_size.x):
+		for y in range(room.grid_size.y):
+			var local_p = Vector2i(x, y)
+			var abs_p = room.grid_pos + local_p
+			for dir in DIR_OFFSETS:
+				var neighbor_abs = abs_p + DIR_OFFSETS[dir]
+				if not grid_map.has(neighbor_abs): 
+					edges.append({
+						"room_id": room.id,
+						"grid_pos": abs_p,
+						"local_pos": local_p,
+						"dir": dir
+					})
+	return edges
 
-func get_direction_string(u_idx: int) -> String:
-    var dirs = ""
-    var u_pos = points[u_idx]
-    var i = head[u_idx]
-    while i != -1:
-        var v_pos = points[edges[i].v]
-        var diff = v_pos - u_pos
-        if diff == Vector2i(0, -1): dirs += "U"
-        elif diff == Vector2i(0, 1): dirs += "D"
-        elif diff == Vector2i(-1, 0): dirs += "L"
-        elif diff == Vector2i(1, 0): dirs += "R"
-        i = edges[i].next
-    return dirs
-
-func assign_room_logic_types(leaf_config: Dictionary, normal_prefix: String):
-    var all_indices = range(points.size())
-    var leaf_indices = []
-    
-    for i in all_indices:
-        if i == 0: 
-            room_types[i] = "start"
-            continue
-        if _get_conn_count(i) == 1:
-            leaf_indices.append(i)
-        else:
-            room_types[i] = normal_prefix
-
-    # --- 修复 1：改为 > 实现降序，让最远的排在前面 ---
-    leaf_indices.sort_custom(func(a, b): 
-        return points[a].length_squared() > points[b].length_squared()
-    )
-
-    var current_leaf_pool = leaf_indices.duplicate()
-    for type_key in leaf_config.keys():
-        var count = leaf_config[type_key]
-        for n in range(count):
-            if current_leaf_pool.is_empty(): break
-            var idx = current_leaf_pool.pop_front()
-            room_types[idx] = type_key
-
-    # --- 修复 2：剩余的叶子节点统一设为普通房间，防止 Boss 重复 ---
-    for idx in current_leaf_pool:
-        room_types[idx] = normal_prefix
-
-func _update_node_status(p_idx: int, n_idx: int, leaves: Array, internals: Array):
-    if not n_idx in leaves:
-        leaves.append(n_idx)
-    
-    var p_conn = _get_conn_count(p_idx)
-    # 如果父节点连接数 > 1，它就不再是叶子节点
-    if p_conn > 1:
-        if p_idx in leaves:
-            leaves.erase(p_idx)
-        if not p_idx in internals:
-            internals.append(p_idx)
-
-func _filter_has_space(node_indices: Array) -> Array:
-    var result = []
-    for idx in node_indices:
-        if not _get_available_positions(points[idx]).is_empty():
-            result.append(idx)
-    return result
-
-func _get_conn_count(idx: int) -> int:
-    var count = 0
-    var curr = head[idx]
-    while curr != -1:
-        count += 1
-        curr = edges[curr].next
-    return count
-
-func _add_bidirectional_edge(u: int, v: int):
-    _add_edge(u, v)
-    _add_edge(v, u)
-
-func _add_point(pos: Vector2i) -> int:
-    if point_map.has(pos): return point_map[pos]
-    var idx = points.size()
-    points.append(pos)
-    point_map[pos] = idx
-    head.append(-1)
-    return idx
-
-func _add_edge(u: int, v: int):
-    var e = Edge.new()
-    e.v = v
-    e.next = head[u]
-    edges.append(e)
-    head[u] = edges.size() - 1
-
-func iter_map(callback: Callable):
-    if points.is_empty(): return
-    var visited = []
-    visited.resize(points.size())
-    visited.fill(false)
-    _dfs(0, callback, visited)
-
-func _dfs(u: int, callback: Callable, visited: Array):
-    visited[u] = true
-    var i = head[u]
-    while i != -1:
-        var v = edges[i].v
-        if not visited[v]:
-            callback.call(u, v)
-            _dfs(v, callback, visited)
-        i = edges[i].next
+func _assign_special_rooms(leaf_config: Dictionary, normal_prefix: String) -> bool:
+	var leaf_candidates = []
+	for r in rooms:
+		if r.id == 0: continue
+		if r.required_doors.size() == 1: 
+			leaf_candidates.append(r)
+		else:
+			r.type = normal_prefix
+			
+	leaf_candidates.sort_custom(func(a, b): return a.depth > b.depth)
+	
+	var current_leaf_pool = leaf_candidates.duplicate()
+	for type_key in leaf_config.keys():
+		var count = leaf_config[type_key]
+		for n in range(count):
+			if current_leaf_pool.is_empty(): break
+			var r = current_leaf_pool.pop_front()
+			r.type = type_key
+			
+	for r in current_leaf_pool:
+		r.type = normal_prefix
+		
+	return true

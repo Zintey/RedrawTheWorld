@@ -1,165 +1,122 @@
 extends Node2D
 class_name MapGenerator
 
-@export var room_container : Node2D
-@export var map_config : Dictionary = {
-	"room_cnt" : 15,
-	"leaf_cnt" : 7,
-}
-@export_dir var map_prefab_dir_path : String
-@export var normal_room_prefix : String = "Normal" # 普通房间的前缀
-@export var leaf_room_allocation : Dictionary = {
-	"Boss": 1,
-	"Treasure": 1,
-	"Shop": 1
-}
+@export_group("Grid Config")
+@export var base_unit_tiles: Vector2i = Vector2i(20, 15) 
+@export var tile_size: Vector2i = Vector2i(64, 64)      
 
+@export_group("Spawning Config")
+@export var room_container: Node2D
+@export var map_prefab_dir: String
+@export var map_config: Dictionary = {"min_rooms": 10, "max_rooms": 15, "min_critical_path": 5}
+@export var normal_room_prefix: String = "normal"
+@export var leaf_room_allocation: Dictionary = {"boss": 1, "shop": 1, "treasure": 1}
 
-var map_prefabs : Dictionary = {} 
-var map: Map
-var spawned_rooms : Dictionary = {} # 记录已生成的房间实例 { grid_pos: room_instance }
+var prefab_metadata: Dictionary = {}
+var spawned_rooms: Dictionary = {}   
 
 func _ready():
-	_load_map_prefabs()
-	# generate_new_map() # 暂时注释掉，建议手动触发或在主场景调用
+	_cache_all_prefabs()
+
+func _cache_all_prefabs():
+	var dir = DirAccess.open(map_prefab_dir)
+	if not dir:
+		push_error("MapGenerator: 路径无效 " + map_prefab_dir)
+		return
+		
+	for file in dir.get_files():
+		if file.ends_with(".tscn") or file.ends_with(".scn"):
+			var type_key = file.get_basename().split("_")[0].to_lower()
+			var scene = load(map_prefab_dir.path_join(file))
+			var inst = scene.instantiate()
+			
+			if inst is RoomBase:
+				var doors = inst.get_available_doors()
+				
+				if not prefab_metadata.has(type_key): prefab_metadata[type_key] = []
+				prefab_metadata[type_key].append({
+					"scene": scene,
+					"size": inst.grid_size,
+					"doors": doors,
+					"name": file
+				})
+			inst.free()
 
 func generate_new_map() -> Map:
-	map = Map.new().generate_map(map_config)
-	map.assign_room_logic_types(leaf_room_allocation, normal_room_prefix)
+	var clean_alloc = {}
+	for k in leaf_room_allocation.keys(): clean_alloc[k.to_lower()] = leaf_room_allocation[k]
+	var clean_normal = normal_room_prefix.to_lower()
 	
-	if room_container:
-		for child in room_container.get_children():
-			child.queue_free()
+	# ===============================================
+	# 【核心新增】：自动收集所有 Normal 房间的支持尺寸！
+	# ===============================================
+	var auto_shapes: Array[Vector2i] = []
+	if prefab_metadata.has(clean_normal):
+		for meta in prefab_metadata[clean_normal]:
+			if not auto_shapes.has(meta.size):
+				auto_shapes.append(meta.size)
+				
+	# 兜底：如果你的文件夹里刚好一个 normal 预制体都没有，强行给个 1x1
+	if auto_shapes.is_empty():
+		auto_shapes.append(Vector2i(1, 1))
+		push_warning("警告：文件夹中没有找到任何 normal 前缀的房间，默认只生成 1x1！")
+	
+	var final_cfg = map_config.duplicate()
+	final_cfg["leaf_room_allocation"] = clean_alloc
+	final_cfg["normal_room_prefix"] = clean_normal
+	# 将提取出的尺寸发送给蓝图
+	final_cfg["available_shapes"] = auto_shapes 
+	
+	var map = Map.new().generate_map(final_cfg)
+	
+	for c in room_container.get_children(): c.queue_free()
 	spawned_rooms.clear()
-	_spawn_rooms()
+	
+	for r_data in map.rooms:
+		var inst = _match_and_instantiate(r_data)
+		if inst:
+			room_container.add_child(inst)
+			
+			var px = r_data.grid_pos.x * base_unit_tiles.x * tile_size.x
+			var py = r_data.grid_pos.y * base_unit_tiles.y * tile_size.y
+			inst.global_position = Vector2(px, py)
+			inst.grid_pos = r_data.grid_pos
+			spawned_rooms[r_data.grid_pos] = inst
+			
+			if inst.has_method("setup_doors_by_slots"):
+				inst.setup_doors_by_slots(r_data.required_doors)
 	return map
 
-# --- 核心：基于边界衔接的生成逻辑 ---
-func _spawn_rooms():
-	if not room_container or map.points.is_empty(): return
-	print("--- 开始无缝生成地图 ---")
+func _match_and_instantiate(data: Map.RoomData) -> RoomBase:
+	var target_type = data.type.to_lower()
+	var pool = prefab_metadata.get(target_type, prefab_metadata.get(normal_room_prefix.to_lower(), []))
 	
-	var queue : Array[Vector2i] = []
+	var valid_candidates = []
+	for meta in pool:
+		if meta.size != data.grid_size: continue
+		var is_ok = true
+		for req in data.required_doors:
+			if not meta.doors.any(func(d): return d.l_pos == req.local_pos and d.dir == req.dir):
+				is_ok = false
+				break
+		if is_ok: valid_candidates.append(meta)
 	
-	# 1. 生成起点房间
-	var start_pos = map.points[0]
-	# 【修复】：先实例化房间但不开门
-	var start_room = _instantiate_room_no_doors(0)
-	start_room.grid_pos = start_pos
-	
-	if not start_room: 
-		push_error("起点房间生成失败！")
-		return
-		
-	start_room.global_position = Vector2.ZERO
-	spawned_rooms[start_pos] = start_room
-	queue.append(start_pos)
-	
-	# 2. 广度优先遍历并放置
-	var head = 0
-	while head < queue.size():
-		var current_grid_pos = queue[head]
-		head += 1
-		
-		var current_room_inst = spawned_rooms[current_grid_pos]
-		var current_idx = map.points.find(current_grid_pos)
-		
-		var neighbors = map.get_neighbors(current_idx) 
-		
-		
-		for neighbor_info in neighbors:
-			var neighbor_idx = neighbor_info[0]
-			var dir_vec: Vector2i = neighbor_info[1]
-			var neighbor_grid_pos = map.points[neighbor_idx]
-			
-			if spawned_rooms.has(neighbor_grid_pos): continue
-			
-			# 【修复】：先实例化但不开门，等位置确定后再开门
-			var neighbor_room_inst = _instantiate_room_no_doors(neighbor_idx)
-			neighbor_room_inst.grid_pos = neighbor_grid_pos
-			if not neighbor_room_inst: continue
-			
-			# --- 计算无缝衔接位置 ---
-			var new_position = current_room_inst.global_position
-			
-			match dir_vec:
-				Vector2i.RIGHT: # (1, 0) 向右接
-					new_position.x += current_room_inst.boundary.right - neighbor_room_inst.boundary.left
-				Vector2i.LEFT: # (-1, 0) 向左接
-					new_position.x += current_room_inst.boundary.left - neighbor_room_inst.boundary.right
-				Vector2i.DOWN: # (0, 1) 向下接
-					new_position.y += current_room_inst.boundary.bottom - neighbor_room_inst.boundary.top
-				Vector2i.UP: # (0, -1) 向上接
-					new_position.y += current_room_inst.boundary.top - neighbor_room_inst.boundary.bottom
-			
-			neighbor_room_inst.global_position = new_position
-			
-			spawned_rooms[neighbor_grid_pos] = neighbor_room_inst
-			queue.append(neighbor_grid_pos)
-			print("放置房间 %s 在 %s, 衔接方向 %s" % [neighbor_room_inst.name, new_position, dir_vec])
-	
-	# 【修复】：所有房间位置确定后，统一开门
-	# 这样保证 setup_doors 时房间的 global_position 已经正确
-	for grid_pos in spawned_rooms:
-		var room_inst = spawned_rooms[grid_pos]
-		var idx = map.points.find(grid_pos)
-		var dirs = map.get_direction_string(idx)
-		if room_inst.has_method("setup_doors"):
-			room_inst.setup_doors(dirs)
-
-# 实例化单个房间但不开门（只计算边界用于拼接）
-func _instantiate_room_no_doors(index: int) -> RoomBase:
-	var type_key = map.room_types.get(index, normal_room_prefix)
-	
-	var pool = map_prefabs.get(type_key, [])
-	if pool.is_empty():
-		push_error("找不到类型前缀为 %s 的预制体！" % type_key)
-		pool = map_prefabs.get(normal_room_prefix, [])
-	
-	if pool.is_empty():
-		push_error("普通房间预制体也找不到，请检查路径配置！")
+	if valid_candidates.is_empty():
+		_print_deadlock_diag(data, pool)
 		return null
-	
-	var scene = pool.pick_random()
-	var room_inst = scene.instantiate() as RoomBase
-	
-	# 【修改点】：在加入节点树之前分配房间类型
-	room_inst.name = "Room_%d_%s" % [index, type_key]
-	room_inst.room_type = type_key 
-	
-	room_container.add_child(room_inst)
-	room_inst.calculate_boundary() # 计算边界用于拼接，此时 position 为零点
-	
-	return room_inst
+		
+	var chosen = valid_candidates.pick_random()
+	var inst = chosen.scene.instantiate() as RoomBase
+	inst.room_type = target_type
+	inst.grid_size = data.grid_size
+	return inst
 
-# --- 资源处理内部函数 ---
-
-func _load_map_prefabs():
-	var dir = DirAccess.open(map_prefab_dir_path)
-	if not dir:
-		push_error("路径错误: " + map_prefab_dir_path)
-		return
-
-	for file_name in dir.get_files():
-		if file_name.ends_with(".tscn") or file_name.ends_with(".scn"):
-			var key = file_name.get_basename().split("_")[0] 
-			
-			var scene = load(map_prefab_dir_path.path_join(file_name))
-			if scene:
-				if not map_prefabs.has(key): map_prefabs[key] = []
-				map_prefabs[key].append(scene)
-				print("加载预制体成功: [%s] -> %s" % [key, file_name])
-
-func _get_random_room_scene(dirs: String) -> PackedScene:
-	var key = _get_normalized_key(dirs)
-	if map_prefabs.has(key):
-		return map_prefabs[key].pick_random()
-	return null
-
-func _get_normalized_key(input_str: String) -> String:
-	var chars = []
-	for i in range(input_str.length()): chars.append(input_str[i])
-	chars.sort()
-	var result = ""
-	for c in chars: result += c
-	return result
+func _print_deadlock_diag(data, pool):
+	push_error("死锁警告: 坐标 %s 匹配失败！尺寸: %s, 类型: %s" % [data.grid_pos, data.grid_size, data.type])
+	var req_str = ""
+	for d in data.required_doors: req_str += "[%s格 开%s] " % [d.local_pos, d.dir]
+	print("  -> 需求: ", req_str)
+	for m in pool:
+		var p_str = ""
+		for d in m.doors: p_str += "[%s格 开%s] " % [d.l_pos, d.dir]
+		print("     - %s (尺寸%s): %s" % [m.name, m.size, p_str])

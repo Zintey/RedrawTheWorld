@@ -43,7 +43,7 @@ script = ExtResource("1_jlatx")
 
 [node name="Player" parent="." instance=ExtResource("2_qacqj")]
 unique_name_in_owner = true
-position = Vector2(-288, 241)
+position = Vector2(663, 494)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
 unique_name_in_owner = true
@@ -85,18 +85,16 @@ mouse_behavior_recursive = 1
 [node name="RoomContainer" type="Node2D" parent="."]
 
 [node name="StartRoom" parent="RoomContainer" instance=ExtResource("5_g6xbe")]
-position = Vector2(434, 0)
 
 [node name="MapGenerator" type="Node2D" parent="." node_paths=PackedStringArray("room_container")]
 unique_name_in_owner = true
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
+map_prefab_dir = "res://Maps/Level1/Prefabs"
 map_config = {
-"leaf_cnt": 4,
-"room_cnt": 10
+"leaf_cnt": 3,
+"room_cnt": 5
 }
-map_prefab_dir_path = "res://Maps/Level_city/Prefabs"
-normal_room_prefix = "normal"
 leaf_room_allocation = {
 "boss": 1
 }
