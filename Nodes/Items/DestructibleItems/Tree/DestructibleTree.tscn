@@ -1,0 +1,422 @@
+[gd_scene load_steps=21 format=3 uid="uid://c8g6kdmgl1e20"]
+
+[ext_resource type="Texture2D" uid="uid://b3d1sfi212erc" path="res://Assets/Map/Level_city/city_tree.png" id="1_dvqvd"]
+[ext_resource type="Script" uid="uid://ckji1f6qllmsn" path="res://Nodes/Items/DestructibleItems/DestructibleProp.gd" id="1_fsmpy"]
+[ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_28khy"]
+[ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="3_73srk"]
+[ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="4_ww3aq"]
+[ext_resource type="Script" uid="uid://ce8a4edpo0g1v" path="res://Nodes/Items/DestructibleItems/PropIdleState.gd" id="6_psrmw"]
+[ext_resource type="Script" uid="uid://d23r6jn25rjm5" path="res://Nodes/Items/DestructibleItems/PropHitState.gd" id="7_6yp7i"]
+[ext_resource type="Script" uid="uid://devsuw2a2qxol" path="res://Nodes/Items/DestructibleItems/PropDieState.gd" id="8_mc7e4"]
+
+[sub_resource type="Animation" id="Animation_2865g"]
+resource_name = "idle"
+length = 0.03333667
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/TreeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/TreeSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D:sleeping")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/TreeSprite/GPUParticles2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D:freeze")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jm278"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/TreeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/TreeSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D:sleeping")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/TreeSprite/GPUParticles2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/TreeSprite/GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RigidBody2D:freeze")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sc1j2"]
+resource_name = "hit"
+length = 0.3
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/TreeSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.0000001, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/TreeSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.039190836, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D:sleeping")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/TreeSprite/GPUParticles2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/TreeSprite/GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.095352866),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_biimg"]
+resource_name = "die"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D:sleeping")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D:freeze")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sc1j2"]
+_data = {
+&"RESET": SubResource("Animation_jm278"),
+&"die": SubResource("Animation_biimg"),
+&"hit": SubResource("Animation_sc1j2"),
+&"idle": SubResource("Animation_2865g")
+}
+
+[sub_resource type="Shader" id="Shader_jm278"]
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2865g"]
+shader = SubResource("Shader_jm278")
+shader_parameter/speed = 0.3
+shader_parameter/minStrength = 0.010000000475
+shader_parameter/maxStrength = 0.030000001425
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="Gradient" id="Gradient_6sb3s"]
+colors = PackedColorArray(0.24, 0.24, 0.24, 1, 0.34, 0.34, 0.34, 0.09803922)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mm202"]
+gradient = SubResource("Gradient_6sb3s")
+
+[sub_resource type="Curve" id="Curve_c18kk"]
+_limits = [0.0, 1.0, 0.0, 3.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.40116996), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jm278"]
+width = 500
+curve = SubResource("Curve_c18kk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6sb3s"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+angle_min = 29.400011
+angle_max = 65.80001
+spread = 150.0
+initial_velocity_min = 60.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 20, 0)
+damping_min = 250.00002
+damping_max = 400.00003
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_jm278")
+color_ramp = SubResource("GradientTexture1D_mm202")
+
+[node name="DestructibleTree" type="Node2D"]
+script = ExtResource("1_fsmpy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_sc1j2")
+}
+autoplay = "idle"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 34
+mass = 1000.0
+gravity_scale = 0.1
+sleeping = true
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(-2, 23, 8, 17, 8, 1, 0, -23, -8, 1, -8, 17)
+
+[node name="TreeSprite" type="Sprite2D" parent="RigidBody2D"]
+material = SubResource("ShaderMaterial_2865g")
+texture = ExtResource("1_dvqvd")
+region_enabled = true
+region_rect = Rect2(143, 0, 24, 54)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="RigidBody2D/TreeSprite"]
+visible = false
+position = Vector2(1, -3)
+rotation = 1.1236612
+emitting = false
+amount = 10
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6sb3s")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 29)
+texture = ExtResource("1_dvqvd")
+region_enabled = true
+region_rect = Rect2(138, 54, 35, 10)
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
+collision_layer = 18
+collision_mask = 12
+script = ExtResource("2_28khy")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
+polygon = PackedVector2Array(-5, 22, 6, 22, 8, 1, 0, -23, -8, 1)
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_73srk")
+max_hp = 3
+metadata/_custom_type_script = "uid://b7cpenmly2med"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent")]
+unique_name_in_owner = true
+script = ExtResource("4_ww3aq")
+agent = NodePath("..")
+metadata/_custom_type_script = "uid://cl2vbjlgrwysh"
+
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("prop")]
+script = ExtResource("6_psrmw")
+prop = NodePath("../..")
+metadata/_custom_type_script = "uid://ce8a4edpo0g1v"
+
+[node name="hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("prop")]
+script = ExtResource("7_6yp7i")
+prop = NodePath("../..")
+metadata/_custom_type_script = "uid://d23r6jn25rjm5"
+
+[node name="die" type="Node" parent="StateMachine" node_paths=PackedStringArray("prop")]
+script = ExtResource("8_mc7e4")
+prop = NodePath("../..")
+metadata/_custom_type_script = "uid://devsuw2a2qxol"
