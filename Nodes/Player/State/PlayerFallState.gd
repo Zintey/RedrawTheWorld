@@ -22,7 +22,7 @@ func take_physics_process(delta: float) -> void:
 	super.take_physics_process(delta)
 
 func take_process(delta : float) -> void:
-	if player.global_position.y >= 5000.0:
+	if player.global_position.y >= 500000.0:
 		player.global_position = player.last_on_floor_position
 		switched_to.emit(self,"teleport")
 		return

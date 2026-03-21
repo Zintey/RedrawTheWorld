@@ -2,13 +2,14 @@ extends Node2D
 class_name MapGenerator
 
 @export_group("Grid Config")
-@export var base_unit_tiles: Vector2i = Vector2i(20, 15) 
-@export var tile_size: Vector2i = Vector2i(64, 64)      
+@export var base_unit_tiles: Vector2i = Vector2i(40, 30) 
+@export var tile_size: Vector2i = Vector2i(32, 32)      
 
 @export_group("Spawning Config")
 @export var room_container: Node2D
 @export_dir var map_prefab_dir: String
-@export var map_config: Dictionary = {"min_rooms": 10, "max_rooms": 15, "min_critical_path": 5}
+# 【注意】属性配置变更：改为 target_rooms(基准数量) 和 tolerance(容差值)
+@export var map_config: Dictionary = {"target_rooms": 15, "tolerance": 2, "min_critical_path": 5}
 @export var normal_room_prefix: String = "normal"
 @export var leaf_room_allocation: Dictionary = {"boss": 1, "shop": 1, "treasure": 1}
 
@@ -32,8 +33,8 @@ func _cache_all_prefabs():
 			
 			if inst is RoomBase:
 				var doors = inst.get_available_doors()
-				
-				if not prefab_metadata.has(type_key): prefab_metadata[type_key] = []
+				if not prefab_metadata.has(type_key): 
+					prefab_metadata[type_key] = []
 				prefab_metadata[type_key].append({
 					"scene": scene,
 					"size": inst.grid_size,
@@ -47,25 +48,37 @@ func generate_new_map() -> Map:
 	for k in leaf_room_allocation.keys(): clean_alloc[k.to_lower()] = leaf_room_allocation[k]
 	var clean_normal = normal_room_prefix.to_lower()
 	
+	# 收集普通与起始模板
+	var normal_templates = prefab_metadata.get(clean_normal, [])
+	if normal_templates.is_empty():
+		push_warning("警告：文件夹中没有找到任何 normal 前缀的房间！使用兜底单门模板。")
+		normal_templates.append({
+			"size": Vector2i(1, 1),
+			"doors": [
+				{"l_pos": Vector2i(0,0), "dir": "U"}, {"l_pos": Vector2i(0,0), "dir": "D"},
+				{"l_pos": Vector2i(0,0), "dir": "L"}, {"l_pos": Vector2i(0,0), "dir": "R"}
+			],
+			"name": "fallback"
+		})
+		
+	var start_templates = prefab_metadata.get("start", [])
+	
 	# ===============================================
-	# 【核心新增】：自动收集所有 Normal 房间的支持尺寸！
+	# 【核心新增】：收集所有特殊房间（如Boss房）的真实模板
 	# ===============================================
-	var auto_shapes: Array[Vector2i] = []
-	if prefab_metadata.has(clean_normal):
-		for meta in prefab_metadata[clean_normal]:
-			if not auto_shapes.has(meta.size):
-				auto_shapes.append(meta.size)
-				
-	# 兜底：如果你的文件夹里刚好一个 normal 预制体都没有，强行给个 1x1
-	if auto_shapes.is_empty():
-		auto_shapes.append(Vector2i(1, 1))
-		push_warning("警告：文件夹中没有找到任何 normal 前缀的房间，默认只生成 1x1！")
+	var special_templates = {}
+	for key in clean_alloc.keys():
+		if prefab_metadata.has(key):
+			special_templates[key] = prefab_metadata[key]
+		else:
+			push_warning("警告：文件夹未找到要求的特殊房间前缀 -> " + key)
 	
 	var final_cfg = map_config.duplicate()
 	final_cfg["leaf_room_allocation"] = clean_alloc
 	final_cfg["normal_room_prefix"] = clean_normal
-	# 将提取出的尺寸发送给蓝图
-	final_cfg["available_shapes"] = auto_shapes 
+	final_cfg["normal_templates"] = normal_templates
+	final_cfg["start_templates"] = start_templates
+	final_cfg["special_templates"] = special_templates 
 	
 	var map = Map.new().generate_map(final_cfg)
 	

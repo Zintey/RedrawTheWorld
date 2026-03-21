@@ -47,7 +47,7 @@ position = Vector2(663, 494)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target_node")]
 unique_name_in_owner = true
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.1, 0.1)
 script = ExtResource("3_qacqj")
 target_node = NodePath("../Player")
 shake_decay_curve = SubResource("Curve_qacqj")
@@ -91,7 +91,7 @@ unique_name_in_owner = true
 position = Vector2(0, -2)
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
-map_prefab_dir = "res://Maps/Level_Train/"
+map_prefab_dir = "res://Maps/Level_Train"
 map_config = {
 "leaf_cnt": 3,
 "room_cnt": 5

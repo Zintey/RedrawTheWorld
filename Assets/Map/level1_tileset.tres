@@ -1303,10 +1303,10 @@ texture_region_size = Vector2i(32, 32)
 1:8/0/terrains_peering_bit/bottom_right_corner = 0
 1:8/0/terrains_peering_bit/bottom_side = 0
 1:8/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+&"type": 3
 }
 2:8/0 = 0
 2:8/0/terrain_set = 0
@@ -1319,12 +1319,12 @@ texture_region_size = Vector2i(32, 32)
 2:8/0/terrains_peering_bit/bottom_left_corner = 0
 2:8/0/terrains_peering_bit/left_side = 0
 2:8/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+&"type": 3
 }
 3:8/0 = 0
 3:8/0/terrain_set = 0
@@ -1337,12 +1337,12 @@ texture_region_size = Vector2i(32, 32)
 3:8/0/terrains_peering_bit/bottom_left_corner = 0
 3:8/0/terrains_peering_bit/left_side = 0
 3:8/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+&"type": 3
 }
 4:8/0 = 0
 4:8/0/terrain_set = 0
@@ -1355,12 +1355,12 @@ texture_region_size = Vector2i(32, 32)
 4:8/0/terrains_peering_bit/bottom_left_corner = 0
 4:8/0/terrains_peering_bit/left_side = 0
 4:8/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+&"type": 3
 }
 5:8/0 = 0
 5:8/0/terrain_set = 0
@@ -1371,10 +1371,10 @@ texture_region_size = Vector2i(32, 32)
 5:8/0/terrains_peering_bit/bottom_left_corner = 0
 5:8/0/terrains_peering_bit/left_side = 0
 5:8/0/metadata/_better_terrain = {
-4: [2],
-7: [2],
-8: [2],
-&"type": 2
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+&"type": 3
 }
 7:8/0 = 0
 7:8/0/terrain_set = 0
@@ -1389,14 +1389,14 @@ texture_region_size = Vector2i(32, 32)
 7:8/0/terrains_peering_bit/top_side = 0
 7:8/0/terrains_peering_bit/top_right_corner = 0
 7:8/0/metadata/_better_terrain = {
-0: [2],
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 8:8/0 = 0
 8:8/0/terrain_set = 0
@@ -1409,12 +1409,12 @@ texture_region_size = Vector2i(32, 32)
 8:8/0/terrains_peering_bit/top_side = 0
 8:8/0/terrains_peering_bit/top_right_corner = 0
 8:8/0/metadata/_better_terrain = {
-0: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 9:8/0 = 0
 9:8/0/terrain_set = 0
@@ -1429,14 +1429,14 @@ texture_region_size = Vector2i(32, 32)
 9:8/0/terrains_peering_bit/top_side = 0
 9:8/0/terrains_peering_bit/top_right_corner = 0
 9:8/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 1:9/0 = 0
 1:9/0/terrain_set = 0
@@ -1449,12 +1449,12 @@ texture_region_size = Vector2i(32, 32)
 1:9/0/terrains_peering_bit/top_side = 0
 1:9/0/terrains_peering_bit/top_right_corner = 0
 1:9/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 2:9/0 = 0
 2:9/0/terrain_set = 0
@@ -1470,15 +1470,15 @@ texture_region_size = Vector2i(32, 32)
 2:9/0/terrains_peering_bit/top_side = 0
 2:9/0/terrains_peering_bit/top_right_corner = 0
 2:9/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 3:9/0 = 0
 3:9/0/terrain_set = 0
@@ -1494,15 +1494,15 @@ texture_region_size = Vector2i(32, 32)
 3:9/0/terrains_peering_bit/top_side = 0
 3:9/0/terrains_peering_bit/top_right_corner = 0
 3:9/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 4:9/0 = 0
 4:9/0/terrain_set = 0
@@ -1518,15 +1518,15 @@ texture_region_size = Vector2i(32, 32)
 4:9/0/terrains_peering_bit/top_side = 0
 4:9/0/terrains_peering_bit/top_right_corner = 0
 4:9/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 5:9/0 = 0
 5:9/0/terrain_set = 0
@@ -1539,12 +1539,12 @@ texture_region_size = Vector2i(32, 32)
 5:9/0/terrains_peering_bit/top_left_corner = 0
 5:9/0/terrains_peering_bit/top_side = 0
 5:9/0/metadata/_better_terrain = {
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-&"type": 2
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+&"type": 3
 }
 7:9/0 = 0
 7:9/0/terrain_set = 0
@@ -1557,12 +1557,12 @@ texture_region_size = Vector2i(32, 32)
 7:9/0/terrains_peering_bit/top_left_corner = 0
 7:9/0/terrains_peering_bit/top_side = 0
 7:9/0/metadata/_better_terrain = {
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-&"type": 2
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+&"type": 3
 }
 8:9/0 = 0
 9:9/0 = 0
@@ -1576,12 +1576,12 @@ texture_region_size = Vector2i(32, 32)
 9:9/0/terrains_peering_bit/top_side = 0
 9:9/0/terrains_peering_bit/top_right_corner = 0
 9:9/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 1:10/0 = 0
 1:10/0/terrain_set = 0
@@ -1592,10 +1592,10 @@ texture_region_size = Vector2i(32, 32)
 1:10/0/terrains_peering_bit/top_side = 0
 1:10/0/terrains_peering_bit/top_right_corner = 0
 1:10/0/metadata/_better_terrain = {
-0: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 2:10/0 = 0
 2:10/0/terrain_set = 0
@@ -1608,12 +1608,12 @@ texture_region_size = Vector2i(32, 32)
 2:10/0/terrains_peering_bit/top_side = 0
 2:10/0/terrains_peering_bit/top_right_corner = 0
 2:10/0/metadata/_better_terrain = {
-0: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 3:10/0 = 0
 3:10/0/terrain_set = 0
@@ -1626,12 +1626,12 @@ texture_region_size = Vector2i(32, 32)
 3:10/0/terrains_peering_bit/top_side = 0
 3:10/0/terrains_peering_bit/top_right_corner = 0
 3:10/0/metadata/_better_terrain = {
-0: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 4:10/0 = 0
 4:10/0/terrain_set = 0
@@ -1644,12 +1644,12 @@ texture_region_size = Vector2i(32, 32)
 4:10/0/terrains_peering_bit/top_side = 0
 4:10/0/terrains_peering_bit/top_right_corner = 0
 4:10/0/metadata/_better_terrain = {
-0: [2],
-8: [2],
-11: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 5:10/0 = 0
 5:10/0/terrain_set = 0
@@ -1660,10 +1660,10 @@ texture_region_size = Vector2i(32, 32)
 5:10/0/terrains_peering_bit/top_left_corner = 0
 5:10/0/terrains_peering_bit/top_side = 0
 5:10/0/metadata/_better_terrain = {
-8: [2],
-11: [2],
-12: [2],
-&"type": 2
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+&"type": 3
 }
 7:10/0 = 0
 7:10/0/terrain_set = 0
@@ -1678,14 +1678,14 @@ texture_region_size = Vector2i(32, 32)
 7:10/0/terrains_peering_bit/top_left_corner = 0
 7:10/0/terrains_peering_bit/top_side = 0
 7:10/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-11: [2],
-12: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+11: [2, 3],
+12: [2, 3],
+&"type": 3
 }
 8:10/0 = 0
 8:10/0/terrain_set = 0
@@ -1698,12 +1698,12 @@ texture_region_size = Vector2i(32, 32)
 8:10/0/terrains_peering_bit/bottom_left_corner = 0
 8:10/0/terrains_peering_bit/left_side = 0
 8:10/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+&"type": 3
 }
 9:10/0 = 0
 9:10/0/terrain_set = 0
@@ -1718,14 +1718,14 @@ texture_region_size = Vector2i(32, 32)
 9:10/0/terrains_peering_bit/top_side = 0
 9:10/0/terrains_peering_bit/top_right_corner = 0
 9:10/0/metadata/_better_terrain = {
-0: [2],
-3: [2],
-4: [2],
-7: [2],
-8: [2],
-12: [2],
-15: [2],
-&"type": 2
+0: [2, 3],
+3: [2, 3],
+4: [2, 3],
+7: [2, 3],
+8: [2, 3],
+12: [2, 3],
+15: [2, 3],
+&"type": 3
 }
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1tivg"]
