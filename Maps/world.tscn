@@ -88,9 +88,10 @@ mouse_behavior_recursive = 1
 
 [node name="MapGenerator" type="Node2D" parent="." node_paths=PackedStringArray("room_container")]
 unique_name_in_owner = true
+position = Vector2(0, -2)
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
-map_prefab_dir = "res://Maps/Level_city/Prefabs"
+map_prefab_dir = "res://Maps/Level_Train/"
 map_config = {
 "leaf_cnt": 3,
 "room_cnt": 5

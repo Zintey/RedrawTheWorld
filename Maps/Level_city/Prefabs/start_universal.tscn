@@ -1,0 +1,289 @@
+[gd_scene load_steps=15 format=4 uid="uid://46k82gisc7ng"]
+
+[ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_bc8gb"]
+[ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_wratq"]
+[ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_4xc1h"]
+[ext_resource type="Texture2D" uid="uid://cesomituujuh0" path="res://Assets/Map/Level_city/city_back.png" id="4_yj7bq"]
+[ext_resource type="Texture2D" uid="uid://b75afubms1qmt" path="res://Assets/Map/Level_city/city_clouds.png" id="5_rh0gc"]
+[ext_resource type="Texture2D" uid="uid://5vvgjv7b72d1" path="res://Assets/Map/Level_city/city_buildingback.png" id="6_u3gmv"]
+[ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/color_filter.gdshader" id="7_yj7bq"]
+[ext_resource type="Texture2D" uid="uid://d085j4m2psubl" path="res://Assets/Map/Level_city/city_decorate.png" id="8_rh0gc"]
+[ext_resource type="Texture2D" uid="uid://dxp1bhqphokfs" path="res://Assets/Map/Level_city/biliboard.png" id="9_u3gmv"]
+[ext_resource type="Texture2D" uid="uid://bn3mvq4vl3vru" path="res://Assets/Map/Level_city/city_zhuzi.png" id="10_rh0gc"]
+
+[sub_resource type="Environment" id="Environment_dt1lc"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+glow_bloom = 0.1
+glow_hdr_threshold = 0.89
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 71.45
+fog_light_color = Color(0.76088196, 0.43831852, 0.51650727, 1)
+fog_light_energy = 5.25
+fog_sun_scatter = 0.32
+fog_density = 0.6241
+adjustment_enabled = true
+adjustment_brightness = 0.85
+adjustment_contrast = 1.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
+size = Vector2(1273, 947)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaxhu"]
+shader = ExtResource("7_yj7bq")
+shader_parameter/filter_color = Color(1, 1, 1, 1)
+shader_parameter/filter_intensity = 0.2770000131575
+shader_parameter/brightness_limit = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0dje"]
+shader = ExtResource("7_yj7bq")
+shader_parameter/filter_color = Color(1, 1, 1, 1)
+shader_parameter/filter_intensity = 0.5
+shader_parameter/brightness_limit = 0.9
+
+[node name="StartRoom" type="Node2D"]
+script = ExtResource("1_bc8gb")
+door_scene = ExtResource("2_wratq")
+"Door Constraints/Grid[0,0]_U" = true
+"Door Constraints/Grid[0,0]_D" = true
+"Door Constraints/Grid[0,0]_L" = true
+"Door Constraints/Grid[0,0]_R" = true
+metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dt1lc")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.96474224, 0.96474224, 0.9647421, 1)
+
+[node name="RoomArea" type="Area2D" parent="."]
+visible = false
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
+position = Vector2(641, 479)
+shape = SubResource("RectangleShape2D_4wfah")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAATAAEAAgAEAAoAAAATAAAAAgADAAgAAAABABMAAgACAAkAAAABABIAAgADAAkAAAAAABMAAgABAAkAAAAAABIAAgABAAkAAAASAAEAAgAEAAoAAAASAAAAAgAEAAgAAAABAAsAAgADAAkAAAABAAoAAgACAAkAAAAAAAsAAgABAAkAAAAAAAoAAgABAAkAAAAAAAAAAgABAAgAAAAAAAEAAgABAAkAAAAAAAIAAgAJAAkAAAAAAAMAAgABAAkAAAAAAAUAAgAJAAkAAAAAAAYAAgABAAkAAAAAAAcAAgABAAkAAAAAAAgAAgABAAkAAAAAAAkAAgABAAkAAAAAAAwAAgABAAkAAAAAAA0AAgABAAkAAAAAAA4AAgABAAkAAAAAAA8AAgABAAkAAAAAABAAAgAJAAkAAAAAABEAAgABAAkAAAAAABQAAgABAAkAAAAAABUAAgABAAkAAAAAABYAAgAJAAkAAAAAABcAAgABAAkAAAAAABgAAgABAAkAAAAAABkAAgABAAkAAAAAABoAAgAJAAkAAAAAABsAAgAJAAkAAAAAABwAAgABAAkAAAAAAB0AAgABAAoAAAABAAAAAgAEAAgAAAABAAEAAgACAAkAAAABAAIAAgAEAAkAAAABAAMAAgADAAkAAAABAAQAAgACAAkAAAABAAUAAgADAAkAAAABAAYAAgADAAkAAAABAAcAAgAEAAkAAAABAAgAAgACAAkAAAABAAkAAgADAAkAAAABAAwAAgAHAAgAAAABAA0AAgAFAAkAAAABAA4AAgAHAAkAAAABAA8AAgAHAAkAAAABABAAAgAFAAkAAAABABEAAgAHAAoAAAABABQAAgADAAkAAAABABUAAgADAAkAAAABABYAAgAEAAkAAAABABcAAgAEAAkAAAABABgAAgAEAAkAAAABABkAAgACAAkAAAABABoAAgACAAkAAAABABsAAgADAAkAAAABABwAAgADAAkAAAABAB0AAgACAAoAAAACAAAAAgACAAgAAAACAAEAAgAEAAkAAAACABwAAgAEAAkAAAACAB0AAgAEAAoAAAADAAAAAgAEAAgAAAADAAEAAgADAAkAAAADABwAAgACAAkAAAADAB0AAgADAAoAAAAEAAAAAgACAAgAAAAEAAEAAgACAAkAAAAEABwAAgADAAkAAAAEAB0AAgAIAAgAAAAFAAAAAgACAAgAAAAFAAEAAgACAAkAAAAFABwAAgADAAkAAAAFAB0AAgAIAAgAAAAGAAAAAgAIAAoAAAAGAAEAAgACAAkAAAAGABwAAgAHAAoAAAAGAB0AAgADAAoAAAAHAAAAAgACAAgAAAAHAAEAAgAHAAgAAAAHABwAAgACAAgAAAAHAB0AAgAIAAgAAAAIAAAAAgAEAAgAAAAIAAEAAgADAAoAAAAIABwAAgAEAAgAAAAIAB0AAgADAAoAAAAJAAAAAgADAAgAAAAJAAEAAgADAAoAAAAJABwAAgAIAAoAAAAJAB0AAgAEAAoAAAAKAAAAAgADAAgAAAAKAAEAAgAEAAoAAAAKABwAAgACAAgAAAAKAB0AAgAEAAoAAAALAAAAAgADAAgAAAALAAEAAgAEAAoAAAALABwAAgAEAAgAAAALAB0AAgAEAAoAAAAMAAAAAgAEAAgAAAAMABwAAgACAAgAAAAMAB0AAgAIAAgAAAANAAAAAgAIAAoAAAANAAEAAgADAAoAAAANABwAAgACAAgAAAANAB0AAgAIAAgAAAAOAAAAAgAIAAoAAAAOAAEAAgAIAAgAAAAOABwAAgAIAAoAAAAOAB0AAgAIAAgAAAAPAAAAAgADAAgAAAAPAAEAAgACAAoAAAAPABwAAgAIAAoAAAAPAB0AAgAIAAgAAAAQAAAAAgACAAgAAAAQAAEAAgAEAAoAAAAQABwAAgAEAAgAAAAQAB0AAgAEAAoAAAARAAAAAgADAAgAAAARAAEAAgAEAAoAAAARABwAAgADAAgAAAARAB0AAgAEAAoAAAASABwAAgACAAgAAAASAB0AAgAEAAoAAAATABwAAgADAAgAAAATAB0AAgACAAoAAAAUAAAAAgADAAgAAAAUAAEAAgADAAoAAAAUABwAAgAIAAoAAAAUAB0AAgAIAAgAAAAVAAAAAgAIAAoAAAAVAAEAAgACAAoAAAAVABwAAgAEAAgAAAAVAB0AAgADAAoAAAAWAAAAAgACAAgAAAAWAAEAAgACAAoAAAAWABwAAgAEAAgAAAAWAB0AAgACAAoAAAAXAAAAAgAIAAoAAAAXAAEAAgADAAoAAAAXABwAAgACAAgAAAAXAB0AAgAIAAgAAAAYAAAAAgAIAAoAAAAYAAEAAgAEAAoAAAAYABwAAgACAAgAAAAYAB0AAgACAAoAAAAZAAAAAgACAAgAAAAZAAEAAgACAAoAAAAZABwAAgACAAgAAAAZAB0AAgAIAAgAAAAaAAAAAgAEAAgAAAAaAAEAAgADAAoAAAAaABwAAgADAAgAAAAaAB0AAgADAAoAAAAbAAAAAgADAAgAAAAbAAEAAgADAAoAAAAbABwAAgAEAAgAAAAbAB0AAgAEAAoAAAAcAAAAAgADAAgAAAAcAAEAAgACAAoAAAAcABwAAgAIAAoAAAAcAB0AAgACAAoAAAAdAAAAAgAEAAgAAAAdAAEAAgACAAoAAAAdABwAAgAIAAoAAAAdAB0AAgAIAAgAAAAeAAAAAgACAAgAAAAeAAEAAgAIAAgAAAAeABwAAgAIAAoAAAAeAB0AAgACAAoAAAAfAAAAAgADAAgAAAAfAAEAAgAIAAgAAAAfABwAAgAEAAgAAAAfAB0AAgAIAAgAAAAgAAAAAgACAAgAAAAgAAEAAgAJAAgAAAAgABwAAgACAAgAAAAgAB0AAgAEAAoAAAAhAAAAAgADAAgAAAAhAAEAAgADAAkAAAAhABwAAgAJAAoAAAAhAB0AAgAIAAgAAAAiAAAAAgACAAgAAAAiAAEAAgADAAkAAAAiABwAAgAEAAkAAAAiAB0AAgADAAoAAAAjAAAAAgAIAAoAAAAjAAEAAgADAAkAAAAjABwAAgADAAkAAAAjAB0AAgACAAoAAAAkAAAAAgAIAAoAAAAkAAEAAgAEAAkAAAAkABwAAgAEAAkAAAAkAB0AAgADAAoAAAAlAAAAAgAEAAgAAAAlAAEAAgAEAAkAAAAlABwAAgACAAkAAAAlAB0AAgAEAAoAAAAmAAAAAgADAAgAAAAmAAEAAgAEAAkAAAAmAAIAAgAEAAkAAAAmAAMAAgAEAAkAAAAmAAQAAgACAAkAAAAmAAUAAgADAAkAAAAmAAYAAgACAAkAAAAmAAcAAgAEAAkAAAAmAAgAAgADAAkAAAAmAAkAAgAEAAkAAAAmAAoAAgAEAAkAAAAmAAsAAgADAAkAAAAmAAwAAgAJAAgAAAAmAA0AAgABAAkAAAAmAA4AAgABAAkAAAAmAA8AAgAJAAkAAAAmABAAAgABAAkAAAAmABEAAgAJAAoAAAAmABIAAgADAAkAAAAmABMAAgACAAkAAAAmABQAAgACAAkAAAAmABUAAgADAAkAAAAmABYAAgACAAkAAAAmABcAAgACAAkAAAAmABgAAgADAAkAAAAmABkAAgADAAkAAAAmABoAAgAEAAkAAAAmABsAAgAEAAkAAAAmABwAAgAEAAkAAAAmAB0AAgAEAAoAAAAnAAAAAgAFAAgAAAAnAAEAAgAFAAkAAAAnAAIAAgAFAAkAAAAnAAMAAgAFAAkAAAAnAAQAAgAFAAkAAAAnAAUAAgAHAAkAAAAnAAYAAgAFAAkAAAAnAAcAAgAHAAkAAAAnAAgAAgAHAAkAAAAnAAkAAgAHAAkAAAAnAAoAAgAHAAkAAAAnAAsAAgAHAAkAAAAnAAwAAgAFAAkAAAAnAA0AAgAFAAkAAAAnAA4AAgAFAAkAAAAnAA8AAgAFAAkAAAAnABAAAgAFAAkAAAAnABEAAgAFAAkAAAAnABIAAgAHAAkAAAAnABMAAgAHAAkAAAAnABQAAgAHAAkAAAAnABUAAgAHAAkAAAAnABYAAgAHAAkAAAAnABcAAgAFAAkAAAAnABgAAgAHAAkAAAAnABkAAgAHAAkAAAAnABoAAgAFAAkAAAAnABsAAgAHAAkAAAAnABwAAgAFAAkAAAAnAB0AAgAFAAoAAAAAAAQAAgABAAkAAAAMAAEAAgADAAoAAAACABEAAgAIAAoAAAACABIAAgADAAkAAAACABMAAgACAAkAAAACABQAAgACAAkAAAACABUAAgAEAAkAAAACABYAAgACAAkAAAACABcAAgAEAAkAAAACABgAAgACAAkAAAACABkAAgADAAkAAAACABoAAgADAAkAAAACABsAAgACAAkAAAADABEAAgADAAgAAAAEABEAAgAEAAgAAAADABIAAgACAAkAAAAEABIAAgACAAkAAAADABMAAgAEAAkAAAAEABMAAgACAAkAAAADABQAAgAEAAkAAAAEABQAAgADAAkAAAADABUAAgAEAAkAAAAEABUAAgADAAkAAAADABYAAgAEAAkAAAAEABYAAgACAAkAAAADABcAAgACAAkAAAAEABcAAgACAAkAAAADABgAAgACAAkAAAAEABgAAgACAAkAAAADABkAAgAEAAkAAAAEABkAAgACAAkAAAADABoAAgACAAkAAAAEABoAAgACAAkAAAADABsAAgADAAkAAAAEABsAAgAEAAkAAAANABEAAgACAAgAAAAOABEAAgAEAAgAAAAPABEAAgAEAAgAAAAQABEAAgAEAAgAAAARABEAAgAEAAgAAAASABEAAgADAAgAAAATABEAAgAEAAgAAAAUABEAAgAEAAgAAAAVABEAAgADAAgAAAAWABEAAgACAAgAAAAXABEAAgAIAAoAAAAYABEAAgACAAgAAAAZABEAAgAIAAoAAAAaABEAAgAEAAgAAAANABIAAgAEAAkAAAAOABIAAgACAAkAAAAPABIAAgACAAkAAAAQABIAAgACAAkAAAARABIAAgADAAkAAAASABIAAgACAAkAAAATABIAAgACAAkAAAAUABIAAgAEAAkAAAAVABIAAgACAAkAAAAWABIAAgAEAAkAAAAXABIAAgACAAkAAAAYABIAAgACAAkAAAAZABIAAgAEAAkAAAAaABIAAgACAAkAAAAbABEAAgADAAgAAAAbABIAAgAEAAkAAAAhABEAAgABAAgAAAAiABEAAgACAAgAAAAjABEAAgAEAAgAAAAkABEAAgADAAgAAAAlABEAAgACAAgAAAAhABIAAgAJAAkAAAAiABIAAgADAAkAAAAjABIAAgAEAAkAAAAkABIAAgACAAkAAAAlABIAAgADAAkAAAAhABMAAgABAAkAAAAiABMAAgADAAkAAAAjABMAAgADAAkAAAAkABMAAgAEAAkAAAAlABMAAgACAAkAAAAhABQAAgABAAkAAAAiABQAAgADAAkAAAAjABQAAgADAAkAAAAkABQAAgACAAkAAAAlABQAAgADAAkAAAAhABUAAgAJAAkAAAAiABUAAgACAAkAAAAjABUAAgACAAkAAAAkABUAAgACAAkAAAAlABUAAgADAAkAAAAhABYAAgAJAAkAAAAiABYAAgADAAkAAAAjABYAAgACAAkAAAAkABYAAgACAAkAAAAlABYAAgADAAkAAAAhABcAAgAJAAkAAAAiABcAAgACAAkAAAAjABcAAgAEAAkAAAAkABcAAgAEAAkAAAAlABcAAgAEAAkAAAAhABgAAgABAAkAAAAiABgAAgACAAkAAAAjABgAAgADAAkAAAAkABgAAgADAAkAAAAlABgAAgACAAkAAAAhABkAAgAJAAkAAAAiABkAAgACAAkAAAAjABkAAgACAAkAAAAkABkAAgAEAAkAAAAlABkAAgADAAkAAAAhABoAAgAJAAkAAAAiABoAAgADAAkAAAAjABoAAgAEAAkAAAAkABoAAgAEAAkAAAAlABoAAgAEAAkAAAAhABsAAgABAAkAAAAiABsAAgACAAkAAAAjABsAAgAEAAkAAAAkABsAAgADAAkAAAAlABsAAgACAAkAAAAMABEAAgAIAAoAAAAMABIAAgADAAkAAAAFABEAAgAIAAoAAAAGABEAAgAFAAgAAAAFABIAAgACAAkAAAAGABIAAgAFAAkAAAAFABMAAgAEAAkAAAAGABMAAgAFAAkAAAAFABQAAgACAAkAAAAGABQAAgAFAAkAAAAFABUAAgAEAAkAAAAGABUAAgAFAAkAAAAFABYAAgAEAAkAAAAGABYAAgAFAAkAAAAFABcAAgADAAkAAAAGABcAAgAFAAkAAAAFABgAAgADAAkAAAAGABgAAgAHAAkAAAAFABkAAgADAAkAAAAGABkAAgAFAAkAAAAFABoAAgAEAAkAAAAGABoAAgAFAAkAAAAFABsAAgAEAAkAAAAGABsAAgAHAAkAAAAeABcAAgABAAUAAAAfABcAAgACAAUAAAAgABcAAgACAAUAAAAHABcAAgACAAUAAAAIABcAAgACAAUAAAAJABcAAgACAAUAAAAKABcAAgADAAUAAAALABMAAgABAAoAAAAMABMAAgAEAAoAAAANABMAAgAIAAgAAAAOABMAAgADAAoAAAAPABMAAgACAAoAAAAQABMAAgADAAoAAAARABMAAgAEAAoAAAASABMAAgAEAAoAAAATABMAAgADAAoAAAAUABMAAgAIAAgAAAAVABMAAgACAAoAAAAWABMAAgAIAAgAAAAXABMAAgACAAoAAAAYABMAAgAEAAoAAAAZABMAAgAIAAgAAAAaABMAAgADAAoAAAAbABMAAgAEAAoAAAAcABMAAgAFAAoAAAAcAAwAAgABAAoAAAAdAAwAAgADAAoAAAAeAAwAAgAIAAgAAAAfAAwAAgAIAAgAAAAgAAwAAgAIAAgAAAAhAAwAAgACAAoAAAAiAAwAAgAEAAoAAAAjAAwAAgACAAoAAAAkAAwAAgACAAoAAAAlAAwAAgADAAoAAAACAAwAAgADAAoAAAADAAwAAgAIAAgAAAAEAAwAAgAIAAgAAAAFAAwAAgAIAAgAAAAGAAwAAgADAAoAAAAHAAwAAgADAAoAAAAIAAwAAgAIAAgAAAAJAAwAAgAEAAoAAAAKAAwAAgAEAAoAAAALAAwAAgAFAAoAAAASAAYAAgAEAAkAAAATAAYAAgADAAkAAAAUAAYAAgADAAkAAAAVAAYAAgACAAkAAAASAAcAAgAEAAoAAAATAAcAAgACAAoAAAAUAAcAAgADAAoAAAAVAAcAAgADAAoAAAARAAYAAgACAAkAAAARAAcAAgAIAAgAAAAWAAYAAgACAAkAAAAWAAcAAgACAAoAAAAXAAYAAgADAAkAAAAXAAcAAgAEAAoAAAAQAAYAAgADAAkAAAAQAAcAAgAIAAgAAAAcABIAAgAFAAkAAAALABIAAgAJAAkAAAAcABEAAgAFAAgAAAALABEAAgABAAgAAAACAAIAAgAEAAkAAAADAAIAAgACAAkAAAAEAAIAAgAEAAkAAAAFAAIAAgAEAAkAAAAGAAIAAgAEAAkAAAAHAAIAAgAFAAkAAAACAAMAAgACAAkAAAADAAMAAgACAAkAAAAEAAMAAgAEAAkAAAAFAAMAAgACAAkAAAAGAAMAAgAEAAkAAAAHAAMAAgAFAAkAAAACAAQAAgACAAkAAAADAAQAAgACAAkAAAAEAAQAAgADAAkAAAAFAAQAAgAEAAkAAAAGAAQAAgAEAAkAAAAHAAQAAgAFAAkAAAACAAUAAgAEAAkAAAADAAUAAgAEAAkAAAAEAAUAAgADAAkAAAAFAAUAAgACAAkAAAAGAAUAAgACAAkAAAAHAAUAAgAFAAkAAAACAAYAAgAEAAkAAAADAAYAAgADAAkAAAAEAAYAAgAEAAkAAAAFAAYAAgADAAkAAAAGAAYAAgADAAkAAAAHAAYAAgAFAAkAAAACAAcAAgADAAkAAAADAAcAAgAEAAkAAAAEAAcAAgACAAkAAAAFAAcAAgAEAAkAAAAGAAcAAgADAAkAAAAHAAcAAgAHAAkAAAACAAgAAgACAAkAAAADAAgAAgACAAkAAAAEAAgAAgACAAkAAAAFAAgAAgAEAAkAAAAGAAgAAgAEAAkAAAAHAAgAAgAFAAkAAAACAAkAAgAEAAkAAAADAAkAAgACAAkAAAAEAAkAAgACAAkAAAAFAAkAAgACAAkAAAAGAAkAAgACAAkAAAAHAAkAAgAFAAkAAAACAAoAAgACAAkAAAADAAoAAgACAAkAAAAEAAoAAgADAAkAAAAFAAoAAgACAAkAAAAGAAoAAgAEAAkAAAAHAAoAAgAFAAkAAAACAAsAAgADAAkAAAADAAsAAgADAAkAAAAEAAsAAgAEAAkAAAAFAAsAAgADAAkAAAAGAAsAAgAEAAkAAAAHAAsAAgAHAAoAAAAIAAsAAgADAAgAAAAJAAsAAgACAAgAAAAKAAsAAgADAAgAAAALAAsAAgAFAAgAAAAgAAIAAgABAAkAAAAhAAIAAgACAAkAAAAiAAIAAgACAAkAAAAjAAIAAgAEAAkAAAAkAAIAAgAEAAkAAAAlAAIAAgACAAkAAAAgAAMAAgABAAkAAAAhAAMAAgAEAAkAAAAiAAMAAgAEAAkAAAAjAAMAAgAEAAkAAAAkAAMAAgADAAkAAAAlAAMAAgACAAkAAAAgAAQAAgAJAAkAAAAhAAQAAgAEAAkAAAAiAAQAAgAEAAkAAAAjAAQAAgADAAkAAAAkAAQAAgAEAAkAAAAlAAQAAgACAAkAAAAgAAUAAgAJAAkAAAAhAAUAAgADAAkAAAAiAAUAAgACAAkAAAAjAAUAAgAEAAkAAAAkAAUAAgAEAAkAAAAlAAUAAgACAAkAAAAgAAYAAgABAAkAAAAhAAYAAgAEAAkAAAAiAAYAAgAEAAkAAAAjAAYAAgADAAkAAAAkAAYAAgAEAAkAAAAlAAYAAgAEAAkAAAAgAAcAAgAJAAkAAAAhAAcAAgAEAAkAAAAiAAcAAgAEAAkAAAAjAAcAAgACAAkAAAAkAAcAAgACAAkAAAAlAAcAAgAEAAkAAAAgAAgAAgAJAAkAAAAhAAgAAgADAAkAAAAiAAgAAgACAAkAAAAjAAgAAgAEAAkAAAAkAAgAAgAEAAkAAAAlAAgAAgADAAkAAAAgAAkAAgAJAAkAAAAhAAkAAgADAAkAAAAiAAkAAgACAAkAAAAjAAkAAgACAAkAAAAkAAkAAgADAAkAAAAlAAkAAgAEAAkAAAAgAAoAAgABAAkAAAAhAAoAAgACAAkAAAAiAAoAAgADAAkAAAAjAAoAAgADAAkAAAAkAAoAAgACAAkAAAAlAAoAAgAEAAkAAAAgAAsAAgAJAAoAAAAhAAsAAgACAAkAAAAiAAsAAgAEAAkAAAAjAAsAAgACAAkAAAAkAAsAAgADAAkAAAAlAAsAAgAEAAkAAAAcAAsAAgABAAgAAAAdAAsAAgACAAgAAAAeAAsAAgACAAgAAAAfAAsAAgAIAAoAAAAOAAYAAgABAAkAAAAOAAcAAgABAAoAAAAPAAYAAgAEAAkAAAAPAAcAAgAEAAoAAAAZAAYAAgAHAAkAAAAZAAcAAgAFAAoAAAAYAAYAAgADAAkAAAAYAAcAAgADAAoAAAAOAAUAAgABAAgAAAAPAAUAAgADAAgAAAAQAAUAAgAEAAgAAAARAAUAAgAIAAoAAAASAAUAAgAJAAoAAAATAAUAAgADAAkAAAAUAAUAAgADAAkAAAAVAAUAAgAHAAoAAAAWAAUAAgADAAgAAAAXAAUAAgADAAgAAAAYAAUAAgACAAgAAAAZAAUAAgAFAAgAAAASAAQAAgABAAgAAAATAAQAAgACAAgAAAAUAAQAAgACAAgAAAAVAAQAAgAFAAgAAAA=")
+tile_set = ExtResource("3_4xc1h")
+
+[node name="shicha" type="Node2D" parent="."]
+
+[node name="Parallax2D2" type="Parallax2D" parent="shicha"]
+scroll_scale = Vector2(0.001, 0.001)
+scroll_offset = Vector2(-17, 374)
+
+[node name="CityBack" type="Sprite2D" parent="shicha/Parallax2D2"]
+z_index = -25
+position = Vector2(-115.00001, -451)
+scale = Vector2(2.9113545, 2.9113545)
+texture = ExtResource("4_yj7bq")
+
+[node name="Parallax2D3" type="Parallax2D" parent="shicha"]
+scroll_scale = Vector2(0.005, 0.001)
+scroll_offset = Vector2(206, 59)
+repeat_size = Vector2(2000, 0)
+autoscroll = Vector2(1, 0)
+repeat_times = 3
+
+[node name="CityClouds" type="Sprite2D" parent="shicha/Parallax2D3"]
+z_index = -19
+position = Vector2(620, -6)
+texture = ExtResource("5_rh0gc")
+offset = Vector2(-14, -16)
+region_enabled = true
+region_rect = Rect2(352, 46, 263, 240)
+
+[node name="CityClouds2" type="Sprite2D" parent="shicha/Parallax2D3"]
+z_index = -19
+position = Vector2(281, 21)
+texture = ExtResource("5_rh0gc")
+offset = Vector2(-14, -16)
+region_enabled = true
+region_rect = Rect2(1086, 58, 261, 235)
+
+[node name="Parallax2D4" type="Parallax2D" parent="shicha"]
+scroll_scale = Vector2(0.006, 0.001)
+scroll_offset = Vector2(-954, 138)
+repeat_size = Vector2(1200, 0)
+repeat_times = 10
+
+[node name="CityBuildingback" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -7
+position = Vector2(-205, 331)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(175, 41, 179, 834)
+
+[node name="CityBuildingback2" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -7
+z_as_relative = false
+position = Vector2(-50, 458)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(645, 154, 164, 721)
+
+[node name="CityBuildingback3" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -8
+position = Vector2(53, 253)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(1378, 294, 104, 581)
+
+[node name="CityBuildingback4" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -8
+position = Vector2(150, 460)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(1646, 66, 100, 809)
+
+[node name="CityBuildingback5" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -8
+position = Vector2(652, 430)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(1923, 153, 100, 722)
+
+[node name="CityBuildingback6" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -8
+position = Vector2(569, 482)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(159, 1069, 77, 712)
+
+[node name="CityBuildingback7" type="Sprite2D" parent="shicha/Parallax2D4"]
+z_index = -8
+position = Vector2(738, 259)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(637, 972, 84, 809)
+
+[node name="Parallax2D5" type="Parallax2D" parent="shicha"]
+scroll_scale = Vector2(0.004, 0.001)
+scroll_offset = Vector2(215, 97)
+repeat_size = Vector2(1200, 0)
+repeat_times = 5
+
+[node name="CityBuildingback7" type="Sprite2D" parent="shicha/Parallax2D5"]
+z_index = -12
+position = Vector2(268, 432)
+texture = ExtResource("6_u3gmv")
+region_enabled = true
+region_rect = Rect2(969, 1147, 835, 625)
+
+[node name="building" type="Node2D" parent="."]
+
+[node name="CityDecorate" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(773.99994, 518)
+scale = Vector2(0.6901668, 0.6901668)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(721, 78, 407, 82)
+
+[node name="CityDecorate2" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(501, 517)
+scale = Vector2(0.6901668, 0.6901668)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(721, 78, 407, 82)
+
+[node name="CityDecorate3" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(1092, 522)
+scale = Vector2(0.6901668, 0.6901668)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(24, 15, 105, 64)
+
+[node name="CityDecorate4" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(188, 522)
+scale = Vector2(0.6901668, 0.6901668)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(24, 15, 105, 64)
+
+[node name="CityDecorate5" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(636, 529.00006)
+scale = Vector2(0.8215369, 0.8215369)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(246, 241, 136, 41)
+
+[node name="CityDecorate8" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(695, 448)
+scale = Vector2(0.8215369, 0.8215369)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(201, 400, 96, 244)
+
+[node name="CityDecorate6" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(539, 511)
+scale = Vector2(0.37534782, 0.37534782)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(349, 640, 224, 208)
+
+[node name="CityDecorate7" type="Sprite2D" parent="building"]
+z_index = -1
+material = SubResource("ShaderMaterial_jaxhu")
+position = Vector2(489, 525)
+scale = Vector2(0.72782844, 0.72782844)
+texture = ExtResource("8_rh0gc")
+region_enabled = true
+region_rect = Rect2(460, 324, 36, 55)
+
+[node name="billboard" type="Node2D" parent="."]
+
+[node name="Biliboard" type="Sprite2D" parent="billboard"]
+z_index = -1
+material = SubResource("ShaderMaterial_i0dje")
+position = Vector2(865, 824)
+scale = Vector2(1.3244089, 1.3244089)
+texture = ExtResource("9_u3gmv")
+region_enabled = true
+region_rect = Rect2(446, 170, 121, 106)
+
+[node name="Biliboard2" type="Sprite2D" parent="billboard"]
+z_index = -1
+material = SubResource("ShaderMaterial_i0dje")
+position = Vector2(550.00006, 849.99994)
+scale = Vector2(0.79710555, 0.79710555)
+texture = ExtResource("9_u3gmv")
+region_enabled = true
+region_rect = Rect2(466, 453, 80, 119)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="zhuzi" type="Node2D" parent="."]
+
+[node name="CityZhuzi" type="Sprite2D" parent="zhuzi"]
+z_index = -2
+position = Vector2(261, 205)
+scale = Vector2(0.143569, 0.143569)
+texture = ExtResource("10_rh0gc")
+region_enabled = true
+region_rect = Rect2(1391, 21, 125, 2227)
+
+[node name="CityZhuzi2" type="Sprite2D" parent="zhuzi"]
+z_index = -2
+position = Vector2(1025, 205)
+scale = Vector2(0.143569, 0.143569)
+texture = ExtResource("10_rh0gc")
+region_enabled = true
+region_rect = Rect2(1391, 21, 125, 2227)
