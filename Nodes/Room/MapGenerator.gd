@@ -7,7 +7,7 @@ class_name MapGenerator
 
 @export_group("Spawning Config")
 @export var room_container: Node2D
-@export var map_prefab_dir: String
+@export_dir var map_prefab_dir: String
 @export var map_config: Dictionary = {"min_rooms": 10, "max_rooms": 15, "min_critical_path": 5}
 @export var normal_room_prefix: String = "normal"
 @export var leaf_room_allocation: Dictionary = {"boss": 1, "shop": 1, "treasure": 1}

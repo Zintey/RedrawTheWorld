@@ -90,7 +90,7 @@ mouse_behavior_recursive = 1
 unique_name_in_owner = true
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
-map_prefab_dir = "res://Maps/Level1/Prefabs"
+map_prefab_dir = "res://Maps/Level_city/Prefabs"
 map_config = {
 "leaf_cnt": 3,
 "room_cnt": 5
