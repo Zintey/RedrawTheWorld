@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://dmnhha4lwclrm"]
+[gd_scene load_steps=16 format=4 uid="uid://dmnhha4lwclrm"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_fsa7q"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_lep1u"]
+[ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_38vlm"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_jfy2d"]
 [ext_resource type="Texture2D" uid="uid://82fuapme3n6x" path="res://Assets/Map/Level_train/loopbackground/9.天空（不需要移动）_.png" id="4_r1xfb"]
 [ext_resource type="Texture2D" uid="uid://dnjpaa44lytqh" path="res://Assets/Map/Level_train/loopbackground/8.云朵（速度2）.png" id="5_38vlm"]
@@ -30,7 +31,7 @@ adjustment_brightness = 0.85
 adjustment_contrast = 1.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
-size = Vector2(1273, 947)
+size = Vector2(1272, 949)
 
 [node name="StartRoom" type="Node2D"]
 script = ExtResource("1_fsa7q")
@@ -48,11 +49,12 @@ environment = SubResource("Environment_dt1lc")
 color = Color(0.96474224, 0.96474224, 0.9647421, 1)
 
 [node name="RoomArea" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
+script = ExtResource("3_38vlm")
+metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
-position = Vector2(641, 479)
+position = Vector2(636, 479.5)
 shape = SubResource("RectangleShape2D_4wfah")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

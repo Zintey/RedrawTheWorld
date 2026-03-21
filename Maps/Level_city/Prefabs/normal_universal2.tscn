@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://b0yv5gwbc0rnc"]
+[gd_scene load_steps=12 format=4 uid="uid://b0yv5gwbc0rnc"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_4fwop"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_3jgjb"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_j3fj1"]
+[ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="4_3jgjb"]
 [ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/color_filter.gdshader" id="4_foeuu"]
 [ext_resource type="Texture2D" uid="uid://d085j4m2psubl" path="res://Assets/Map/Level_city/city_decorate.png" id="5_rd7g8"]
 [ext_resource type="Texture2D" uid="uid://dxp1bhqphokfs" path="res://Assets/Map/Level_city/biliboard.png" id="6_vq6am"]
@@ -40,6 +41,8 @@ tile_set = ExtResource("3_j3fj1")
 [node name="RoomArea" type="Area2D" parent="."]
 visible = false
 collision_mask = 3
+script = ExtResource("4_3jgjb")
+metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
 position = Vector2(641, 480)

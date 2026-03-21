@@ -35,3 +35,10 @@ signal player_teleport_request(teleport_position : Vector2)
 signal stamina_upper_limit_increased(val : int)
 signal health_upper_limit_increased(val : int)
 signal player_die()
+
+
+# ==============================
+# --- 新增：摄像机区域专属信号 ---
+# ==============================
+signal camera_area_entered(area_node : Node2D)
+signal camera_area_exited(area_node : Node2D)

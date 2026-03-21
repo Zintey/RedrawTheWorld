@@ -16,17 +16,11 @@ func _ready():
 
 	var start_room = map_generator.spawned_rooms.get(Vector2i.ZERO)
 	if start_room:
-		game_camera.transition_to_room(start_room.boundary, start_room.global_position)
-		
-		# ==========================================
-		# 【核心修复 2】：精准寻找策划配置的锚点
-		# ==========================================
+		# 【已删除】：这里不再强行传参给摄像机
 		var spawn_point = start_room.find_child("PlayerSpawnPoint", true, false)
 		if spawn_point:
-			# 如果你放了节点，就精准生在节点位置
 			player.global_position = spawn_point.global_position
 		else:
-			# 兜底：如果你忘了放，尽量居中，但容易坠落
 			push_warning("警告：StartRoom 缺少 PlayerSpawnPoint 节点！")
 			var center_x = start_room.global_position.x + (start_room.boundary.left + start_room.boundary.right) / 2.0
 			var center_y = start_room.global_position.y + (start_room.boundary.top + start_room.boundary.bottom) / 2.0
@@ -48,13 +42,12 @@ func _toggle_map():
 	minimap.toggle_map_mode(is_opening)
 
 func _on_room_entered(room: RoomBase):
-	game_camera.transition_to_room(room.boundary, room.global_position)
+	# 【已删除】：镜头已经自动化，只保留小地图更新
 	minimap.update_minimap(room)
 
 func _on_teleport(grid_pos: Vector2i):
 	var target = map_generator.spawned_rooms[grid_pos]
 	
-	# 传送也一样找安全锚点
 	var spawn_point = target.find_child("PlayerSpawnPoint", true, false)
 	if spawn_point:
 		player.global_position = spawn_point.global_position
