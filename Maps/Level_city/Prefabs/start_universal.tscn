@@ -81,7 +81,7 @@ scroll_offset = Vector2(-17, 374)
 
 [node name="CityBack" type="Sprite2D" parent="shicha/Parallax2D2"]
 z_index = -25
-position = Vector2(-115.00001, -451)
+position = Vector2(-105.00001, -451)
 scale = Vector2(2.9113545, 2.9113545)
 texture = ExtResource("4_yj7bq")
 

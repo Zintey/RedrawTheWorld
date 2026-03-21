@@ -808,7 +808,7 @@ metadata/_custom_type_script = "uid://w3c70vl01a25"
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 32
+collision_mask = 96
 script = ExtResource("1_q1ymb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -60,6 +60,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if health_component.is_dead:
 		return 
 		
+	# 【新增】：按下S键，直接触发下落穿透单向平台
+	if event.is_action_pressed("Key_S"):
+		drop_through_platform()
+		
 	# 【修改】：不再直接检查技能，而是向黑板发送 0.1秒(手感最佳)的缓冲事件
 	if event.is_action_pressed("LMB"):
 		skill_component.post_event("LMB", 0.1)
@@ -67,6 +71,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		skill_component.post_event("RMB", 0.1)
 	elif event.is_action_pressed("Key_Space"):
 		skill_component.post_event("SPACE", 0.1)
+
+# --- 平台互动逻辑 ---
+# 【新增】：处理从单向平台漏下去的逻辑
+func drop_through_platform() -> void:
+	# 临时关闭玩家对第 7 层（单向平台层）的碰撞检测
+	set_collision_mask_value(7, false)
+	
+	# 等待 0.2 秒，让重力把玩家拉下去
+	await get_tree().create_timer(0.2).timeout
+	
+	# 恢复对第 7 层的碰撞检测（加个节点是否还在树上的判断，防止等待期间玩家被销毁报错）
+	if is_inside_tree():
+		set_collision_mask_value(7, true)
+
 
 # --- 战斗、状态与事件响应逻辑 ---
 func _on_took_damage(amount: int) -> void:
