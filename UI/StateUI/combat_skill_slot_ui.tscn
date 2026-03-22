@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvnlnq3c5k4iu"]
+
+[ext_resource type="Script" uid="uid://blwmavih10s6o" path="res://UI/StateUI/CombatSkillSlotUI.gd" id="1_ivg85"]
+
+[sub_resource type="Gradient" id="Gradient_ivg85"]
+offsets = PackedFloat32Array(0.954955)
+colors = PackedColorArray(0, 0, 0, 0.6)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ivg85"]
+gradient = SubResource("Gradient_ivg85")
+width = 32
+height = 32
+
+[node name="CombatSkillSlotUi" type="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 40.0
+script = ExtResource("1_ivg85")
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.73333335, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "11"
+horizontal_alignment = 1
+
+[node name="InnerPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="InnerPanel"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="WarningRect" type="ColorRect" parent="InnerPanel"]
+layout_mode = 2
+color = Color(1, 0, 0, 0.5)
+
+[node name="CooldownBar" type="TextureProgressBar" parent="InnerPanel"]
+layout_mode = 2
+value = 85.0
+fill_mode = 4
+texture_progress = SubResource("GradientTexture2D_ivg85")

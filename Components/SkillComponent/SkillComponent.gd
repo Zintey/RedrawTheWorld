@@ -54,22 +54,44 @@ func check_skills_triggered() -> void:
 		if skill == null:
 			continue
 			
-		# 【CD拦截】：如果技能还在冷却中，直接跳过，不查黑板也不耗精力
+		# 【CD拦截】：如果技能还在冷却中，直接跳过
 		if skill_cooldowns.get(skill, 0.0) > 0.0:
 			continue
 			
 		var is_triggered : bool = check_skill_triggered(skill)
 		
 		if is_triggered:
-			# 触发成功，进入CD
-			skill_cooldowns[skill] = skill.base_cooldown
+			# 【新增】：精算最终冷却时间，最小锁死为 0.1 秒
+			var cd_add = 0.0
+			var cd_mult = 1.0
 			
-			# 生成法术工厂并直接调用发射器（完美解耦 Player）
+			for r in skill.trigger_rune_list:
+				if r: cd_add += r.cooldown_add; cd_mult *= r.cooldown_multiple
+			for r in skill.core_rune_list:
+				if r: cd_add += r.cooldown_add; cd_mult *= r.cooldown_multiple
+			for r in skill.modifier_rune_list:
+				if r: cd_add += r.cooldown_add; cd_mult *= r.cooldown_multiple
+				
+			var final_cd = max(0.1, (skill.base_cooldown + cd_add) * cd_mult)
+			
+			# 触发成功，进入最终算出的CD
+			skill_cooldowns[skill] = final_cd
+			
+			# 生成法术工厂并直接调用发射器
 			var skill_circle = SkillCircleHandler.new(skill, skill_owner)
 			add_child(skill_circle)
 			skill_owner.rune_emitter.fire(skill)
 
 func check_skill_triggered(skill : SkillData) -> bool:
+	# 【修复 1：核心符文拦截】检查是否装备了核心符文，如果没有，绝对不允许发动！
+	var has_core = false
+	for rune in skill.core_rune_list:
+		if rune != null:
+			has_core = true
+			break
+	if not has_core:
+		return false # 没有核心符文，直接哑火
+		
 	var trigger_rune_list : Array[RuneData] = skill.trigger_rune_list
 	var is_skill_trigger : bool = true if skill.type == skill.SkillType.AND_TRIGGER else false
 	var skill_stamina_cost : float = 0.0
@@ -88,7 +110,7 @@ func check_skill_triggered(skill : SkillData) -> bool:
 	for trigger_rune in trigger_rune_list:
 		if trigger_rune == null: continue
 		
-		# 【修改】：将黑板字典传给逻辑处理器
+		# 将黑板字典传给逻辑处理器
 		var is_rune_trigger : bool = trigger_rune_handler.check_is_rune_triggered(trigger_rune, blackboard, skill_owner)
 		
 		if skill.type == skill.SkillType.AND_TRIGGER:
@@ -100,8 +122,11 @@ func check_skill_triggered(skill : SkillData) -> bool:
 		skill_stamina_cost_multiple *= trigger_rune.stamina_cost_multiple
 	
 	if stats_component:
-		if is_skill_trigger and stats_component.current_stamina >= skill_stamina_cost * skill_stamina_cost_multiple:
-			stats_component.reduce_stamina(skill_stamina_cost)
+		# 【修复 2：精力扣除 Bug】算出最终消耗，扣除时严格带上倍率！
+		var final_cost = skill_stamina_cost * skill_stamina_cost_multiple
+		
+		if is_skill_trigger and stats_component.current_stamina >= final_cost:
+			stats_component.reduce_stamina(final_cost) # 这里终于乘上倍率了！
 			return true
 			
 	return false

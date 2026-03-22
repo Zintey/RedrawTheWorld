@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	global_position = current_position
 
 func _ready():
-	z_index = 10000
+	z_index = 4000
 	update_ui()
 
 func update_ui() -> void:
@@ -30,19 +30,28 @@ func update_ui() -> void:
 		var cost_text = "能量消耗: " + str(rune_data.stamina_cost)
 		if rune_data.stamina_cost_multiple != 1.0:
 			cost_text += "  (倍率: x" + str(rune_data.stamina_cost_multiple) + ")"
+			
+		# 新增 CD 属性显示
+		if rune_data.cooldown_add != 0.0 or rune_data.cooldown_multiple != 1.0:
+			cost_text += "\n冷却补正: "
+			if rune_data.cooldown_add != 0.0:
+				cost_text += ("+" if rune_data.cooldown_add > 0 else "") + str(rune_data.cooldown_add) + "s  "
+			if rune_data.cooldown_multiple != 1.0:
+				cost_text += "(倍率: x" + str(rune_data.cooldown_multiple) + ")"
+				
 		stamina_cost_label.text = cost_text
 		
 		var type_str = ""
 		match rune_data.type:
 			RuneData.RuneType.TRIGGER: 
 				type_str = "[color=" + COLOR_TRIGGER + "]【触发符文】[/color]"
-				rune_name_label.modulate = Color(COLOR_TRIGGER) # 名字也变黄
+				rune_name_label.modulate = Color(COLOR_TRIGGER)
 			RuneData.RuneType.CORE: 
 				type_str = "[color=" + COLOR_CORE + "]【核心符文】[/color]"
-				rune_name_label.modulate = Color(COLOR_CORE)    # 名字也变紫
+				rune_name_label.modulate = Color(COLOR_CORE)
 			RuneData.RuneType.MODIFIER: 
 				type_str = "[color=" + COLOR_MODIFIER + "]【辅助符文】[/color]"
-				rune_name_label.modulate = Color(COLOR_MODIFIER)# 名字也变灰
+				rune_name_label.modulate = Color(COLOR_MODIFIER)
 			_: 
 				type_str = "[color=white]【通用符文】[/color]"
 				rune_name_label.modulate = Color.WHITE
