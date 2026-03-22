@@ -75,13 +75,16 @@ func remove_rune(rune_data : RuneData) -> bool:
 		return true
 	return false
 
-func add_skill(skill_data : SkillData) -> bool:
-	for i in all_skills.size():
-		if all_skills[i] == null:
-			all_skills[i] = skill_data
-			data_changed.emit()
+func add_skill(new_skill: SkillData) -> bool:
+	# 遍历 8 个槽位，寻找空位 (null)
+	for i in range(equipped_skills.size()):
+		if equipped_skills[i] == null:
+			equipped_skills[i] = new_skill
+			# 发送数据改变信号，让 UI 刷新（此处根据你原有的信号名来写）
+			# EventBus.inventory_data_changed.emit() 或者类似更新底栏的信号
 			return true
-	printerr("无法添加技能，技能数量已达上限")
+			
+	# 如果循环结束都没找到空位，说明 8 个槽全满！
 	return false
 
 func add_skills(skill_list : Array[SkillData]) -> bool:

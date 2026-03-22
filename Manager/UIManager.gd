@@ -9,7 +9,11 @@ const UI_Map : Dictionary = {
 	"StaminaExhaustTip" : preload("uid://c117x7o152qfa"),
 	"LevelTransitionUI": preload("uid://bhxo80b3fo2kb"),
 	"CombatActionBarUI": preload("uid://cml8s0s5nwonw"),
+	"SkillTemplateBriefUI": preload("uid://cimmppl02uvn8"),
 }
+
+signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
+
 
 # --- 新增：用于缓存玩家的四大组件 ---
 var player_health: HealthComponent
@@ -39,6 +43,11 @@ func _ready() -> void:
 
 	EventBus.player_components_ready.connect(_on_player_components_ready)
 	EventBus.level_transition_started.connect(_on_level_transition_started)
+
+	rune_world_brief_requested.connect(_show_rune_world_brief)
+
+	EventBus.skill_world_brief_requested.connect(_on_skill_world_brief_requested)
+	EventBus.skill_world_brief_closed.connect(_on_skill_world_brief_closed)
 
 var combat_action_bar : CombatActionBarUI
 
@@ -209,3 +218,25 @@ func _on_level_transition_started(is_initial_start: bool):
 	transition_ui.init_transition(is_initial_start)
 
 
+func _show_rune_world_brief(rune_data: RuneData, target: Node2D) -> void:
+	if rune_brief:
+		rune_brief.queue_free()
+	rune_brief = UI_Map["RuneBriefUI"].instantiate() as RuneBriefUI
+	rune_brief.init(rune_data, target)
+	self.add_child(rune_brief)
+
+
+var skill_world_brief: SkillTemplateBriefUI
+
+func _on_skill_world_brief_requested(skill_data: SkillData, target: Node2D) -> void:
+	if skill_world_brief:
+		skill_world_brief.queue_free() 
+		
+	skill_world_brief = UI_Map["SkillTemplateBriefUI"].instantiate() 
+	skill_world_brief.init(skill_data, target)
+	self.add_child(skill_world_brief)
+
+func _on_skill_world_brief_closed() -> void:
+	if skill_world_brief:
+		skill_world_brief.queue_free()
+		skill_world_brief = null

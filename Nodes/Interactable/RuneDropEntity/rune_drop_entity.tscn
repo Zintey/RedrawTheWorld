@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dykyq7we5n5b1"]
+
+[ext_resource type="Texture2D" uid="uid://cxa02e5lxul3f" path="res://Assets/RuneIcon/rune_list2.png" id="1_itb2m"]
+[ext_resource type="Script" uid="uid://0fxeijphfo6p" path="res://Nodes/Interactable/RuneDropEntity/RuneDropEntity.gd" id="1_mrv4h"]
+[ext_resource type="Script" uid="uid://oq8bfdkiefkj" path="res://Nodes/Interactable/InteractableArea.gd" id="2_mrv4h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0vcg"]
+atlas = ExtResource("1_itb2m")
+region = Rect2(0, 0, 116, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxlx"]
+size = Vector2(70, 70)
+
+[node name="RuneDropEntity" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 32
+lock_rotation = true
+script = ExtResource("1_mrv4h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(-54, 2, 0, -52, 53, 2, 28, 54, -28, 54)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_r0vcg")
+
+[node name="InteractableArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("2_mrv4h")
+metadata/_custom_type_script = "uid://oq8bfdkiefkj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("RectangleShape2D_3dxlx")
