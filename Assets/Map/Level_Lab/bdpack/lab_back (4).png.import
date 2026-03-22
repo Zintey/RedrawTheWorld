@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2g73oh1f1xy1"
-path="res://.godot/imported/peiyangmin donghua.png-f967036619f7b96fe3f1b6b44264a6b6.ctex"
+uid="uid://dk1tn146u5rrn"
+path="res://.godot/imported/lab_back (4).png-f36135de57143dc2d21f6832377b9a44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Map/Level1/peiyangmin donghua.png"
-dest_files=["res://.godot/imported/peiyangmin donghua.png-f967036619f7b96fe3f1b6b44264a6b6.ctex"]
+source_file="res://Assets/Map/Level_Lab/bdpack/lab_back (4).png"
+dest_files=["res://.godot/imported/lab_back (4).png-f36135de57143dc2d21f6832377b9a44.ctex"]
 
 [params]
 

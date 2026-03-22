@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxjjit8n6qmsw"
-path="res://.godot/imported/wupinzuhe.png-c4b4534407e1f1181a2323e4e7c34cb2.ctex"
+uid="uid://bc2wimchy4vvm"
+path="res://.godot/imported/lab_back (19).png-9c32222760fdac957be694c6c53dd73a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Map/Level1/wupinzuhe.png"
-dest_files=["res://.godot/imported/wupinzuhe.png-c4b4534407e1f1181a2323e4e7c34cb2.ctex"]
+source_file="res://Assets/Map/Level_Lab/bdpack/lab_back (19).png"
+dest_files=["res://.godot/imported/lab_back (19).png-9c32222760fdac957be694c6c53dd73a.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://uco4gf215ppk"]
 
-[ext_resource type="Texture2D" uid="uid://d2g73oh1f1xy1" path="res://Assets/Map/Level1/peiyangmin donghua.png" id="1_denve"]
+[ext_resource type="Texture2D" uid="uid://d2g73oh1f1xy1" path="res://Assets/Map/Level_Lab/peiyangmin donghua.png" id="1_denve"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fqwi"]
 atlas = ExtResource("1_denve")

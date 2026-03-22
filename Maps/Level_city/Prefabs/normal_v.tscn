@@ -5,8 +5,9 @@
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_erk48"]
 [ext_resource type="Texture2D" uid="uid://b2fog6y54a454" path="res://Assets/Map/Level_city/city_zhuzi2.png" id="4_40gmk"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="4_vxm4t"]
-[ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/color_filter.gdshader" id="5_vxm4t"]
+[ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/视觉shader/color_filter.gdshader" id="5_vxm4t"]
 [ext_resource type="Texture2D" uid="uid://dxp1bhqphokfs" path="res://Assets/Map/Level_city/biliboard.png" id="6_7nok4"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1274, 952)

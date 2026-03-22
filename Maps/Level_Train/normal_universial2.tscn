@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_co4wl"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_oxjm1"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="5_joapp"]
-[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/cyberglow.gdshader" id="6_6me0r"]
+[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="6_6me0r"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 949)

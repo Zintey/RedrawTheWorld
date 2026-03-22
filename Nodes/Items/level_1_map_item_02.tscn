@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce1n51qffeo5d"]
 
-[ext_resource type="Texture2D" uid="uid://dxjjit8n6qmsw" path="res://Assets/Map/Level1/wupinzuhe.png" id="1_l6nmi"]
+[ext_resource type="Texture2D" uid="uid://dxjjit8n6qmsw" path="res://Assets/Map/Level_Lab/wupinzuhe.png" id="1_l6nmi"]
+
 
 [node name="Level1MapItem02" type="Node2D"]
 

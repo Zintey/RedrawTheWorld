@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr4oftt7ittm2"]
 
 [ext_resource type="Script" uid="uid://wu3ykvjm3k2p" path="res://Manager/GameManager.gd" id="1_s7c1s"]
-[ext_resource type="Resource" uid="uid://cthnsa3cjx77y" path="res://Resources/LevelData/city_level_data.tres" id="2_li60t"]
+[ext_resource type="Resource" uid="uid://c8y3281rgetw3" path="res://Resources/LevelData/lab_level_data.tres" id="2_li60t"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_s7c1s")

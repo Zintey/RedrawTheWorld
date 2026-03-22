@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c8y3281rgetw3"]
+
+[ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_t31lt"]
+
+[resource]
+script = ExtResource("1_t31lt")
+level_id = "level_lab"
+level_name = "巴别塔"
+map_prefab_dir = "res://Maps/Level_Lab"
+target_rooms = 8
+tolerance = 5
+metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

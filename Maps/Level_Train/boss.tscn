@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_bgsxc"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_ul35r"]
 [ext_resource type="Texture2D" uid="uid://e5filvnr5mu1" path="res://Assets/Map/Level_train/到站牌.png" id="5_bgsxc"]
-[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/cyberglow.gdshader" id="6_1w2lx"]
+[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="6_1w2lx"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="6_ul35r"]
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="8_1w2lx"]
 [ext_resource type="PackedScene" uid="uid://dak656fcyirif" path="res://Nodes/Enemy/TrackedCutter/tracked_cutter.tscn" id="9_3842l"]
@@ -293,7 +293,6 @@ region_rect = Rect2(464, 336, 136, 133)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("3_bgsxc")
-target_zoom = Vector2(0.6, 0.6)
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea"]

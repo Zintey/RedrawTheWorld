@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_gwc8h"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_kq051"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="4_5tc87"]
-[ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/color_filter.gdshader" id="4_olqcr"]
+[ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/视觉shader/color_filter.gdshader" id="4_olqcr"]
 [ext_resource type="Texture2D" uid="uid://cc2aqyvrqydtg" path="res://Assets/Map/Level_city/city_buildings.png" id="5_5tc87"]
 [ext_resource type="Texture2D" uid="uid://d085j4m2psubl" path="res://Assets/Map/Level_city/city_decorate.png" id="6_rhylu"]
-[ext_resource type="Shader" uid="uid://ds0f73dm3lqyd" path="res://Shader/wind sway.gdshader" id="7_ydopc"]
+[ext_resource type="Shader" uid="uid://ds0f73dm3lqyd" path="res://Shader/视觉shader/wind sway.gdshader" id="7_ydopc"]
 [ext_resource type="Texture2D" uid="uid://b3d1sfi212erc" path="res://Assets/Map/Level_city/city_tree.png" id="8_33axk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]

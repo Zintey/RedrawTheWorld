@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_5eux7"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_00osn"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_u6g24"]
-[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/cyberglow.gdshader" id="7_u6g24"]
+[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="7_u6g24"]
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="8_xlkwf"]
 [ext_resource type="Texture2D" uid="uid://e5filvnr5mu1" path="res://Assets/Map/Level_train/到站牌.png" id="14_wfpe7"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="15_p1v50"]
@@ -365,6 +365,7 @@ path_node = NodePath("../Path1")
 [node name="MobilePlatform3" parent="." instance=ExtResource("8_xlkwf")]
 position = Vector2(603, 703)
 move_mode = 1
+move_speed = 200.0
 path_node = NodePath("../Path3")
 
 [node name="Path2" type="Path2D" parent="."]

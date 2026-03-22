@@ -1,0 +1,1122 @@
+[gd_scene load_steps=86 format=4 uid="uid://d2b7y5o6aqw4l"]
+
+[ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
+[ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
+[ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_10fc5"]
+[ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_eafni"]
+[ext_resource type="Shader" uid="uid://cabujvmthiovt" path="res://Shader/视觉shader/glass.gdshader" id="5_fe12l"]
+[ext_resource type="Texture2D" uid="uid://baxpdclu525y8" path="res://Assets/Map/Level_Lab/back-export.png" id="6_rujde"]
+[ext_resource type="Texture2D" uid="uid://jd4t4hroubri" path="res://Assets/Map/Level_Lab/bdpack/lab_back (11).png" id="7_j10v1"]
+[ext_resource type="Texture2D" uid="uid://dh1o3vq2r2u1l" path="res://Assets/Map/Level_Lab/billboards/billboardpack (4).png" id="8_fe12l"]
+[ext_resource type="Texture2D" uid="uid://cthrxf4ua4uqv" path="res://Assets/Map/Level_Lab/bdpack/lab_back (7).png" id="8_hi38v"]
+[ext_resource type="Texture2D" uid="uid://bt8k65jtymhxs" path="res://Assets/Map/Level_Lab/bdpack/lab_back (1).png" id="9_hitke"]
+[ext_resource type="Texture2D" uid="uid://d4b26abje2niu" path="res://Assets/Map/Level_Lab/billboards/billboardpack (10).png" id="9_i608d"]
+[ext_resource type="Texture2D" uid="uid://xm5itp8nuo4n" path="res://Assets/Map/Level_Lab/billboards/billboardpack (6).png" id="10_fwdxp"]
+[ext_resource type="Texture2D" uid="uid://d4f2tie348aui" path="res://Assets/Map/Level_Lab/bdpack/lab_back (10).png" id="10_rd2ao"]
+[ext_resource type="Texture2D" uid="uid://c8ht3uek2gmmk" path="res://Assets/Map/Level_Lab/bdpack/lab_back (2).png" id="11_qyw35"]
+[ext_resource type="Texture2D" uid="uid://dfhopqk5onnyh" path="res://Assets/Map/Level_Lab/billboards/billboardpack (5).png" id="11_tpg3q"]
+[ext_resource type="Texture2D" uid="uid://cnea32ab8ooe4" path="res://Assets/Map/Level_Lab/billboards/billboardpack (3).png" id="12_4u4vq"]
+[ext_resource type="Texture2D" uid="uid://crdb1b834uv5v" path="res://Assets/Map/Level_Lab/bdpack/lab_back (3).png" id="12_6wsur"]
+[ext_resource type="Texture2D" uid="uid://td40xwysfe6h" path="res://Assets/Map/Level_Lab/bdpack/lab_back (6).png" id="13_c8kv7"]
+[ext_resource type="Texture2D" uid="uid://cwbr0baolan5" path="res://Assets/Map/Level_Lab/billboards/billboardpack (2).png" id="13_fsul5"]
+[ext_resource type="Texture2D" uid="uid://72wd51bkooql" path="res://Assets/Map/Level_Lab/bdpack/lab_back (5).png" id="14_c7avt"]
+[ext_resource type="Shader" uid="uid://btq4kkb86745n" path="res://Shader/视觉shader/green_glow.gdshader" id="14_fsul5"]
+[ext_resource type="Texture2D" uid="uid://dahvhw6r0uxet" path="res://Assets/Map/Level_Lab/billboards/billboardpack (1).png" id="14_wu11l"]
+[ext_resource type="Texture2D" uid="uid://dk1tn146u5rrn" path="res://Assets/Map/Level_Lab/bdpack/lab_back (4).png" id="15_fe12l"]
+[ext_resource type="Texture2D" uid="uid://bwkhko7w5njep" path="res://Assets/Map/Level_Lab/bdpack/lab_back (8).png" id="16_i608d"]
+[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="16_jchir"]
+[ext_resource type="Texture2D" uid="uid://djvs3o1u7a1xo" path="res://Assets/Map/Level_Lab/bdpack/lab_back (14).png" id="17_fwdxp"]
+[ext_resource type="Texture2D" uid="uid://drlchnqottaxr" path="res://Assets/Map/Level_Lab/bdpack/lab_back (13).png" id="18_tpg3q"]
+[ext_resource type="Texture2D" uid="uid://bas2xrba0mrk" path="res://Assets/Map/Level_Lab/bdpack/lab_back (12).png" id="19_4u4vq"]
+[ext_resource type="Texture2D" uid="uid://qcjdga6sfwqx" path="res://Assets/Map/Level_Lab/bdpack/lab_back (15).png" id="20_fsul5"]
+[ext_resource type="Texture2D" uid="uid://c5xt8hwmq556y" path="res://Assets/Map/Level_Lab/bdpack/lab_back (17).png" id="21_wu11l"]
+[ext_resource type="Texture2D" uid="uid://bc2wimchy4vvm" path="res://Assets/Map/Level_Lab/bdpack/lab_back (19).png" id="22_ajp66"]
+[ext_resource type="Texture2D" uid="uid://dnnmqafev4d81" path="res://Assets/Map/Level_Lab/bdpack/lab_back (20).png" id="23_p8p6j"]
+[ext_resource type="Texture2D" uid="uid://rsg70bfsnn54" path="res://Assets/Map/Level_Lab/bdpack/lab_back (18).png" id="24_np7um"]
+[ext_resource type="Texture2D" uid="uid://d7jteyriohes" path="res://Assets/Map/Level_Lab/bdpack/lab_back (16).png" id="25_xbtun"]
+[ext_resource type="Texture2D" uid="uid://d2g73oh1f1xy1" path="res://Assets/Map/Level_Lab/peiyangmin donghua.png" id="32_c7avt"]
+[ext_resource type="Texture2D" uid="uid://dxjjit8n6qmsw" path="res://Assets/Map/Level_Lab/wupinzuhe.png" id="33_tpg3q"]
+[ext_resource type="Texture2D" uid="uid://bsg3r0lnttji2" path="res://Assets/Map/Level_train/close.png" id="36_4u4vq"]
+[ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
+[ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
+
+[sub_resource type="Environment" id="Environment_dt1lc"]
+background_mode = 3
+glow_enabled = true
+glow_levels/2 = 3.77
+glow_intensity = 0.5
+glow_bloom = 0.1
+glow_blend_mode = 0
+glow_hdr_threshold = 0.89
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 71.45
+fog_light_color = Color(0.76088196, 0.43831852, 0.51650727, 1)
+fog_light_energy = 5.25
+fog_sun_scatter = 0.32
+fog_density = 0.6241
+adjustment_enabled = true
+adjustment_brightness = 0.85
+adjustment_contrast = 1.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
+size = Vector2(1272, 949)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fwdxp"]
+noise_type = 5
+frequency = 0.7626
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tpg3q"]
+noise = SubResource("FastNoiseLite_fwdxp")
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkwoy"]
+shader = ExtResource("5_fe12l")
+shader_parameter/normal_map = SubResource("NoiseTexture2D_tpg3q")
+shader_parameter/blur_amount = 2.0
+shader_parameter/distortion_strength = 0.006000000285
+shader_parameter/specular_intensity = 0.0
+shader_parameter/glass_tint_opacity = 0.1
+shader_parameter/glass_color = Color(0.8, 0.9, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajp66"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0.8215, 0.37, 1, 1)
+shader_parameter/alpha = 0.5370000255075
+shader_parameter/line_density = 34.906001658035
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.038000001805
+shader_parameter/aberration_intensity = 0.00800000038
+shader_parameter/glitch_tear_frequency = 0.302000014345
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.5090000241775
+shader_parameter/bloom_trigger = 1.66000003135
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np7um"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.05
+shader_parameter/glitch_tear_intensity = 0.1
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 1.5
+shader_parameter/bloom_trigger = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbtun"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 2.830000134425
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.05
+shader_parameter/glitch_tear_intensity = 0.20400000969
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.0
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fe12l"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 0.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.03
+shader_parameter/glitch_tear_frequency = 0.05
+shader_parameter/glitch_tear_intensity = 0.1
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 1.0750000510625
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i608d"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.71600003401
+shader_parameter/line_density = 2.830000134425
+shader_parameter/line_speed = 3.4150001622125
+shader_parameter/line_intensity = 0.226000010735
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.0
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwdxp"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 8.4910004033225
+shader_parameter/line_speed = 1.698000080655
+shader_parameter/line_intensity = 0.2550000121125
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.8400000399
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpg3q"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 0, 0.9833331, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 1.8870000896325
+shader_parameter/line_speed = 2.9430001397925
+shader_parameter/line_intensity = 0.2550000121125
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 2.0770000986575
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4u4vq"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 12.26400058254
+shader_parameter/line_speed = 7.754000368315
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.9810000465975
+shader_parameter/bloom_trigger = 1.4910000233225
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsul5"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 0, 0.016666412, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 37.73600179246
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.9810000465975
+shader_parameter/bloom_trigger = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu11l"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 0, 0.8000002, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 2.830000134425
+shader_parameter/line_speed = 0.5850000277875
+shader_parameter/line_intensity = 0.434000020615
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 1.1230000533425
+shader_parameter/bloom_trigger = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8p6j"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.6050000287375
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.462000021945
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.13200000627
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbds7"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.13200000627
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkitp"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 0, 0.016666412, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 50.0
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.02800000133
+shader_parameter/glitch_tear_frequency = 0.1070000050825
+shader_parameter/glitch_tear_intensity = 0.1
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.8870000421325
+shader_parameter/bloom_trigger = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_unbe6"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0.9450988, 0.47099406, 0.3596955, 1)
+shader_parameter/alpha = 0.622000029545
+shader_parameter/line_density = 16.258000772255
+shader_parameter/line_speed = 4.358000207005
+shader_parameter/line_intensity = 0.13200000627
+shader_parameter/aberration_intensity = 0.02700000128249999
+shader_parameter/glitch_tear_frequency = 0.1790000085025
+shader_parameter/glitch_tear_intensity = 0.0310000014725
+shader_parameter/glitch_speed = 0.1890000089775
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 1.6410000779475
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n63er"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 6.038000286805
+shader_parameter/inner_glow_intensity = 1.0750000510625
+shader_parameter/bloom_trigger = 1.830000039425
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_up66y"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0.9654731, 0.88475853, 0.4127678, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 100.0
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.1130000053675
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.05
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 14.1510006721725
+shader_parameter/inner_glow_intensity = 0.462000021945
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bf5u3"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0.92, 0.37720004, 0.92, 0.9843137)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.4730000224675
+shader_parameter/line_speed = 1.434000068115
+shader_parameter/line_intensity = 0.2550000121125
+shader_parameter/aberration_intensity = 0.00800000038
+shader_parameter/glitch_tear_frequency = 0.0570000027075
+shader_parameter/glitch_tear_intensity = 0.23600001121
+shader_parameter/glitch_speed = 2.73600012996
+shader_parameter/inner_glow_spread = 25.47200120992
+shader_parameter/inner_glow_intensity = 0.18000000855
+shader_parameter/bloom_trigger = 2.170000055575
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq8yu"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0.9720412, 0.8569204, 0.7172314, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 2.830000134425
+shader_parameter/line_speed = 1.2800000608
+shader_parameter/line_intensity = 0.0
+shader_parameter/aberration_intensity = 0.03
+shader_parameter/glitch_tear_frequency = 0.05
+shader_parameter/glitch_tear_intensity = 0.1
+shader_parameter/glitch_speed = 4.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.038000001805
+shader_parameter/bloom_trigger = 1.9150000434625
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dm81r"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/alpha = 0.6410000304475
+shader_parameter/line_density = 7.5470003584825
+shader_parameter/line_speed = 1.6230000770925002
+shader_parameter/line_intensity = 0.3850000182875
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.0850000040375
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pgbv"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0.69767857, 0.7093034, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 0.0
+shader_parameter/line_intensity = 0.0
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.23600001121
+shader_parameter/bloom_trigger = 1.3210000152475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfwyt"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(1, 0.53333336, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.9430000447925
+shader_parameter/line_speed = 2.0
+shader_parameter/line_intensity = 0.5
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 0.13200000627
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_denx0"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0, 1, 1, 1)
+shader_parameter/alpha = 0.65
+shader_parameter/line_density = 0.0
+shader_parameter/line_speed = 0.0
+shader_parameter/line_intensity = 0.0
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.0
+shader_parameter/glitch_speed = 0.0
+shader_parameter/inner_glow_spread = 0.0
+shader_parameter/inner_glow_intensity = 2.1130001003675
+shader_parameter/bloom_trigger = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bb57q"]
+shader = ExtResource("16_jchir")
+shader_parameter/base_color = Color(0, 1, 1, 1)
+shader_parameter/alpha = 0.7170000340575
+shader_parameter/line_density = 39.6230018820925
+shader_parameter/line_speed = 6.8870003271325
+shader_parameter/line_intensity = 0.0950000045125
+shader_parameter/aberration_intensity = 0.0
+shader_parameter/glitch_tear_frequency = 0.0
+shader_parameter/glitch_tear_intensity = 0.60400002869
+shader_parameter/glitch_speed = 3.52800016758
+shader_parameter/inner_glow_spread = 17.26800082023
+shader_parameter/inner_glow_intensity = 0.0
+shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwclc"]
+shader = ExtResource("14_fsul5")
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/tolerance = 0.5590000265525
+shader_parameter/smoothing = 0.258000012255
+shader_parameter/building_night_tint = Color(0.49819997, 0.92527336, 0.94, 1)
+shader_parameter/ambient_intensity = 0.066000003135
+shader_parameter/emission_strength = 47.2190021954025
+shader_parameter/brightness_threshold = 1.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/final_gain = 1.6770000796575
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe12l"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(0, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i608d"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(180, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwdxp"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(360, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpg3q"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(540, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u4vq"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(720, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsul5"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(900, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu11l"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(1080, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajp66"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(1260, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8p6j"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(1440, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np7um"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(1620, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbtun"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(1800, 0, 180, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb57q"]
+atlas = ExtResource("32_c7avt")
+region = Rect2(1980, 0, 180, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hbds7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe12l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i608d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwdxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpg3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u4vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsul5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu11l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajp66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8p6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np7um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbtun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb57q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wu11l"]
+frequency = 0.0015
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ajp66"]
+noise = SubResource("FastNoiseLite_wu11l")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqtca"]
+shader = ExtResource("38_fsul5")
+shader_parameter/top_color = Color(0.045721218, 0.033613868, 0.15391648, 1)
+shader_parameter/bottom_color = Color(0.011147253, 0.10789118, 0.12464737, 1)
+shader_parameter/glow_intensity = 0.5
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_ajp66")
+shader_parameter/fog_speed = 0.062000002945
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtut0"]
+shader = ExtResource("39_wu11l")
+shader_parameter/fog_color = Color(0, 1, 1, 0.3)
+shader_parameter/scroll_speed = Vector2(0.03, 0.01)
+shader_parameter/top_fade_start = 0.4
+shader_parameter/top_fade_end = 0.1
+shader_parameter/bottom_fade_start = 0.8
+shader_parameter/bottom_fade_end = 0.95
+shader_parameter/side_fade_start = 0.1
+shader_parameter/side_fade_end = 0.02
+
+[node name="StartRoom" type="Node2D"]
+script = ExtResource("1_mecnb")
+door_scene = ExtResource("2_k07le")
+"Door Constraints/Grid[0,0]_U" = false
+"Door Constraints/Grid[0,0]_D" = false
+"Door Constraints/Grid[0,0]_L" = true
+"Door Constraints/Grid[0,0]_R" = true
+metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dt1lc")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.80710745, 0.8070797, 0.7815219, 1)
+
+[node name="RoomArea" type="Area2D" parent="."]
+collision_mask = 3
+script = ExtResource("3_10fc5")
+metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
+visible = false
+position = Vector2(636, 479.5)
+shape = SubResource("RectangleShape2D_4wfah")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAABABQABQAFAAIAAAABABMABQAHAAIAAAABABIABQAHAAEAAAABABEABQAHAAMAAAABABAABQAFAAIAAAABAA8ABQAFAAIAAAABAA4ABQAHAAIAAAABAA0ABQAFAAIAAAABAAwABQAFAAIAAAABAAsABQAFAAIAAAABAAoABQAHAAIAAAAAABQABQABAAIAAAAAABMABQABAAIAAAAAABIABQABAAIAAAAAABEABQAJAAIAAAAAABAABQABAAIAAAAAAA8ABQABAAIAAAAAAA4ABQAJAAIAAAAAAA0ABQAJAAIAAAAAAAwABQABAAIAAAAAAAsABQAJAAIAAAAAAAoABQABAAIAAAABAAkABQAFAAIAAAABAAgABQAHAAIAAAABAAcABQAHAAIAAAABAAYABQAHAAIAAAABAAUABQAHAAIAAAABAAQABQAHAAIAAAABAAMABQAFAAIAAAABAAIABQAFAAIAAAABAAEABQAHAAEAAAABAAAABQAIAAMAAAAAAAkABQAJAAIAAAAAAAgABQAJAAIAAAAAAAcABQAJAAIAAAAAAAYABQAJAAIAAAAAAAUABQABAAIAAAAAAAQABQAJAAIAAAAAAAMABQAJAAIAAAAAAAIABQAJAAIAAAAAAAEABQAJAAIAAAAAAAAABQABAAEAAAABAB0ABQAIAAEAAAABABwABQACAAIAAAABABsABQAHAAMAAAABABoABQAHAAIAAAABABkABQAHAAIAAAABABgABQAHAAIAAAABABcABQAFAAIAAAABABYABQAFAAIAAAABABUABQAFAAIAAAAAAB0ABQABAAMAAAAAABwABQAJAAIAAAAAABsABQABAAIAAAAAABoABQABAAIAAAAAABkABQAJAAIAAAAAABgABQABAAIAAAAAABcABQAJAAIAAAAAABYABQABAAIAAAAAABUABQAJAAIAAAAnAB0ABQAFAAMAAAAnABwABQAHAAIAAAAmAB0ABQACAAMAAAAmABwABQACAAIAAAAlAB0ABQAIAAEAAAAlABwABQACAAIAAAAkAB0ABQAIAAEAAAAkABwABQACAAIAAAAjAB0ABQACAAMAAAAjABwABQACAAIAAAAiAB0ABQAIAAEAAAAiABwABQACAAIAAAAhAB0ABQAIAAEAAAAhABwABQACAAIAAAAgAB0ABQACAAMAAAAgABwABQACAAIAAAAfAB0ABQAIAAEAAAAfABwABQACAAIAAAAeAB0ABQACAAMAAAAeABwABQACAAIAAAAdAB0ABQACAAMAAAAdABwABQACAAIAAAAcAB0ABQACAAMAAAAcABwABQACAAIAAAAbAB0ABQAIAAEAAAAbABwABQACAAIAAAAaAB0ABQAIAAEAAAAaABwABQACAAIAAAAZAB0ABQAIAAEAAAAZABwABQACAAIAAAAYAB0ABQACAAMAAAAYABwABQACAAIAAAAXAB0ABQAIAAEAAAAXABwABQACAAIAAAAWAB0ABQAIAAEAAAAWABwABQACAAIAAAAVAB0ABQACAAMAAAAVABwABQACAAIAAAAUAB0ABQACAAMAAAAUABwABQACAAIAAAATAB0ABQACAAMAAAATABwABQACAAIAAAASAB0ABQACAAMAAAASABwABQACAAIAAAARAB0ABQACAAMAAAARABwABQACAAIAAAAQAB0ABQACAAMAAAAQABwABQACAAIAAAAPAB0ABQAIAAEAAAAPABwABQACAAIAAAAOAB0ABQAIAAEAAAAOABwABQACAAIAAAANAB0ABQAIAAEAAAANABwABQACAAIAAAAMAB0ABQACAAMAAAAMABwABQACAAIAAAALAB0ABQAIAAEAAAALABwABQACAAIAAAAKAB0ABQAIAAEAAAAKABwABQACAAIAAAAJAB0ABQACAAMAAAAJABwABQACAAIAAAAIAB0ABQACAAMAAAAIABwABQACAAIAAAAHAB0ABQAIAAEAAAAHABwABQACAAIAAAAGAB0ABQAIAAEAAAAGABwABQACAAIAAAAFAB0ABQAIAAEAAAAFABwABQACAAIAAAAEAB0ABQACAAMAAAAEABwABQACAAIAAAADAB0ABQAIAAEAAAADABwABQACAAIAAAACAB0ABQACAAMAAAACABwABQACAAIAAAAnABsABQAHAAIAAAAnABoABQAHAAIAAAAnABkABQAFAAIAAAAnABgABQAFAAIAAAAnABcABQAHAAIAAAAnABYABQAHAAIAAAAnABUABQAFAAIAAAAnABQABQAFAAIAAAAnABMABQAFAAIAAAAnABIABQAFAAIAAAAnABEABQAHAAIAAAAnABAABQAFAAIAAAAnAA8ABQAHAAIAAAAnAA4ABQAHAAIAAAAnAA0ABQAFAAIAAAAnAAwABQAFAAIAAAAnAAsABQAFAAIAAAAnAAoABQAHAAIAAAAnAAkABQAFAAIAAAAnAAgABQAHAAIAAAAnAAcABQAHAAIAAAAnAAYABQAHAAIAAAAnAAUABQAFAAIAAAAnAAQABQAHAAIAAAAnAAMABQAHAAIAAAAnAAIABQAFAAIAAAAnAAEABQAHAAIAAAAnAAAABQAFAAEAAAAmABsABQAJAAMAAAAmABoABQABAAIAAAAmABkABQABAAIAAAAmABgABQAJAAIAAAAmABcABQAJAAIAAAAmABYABQAJAAIAAAAmABUABQABAAIAAAAmABQABQABAAIAAAAmABMABQAJAAIAAAAmABIABQAJAAEAAAAmABEABQAJAAMAAAAmABAABQABAAIAAAAmAA8ABQAJAAIAAAAmAA4ABQABAAIAAAAmAA0ABQABAAIAAAAmAAwABQABAAIAAAAmAAsABQABAAIAAAAmAAoABQABAAIAAAAmAAkABQAJAAIAAAAmAAgABQABAAIAAAAmAAcABQAJAAIAAAAmAAYABQAJAAIAAAAmAAUABQAJAAIAAAAmAAQABQAJAAIAAAAmAAMABQABAAIAAAAmAAIABQAJAAIAAAAmAAEABQAJAAEAAAAmAAAABQAIAAMAAAAlAAEABQACAAMAAAAlAAAABQACAAEAAAAkAAEABQACAAMAAAAkAAAABQACAAEAAAAjAAEABQACAAMAAAAjAAAABQAIAAMAAAAiAAEABQAIAAEAAAAiAAAABQAIAAMAAAAhAAEABQACAAMAAAAhAAAABQAIAAMAAAAgAAEABQACAAMAAAAgAAAABQAIAAMAAAAfAAEABQACAAMAAAAfAAAABQAIAAMAAAAeAAEABQACAAMAAAAeAAAABQACAAEAAAAdAAEABQACAAMAAAAdAAAABQACAAEAAAAcAAEABQAIAAEAAAAcAAAABQACAAEAAAAbAAEABQACAAMAAAAbAAAABQACAAEAAAAaAAEABQACAAMAAAAaAAAABQAIAAMAAAAZAAEABQACAAMAAAAZAAAABQACAAEAAAAYAAEABQACAAMAAAAYAAAABQAIAAMAAAAXAAEABQAIAAEAAAAXAAAABQACAAEAAAAWAAEABQAIAAEAAAAWAAAABQACAAEAAAAVAAEABQAIAAEAAAAVAAAABQACAAEAAAAUAAEABQACAAMAAAAUAAAABQACAAEAAAATAAEABQACAAMAAAATAAAABQAIAAMAAAASAAEABQAIAAEAAAASAAAABQACAAEAAAARAAEABQAIAAEAAAARAAAABQAIAAMAAAAQAAEABQAIAAEAAAAQAAAABQACAAEAAAAPAAEABQACAAMAAAAPAAAABQACAAEAAAAOAAEABQACAAMAAAAOAAAABQACAAEAAAANAAEABQAIAAEAAAANAAAABQAIAAMAAAAMAAEABQAIAAEAAAAMAAAABQACAAEAAAALAAEABQACAAMAAAALAAAABQAIAAMAAAAKAAEABQAIAAEAAAAKAAAABQAIAAMAAAAJAAEABQAIAAEAAAAJAAAABQACAAEAAAAIAAEABQACAAMAAAAIAAAABQACAAEAAAAHAAEABQAIAAEAAAAHAAAABQAIAAMAAAAGAAEABQACAAMAAAAGAAAABQAIAAMAAAAFAAEABQACAAMAAAAFAAAABQAIAAMAAAAEAAEABQAIAAEAAAAEAAAABQAIAAMAAAADAAEABQAIAAEAAAADAAAABQACAAEAAAACAAEABQACAAMAAAACAAAABQAIAAMAAAAZABIABQACAAMAAAAZABEABQACAAEAAAAYABIABQACAAMAAAAYABEABQACAAEAAAAXABIABQACAAMAAAAXABEABQACAAEAAAAWABIABQAIAAEAAAAWABEABQAIAAMAAAAVABIABQACAAMAAAAVABEABQACAAEAAAAUABIABQAIAAEAAAAUABEABQACAAEAAAATABIABQACAAMAAAATABEABQAIAAMAAAASABIABQAIAAEAAAASABEABQACAAEAAAARABIABQACAAMAAAARABEABQAIAAMAAAAQABIABQAIAAEAAAAQABEABQAIAAMAAAAPABIABQACAAMAAAAPABEABQAIAAMAAAAOABIABQACAAMAAAAOABEABQACAAEAAAACABEABQABAAsAAAADABEABQACAAsAAAAEABEABQADAAsAAAAFABEABQABAAsAAAAGABEABQACAAsAAAAHABEABQADAAsAAAAIABEABQABAAEAAAAJABEABQACAAEAAAAKABEABQAIAAMAAAALABEABQACAAEAAAAMABEABQACAAEAAAANABEABQAIAAMAAAAbABEABQACAAEAAAAcABEABQAIAAMAAAAdABEABQAIAAMAAAAeABEABQAIAAMAAAAfABEABQAFAAEAAAAgABEABQABAAsAAAAhABEABQACAAsAAAAiABEABQADAAsAAAAjABEABQABAAsAAAAkABEABQACAAsAAAAlABEABQADAAsAAAAaABEABQACAAEAAAAlABsABQAIAAMAAAAkABsABQAIAAMAAAAjABsABQAIAAMAAAAiABsABQACAAEAAAAhABsABQACAAEAAAAgABsABQACAAEAAAAfABsABQAIAAMAAAAeABsABQACAAEAAAAdABsABQACAAEAAAAcABsABQACAAEAAAAbABsABQAIAAMAAAAaABsABQACAAEAAAAZABsABQAIAAMAAAAYABsABQACAAEAAAAXABsABQAIAAMAAAAWABsABQAIAAMAAAAVABsABQACAAEAAAAUABsABQACAAEAAAATABsABQAIAAMAAAASABsABQACAAEAAAARABsABQAIAAMAAAAQABsABQACAAEAAAAPABsABQACAAEAAAAOABsABQACAAEAAAANABsABQACAAEAAAAMABsABQAIAAMAAAALABsABQACAAEAAAAKABsABQAIAAMAAAAJABsABQAIAAMAAAAIABsABQAIAAMAAAAHABsABQACAAEAAAAGABsABQACAAEAAAAFABsABQAIAAMAAAAEABsABQACAAEAAAADABsABQAIAAMAAAACABsABQAIAAMAAAAeABIABQACAAIAAAAdABIABQAJAAEAAAAcABIABQAIAAEAAAAbABIABQAIAAEAAAAaABIABQAIAAEAAAANABIABQACAAMAAAAMABIABQACAAMAAAALABIABQACAAMAAAAKABIABQAHAAEAAAAJABIABQACAAIAAAAIABIABQABAAIAAAAeABUABQACAAMAAAAeABQABQACAAIAAAAeABMABQACAAIAAAAfABUABQAFAAMAAAAfABQABQAFAAIAAAAfABMABQAHAAIAAAAdABMABQABAAIAAAAdABQABQABAAIAAAAdABUABQABAAMAAAAfABIABQAFAAIAAAAIABMABQABAAIAAAAIABQABQAJAAIAAAAIABUABQABAAMAAAAJABUABQAIAAEAAAAJABQABQACAAIAAAAJABMABQACAAIAAAAKABMABQAFAAIAAAAKABQABQAHAAIAAAAKABUABQAFAAMAAAACABUABQABAAsAAAADABUABQACAAsAAAAEABUABQADAAsAAAAFABUABQABAAsAAAAGABUABQACAAsAAAAHABUABQADAAsAAAAgABUABQABAAsAAAAhABUABQACAAsAAAAiABUABQADAAsAAAAjABUABQABAAsAAAAkABUABQACAAsAAAAlABUABQADAAsAAAA=")
+tile_set = ExtResource("4_eafni")
+
+[node name="glass" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = -5
+material = SubResource("ShaderMaterial_bkwoy")
+tile_map_data = PackedByteArray("AAAmABwAAQAcAAMAAAAmABsAAQAcAAIAAAAmABoAAQAcAAIAAAAmABkAAQAcAAIAAAAmABgAAQAcAAIAAAAmABcAAQAcAAIAAAAmABYAAQAcAAIAAAAmABUAAQAcAAIAAAAmABQAAQAcAAIAAAAmABMAAQAcAAIAAAAmABIAAQAcAAIAAAAmABEAAQAcAAEAAAAlABwAAQAaAAMAAAAlABsAAQAaAAIAAAAlABoAAQAaAAIAAAAlABkAAQAaAAIAAAAlABgAAQAaAAIAAAAlABcAAQAaAAIAAAAlABYAAQAaAAIAAAAlABUAAQAaAAIAAAAlABQAAQAaAAIAAAAlABMAAQAaAAIAAAAlABIAAQAaAAIAAAAlABEAAQAaAAEAAAAkABwAAQAaAAMAAAAkABsAAQAaAAIAAAAkABoAAQAaAAIAAAAkABkAAQAaAAIAAAAkABgAAQAaAAIAAAAkABcAAQAaAAIAAAAkABYAAQAaAAIAAAAkABUAAQAaAAIAAAAkABQAAQAaAAIAAAAkABMAAQAaAAIAAAAkABIAAQAaAAIAAAAkABEAAQAaAAEAAAAjABwAAQAaAAMAAAAjABsAAQAaAAIAAAAjABoAAQAaAAIAAAAjABkAAQAaAAIAAAAjABgAAQAaAAIAAAAjABcAAQAaAAIAAAAjABYAAQAaAAIAAAAjABUAAQAaAAIAAAAjABQAAQAaAAIAAAAjABMAAQAaAAIAAAAjABIAAQAaAAIAAAAjABEAAQAaAAEAAAAiABwAAQAaAAMAAAAiABsAAQAaAAIAAAAiABoAAQAaAAIAAAAiABkAAQAaAAIAAAAiABgAAQAaAAIAAAAiABcAAQAaAAIAAAAiABYAAQAaAAIAAAAiABUAAQAaAAIAAAAiABQAAQAaAAIAAAAiABMAAQAaAAIAAAAiABIAAQAaAAIAAAAiABEAAQAaAAEAAAAhABwAAQAaAAMAAAAhABsAAQAaAAIAAAAhABoAAQAaAAIAAAAhABkAAQAaAAIAAAAhABgAAQAaAAIAAAAhABcAAQAaAAIAAAAhABYAAQAaAAIAAAAhABUAAQAaAAIAAAAhABQAAQAaAAIAAAAhABMAAQAaAAIAAAAhABIAAQAaAAIAAAAhABEAAQAaAAEAAAAgABwAAQAaAAMAAAAgABsAAQAaAAIAAAAgABoAAQAaAAIAAAAgABkAAQAaAAIAAAAgABgAAQAaAAIAAAAgABcAAQAaAAIAAAAgABYAAQAaAAIAAAAgABUAAQAaAAIAAAAgABQAAQAaAAIAAAAgABMAAQAaAAIAAAAgABIAAQAaAAIAAAAgABEAAQAaAAEAAAAfABwAAQAaAAMAAAAfABsAAQAaAAIAAAAfABoAAQAaAAIAAAAfABkAAQAaAAIAAAAfABgAAQAaAAIAAAAfABcAAQAaAAIAAAAfABYAAQAaAAIAAAAfABUAAQAaAAIAAAAfABQAAQAaAAIAAAAfABMAAQAaAAIAAAAfABIAAQAaAAIAAAAfABEAAQAaAAEAAAAeABwAAQAaAAMAAAAeABsAAQAaAAIAAAAeABoAAQAaAAIAAAAeABkAAQAaAAIAAAAeABgAAQAaAAIAAAAeABcAAQAaAAIAAAAeABYAAQAaAAIAAAAeABUAAQAaAAIAAAAeABQAAQAaAAIAAAAeABMAAQAaAAIAAAAeABIAAQAaAAIAAAAeABEAAQAaAAEAAAAdABwAAQAaAAMAAAAdABsAAQAaAAIAAAAdABoAAQAaAAIAAAAdABkAAQAaAAIAAAAdABgAAQAaAAIAAAAdABcAAQAaAAIAAAAdABYAAQAaAAIAAAAdABUAAQAaAAIAAAAdABQAAQAaAAIAAAAdABMAAQAaAAIAAAAdABIAAQAaAAIAAAAdABEAAQAaAAEAAAAcABwAAQAaAAMAAAAcABsAAQAaAAIAAAAcABoAAQAaAAIAAAAcABkAAQAaAAIAAAAcABgAAQAaAAIAAAAcABcAAQAaAAIAAAAcABYAAQAaAAIAAAAcABUAAQAaAAIAAAAcABQAAQAaAAIAAAAcABMAAQAaAAIAAAAcABIAAQAaAAIAAAAcABEAAQAaAAEAAAAbABwAAQAaAAMAAAAbABsAAQAaAAIAAAAbABoAAQAaAAIAAAAbABkAAQAaAAIAAAAbABgAAQAaAAIAAAAbABcAAQAaAAIAAAAbABYAAQAaAAIAAAAbABUAAQAaAAIAAAAbABQAAQAaAAIAAAAbABMAAQAaAAIAAAAbABIAAQAaAAIAAAAbABEAAQAaAAEAAAAaABwAAQAaAAMAAAAaABsAAQAaAAIAAAAaABoAAQAaAAIAAAAaABkAAQAaAAIAAAAaABgAAQAaAAIAAAAaABcAAQAaAAIAAAAaABYAAQAaAAIAAAAaABUAAQAaAAIAAAAaABQAAQAaAAIAAAAaABMAAQAaAAIAAAAaABIAAQAaAAIAAAAaABEAAQAaAAEAAAAZABwAAQAaAAMAAAAZABsAAQAaAAIAAAAZABoAAQAaAAIAAAAZABkAAQAaAAIAAAAZABgAAQAaAAIAAAAZABcAAQAaAAIAAAAZABYAAQAaAAIAAAAZABUAAQAaAAIAAAAZABQAAQAaAAIAAAAZABMAAQAaAAIAAAAZABIAAQAaAAIAAAAZABEAAQAaAAEAAAAYABwAAQAaAAMAAAAYABsAAQAaAAIAAAAYABoAAQAaAAIAAAAYABkAAQAaAAIAAAAYABgAAQAaAAIAAAAYABcAAQAaAAIAAAAYABYAAQAaAAIAAAAYABUAAQAaAAIAAAAYABQAAQAaAAIAAAAYABMAAQAaAAIAAAAYABIAAQAaAAIAAAAYABEAAQAaAAEAAAAXABwAAQAaAAMAAAAXABsAAQAaAAIAAAAXABoAAQAaAAIAAAAXABkAAQAaAAIAAAAXABgAAQAaAAIAAAAXABcAAQAaAAIAAAAXABYAAQAaAAIAAAAXABUAAQAaAAIAAAAXABQAAQAaAAIAAAAXABMAAQAaAAIAAAAXABIAAQAaAAIAAAAXABEAAQAaAAEAAAAWABwAAQAaAAMAAAAWABsAAQAaAAIAAAAWABoAAQAaAAIAAAAWABkAAQAaAAIAAAAWABgAAQAaAAIAAAAWABcAAQAaAAIAAAAWABYAAQAaAAIAAAAWABUAAQAaAAIAAAAWABQAAQAaAAIAAAAWABMAAQAaAAIAAAAWABIAAQAaAAIAAAAWABEAAQAaAAEAAAAVABwAAQAaAAMAAAAVABsAAQAaAAIAAAAVABoAAQAaAAIAAAAVABkAAQAaAAIAAAAVABgAAQAaAAIAAAAVABcAAQAaAAIAAAAVABYAAQAaAAIAAAAVABUAAQAaAAIAAAAVABQAAQAaAAIAAAAVABMAAQAaAAIAAAAVABIAAQAaAAIAAAAVABEAAQAaAAEAAAAUABwAAQAaAAMAAAAUABsAAQAaAAIAAAAUABoAAQAaAAIAAAAUABkAAQAaAAIAAAAUABgAAQAaAAIAAAAUABcAAQAaAAIAAAAUABYAAQAaAAIAAAAUABUAAQAaAAIAAAAUABQAAQAaAAIAAAAUABMAAQAaAAIAAAAUABIAAQAaAAIAAAAUABEAAQAaAAEAAAATABwAAQAaAAMAAAATABsAAQAaAAIAAAATABoAAQAaAAIAAAATABkAAQAaAAIAAAATABgAAQAaAAIAAAATABcAAQAaAAIAAAATABYAAQAaAAIAAAATABUAAQAaAAIAAAATABQAAQAaAAIAAAATABMAAQAaAAIAAAATABIAAQAaAAIAAAATABEAAQAaAAEAAAASABwAAQAaAAMAAAASABsAAQAaAAIAAAASABoAAQAaAAIAAAASABkAAQAaAAIAAAASABgAAQAaAAIAAAASABcAAQAaAAIAAAASABYAAQAaAAIAAAASABUAAQAaAAIAAAASABQAAQAaAAIAAAASABMAAQAaAAIAAAASABIAAQAaAAIAAAASABEAAQAaAAEAAAARABwAAQAaAAMAAAARABsAAQAaAAIAAAARABoAAQAaAAIAAAARABkAAQAaAAIAAAARABgAAQAaAAIAAAARABcAAQAaAAIAAAARABYAAQAaAAIAAAARABUAAQAaAAIAAAARABQAAQAaAAIAAAARABMAAQAaAAIAAAARABIAAQAaAAIAAAARABEAAQAaAAEAAAAQABwAAQAaAAMAAAAQABsAAQAaAAIAAAAQABoAAQAaAAIAAAAQABkAAQAaAAIAAAAQABgAAQAaAAIAAAAQABcAAQAaAAIAAAAQABYAAQAaAAIAAAAQABUAAQAaAAIAAAAQABQAAQAaAAIAAAAQABMAAQAaAAIAAAAQABIAAQAaAAIAAAAQABEAAQAaAAEAAAAPABwAAQAaAAMAAAAPABsAAQAaAAIAAAAPABoAAQAaAAIAAAAPABkAAQAaAAIAAAAPABgAAQAaAAIAAAAPABcAAQAaAAIAAAAPABYAAQAaAAIAAAAPABUAAQAaAAIAAAAPABQAAQAaAAIAAAAPABMAAQAaAAIAAAAPABIAAQAaAAIAAAAPABEAAQAaAAEAAAAOABwAAQAaAAMAAAAOABsAAQAaAAIAAAAOABoAAQAaAAIAAAAOABkAAQAaAAIAAAAOABgAAQAaAAIAAAAOABcAAQAaAAIAAAAOABYAAQAaAAIAAAAOABUAAQAaAAIAAAAOABQAAQAaAAIAAAAOABMAAQAaAAIAAAAOABIAAQAaAAIAAAAOABEAAQAaAAEAAAANABwAAQAaAAMAAAANABsAAQAaAAIAAAANABoAAQAaAAIAAAANABkAAQAaAAIAAAANABgAAQAaAAIAAAANABcAAQAaAAIAAAANABYAAQAaAAIAAAANABUAAQAaAAIAAAANABQAAQAaAAIAAAANABMAAQAaAAIAAAANABIAAQAaAAIAAAANABEAAQAaAAEAAAAMABwAAQAaAAMAAAAMABsAAQAaAAIAAAAMABoAAQAaAAIAAAAMABkAAQAaAAIAAAAMABgAAQAaAAIAAAAMABcAAQAaAAIAAAAMABYAAQAaAAIAAAAMABUAAQAaAAIAAAAMABQAAQAaAAIAAAAMABMAAQAaAAIAAAAMABIAAQAaAAIAAAAMABEAAQAaAAEAAAALABwAAQAaAAMAAAALABsAAQAaAAIAAAALABoAAQAaAAIAAAALABkAAQAaAAIAAAALABgAAQAaAAIAAAALABcAAQAaAAIAAAALABYAAQAaAAIAAAALABUAAQAaAAIAAAALABQAAQAaAAIAAAALABMAAQAaAAIAAAALABIAAQAaAAIAAAALABEAAQAaAAEAAAAKABwAAQAaAAMAAAAKABsAAQAaAAIAAAAKABoAAQAaAAIAAAAKABkAAQAaAAIAAAAKABgAAQAaAAIAAAAKABcAAQAaAAIAAAAKABYAAQAaAAIAAAAKABUAAQAaAAIAAAAKABQAAQAaAAIAAAAKABMAAQAaAAIAAAAKABIAAQAaAAIAAAAKABEAAQAaAAIAAAAJABwAAQAaAAMAAAAJABsAAQAaAAIAAAAJABoAAQAaAAIAAAAJABkAAQAaAAIAAAAJABgAAQAaAAIAAAAJABcAAQAaAAIAAAAJABYAAQAaAAIAAAAJABUAAQAaAAIAAAAJABQAAQAaAAIAAAAJABMAAQAaAAIAAAAJABIAAQAaAAIAAAAJABEAAQAaAAIAAAAIABwAAQAaAAMAAAAIABsAAQAaAAIAAAAIABoAAQAaAAIAAAAIABkAAQAaAAIAAAAIABgAAQAaAAIAAAAIABcAAQAaAAIAAAAIABYAAQAaAAIAAAAIABUAAQAaAAIAAAAIABQAAQAaAAIAAAAIABMAAQAaAAIAAAAIABIAAQAaAAIAAAAIABEAAQAaAAIAAAAHABwAAQAaAAMAAAAHABsAAQAaAAIAAAAHABoAAQAaAAIAAAAHABkAAQAaAAIAAAAHABgAAQAaAAIAAAAHABcAAQAaAAIAAAAHABYAAQAaAAIAAAAHABUAAQAaAAIAAAAHABQAAQAaAAIAAAAHABMAAQAaAAIAAAAHABIAAQAaAAIAAAAHABEAAQAaAAIAAAAGABwAAQAaAAMAAAAGABsAAQAaAAIAAAAGABoAAQAaAAIAAAAGABkAAQAaAAIAAAAGABgAAQAaAAIAAAAGABcAAQAaAAIAAAAGABYAAQAaAAIAAAAGABUAAQAaAAIAAAAGABQAAQAaAAIAAAAGABMAAQAaAAIAAAAGABIAAQAaAAIAAAAGABEAAQAaAAIAAAAFABwAAQAaAAMAAAAFABsAAQAaAAIAAAAFABoAAQAaAAIAAAAFABkAAQAaAAIAAAAFABgAAQAaAAIAAAAFABcAAQAaAAIAAAAFABYAAQAaAAIAAAAFABUAAQAaAAIAAAAFABQAAQAaAAIAAAAFABMAAQAaAAIAAAAFABIAAQAaAAIAAAAFABEAAQAaAAIAAAAEABwAAQAaAAMAAAAEABsAAQAaAAIAAAAEABoAAQAaAAIAAAAEABkAAQAaAAIAAAAEABgAAQAaAAIAAAAEABcAAQAaAAIAAAAEABYAAQAaAAIAAAAEABUAAQAaAAIAAAAEABQAAQAaAAIAAAAEABMAAQAaAAIAAAAEABIAAQAaAAIAAAAEABEAAQAaAAIAAAADABwAAQAaAAMAAAADABsAAQAaAAIAAAADABoAAQAaAAIAAAADABkAAQAaAAIAAAADABgAAQAaAAIAAAADABcAAQAaAAIAAAADABYAAQAaAAIAAAADABUAAQAaAAIAAAADABQAAQAaAAIAAAADABMAAQAaAAIAAAADABIAAQAaAAIAAAADABEAAQAaAAIAAAACABwAAQAaAAMAAAACABsAAQAaAAIAAAACABoAAQAaAAIAAAACABkAAQAaAAIAAAACABgAAQAaAAIAAAACABcAAQAaAAIAAAACABYAAQAaAAIAAAACABUAAQAaAAIAAAACABQAAQAaAAIAAAACABMAAQAaAAIAAAACABIAAQAaAAIAAAACABEAAQAaAAIAAAABABwAAQAaAAMAAAABABsAAQAaAAIAAAABABoAAQAaAAIAAAABABkAAQAaAAIAAAABABgAAQAaAAIAAAABABcAAQAaAAIAAAABABYAAQAaAAIAAAABABUAAQAaAAIAAAABABQAAQAaAAIAAAABABMAAQAaAAIAAAABABIAAQAaAAIAAAABABEAAQAaAAIAAAAAABwAAQAYAAMAAAAAABsAAQAYAAIAAAAAABoAAQAYAAIAAAAAABkAAQAYAAIAAAAAABgAAQAYAAIAAAAAABcAAQAYAAIAAAAAABYAAQAYAAIAAAAAABUAAQAYAAIAAAAAABQAAQAYAAIAAAAAABMAAQAYAAIAAAAAABIAAQAYAAIAAAAAABEAAQAYAAIAAAA=")
+tile_set = ExtResource("4_eafni")
+
+[node name="TILEback" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = -6
+tile_map_data = PackedByteArray("AAACAAIAAQAYAAEAAAACAAMAAQAYAAIAAAACAAQAAQAYAAIAAAACAAUAAQAYAAIAAAACAAYAAQAYAAIAAAACAAcAAQAYAAMAAAACAAgAAAABAAUAAAACAAkAAAABAAcAAAACAAoAAQAYAAEAAAACAAsAAQAYAAIAAAACAAwAAQAYAAIAAAACAA0AAQAYAAIAAAACAA4AAQAYAAIAAAACAA8AAQAYAAMAAAACABAAAAAEAAUAAAADAAIAAQAaAAEAAAADAAMAAQAaAAIAAAADAAQAAQAaAAIAAAADAAUAAQAaAAIAAAADAAYAAQAaAAIAAAADAAcAAQAaAAMAAAADAAgAAAADAAUAAAADAAkAAAADAAcAAAADAAoAAQAaAAEAAAADAAsAAQAaAAIAAAADAAwAAQAaAAIAAAADAA0AAQAaAAIAAAADAA4AAQAaAAIAAAADAA8AAQAaAAMAAAADABAAAAAEAAUAAAAEAAIAAQAaAAEAAAAEAAMAAQAaAAIAAAAEAAQAAQAaAAIAAAAEAAUAAQAaAAIAAAAEAAYAAQAaAAIAAAAEAAcAAQAaAAMAAAAEAAgAAAADAAUAAAAEAAkAAAADAAcAAAAEAAoAAQAaAAEAAAAEAAsAAQAaAAIAAAAEAAwAAQAaAAIAAAAEAA0AAQAaAAIAAAAEAA4AAQAaAAIAAAAEAA8AAQAaAAMAAAAEABAAAAAEAAUAAAAFAAIAAQAaAAEAAAAFAAMAAQAaAAIAAAAFAAQAAQAaAAIAAAAFAAUAAQAaAAIAAAAFAAYAAQAaAAIAAAAFAAcAAQAaAAMAAAAFAAgAAAADAAUAAAAFAAkAAAADAAcAAAAFAAoAAQAaAAEAAAAFAAsAAQAaAAIAAAAFAAwAAQAaAAIAAAAFAA0AAQAaAAIAAAAFAA4AAQAaAAIAAAAFAA8AAQAaAAMAAAAFABAAAAAEAAUAAAAGAAIAAQAaAAEAAAAGAAMAAQAaAAIAAAAGAAQAAQAaAAIAAAAGAAUAAQAaAAIAAAAGAAYAAQAaAAIAAAAGAAcAAQAaAAMAAAAGAAgAAAADAAUAAAAGAAkAAAADAAcAAAAGAAoAAQAaAAEAAAAGAAsAAQAaAAIAAAAGAAwAAQAaAAIAAAAGAA0AAQAaAAIAAAAGAA4AAQAaAAIAAAAGAA8AAQAaAAMAAAAGABAAAAAEAAUAAAAHAAIAAQAaAAEAAAAHAAMAAQAaAAIAAAAHAAQAAQAaAAIAAAAHAAUAAQAaAAIAAAAHAAYAAQAaAAIAAAAHAAcAAQAaAAMAAAAHAAgAAAADAAUAAAAHAAkAAAADAAcAAAAHAAoAAQAaAAEAAAAHAAsAAQAaAAIAAAAHAAwAAQAaAAIAAAAHAA0AAQAaAAIAAAAHAA4AAQAaAAIAAAAHAA8AAQAaAAMAAAAHABAAAAAEAAUAAAAIAAIAAQAaAAEAAAAIAAMAAQAaAAIAAAAIAAQAAQAaAAIAAAAIAAUAAQAaAAIAAAAIAAYAAQAaAAIAAAAIAAcAAQAaAAMAAAAIAAgAAAADAAUAAAAIAAkAAAADAAcAAAAIAAoAAQAaAAEAAAAIAAsAAQAaAAIAAAAIAAwAAQAaAAIAAAAIAA0AAQAaAAIAAAAIAA4AAQAaAAIAAAAIAA8AAQAaAAMAAAAIABAAAAAEAAUAAAAJAAIAAQAaAAEAAAAJAAMAAQAaAAIAAAAJAAQAAQAaAAIAAAAJAAUAAQAaAAIAAAAJAAYAAQAaAAIAAAAJAAcAAQAaAAMAAAAJAAgAAAADAAUAAAAJAAkAAAADAAcAAAAJAAoAAQAaAAEAAAAJAAsAAQAaAAIAAAAJAAwAAQAaAAIAAAAJAA0AAQAaAAIAAAAJAA4AAQAaAAIAAAAJAA8AAQAaAAMAAAAJABAAAAAEAAUAAAAKAAIAAQAaAAEAAAAKAAMAAQAaAAIAAAAKAAQAAQAaAAIAAAAKAAUAAQAaAAIAAAAKAAYAAQAaAAIAAAAKAAcAAQAaAAMAAAAKAAgAAAADAAUAAAAKAAkAAAADAAcAAAAKAAoAAQAaAAEAAAAKAAsAAQAaAAIAAAAKAAwAAQAaAAIAAAAKAA0AAQAaAAIAAAAKAA4AAQAaAAIAAAAKAA8AAQAaAAMAAAAKABAAAAAEAAUAAAALAAIAAQAcAAEAAAALAAMAAQAcAAIAAAALAAQAAQAcAAIAAAALAAUAAQAcAAIAAAALAAYAAQAcAAIAAAALAAcAAQAcAAMAAAALAAgAAAAFAAUAAAALAAkAAAAFAAcAAAALAAoAAQAcAAEAAAALAAsAAQAcAAIAAAALAAwAAQAcAAIAAAALAA0AAQAcAAIAAAALAA4AAQAcAAIAAAALAA8AAQAcAAMAAAALABAAAAAEAAUAAAAMAAIAAAABAAYAAAAMAAMAAAABAAYAAAAMAAQAAAABAAYAAAAMAAUAAAABAAYAAAAMAAYAAAABAAYAAAAMAAcAAAABAAcAAAAMAAgAAAABAAUAAAAMAAkAAAABAAcAAAAMAAoAAAABAAUAAAAMAAsAAAABAAYAAAAMAAwAAAABAAYAAAAMAA0AAAABAAYAAAAMAA4AAAABAAYAAAAMAA8AAAABAAcAAAAMABAAAAAEAAUAAAANAAIAAAAFAAYAAAANAAMAAAAFAAYAAAANAAQAAAAFAAYAAAANAAUAAAAFAAYAAAANAAYAAAAFAAYAAAANAAcAAAAFAAcAAAANAAgAAAAFAAUAAAANAAkAAAAFAAcAAAANAAoAAAAFAAUAAAANAAsAAAAFAAYAAAANAAwAAAAFAAYAAAANAA0AAAAFAAYAAAANAA4AAAAFAAYAAAANAA8AAAAFAAcAAAANABAAAAAFAAUAAAAOAAIAAQAYAAEAAAAOAAMAAQAYAAIAAAAOAAQAAQAYAAIAAAAOAAUAAQAYAAIAAAAOAAYAAQAYAAIAAAAOAAcAAQAYAAIAAAAOAAgAAQAYAAIAAAAOAAkAAQAYAAIAAAAOAAoAAQAYAAIAAAAOAAsAAQAYAAIAAAAOAAwAAQAYAAIAAAAOAA0AAQAYAAIAAAAOAA4AAQAYAAIAAAAOAA8AAQAYAAIAAAAOABAAAQAYAAMAAAAPAAIAAQAaAAEAAAAPAAMAAQAaAAIAAAAPAAQAAQAaAAIAAAAPAAUAAQAaAAIAAAAPAAYAAQAaAAIAAAAPAAcAAQAaAAIAAAAPAAgAAQAaAAIAAAAPAAkAAQAaAAIAAAAPAAoAAQAaAAIAAAAPAAsAAQAaAAIAAAAPAAwAAQAaAAIAAAAPAA0AAQAaAAIAAAAPAA4AAQAaAAIAAAAPAA8AAQAaAAIAAAAPABAAAQAaAAMAAAAQAAIAAQAaAAEAAAAQAAMAAQAaAAIAAAAQAAQAAQAaAAIAAAAQAAUAAQAaAAIAAAAQAAYAAQAaAAIAAAAQAAcAAQAaAAIAAAAQAAgAAQAaAAIAAAAQAAkAAQAaAAIAAAAQAAoAAQAaAAIAAAAQAAsAAQAaAAIAAAAQAAwAAQAaAAIAAAAQAA0AAQAaAAIAAAAQAA4AAQAaAAIAAAAQAA8AAQAaAAIAAAAQABAAAQAaAAMAAAARAAIAAQAaAAEAAAARAAMAAQAaAAIAAAARAAQAAQAaAAIAAAARAAUAAQAaAAIAAAARAAYAAQAaAAIAAAARAAcAAQAaAAIAAAARAAgAAQAaAAIAAAARAAkAAQAaAAIAAAARAAoAAQAaAAIAAAARAAsAAQAaAAIAAAARAAwAAQAaAAIAAAARAA0AAQAaAAIAAAARAA4AAQAaAAIAAAARAA8AAQAaAAIAAAARABAAAQAaAAMAAAASAAIAAQAaAAEAAAASAAMAAQAaAAIAAAASAAQAAQAaAAIAAAASAAUAAQAaAAIAAAASAAYAAQAaAAIAAAASAAcAAQAaAAIAAAASAAgAAQAaAAIAAAASAAkAAQAaAAIAAAASAAoAAQAaAAIAAAASAAsAAQAaAAIAAAASAAwAAQAaAAIAAAASAA0AAQAaAAIAAAASAA4AAQAaAAIAAAASAA8AAQAaAAIAAAASABAAAQAaAAMAAAATAAIAAQAcAAEAAAATAAMAAQAcAAIAAAATAAQAAQAcAAIAAAATAAUAAQAcAAIAAAATAAYAAQAcAAIAAAATAAcAAQAcAAIAAAATAAgAAQAcAAIAAAATAAkAAQAcAAIAAAATAAoAAQAcAAIAAAATAAsAAQAcAAIAAAATAAwAAQAcAAIAAAATAA0AAQAcAAIAAAATAA4AAQAcAAIAAAATAA8AAQAcAAIAAAATABAAAQAcAAMAAAAUAAIAAQAYAAEAAAAUAAMAAQAYAAIAAAAUAAQAAQAYAAIAAAAUAAUAAQAYAAIAAAAUAAYAAQAYAAIAAAAUAAcAAQAYAAIAAAAUAAgAAQAYAAIAAAAUAAkAAQAYAAIAAAAUAAoAAQAYAAIAAAAUAAsAAQAYAAIAAAAUAAwAAQAYAAIAAAAUAA0AAQAYAAIAAAAUAA4AAQAYAAIAAAAUAA8AAQAYAAIAAAAUABAAAQAYAAMAAAAVAAIAAQAaAAEAAAAVAAMAAQAaAAIAAAAVAAQAAQAaAAIAAAAVAAUAAQAaAAIAAAAVAAYAAQAaAAIAAAAVAAcAAQAaAAIAAAAVAAgAAQAaAAIAAAAVAAkAAQAaAAIAAAAVAAoAAQAaAAIAAAAVAAsAAQAaAAIAAAAVAAwAAQAaAAIAAAAVAA0AAQAaAAIAAAAVAA4AAQAaAAIAAAAVAA8AAQAaAAIAAAAVABAAAQAaAAMAAAAWAAIAAQAaAAEAAAAWAAMAAQAaAAIAAAAWAAQAAQAaAAIAAAAWAAUAAQAaAAIAAAAWAAYAAQAaAAIAAAAWAAcAAQAaAAIAAAAWAAgAAQAaAAIAAAAWAAkAAQAaAAIAAAAWAAoAAQAaAAIAAAAWAAsAAQAaAAIAAAAWAAwAAQAaAAIAAAAWAA0AAQAaAAIAAAAWAA4AAQAaAAIAAAAWAA8AAQAaAAIAAAAWABAAAQAaAAMAAAAXAAIAAQAaAAEAAAAXAAMAAQAaAAIAAAAXAAQAAQAaAAIAAAAXAAUAAQAaAAIAAAAXAAYAAQAaAAIAAAAXAAcAAQAaAAIAAAAXAAgAAQAaAAIAAAAXAAkAAQAaAAIAAAAXAAoAAQAaAAIAAAAXAAsAAQAaAAIAAAAXAAwAAQAaAAIAAAAXAA0AAQAaAAIAAAAXAA4AAQAaAAIAAAAXAA8AAQAaAAIAAAAXABAAAQAaAAMAAAAYAAIAAQAaAAEAAAAYAAMAAQAaAAIAAAAYAAQAAQAaAAIAAAAYAAUAAQAaAAIAAAAYAAYAAQAaAAIAAAAYAAcAAQAaAAIAAAAYAAgAAQAaAAIAAAAYAAkAAQAaAAIAAAAYAAoAAQAaAAIAAAAYAAsAAQAaAAIAAAAYAAwAAQAaAAIAAAAYAA0AAQAaAAIAAAAYAA4AAQAaAAIAAAAYAA8AAQAaAAIAAAAYABAAAQAaAAMAAAAZAAIAAQAcAAEAAAAZAAMAAQAcAAIAAAAZAAQAAQAcAAIAAAAZAAUAAQAcAAIAAAAZAAYAAQAcAAIAAAAZAAcAAQAcAAIAAAAZAAgAAQAcAAIAAAAZAAkAAQAcAAIAAAAZAAoAAQAcAAIAAAAZAAsAAQAcAAIAAAAZAAwAAQAcAAIAAAAZAA0AAQAcAAIAAAAZAA4AAQAcAAIAAAAZAA8AAQAcAAIAAAAZABAAAQAcAAMAAAAaAAIAAAABAAYAAAAaAAMAAAABAAYAAAAaAAQAAAABAAYAAAAaAAUAAAABAAYAAAAaAAYAAAABAAYAAAAaAAcAAAABAAcAAAAaAAgAAAABAAUAAAAaAAkAAAABAAcAAAAaAAoAAAABAAUAAAAaAAsAAAABAAYAAAAaAAwAAAABAAYAAAAaAA0AAAABAAYAAAAaAA4AAAABAAYAAAAaAA8AAAABAAcAAAAaABAAAAABAAUAAAAbAAIAAAAFAAYAAAAbAAMAAAAFAAYAAAAbAAQAAAAFAAYAAAAbAAUAAAAFAAYAAAAbAAYAAAAFAAYAAAAbAAcAAAAFAAcAAAAbAAgAAAAFAAUAAAAbAAkAAAAFAAcAAAAbAAoAAAAFAAUAAAAbAAsAAAAFAAYAAAAbAAwAAAAFAAYAAAAbAA0AAAAFAAYAAAAbAA4AAAAFAAYAAAAbAA8AAAAFAAcAAAAbABAAAAACAAUAAAAcAAIAAQAYAAEAAAAcAAMAAQAYAAIAAAAcAAQAAQAYAAIAAAAcAAUAAQAYAAIAAAAcAAYAAQAYAAIAAAAcAAcAAQAYAAMAAAAcAAgAAAABAAUAAAAcAAkAAAABAAcAAAAcAAoAAQAYAAEAAAAcAAsAAQAYAAIAAAAcAAwAAQAYAAIAAAAcAA0AAQAYAAIAAAAcAA4AAQAYAAIAAAAcAA8AAQAYAAMAAAAcABAAAAACAAUAAAAdAAIAAQAaAAEAAAAdAAMAAQAaAAIAAAAdAAQAAQAaAAIAAAAdAAUAAQAaAAIAAAAdAAYAAQAaAAIAAAAdAAcAAQAaAAMAAAAdAAgAAAADAAUAAAAdAAkAAAADAAcAAAAdAAoAAQAaAAEAAAAdAAsAAQAaAAIAAAAdAAwAAQAaAAIAAAAdAA0AAQAaAAIAAAAdAA4AAQAaAAIAAAAdAA8AAQAaAAMAAAAdABAAAAACAAUAAAAeAAIAAQAaAAEAAAAeAAMAAQAaAAIAAAAeAAQAAQAaAAIAAAAeAAUAAQAaAAIAAAAeAAYAAQAaAAIAAAAeAAcAAQAaAAMAAAAeAAgAAAADAAUAAAAeAAkAAAADAAcAAAAeAAoAAQAaAAEAAAAeAAsAAQAaAAIAAAAeAAwAAQAaAAIAAAAeAA0AAQAaAAIAAAAeAA4AAQAaAAIAAAAeAA8AAQAaAAMAAAAeABAAAAACAAUAAAAfAAIAAQAaAAEAAAAfAAMAAQAaAAIAAAAfAAQAAQAaAAIAAAAfAAUAAQAaAAIAAAAfAAYAAQAaAAIAAAAfAAcAAQAaAAMAAAAfAAgAAAADAAUAAAAfAAkAAAADAAcAAAAfAAoAAQAaAAEAAAAfAAsAAQAaAAIAAAAfAAwAAQAaAAIAAAAfAA0AAQAaAAIAAAAfAA4AAQAaAAIAAAAfAA8AAQAaAAMAAAAfABAAAAACAAUAAAAgAAIAAQAaAAEAAAAgAAMAAQAaAAIAAAAgAAQAAQAaAAIAAAAgAAUAAQAaAAIAAAAgAAYAAQAaAAIAAAAgAAcAAQAaAAMAAAAgAAgAAAADAAUAAAAgAAkAAAADAAcAAAAgAAoAAQAaAAEAAAAgAAsAAQAaAAIAAAAgAAwAAQAaAAIAAAAgAA0AAQAaAAIAAAAgAA4AAQAaAAIAAAAgAA8AAQAaAAMAAAAgABAAAAACAAUAAAAhAAIAAQAaAAEAAAAhAAMAAQAaAAIAAAAhAAQAAQAaAAIAAAAhAAUAAQAaAAIAAAAhAAYAAQAaAAIAAAAhAAcAAQAaAAMAAAAhAAgAAAADAAUAAAAhAAkAAAADAAcAAAAhAAoAAQAaAAEAAAAhAAsAAQAaAAIAAAAhAAwAAQAaAAIAAAAhAA0AAQAaAAIAAAAhAA4AAQAaAAIAAAAhAA8AAQAaAAMAAAAhABAAAAACAAUAAAAiAAIAAQAaAAEAAAAiAAMAAQAaAAIAAAAiAAQAAQAaAAIAAAAiAAUAAQAaAAIAAAAiAAYAAQAaAAIAAAAiAAcAAQAaAAMAAAAiAAgAAAADAAUAAAAiAAkAAAADAAcAAAAiAAoAAQAaAAEAAAAiAAsAAQAaAAIAAAAiAAwAAQAaAAIAAAAiAA0AAQAaAAIAAAAiAA4AAQAaAAIAAAAiAA8AAQAaAAMAAAAiABAAAAACAAUAAAAjAAIAAQAaAAEAAAAjAAMAAQAaAAIAAAAjAAQAAQAaAAIAAAAjAAUAAQAaAAIAAAAjAAYAAQAaAAIAAAAjAAcAAQAaAAMAAAAjAAgAAAADAAUAAAAjAAkAAAADAAcAAAAjAAoAAQAaAAEAAAAjAAsAAQAaAAIAAAAjAAwAAQAaAAIAAAAjAA0AAQAaAAIAAAAjAA4AAQAaAAIAAAAjAA8AAQAaAAMAAAAjABAAAAACAAUAAAAkAAIAAQAaAAEAAAAkAAMAAQAaAAIAAAAkAAQAAQAaAAIAAAAkAAUAAQAaAAIAAAAkAAYAAQAaAAIAAAAkAAcAAQAaAAMAAAAkAAgAAAADAAUAAAAkAAkAAAADAAcAAAAkAAoAAQAaAAEAAAAkAAsAAQAaAAIAAAAkAAwAAQAaAAIAAAAkAA0AAQAaAAIAAAAkAA4AAQAaAAIAAAAkAA8AAQAaAAMAAAAkABAAAAACAAUAAAAlAAIAAQAcAAEAAAAlAAMAAQAcAAIAAAAlAAQAAQAcAAIAAAAlAAUAAQAcAAIAAAAlAAYAAQAcAAIAAAAlAAcAAQAcAAMAAAAlAAgAAAAFAAUAAAAlAAkAAAAFAAcAAAAlAAsAAQAcAAIAAAAlAAwAAQAcAAIAAAAlAA0AAQAcAAIAAAAlAA4AAQAcAAIAAAAlAA8AAQAcAAMAAAAlABAAAAACAAUAAAABABAAAAAFAAYAAAABAA8AAAAFAAYAAAABAA4AAAAFAAYAAAABAA0AAAAFAAYAAAABAAwAAAAFAAYAAAABAAsAAAAFAAYAAAABAAoAAAAFAAYAAAABAAkAAAADAAYAAAABAAgAAAADAAYAAAABAAcAAAAFAAYAAAABAAYAAAAFAAYAAAABAAUAAAAFAAYAAAABAAQAAAAFAAYAAAABAAMAAAAFAAYAAAABAAIAAAAFAAYAAAABAAEAAAADAAYAAAABAAAAAAADAAUAAAAAABAAAAABAAYAAAAAAA8AAAABAAYAAAAAAA4AAAABAAYAAAAAAA0AAAABAAYAAAAAAAwAAAABAAYAAAAAAAsAAAABAAYAAAAAAAoAAAABAAYAAAAAAAkAAAABAAYAAAAAAAgAAAABAAYAAAAAAAcAAAABAAYAAAAAAAYAAAABAAYAAAAAAAUAAAABAAYAAAAAAAQAAAABAAYAAAAAAAMAAAABAAYAAAAAAAIAAAABAAYAAAAAAAEAAAABAAYAAAAAAAAAAAABAAUAAAAnAAEAAAAFAAYAAAAnAAAAAAAFAAUAAAAmAAEAAAADAAYAAAAmAAAAAAADAAUAAAAlAAEAAAADAAcAAAAlAAAAAAADAAUAAAAkAAEAAAADAAcAAAAkAAAAAAADAAUAAAAjAAEAAAADAAcAAAAjAAAAAAADAAUAAAAiAAEAAAADAAcAAAAiAAAAAAADAAUAAAAhAAEAAAADAAcAAAAhAAAAAAADAAUAAAAgAAEAAAADAAcAAAAgAAAAAAADAAUAAAAfAAEAAAADAAcAAAAfAAAAAAADAAUAAAAeAAEAAAADAAcAAAAeAAAAAAADAAUAAAAdAAEAAAADAAcAAAAdAAAAAAADAAUAAAAcAAEAAAADAAcAAAAcAAAAAAADAAUAAAAbAAEAAAADAAYAAAAbAAAAAAADAAUAAAAaAAEAAAADAAYAAAAaAAAAAAADAAUAAAAZAAEAAAADAAYAAAAZAAAAAAADAAUAAAAYAAEAAAADAAYAAAAYAAAAAAADAAUAAAAXAAEAAAADAAYAAAAXAAAAAAADAAUAAAAWAAEAAAADAAYAAAAWAAAAAAADAAUAAAAVAAEAAAADAAYAAAAVAAAAAAADAAUAAAAUAAEAAAADAAYAAAAUAAAAAAADAAUAAAATAAEAAAADAAYAAAATAAAAAAADAAUAAAASAAEAAAADAAYAAAASAAAAAAADAAUAAAARAAEAAAADAAYAAAARAAAAAAADAAUAAAAQAAEAAAADAAYAAAAQAAAAAAADAAUAAAAPAAEAAAADAAYAAAAPAAAAAAADAAUAAAAOAAEAAAADAAYAAAAOAAAAAAADAAUAAAANAAEAAAADAAYAAAANAAAAAAADAAUAAAAMAAEAAAADAAYAAAAMAAAAAAADAAUAAAALAAEAAAADAAcAAAALAAAAAAADAAUAAAAKAAEAAAADAAcAAAAKAAAAAAADAAUAAAAJAAEAAAADAAcAAAAJAAAAAAADAAUAAAAIAAEAAAADAAcAAAAIAAAAAAADAAUAAAAHAAEAAAADAAcAAAAHAAAAAAADAAUAAAAGAAEAAAADAAcAAAAGAAAAAAADAAUAAAAFAAEAAAADAAcAAAAFAAAAAAADAAUAAAAEAAEAAAADAAcAAAAEAAAAAAADAAUAAAADAAEAAAADAAcAAAADAAAAAAADAAUAAAACAAEAAAADAAcAAAACAAAAAAADAAUAAAAnABAAAAAFAAYAAAAnAA8AAAAFAAYAAAAnAA4AAAAFAAYAAAAnAA0AAAAFAAYAAAAnAAwAAAAFAAYAAAAnAAsAAAAFAAYAAAAnAAoAAAAFAAYAAAAnAAkAAAAFAAYAAAAnAAgAAAAFAAYAAAAnAAcAAAAFAAYAAAAnAAYAAAAFAAYAAAAnAAUAAAAFAAYAAAAnAAQAAAAFAAYAAAAnAAMAAAAFAAYAAAAnAAIAAAAFAAYAAAAmABAAAAABAAYAAAAmAA8AAAABAAYAAAAmAA4AAAABAAYAAAAmAA0AAAABAAYAAAAmAAwAAAABAAYAAAAmAAsAAAABAAYAAAAmAAoAAAABAAYAAAAmAAkAAAADAAYAAAAmAAgAAAADAAYAAAAmAAcAAAABAAYAAAAmAAYAAAABAAYAAAAmAAUAAAABAAYAAAAmAAQAAAABAAYAAAAmAAMAAAABAAYAAAAmAAIAAAABAAYAAAACAB0AAAADAAcAAAACABwAAAADAAUAAAABAB0AAAADAAcAAAABABwAAAADAAYAAAABABsAAAAFAAYAAAABABoAAAAFAAYAAAABABkAAAAFAAYAAAABABgAAAAFAAYAAAABABcAAAAFAAYAAAABABYAAAAFAAYAAAABABUAAAAFAAYAAAABABQAAAAFAAYAAAABABMAAAAFAAYAAAABABIAAAAFAAYAAAABABEAAAAFAAYAAAAAAB0AAAABAAcAAAAAABwAAAABAAYAAAAAABsAAAABAAYAAAAAABoAAAABAAYAAAAAABkAAAABAAYAAAAAABgAAAABAAYAAAAAABcAAAABAAYAAAAAABYAAAABAAYAAAAAABUAAAABAAYAAAAAABQAAAABAAYAAAAAABMAAAABAAYAAAAAABIAAAABAAYAAAAAABEAAAABAAYAAAAnAB0AAAAFAAcAAAAnABwAAAAFAAYAAAAnABsAAAAFAAYAAAAnABoAAAAFAAYAAAAnABkAAAAFAAYAAAAnABgAAAAFAAYAAAAnABcAAAAFAAYAAAAnABYAAAAFAAYAAAAnABUAAAAFAAYAAAAnABQAAAAFAAYAAAAnABMAAAAFAAYAAAAnABIAAAAFAAYAAAAnABEAAAAFAAYAAAAmAB0AAAADAAcAAAAmABwAAAADAAYAAAAmABsAAAABAAYAAAAmABoAAAABAAYAAAAmABkAAAABAAYAAAAmABgAAAABAAYAAAAmABcAAAABAAYAAAAmABYAAAABAAYAAAAmABUAAAABAAYAAAAmABQAAAABAAYAAAAmABMAAAABAAYAAAAmABIAAAABAAYAAAAmABEAAAABAAYAAAAlAB0AAAADAAcAAAAlABwAAAADAAUAAAAkAB0AAAADAAcAAAAkABwAAAADAAUAAAAjAB0AAAADAAcAAAAjABwAAAADAAUAAAAiAB0AAAADAAcAAAAiABwAAAADAAUAAAAhAB0AAAADAAcAAAAhABwAAAADAAUAAAAgAB0AAAADAAcAAAAgABwAAAADAAUAAAAfAB0AAAADAAcAAAAfABwAAAADAAUAAAAeAB0AAAADAAcAAAAeABwAAAADAAUAAAAdAB0AAAADAAcAAAAdABwAAAADAAUAAAAcAB0AAAADAAcAAAAcABwAAAADAAUAAAAbAB0AAAADAAcAAAAbABwAAAADAAUAAAAaAB0AAAADAAcAAAAaABwAAAADAAUAAAAZAB0AAAADAAcAAAAZABwAAAADAAUAAAAYAB0AAAADAAcAAAAYABwAAAADAAUAAAAXAB0AAAADAAcAAAAXABwAAAADAAUAAAAWAB0AAAADAAcAAAAWABwAAAADAAUAAAAVAB0AAAADAAcAAAAVABwAAAADAAUAAAAUAB0AAAADAAcAAAAUABwAAAADAAUAAAATAB0AAAADAAcAAAATABwAAAADAAUAAAASAB0AAAADAAcAAAASABwAAAADAAUAAAARAB0AAAADAAcAAAARABwAAAADAAUAAAAQAB0AAAADAAcAAAAQABwAAAADAAUAAAAPAB0AAAADAAcAAAAPABwAAAADAAUAAAAOAB0AAAADAAcAAAAOABwAAAADAAUAAAANAB0AAAADAAcAAAANABwAAAADAAUAAAAMAB0AAAADAAcAAAAMABwAAAADAAUAAAALAB0AAAADAAcAAAALABwAAAADAAUAAAAKAB0AAAADAAcAAAAKABwAAAADAAUAAAAJAB0AAAADAAcAAAAJABwAAAADAAUAAAAIAB0AAAADAAcAAAAIABwAAAADAAUAAAAHAB0AAAADAAcAAAAHABwAAAADAAUAAAAGAB0AAAADAAcAAAAGABwAAAADAAUAAAAFAB0AAAADAAcAAAAFABwAAAADAAUAAAAEAB0AAAADAAcAAAAEABwAAAADAAUAAAADAB0AAAADAAcAAAADABwAAAADAAUAAAAlAAoAAQAcAAEAAAA=")
+tile_set = ExtResource("4_eafni")
+
+[node name="decorate" type="Node2D" parent="."]
+
+[node name="建筑群1" type="Parallax2D" parent="."]
+scale = Vector2(1.3745928, 1.3745928)
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-47, -460.99997)
+repeat_size = Vector2(1000, 600)
+repeat_times = 5
+
+[node name="Billboardpack(4)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_ajp66")
+position = Vector2(303.3626, 809.69434)
+scale = Vector2(0.2100045, 0.2100045)
+texture = ExtResource("8_fe12l")
+region_enabled = true
+region_rect = Rect2(723, 18, 674, 367)
+
+[node name="Billboardpack(10)5" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_np7um")
+position = Vector2(-36.37441, 783.50476)
+scale = Vector2(0.16709039, 0.16709039)
+texture = ExtResource("9_i608d")
+region_enabled = true
+region_rect = Rect2(53, 789, 430, 695)
+
+[node name="Billboardpack(10)4" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_xbtun")
+position = Vector2(1086.1398, 798.0543)
+scale = Vector2(0.17254253, 0.17254253)
+texture = ExtResource("9_i608d")
+region_enabled = true
+region_rect = Rect2(2087, 53, 676, 694)
+
+[node name="Billboardpack(10)3" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_fe12l")
+position = Vector2(613, 888)
+scale = Vector2(0.12878995, 0.12878995)
+texture = ExtResource("9_i608d")
+region_enabled = true
+region_rect = Rect2(1001, 434, 1050, 313)
+
+[node name="Billboardpack(10)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_i608d")
+position = Vector2(103.99997, 675.00006)
+scale = Vector2(0.12878995, 0.12878995)
+texture = ExtResource("9_i608d")
+region_enabled = true
+region_rect = Rect2(1001, 53, 1051, 345)
+
+[node name="Billboardpack(10)" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_fwdxp")
+position = Vector2(577, 422.00003)
+scale = Vector2(0.28466317, 0.28466317)
+texture = ExtResource("9_i608d")
+region_enabled = true
+region_rect = Rect2(54, 52, 429, 695)
+
+[node name="Billboardpack(6)3" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_tpg3q")
+position = Vector2(693, 316)
+scale = Vector2(0.13800721, 0.13800721)
+texture = ExtResource("10_fwdxp")
+region_enabled = true
+region_rect = Rect2(1443, 475, 648, 348)
+
+[node name="Billboardpack(6)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_4u4vq")
+position = Vector2(496, 562)
+scale = Vector2(0.13800721, 0.13800721)
+texture = ExtResource("10_fwdxp")
+region_enabled = true
+region_rect = Rect2(1442, 906, 262, 319)
+
+[node name="Billboardpack(6)" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_fsul5")
+position = Vector2(360, 267)
+scale = Vector2(0.13800721, 0.13800721)
+texture = ExtResource("10_fwdxp")
+region_enabled = true
+region_rect = Rect2(727, 89, 647, 735)
+
+[node name="Billboardpack(5)3" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_wu11l")
+position = Vector2(788, 489)
+scale = Vector2(0.13800721, 0.13800721)
+texture = ExtResource("11_tpg3q")
+region_enabled = true
+region_rect = Rect2(2448, 317, 295, 951)
+
+[node name="Billboardpack(5)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_p8p6j")
+position = Vector2(331, 689)
+scale = Vector2(0.13800721, 0.13800721)
+texture = ExtResource("11_tpg3q")
+region_enabled = true
+region_rect = Rect2(74, 789, 622, 683)
+
+[node name="Billboardpack(5)" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_hbds7")
+position = Vector2(984, 376)
+scale = Vector2(0.13800721, 0.13800721)
+texture = ExtResource("11_tpg3q")
+region_enabled = true
+region_rect = Rect2(746, 79, 1026, 667)
+
+[node name="Billboardpack(3)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_hkitp")
+position = Vector2(155, 435)
+scale = Vector2(0.19696428, 0.19696428)
+texture = ExtResource("12_4u4vq")
+region_enabled = true
+region_rect = Rect2(593, 1378, 796, 125)
+
+[node name="Billboardpack(2)4" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_unbe6")
+position = Vector2(689, 587.99994)
+scale = Vector2(0.3808847, 0.3808847)
+texture = ExtResource("13_fsul5")
+region_enabled = true
+region_rect = Rect2(52, 1036, 102, 463)
+
+[node name="Billboardpack(2)3" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_n63er")
+position = Vector2(65, 522)
+scale = Vector2(0.22813368, 0.22813368)
+texture = ExtResource("13_fsul5")
+region_enabled = true
+region_rect = Rect2(2114, 605, 650, 351)
+
+[node name="Billboardpack(2)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_up66y")
+position = Vector2(386, 434.99997)
+scale = Vector2(0.20393334, 0.20393334)
+texture = ExtResource("13_fsul5")
+region_enabled = true
+region_rect = Rect2(964, 91, 888, 434)
+
+[node name="Billboardpack(2)" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_bf5u3")
+position = Vector2(805, 760)
+scale = Vector2(0.20393334, 0.20393334)
+texture = ExtResource("13_fsul5")
+region_enabled = true
+region_rect = Rect2(52, 91, 887, 434)
+
+[node name="Billboardpack(1)6" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_eq8yu")
+position = Vector2(217, 760)
+scale = Vector2(0.15129422, 0.15129422)
+texture = ExtResource("14_wu11l")
+region_enabled = true
+region_rect = Rect2(2611, 123, 117, 963)
+
+[node name="Billboardpack(1)5" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_dm81r")
+position = Vector2(339.00003, 555.00006)
+scale = Vector2(0.15129422, 0.15129422)
+texture = ExtResource("14_wu11l")
+region_enabled = true
+region_rect = Rect2(1571, 123, 472, 438)
+
+[node name="Billboardpack(1)4" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_4pgbv")
+position = Vector2(696.00006, 453.00003)
+scale = Vector2(0.15129422, 0.15129422)
+texture = ExtResource("14_wu11l")
+region_enabled = true
+region_rect = Rect2(1572, 595, 472, 380)
+
+[node name="Billboardpack(1)3" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_qfwyt")
+position = Vector2(896, 607.00006)
+scale = Vector2(0.15129422, 0.15129422)
+texture = ExtResource("14_wu11l")
+region_enabled = true
+region_rect = Rect2(1572, 1009, 471, 433)
+
+[node name="Billboardpack(1)2" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_denx0")
+position = Vector2(595.0852, 652.5568)
+scale = Vector2(0.13939226, 0.13939226)
+texture = ExtResource("14_wu11l")
+region_enabled = true
+region_rect = Rect2(834, 784, 662, 659)
+
+[node name="Billboardpack(1)" type="Sprite2D" parent="建筑群1"]
+z_index = -10
+material = SubResource("ShaderMaterial_bb57q")
+position = Vector2(502.00003, 742.00024)
+scale = Vector2(0.10216615, 0.10216615)
+texture = ExtResource("14_wu11l")
+region_enabled = true
+region_rect = Rect2(87, 122, 706, 1321)
+
+[node name="LabBack(11)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(755.84875, 327.80872)
+scale = Vector2(0.16981761, 0.16981761)
+texture = ExtResource("7_j10v1")
+
+[node name="LabBack(7)2" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(944.8489, 433.80875)
+scale = Vector2(0.15776381, 0.15776381)
+texture = ExtResource("8_hi38v")
+
+[node name="LabBack(1)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(180.84882, 419.98608)
+scale = Vector2(0.12735444, 0.12735444)
+texture = ExtResource("9_hitke")
+
+[node name="LabBack(10)2" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(303.84882, 304.80872)
+scale = Vector2(0.16981761, 0.16981761)
+texture = ExtResource("10_rd2ao")
+
+[node name="LabBack(2)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(-61.15117, 685.8087)
+scale = Vector2(0.12735444, 0.12735444)
+texture = ExtResource("11_qyw35")
+
+[node name="LabBack(10)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(658.8488, 474.80875)
+scale = Vector2(0.17948684, 0.17948684)
+texture = ExtResource("10_rd2ao")
+
+[node name="LabBack(3)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(102.848816, 581.80865)
+scale = Vector2(0.12735444, 0.12735444)
+texture = ExtResource("12_6wsur")
+
+[node name="LabBack(6)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(303.84882, 537.8087)
+scale = Vector2(0.12735444, 0.12735444)
+texture = ExtResource("13_c8kv7")
+
+[node name="LabBack(5)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(509.84882, 586.8087)
+scale = Vector2(0.12735444, 0.12735444)
+texture = ExtResource("14_c7avt")
+
+[node name="LabBack(4)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(282.84882, 704.8087)
+scale = Vector2(0.12735444, 0.12735444)
+texture = ExtResource("15_fe12l")
+
+[node name="LabBack(8)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(906.8489, 621.8087)
+scale = Vector2(0.17948686, 0.17948686)
+texture = ExtResource("16_i608d")
+
+[node name="LabBack(7)" type="Sprite2D" parent="建筑群1"]
+z_index = -12
+material = SubResource("ShaderMaterial_gwclc")
+position = Vector2(551.8488, 768.80884)
+scale = Vector2(0.17948686, 0.17948686)
+texture = ExtResource("8_hi38v")
+
+[node name="Billboardpack(3)" type="Sprite2D" parent="建筑群1"]
+position = Vector2(62, 560)
+texture = ExtResource("12_4u4vq")
+region_enabled = true
+
+[node name="建筑群2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(10, -260)
+repeat_size = Vector2(1000, 600)
+
+[node name="LabBack(11)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(491.48257, 642.8087)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("7_j10v1")
+
+[node name="LabBack(14)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(638.96533, 425.61743)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("17_fwdxp")
+
+[node name="LabBack(14)3" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(468, 751.00006)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("17_fwdxp")
+
+[node name="LabBack(14)2" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(444, 315)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("17_fwdxp")
+
+[node name="LabBack(13)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(112.482635, 522.8087)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("18_tpg3q")
+
+[node name="LabBack(12)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(167.48264, 731.8087)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("19_4u4vq")
+
+[node name="LabBack(15)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(112.482635, 316.80872)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("20_fsul5")
+
+[node name="LabBack(17)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(764.48267, 256.80872)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("21_wu11l")
+
+[node name="LabBack(17)2" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(764.48267, 751.00006)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("21_wu11l")
+
+[node name="LabBack(19)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(855.00006, 432)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("22_ajp66")
+
+[node name="LabBack(2)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(574.48254, 691.8087)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("11_qyw35")
+
+[node name="LabBack(15)2" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(324, 607)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("20_fsul5")
+
+[node name="LabBack(20)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(828.48267, 751.8087)
+scale = Vector2(0.18792173, 0.18792173)
+texture = ExtResource("23_p8p6j")
+
+[node name="LabBack(18)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(828.48267, 576.8087)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("24_np7um")
+
+[node name="LabBack(16)" type="Sprite2D" parent="建筑群2"]
+modulate = Color(0.49354517, 0.49354565, 0.49354535, 1)
+z_index = -14
+position = Vector2(399.48264, 414.80872)
+scale = Vector2(0.18792169, 0.18792169)
+texture = ExtResource("25_xbtun")
+
+[node name="BackExport" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(610.00006, 738)
+scale = Vector2(0.5729227, 0.4121967)
+texture = ExtResource("6_rujde")
+
+[node name="Close" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(370.00003, 732)
+scale = Vector2(1.7581631, 1.9181582)
+texture = ExtResource("36_4u4vq")
+
+[node name="Close2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(959.00006, 732)
+scale = Vector2(1.7581631, 1.9181582)
+texture = ExtResource("36_4u4vq")
+region_enabled = true
+region_rect = Rect2(0, 0, 314, 188)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Wupinzuhe" type="Sprite2D" parent="Node2D"]
+z_index = -3
+position = Vector2(1083, 732)
+scale = Vector2(0.2788251, 0.2788251)
+texture = ExtResource("33_tpg3q")
+region_enabled = true
+region_rect = Rect2(2840, 3210, 700, 1080)
+
+[node name="Wupinzuhe5" type="Sprite2D" parent="Node2D"]
+z_index = -3
+position = Vector2(383, 144)
+scale = Vector2(0.17396627, 0.17396627)
+texture = ExtResource("33_tpg3q")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3680, 970)
+
+[node name="Wupinzuhe6" type="Sprite2D" parent="Node2D"]
+z_index = -3
+position = Vector2(984, 144)
+scale = Vector2(0.17396627, 0.17396627)
+texture = ExtResource("33_tpg3q")
+region_enabled = true
+region_rect = Rect2(60, 2140, 3238, 970)
+
+[node name="Wupinzuhe2" type="Sprite2D" parent="Node2D"]
+z_index = -3
+position = Vector2(782, 732)
+scale = Vector2(0.2788251, 0.2788251)
+texture = ExtResource("33_tpg3q")
+region_enabled = true
+region_rect = Rect2(1900, 3210, 800, 1080)
+
+[node name="Wupinzuhe3" type="Sprite2D" parent="Node2D"]
+z_index = -3
+position = Vector2(467.00003, 732)
+scale = Vector2(0.2788251, 0.2788251)
+texture = ExtResource("33_tpg3q")
+region_enabled = true
+region_rect = Rect2(1030, 3210, 810, 1080)
+
+[node name="Wupinzuhe4" type="Sprite2D" parent="Node2D"]
+z_index = -3
+position = Vector2(189.00006, 732)
+scale = Vector2(0.2788251, 0.2788251)
+texture = ExtResource("33_tpg3q")
+region_enabled = true
+region_rect = Rect2(190, 3210, 700, 1080)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+visible = false
+z_index = -3
+position = Vector2(308, 771)
+sprite_frames = SubResource("SpriteFrames_hbds7")
+autoplay = "default"
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+z_index = -20
+material = SubResource("ShaderMaterial_sqtca")
+offset_left = -2217.0
+offset_top = -1621.0
+offset_right = -2177.0
+offset_bottom = -1581.0
+scale = Vector2(180.43323, 109.75827)
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -12
+material = SubResource("ShaderMaterial_wtut0")
+offset_left = -1413.0
+offset_top = 406.0
+offset_right = -1373.0
+offset_bottom = 446.0
+scale = Vector2(109.200775, 46.561264)
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -7
+material = SubResource("ShaderMaterial_wtut0")
+offset_left = -1413.0001
+offset_top = -1446.0
+offset_right = -1373.0001
+offset_bottom = -1406.0
+scale = Vector2(109.200775, 46.561264)
+mouse_filter = 2

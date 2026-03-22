@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=4 uid="uid://dmnhha4lwclrm"]
+[gd_scene load_steps=46 format=4 uid="uid://dmnhha4lwclrm"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_fsa7q"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_lep1u"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_38vlm"]
+[ext_resource type="Shader" uid="uid://begqvsolsnlhh" path="res://Shader/视觉shader/speedline.gdshader" id="3_dwwcw"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_jfy2d"]
 [ext_resource type="Texture2D" uid="uid://82fuapme3n6x" path="res://Assets/Map/Level_train/loopbackground/9.天空（不需要移动）_.png" id="4_r1xfb"]
 [ext_resource type="Texture2D" uid="uid://dnjpaa44lytqh" path="res://Assets/Map/Level_train/loopbackground/8.云朵（速度2）.png" id="5_38vlm"]
@@ -15,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://1d0thj6delfg" path="res://Assets/Map/Level_train/loopbackground/1.轨道（速度8）.png" id="12_7r5wp"]
 [ext_resource type="Texture2D" uid="uid://e5filvnr5mu1" path="res://Assets/Map/Level_train/到站牌.png" id="14_pdqel"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="15_bktlv"]
-[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/cyberglow.gdshader" id="16_7ubmx"]
+[ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="16_7ubmx"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -229,6 +230,15 @@ shader_parameter/glitch_speed = 4.0
 shader_parameter/inner_glow_spread = 0.0
 shader_parameter/inner_glow_intensity = 1.5
 shader_parameter/bloom_trigger = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2jsg"]
+shader = ExtResource("3_dwwcw")
+shader_parameter/line_color = Color(0, 0, 0, 0.34117648)
+shader_parameter/track_count = 200.0
+shader_parameter/line_thickness = 0.0210000009975
+shader_parameter/spawn_chance = 0.2270000107825
+shader_parameter/segment_length = 10.4010004702975
+shader_parameter/speed = 6.868000322970119
 
 [node name="StartRoom" type="Node2D"]
 script = ExtResource("1_fsa7q")
@@ -450,6 +460,20 @@ scale = Vector2(0.7594155, 0.7594155)
 texture = ExtResource("15_bktlv")
 region_enabled = true
 region_rect = Rect2(688, 16, 189, 75)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(74.39006, 43.318485)
+scroll_scale = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+z_index = 2
+material = SubResource("ShaderMaterial_w2jsg")
+offset_left = -11.426258
+offset_top = -1.7082772
+offset_right = 28.573742
+offset_bottom = 38.29172
+scale = Vector2(1.7078872, 1.10566)
+mouse_filter = 2
 
 [node name="light" type="Node2D" parent="."]
 
