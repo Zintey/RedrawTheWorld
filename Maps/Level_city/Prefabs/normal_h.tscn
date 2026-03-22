@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://r64v7og82ccf"]
+[gd_scene load_steps=18 format=4 uid="uid://r64v7og82ccf"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_fd2yn"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_fch5b"]
@@ -55,6 +55,9 @@ shader = ExtResource("4_ts5ws")
 shader_parameter/filter_color = Color(1, 1, 1, 1)
 shader_parameter/filter_intensity = 0.5
 shader_parameter/brightness_limit = 0.9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqe80"]
+size = Vector2(1211, 743)
 
 [node name="normal_h" type="Node2D"]
 script = ExtResource("1_fd2yn")
@@ -171,3 +174,13 @@ scale = Vector2(1.3643401, 2.8652253)
 texture = ExtResource("9_8qbvu")
 region_enabled = true
 region_rect = Rect2(156, 27, 17, 261)
+
+[node name="CameraArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_iqe80")
+metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea"]
+position = Vector2(636.5, 383.5)
+shape = SubResource("RectangleShape2D_iqe80")

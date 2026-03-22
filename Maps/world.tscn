@@ -91,11 +91,11 @@ unique_name_in_owner = true
 position = Vector2(0, -2)
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
-map_prefab_dir = "res://Maps/Level_city/Prefabs"
+map_prefab_dir = "res://Maps/Level_Train"
 map_config = {
 "min_critical_path": 5,
-"target_rooms": 2,
-"tolerance": 2
+"target_rooms": 4,
+"tolerance": 4
 }
 leaf_room_allocation = {
 "boss": 1
