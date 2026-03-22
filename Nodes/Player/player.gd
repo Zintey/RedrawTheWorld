@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	add_child(coyote_timer)
 	coyote_timer.one_shot = true
-	coyote_timer.wait_time = 0.2
+	coyote_timer.wait_time = 0.1
 	
 	hurt_box.took_damage.connect(_on_took_damage)
 	health_component.died.connect(_on_player_died)
