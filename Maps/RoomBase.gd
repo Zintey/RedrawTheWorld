@@ -238,9 +238,20 @@ func setup_doors_by_slots(required_doors: Array) -> void:
 		
 		_place_door_instance(door_pos_tile, req.dir)
 
-	if Engine.has_meta("BetterTerrain"):
-		var bt = get_tree().get_first_node_in_group("BetterTerrain")
-		if bt: bt.update_terrain_cells(tile_map_layer, all_cleared)
+	# if Engine.has_meta("BetterTerrain"):
+	# 	var bt = get_tree().get_first_node_in_group("BetterTerrain")
+	# 	if bt: bt.update_terrain_cells(tile_map_layer, all_cleared)
+	var cells_to_update: Array[Vector2i] = []
+	for cell in all_cleared:
+		cells_to_update.append(cell)
+		cells_to_update.append(cell + Vector2i(1, 0))  # 右邻居
+		cells_to_update.append(cell + Vector2i(-1, 0)) # 左邻居
+		cells_to_update.append(cell + Vector2i(0, 1))  # 下邻居
+		cells_to_update.append(cell + Vector2i(0, -1)) # 上邻居
+		
+	# 2. 直接调用 BetterTerrain 单例强制更新它们
+	if has_node("/root/BetterTerrain"):
+		BetterTerrain.update_terrain_cells(tile_map_layer, cells_to_update)
 
 func _place_door_instance(door_pos_tile: Vector2i, dir: String) -> void:
 	if not door_scene: return

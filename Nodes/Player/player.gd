@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	add_child(coyote_timer)
 	coyote_timer.one_shot = true
-	coyote_timer.wait_time = 0.2
+	coyote_timer.wait_time = 0.1
 	
 	hurt_box.took_damage.connect(_on_took_damage)
 	health_component.died.connect(_on_player_died)
@@ -61,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return 
 		
 	# 【新增】：按下S键，直接触发下落穿透单向平台
-	if event.is_action_pressed("Key_S"):
+	if event.is_action_pressed("Key_S") and is_on_floor():
 		drop_through_platform()
 		
 	# 【修改】：不再直接检查技能，而是向黑板发送 0.1秒(手感最佳)的缓冲事件

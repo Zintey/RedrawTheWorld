@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b31y5clrg6ecu"]
+
+[ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="1_su5pv"]
+
+[node name="FloatingText" type="Marker2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_su5pv")
+horizontal_alignment = 1

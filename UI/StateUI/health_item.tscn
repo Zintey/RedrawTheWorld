@@ -50,37 +50,8 @@ tracks/2/keys = {
 "values": [Rect2(42, 0, 164, 164)]
 }
 
-[sub_resource type="Animation" id="Animation_pm6d4"]
-resource_name = "hidden"
-length = 0.26667336
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:texture:atlas")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.067663945),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("1_i33o0"), ExtResource("1_i33o0")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:texture:region")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06614341, 0.067663945, 0.13576412, 0.13684842, 0.20121045, 0.20299183, 0.26016626, 0.26153255),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(42, 0, 164, 164), Rect2(42, 0, 164, 164), Rect2(282, 0, 164, 164), Rect2(282, 0, 164, 164), Rect2(522, 0, 164, 164), Rect2(522, 0, 164, 164), Rect2(762, 0, 164, 164), Rect2(762, 0, 164, 164), Rect2(1002, 0, 164, 164)]
-}
-
 [sub_resource type="Animation" id="Animation_i33o0"]
-resource_name = "show"
+resource_name = "full"
 length = 0.03333667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -119,11 +90,40 @@ tracks/2/keys = {
 "values": [Rect2(42, 0, 164, 164)]
 }
 
+[sub_resource type="Animation" id="Animation_pm6d4"]
+resource_name = "empty"
+length = 0.26667336
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:atlas")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.067663945),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_i33o0"), ExtResource("1_i33o0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:texture:region")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06614341, 0.067663945, 0.13576412, 0.13684842, 0.20121045, 0.20299183, 0.26016626, 0.26153255),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(42, 0, 164, 164), Rect2(42, 0, 164, 164), Rect2(282, 0, 164, 164), Rect2(282, 0, 164, 164), Rect2(522, 0, 164, 164), Rect2(522, 0, 164, 164), Rect2(762, 0, 164, 164), Rect2(762, 0, 164, 164), Rect2(1002, 0, 164, 164)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pm6d4"]
 _data = {
 &"RESET": SubResource("Animation_o5us8"),
-&"hidden": SubResource("Animation_pm6d4"),
-&"show": SubResource("Animation_i33o0")
+&"empty": SubResource("Animation_pm6d4"),
+&"full": SubResource("Animation_i33o0")
 }
 
 [node name="HealthItem" type="Panel"]

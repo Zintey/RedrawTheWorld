@@ -53,3 +53,7 @@ signal level_transition_started(is_initial_start: bool)
 signal ready_to_change_scene()      # UI通知：黑屏已拉好，主菜单去切场景，或者world开始初次建图
 signal execute_map_rebuild()        # UI通知：黑屏已拉好，world开始重建地图
 signal map_rebuild_finished()       # world通知UI：地图生成完毕，可以淡出揭幕了
+
+# ==================== 世界掉落物交互 UI 信号 ====================
+signal skill_world_brief_requested(skill_data: SkillData, target: Node2D)
+signal skill_world_brief_closed()

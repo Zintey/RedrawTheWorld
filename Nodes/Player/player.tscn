@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dgr6uyhq4pdl2"]
+[gd_scene load_steps=62 format=3 uid="uid://dgr6uyhq4pdl2"]
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dmm6jce62sgmw" path="res://Nodes/Player/State/PlayerFallState.gd" id="10_fetqx"]
 [ext_resource type="Script" uid="uid://d16iwiutjl7k3" path="res://Nodes/Player/State/PlayerLandState.gd" id="11_fetqx"]
 [ext_resource type="Script" uid="uid://cj6546e5l2ox4" path="res://Nodes/Player/State/PlayerUpToAirState.gd" id="11_nussk"]
+[ext_resource type="Script" uid="uid://by6sp5lyvlnde" path="res://Components/InteractorComponent/InteractorComponent.gd" id="11_w7kum"]
 [ext_resource type="AudioStream" uid="uid://c0t2sc3045270" path="res://Audio/SFX/sfx_run2.wav" id="15_vmkah"]
 [ext_resource type="Script" uid="uid://c6yb752tler4m" path="res://Nodes/Player/State/PlayerDieState.gd" id="16_6gkbq"]
 [ext_resource type="Script" uid="uid://bbpug0ngb3ba6" path="res://Nodes/Player/State/PlayerTeleportState.gd" id="18_jexjf"]
@@ -795,6 +796,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5014245, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko755"]
+size = Vector2(100, 100)
+
 [sub_resource type="Resource" id="Resource_jgjx4"]
 script = ExtResource("23_cr8vb")
 type = 1
@@ -864,6 +868,15 @@ position = Vector2(0, -22)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_mrjgt")
 texture_scale = 6.01
+
+[node name="InteractorComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("11_w7kum")
+metadata/_custom_type_script = "uid://by6sp5lyvlnde"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractorComponent"]
+shape = SubResource("RectangleShape2D_ko755")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]
 script = ExtResource("6_jexjf")

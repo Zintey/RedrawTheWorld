@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://cml8s0s5nwonw"]
+
+[ext_resource type="Script" uid="uid://c4mc7fg85o54s" path="res://UI/StateUI/CombatActionBarUI.gd" id="1_gd7pd"]
+[ext_resource type="PackedScene" uid="uid://bvnlnq3c5k4iu" path="res://UI/StateUI/combat_skill_slot_ui.tscn" id="1_hialc"]
+
+[node name="CombatActionBarUi" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_gd7pd")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = 1.0
+offset_right = 142.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+columns = 8
+
+[node name="CombatSkillSlotUi1" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi2" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi3" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi4" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi5" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi6" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi7" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2
+
+[node name="CombatSkillSlotUi8" parent="GridContainer" instance=ExtResource("1_hialc")]
+layout_mode = 2

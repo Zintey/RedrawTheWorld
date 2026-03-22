@@ -8,7 +8,12 @@ const UI_Map : Dictionary = {
 	"RestartUI" : preload("uid://dqkcy725qe8jq"),
 	"StaminaExhaustTip" : preload("uid://c117x7o152qfa"),
 	"LevelTransitionUI": preload("uid://bhxo80b3fo2kb"),
+	"CombatActionBarUI": preload("uid://cml8s0s5nwonw"),
+	"SkillTemplateBriefUI": preload("uid://cimmppl02uvn8"),
 }
+
+signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
+
 
 # --- 新增：用于缓存玩家的四大组件 ---
 var player_health: HealthComponent
@@ -39,15 +44,26 @@ func _ready() -> void:
 	EventBus.player_components_ready.connect(_on_player_components_ready)
 	EventBus.level_transition_started.connect(_on_level_transition_started)
 
-# 接收并存储玩家发送来的组件
+	rune_world_brief_requested.connect(_show_rune_world_brief)
+
+	EventBus.skill_world_brief_requested.connect(_on_skill_world_brief_requested)
+	EventBus.skill_world_brief_closed.connect(_on_skill_world_brief_closed)
+
+var combat_action_bar : CombatActionBarUI
+
 func _on_player_components_ready(h: Node, s: Node, i: Node, sk: Node) -> void:
 	player_health = h as HealthComponent
 	player_stats = s as PlayerStatsComponent
 	player_inventory = i as InventoryComponent
 	player_skill = sk as SkillComponent
 	
-	# 组件拿到后，立刻初始化常驻的 StateUI (血条/精力条)
 	_on_state_ui_request()
+	
+	# 【新增】：立刻创建战斗底栏
+	if not is_instance_valid(combat_action_bar):
+		combat_action_bar = UI_Map["CombatActionBarUI"].instantiate()
+		combat_action_bar.init(player_skill, player_stats)
+		add_child(combat_action_bar)
 
 var ui_stack : Array[Node] = []
 var ui_stack_top_index : int = -1
@@ -58,10 +74,16 @@ func push_ui(ui_node : Control) -> void:
 	ui_stack.append(ui_node)
 	ui_stack_top_index += 1
 	self.add_child(ui_node)
+
 func pop_ui() -> Node:
 	if ui_stack_top_index < 0:
 		return null
 	var top_ui = ui_stack[ui_stack_top_index]
+	
+	# 【新增联动】：如果关掉的是背包，恢复显示战斗底栏
+	if top_ui is InventoryUI and is_instance_valid(combat_action_bar):
+		combat_action_bar.show()
+		
 	if top_ui.has_method("close_ui"):
 		top_ui.call("close_ui")
 	else:
@@ -115,11 +137,14 @@ func _on_inventory_ui_requested() -> void:
 			pop_ui()
 		return
 	
-	inventory_ui = UI_Map["InventoryUI"].instantiate()
-	# 注入玩家的真实背包组件
-	inventory_ui.init(player_inventory)
+	# 【新增联动】：打开背包时，隐藏战斗底栏
+	if is_instance_valid(combat_action_bar):
+		combat_action_bar.hide()
 	
+	inventory_ui = UI_Map["InventoryUI"].instantiate()
+	inventory_ui.init(player_inventory)
 	push_ui(inventory_ui)
+
 func _on_inventory_ui_close():
 	if inventory_ui:
 		if ui_stack[ui_stack_top_index] == inventory_ui:
@@ -191,3 +216,27 @@ func _on_level_transition_started(is_initial_start: bool):
 	transition_ui.z_index = 4096 
 	add_child(transition_ui)
 	transition_ui.init_transition(is_initial_start)
+
+
+func _show_rune_world_brief(rune_data: RuneData, target: Node2D) -> void:
+	if rune_brief:
+		rune_brief.queue_free()
+	rune_brief = UI_Map["RuneBriefUI"].instantiate() as RuneBriefUI
+	rune_brief.init(rune_data, target)
+	self.add_child(rune_brief)
+
+
+var skill_world_brief: SkillTemplateBriefUI
+
+func _on_skill_world_brief_requested(skill_data: SkillData, target: Node2D) -> void:
+	if skill_world_brief:
+		skill_world_brief.queue_free() 
+		
+	skill_world_brief = UI_Map["SkillTemplateBriefUI"].instantiate() 
+	skill_world_brief.init(skill_data, target)
+	self.add_child(skill_world_brief)
+
+func _on_skill_world_brief_closed() -> void:
+	if skill_world_brief:
+		skill_world_brief.queue_free()
+		skill_world_brief = null

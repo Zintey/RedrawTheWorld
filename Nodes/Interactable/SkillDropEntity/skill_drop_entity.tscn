@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnethuk1yg1tv"]
+
+[ext_resource type="Script" uid="uid://bmv2ji37xc4y1" path="res://Nodes/Interactable/SkillDropEntity/SkillDropEntity.gd" id="1_5jf1w"]
+[ext_resource type="Script" uid="uid://oq8bfdkiefkj" path="res://Nodes/Interactable/InteractableArea.gd" id="1_flgj3"]
+[ext_resource type="Resource" uid="uid://kic0lm8vvhsn" path="res://Resources/SkillData/old_skill_template.tres" id="2_4edy1"]
+[ext_resource type="Texture2D" uid="uid://348irmkgs0kl" path="res://icon.svg" id="3_adyh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo0mi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jf1w"]
+size = Vector2(70, 70)
+
+[node name="SkillDropEntity" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_5jf1w")
+skill_data = ExtResource("2_4edy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yo0mi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_adyh3")
+
+[node name="InteractableArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_flgj3")
+metadata/_custom_type_script = "uid://oq8bfdkiefkj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("RectangleShape2D_5jf1w")
