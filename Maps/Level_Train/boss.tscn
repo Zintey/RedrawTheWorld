@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bmcphkdkm7nsk"]
+[gd_scene load_steps=36 format=4 uid="uid://bmcphkdkm7nsk"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_jqyfu"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_vl4v4"]
@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://e5filvnr5mu1" path="res://Assets/Map/Level_train/到站牌.png" id="5_bgsxc"]
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/cyberglow.gdshader" id="6_1w2lx"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="6_ul35r"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="8_1w2lx"]
+[ext_resource type="PackedScene" uid="uid://dak656fcyirif" path="res://Nodes/Enemy/TrackedCutter/tracked_cutter.tscn" id="9_3842l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
-size = Vector2(1272, 949)
+size = Vector2(1991, 964)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bktlv"]
 atlas = ExtResource("5_bgsxc")
@@ -189,7 +191,7 @@ shader_parameter/inner_glow_intensity = 0.6510000309225
 shader_parameter/bloom_trigger = 2.6790000797525
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgsxc"]
-size = Vector2(1920, 991.5)
+size = Vector2(2542, 551)
 
 [node name="StartRoom" type="Node2D"]
 script = ExtResource("1_jqyfu")
@@ -211,8 +213,7 @@ script = ExtResource("3_bgsxc")
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
-visible = false
-position = Vector2(636, 479.5)
+position = Vector2(1277.5, 484)
 shape = SubResource("RectangleShape2D_4wfah")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -296,5 +297,13 @@ target_zoom = Vector2(0.6, 0.6)
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea"]
-position = Vector2(1280, 496.25)
+position = Vector2(1283, 1277.5)
 shape = SubResource("RectangleShape2D_bgsxc")
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(869, 822)
+script = ExtResource("8_1w2lx")
+enemy_pool = Array[PackedScene]([ExtResource("9_3842l")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

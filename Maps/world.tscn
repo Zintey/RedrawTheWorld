@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://biv54y4eif17v"]
+[gd_scene load_steps=11 format=3 uid="uid://biv54y4eif17v"]
 
 [ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
 [ext_resource type="Script" uid="uid://duvuwsn4gxx2d" path="res://Maps/world.gd" id="1_jlatx"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://bmrpc4jctbp5h" path="res://Shader/back.gdshader" id="3_4h5vl"]
 [ext_resource type="Script" uid="uid://2m4ob8dvog0h" path="res://Nodes/Camera/camera_player.gd" id="3_qacqj"]
 [ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
-[ext_resource type="PackedScene" uid="uid://bxntwdm6qndd3" path="res://Maps/Level1/Prefabs/start_1.tscn" id="5_g6xbe"]
 [ext_resource type="PackedScene" uid="uid://cx786vokdk3qp" path="res://UI/Map/minimap.tscn" id="7_g6xbe"]
 
 [sub_resource type="Curve" id="Curve_qacqj"]
@@ -84,22 +83,11 @@ mouse_behavior_recursive = 1
 
 [node name="RoomContainer" type="Node2D" parent="."]
 
-[node name="StartRoom" parent="RoomContainer" instance=ExtResource("5_g6xbe")]
-
 [node name="MapGenerator" type="Node2D" parent="." node_paths=PackedStringArray("room_container")]
 unique_name_in_owner = true
 position = Vector2(0, -2)
 script = ExtResource("4_oeksg")
 room_container = NodePath("../RoomContainer")
-map_prefab_dir = "res://Maps/Level_Train"
-map_config = {
-"min_critical_path": 5,
-"target_rooms": 4,
-"tolerance": 4
-}
-leaf_room_allocation = {
-"boss": 1
-}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

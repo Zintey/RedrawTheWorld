@@ -7,19 +7,20 @@ class_name MapGenerator
 
 @export_group("Spawning Config")
 @export var room_container: Node2D
-@export_dir var map_prefab_dir: String
-# 【注意】属性配置变更：改为 target_rooms(基准数量) 和 tolerance(容差值)
-@export var map_config: Dictionary = {"target_rooms": 15, "tolerance": 2, "min_critical_path": 5}
-@export var normal_room_prefix: String = "normal"
-@export var leaf_room_allocation: Dictionary = {"boss": 1, "shop": 1, "treasure": 1}
+
+# 剥夺独立配置权，全部由 world.gd 动态灌入
+var map_prefab_dir: String = ""
+var map_config: Dictionary = {"target_rooms": 15, "tolerance": 2, "min_critical_path": 5}
+var normal_room_prefix: String = "normal"
+var leaf_room_allocation: Dictionary = {}
 
 var prefab_metadata: Dictionary = {}
 var spawned_rooms: Dictionary = {}   
 
-func _ready():
-	_cache_all_prefabs()
+# _ready() 中去掉了自动扫描，因为没数据。改为手动调用
 
 func _cache_all_prefabs():
+	if map_prefab_dir == "": return
 	var dir = DirAccess.open(map_prefab_dir)
 	if not dir:
 		push_error("MapGenerator: 路径无效 " + map_prefab_dir)
@@ -48,7 +49,6 @@ func generate_new_map() -> Map:
 	for k in leaf_room_allocation.keys(): clean_alloc[k.to_lower()] = leaf_room_allocation[k]
 	var clean_normal = normal_room_prefix.to_lower()
 	
-	# 收集普通与起始模板
 	var normal_templates = prefab_metadata.get(clean_normal, [])
 	if normal_templates.is_empty():
 		push_warning("警告：文件夹中没有找到任何 normal 前缀的房间！使用兜底单门模板。")
@@ -63,15 +63,12 @@ func generate_new_map() -> Map:
 		
 	var start_templates = prefab_metadata.get("start", [])
 	
-	# ===============================================
-	# 【核心新增】：收集所有特殊房间（如Boss房）的真实模板
-	# ===============================================
 	var special_templates = {}
 	for key in clean_alloc.keys():
 		if prefab_metadata.has(key):
 			special_templates[key] = prefab_metadata[key]
 		else:
-			push_warning("警告：文件夹未找到要求的特殊房间前缀 -> " + key)
+			push_warning("警告：未找到特殊房间前缀 -> " + key)
 	
 	var final_cfg = map_config.duplicate()
 	final_cfg["leaf_room_allocation"] = clean_alloc
@@ -89,7 +86,6 @@ func generate_new_map() -> Map:
 		var inst = _match_and_instantiate(r_data)
 		if inst:
 			room_container.add_child(inst)
-			
 			var px = r_data.grid_pos.x * base_unit_tiles.x * tile_size.x
 			var py = r_data.grid_pos.y * base_unit_tiles.y * tile_size.y
 			inst.global_position = Vector2(px, py)
@@ -115,21 +111,17 @@ func _match_and_instantiate(data: Map.RoomData) -> RoomBase:
 		if is_ok: valid_candidates.append(meta)
 	
 	if valid_candidates.is_empty():
-		_print_deadlock_diag(data, pool)
+		push_error("死锁警告: 坐标 %s 匹配失败！" % data.grid_pos)
 		return null
 		
-	var chosen = valid_candidates.pick_random()
+	# 【强制接入】：使用 GameManager 的上帝骰子抽签预制体
+	var chosen = null
+	if has_node("/root/GameManager"):
+		chosen = get_node("/root/GameManager").pick_random_from_array(valid_candidates)
+	else:
+		chosen = valid_candidates.pick_random()
+		
 	var inst = chosen.scene.instantiate() as RoomBase
 	inst.room_type = target_type
 	inst.grid_size = data.grid_size
 	return inst
-
-func _print_deadlock_diag(data, pool):
-	push_error("死锁警告: 坐标 %s 匹配失败！尺寸: %s, 类型: %s" % [data.grid_pos, data.grid_size, data.type])
-	var req_str = ""
-	for d in data.required_doors: req_str += "[%s格 开%s] " % [d.local_pos, d.dir]
-	print("  -> 需求: ", req_str)
-	for m in pool:
-		var p_str = ""
-		for d in m.doors: p_str += "[%s格 开%s] " % [d.l_pos, d.dir]
-		print("     - %s (尺寸%s): %s" % [m.name, m.size, p_str])

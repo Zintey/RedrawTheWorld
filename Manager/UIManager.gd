@@ -6,7 +6,8 @@ const UI_Map : Dictionary = {
 	"SkillBriefUI" : preload("res://UI/Skill/skill_brief_ui.tscn"),
 	"StateUI" : preload("uid://bnn0ilaf1c77q"),
 	"RestartUI" : preload("uid://dqkcy725qe8jq"),
-	"StaminaExhaustTip" : preload("uid://c117x7o152qfa")
+	"StaminaExhaustTip" : preload("uid://c117x7o152qfa"),
+	"LevelTransitionUI": preload("uid://bhxo80b3fo2kb"),
 }
 
 # --- 新增：用于缓存玩家的四大组件 ---
@@ -36,6 +37,7 @@ func _ready() -> void:
 	stamina_exhaust_tip_request.connect(_on_stamina_exhaust_tip_request)
 
 	EventBus.player_components_ready.connect(_on_player_components_ready)
+	EventBus.level_transition_started.connect(_on_level_transition_started)
 
 # 接收并存储玩家发送来的组件
 func _on_player_components_ready(h: Node, s: Node, i: Node, sk: Node) -> void:
@@ -181,3 +183,11 @@ signal stamina_exhaust_tip_request()
 func _on_stamina_exhaust_tip_request():
 	var ui = UI_Map["StaminaExhaustTip"].instantiate()
 	self.add_child(ui)
+
+
+# 实例化转场UI并覆盖全屏
+func _on_level_transition_started(is_initial_start: bool):
+	var transition_ui = UI_Map["LevelTransitionUI"].instantiate()
+	transition_ui.z_index = 4096 
+	add_child(transition_ui)
+	transition_ui.init_transition(is_initial_start)

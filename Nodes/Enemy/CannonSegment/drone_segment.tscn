@@ -23,7 +23,7 @@ shader = ExtResource("1_j576n")
 shader_parameter/outline_size = 1.0
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/hit = false
-shader_parameter/hit_color = Color(0.81960785, 0.81960785, 0.81960785, 1)
+shader_parameter/hit_color = Color(0.76862746, 0.76862746, 0.76862746, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j576n"]
 size = Vector2(104, 33)
@@ -217,7 +217,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_tq01f"]
 resource_name = "hit"
-length = 0.4
+length = 0.1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -274,22 +274,10 @@ tracks/4/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.02),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.81960785, 0.81960785, 0.81960785, 1), Color(0.55, 0.55, 0.55, 1), Color(0.7490196, 0.7490196, 0.7490196, 1)]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_8nsy4"]

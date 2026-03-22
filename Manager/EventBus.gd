@@ -42,3 +42,14 @@ signal player_die()
 # ==============================
 signal camera_area_entered(area_node : Node2D)
 signal camera_area_exited(area_node : Node2D)
+
+
+# ==============================
+# --- 新增：关卡流转专属信号 ---
+# ==============================
+# 传入 true 表示开局第一次加载，false 表示游戏中途切层
+signal level_transition_started(is_initial_start: bool)
+
+signal ready_to_change_scene()      # UI通知：黑屏已拉好，主菜单去切场景，或者world开始初次建图
+signal execute_map_rebuild()        # UI通知：黑屏已拉好，world开始重建地图
+signal map_rebuild_finished()       # world通知UI：地图生成完毕，可以淡出揭幕了

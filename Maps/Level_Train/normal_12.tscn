@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="15_p1v50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
-size = Vector2(1272, 949)
+size = Vector2(1272, 1861)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bktlv"]
 atlas = ExtResource("14_wfpe7")
@@ -249,8 +249,7 @@ script = ExtResource("3_00osn")
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
-visible = false
-position = Vector2(636, 479.5)
+position = Vector2(636, 935.5)
 shape = SubResource("RectangleShape2D_4wfah")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

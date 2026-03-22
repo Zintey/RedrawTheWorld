@@ -81,6 +81,16 @@ func toggle_map_mode(is_full: bool):
 
 	tween.finished.connect(func(): queue_redraw())
 
+# 【新增】：彻底清空历史状态，供换层时调用
+func clear_state():
+	visited_rooms.clear()
+	current_grid_pos = Vector2i.ZERO
+	smooth_grid_pos = Vector2.ZERO
+	manual_offset = Vector2.ZERO
+	zoom_level = 1.0
+	hover_grid_pos = null
+	queue_redraw()
+
 func _gui_input(event: InputEvent):
 	if current_mode != Mode.FULL: return
 

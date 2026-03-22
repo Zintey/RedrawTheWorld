@@ -71,6 +71,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		skill_component.post_event("RMB", 0.1)
 	elif event.is_action_pressed("Key_Space"):
 		skill_component.post_event("SPACE", 0.1)
+	
+	if event.is_action_pressed("Debug_Key_T"):
+		print("测试：玩家发起换层请求！")
+		# 传入 false，代表这不是刚开局，而是中途切层
+		EventBus.level_transition_started.emit(false)
 
 # --- 平台互动逻辑 ---
 # 【新增】：处理从单向平台漏下去的逻辑

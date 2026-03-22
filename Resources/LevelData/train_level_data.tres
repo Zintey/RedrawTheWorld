@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://cc2r5crui014k"]
+
+[ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_fdpkq"]
+[ext_resource type="Texture2D" uid="uid://bcbycnjyov1t2" path="res://Assets/RuneIcon/Temp/rune_icon3.png" id="1_tmfw3"]
+
+[resource]
+script = ExtResource("1_fdpkq")
+level_id = "level_train"
+level_name = "列车"
+level_icon = ExtResource("1_tmfw3")
+map_prefab_dir = "res://Maps/Level_Train"
+target_rooms = 5
+metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="5_ins51"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
-size = Vector2(1272, 949)
+size = Vector2(2552, 631)
 
 [sub_resource type="Curve2D" id="Curve2D_ukwob"]
 _data = {
@@ -39,8 +39,7 @@ script = ExtResource("3_ukwob")
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
-visible = false
-position = Vector2(636, 479.5)
+position = Vector2(1276, 474.5)
 shape = SubResource("RectangleShape2D_4wfah")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

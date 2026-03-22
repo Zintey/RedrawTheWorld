@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/cyberglow.gdshader" id="6_he14f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
-size = Vector2(1272, 949)
+size = Vector2(1272, 950)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3daj"]
 shader = ExtResource("6_he14f")
@@ -43,8 +43,7 @@ script = ExtResource("3_d3daj")
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
-visible = false
-position = Vector2(636, 479.5)
+position = Vector2(636, 479)
 shape = SubResource("RectangleShape2D_4wfah")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
