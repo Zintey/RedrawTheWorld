@@ -51,7 +51,7 @@ height = 45.0
 resource_local_to_scene = true
 shader = ExtResource("2_vooq2")
 shader_parameter/outline_size = 1.0
-shader_parameter/outline_color = Color(0.43776295, 0.43776292, 0.4377629, 1)
+shader_parameter/outline_color = Color(0.99, 0.99, 0.99, 1)
 shader_parameter/hit = false
 shader_parameter/hit_color = Color(1, 1, 1, 1)
 
@@ -865,6 +865,7 @@ shape = SubResource("RectangleShape2D_7km3q")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(0, -22)
+energy = 0.25
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_mrjgt")
 texture_scale = 6.01

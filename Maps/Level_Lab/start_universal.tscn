@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://d2b7y5o6aqw4l"]
+[gd_scene load_steps=89 format=4 uid="uid://d2b7y5o6aqw4l"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -40,6 +40,7 @@
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
 [ext_resource type="PackedScene" uid="uid://b26k4w8c500qd" path="res://Nodes/Enemy/Axeman/axeman.tscn" id="40_ajp66"]
+[ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="41_p8p6j"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -553,6 +554,12 @@ shader_parameter/bottom_fade_start = 0.8
 shader_parameter/bottom_fade_end = 0.95
 shader_parameter/side_fade_start = 0.1
 shader_parameter/side_fade_end = 0.02
+
+[sub_resource type="Curve2D" id="Curve2D_p8p6j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 32.33333, -59.33333)
+}
+point_count = 1
 
 [node name="StartRoom" type="Node2D"]
 script = ExtResource("1_mecnb")
@@ -1123,6 +1130,16 @@ offset_bottom = -1406.0
 scale = Vector2(109.200775, 46.561264)
 mouse_filter = 2
 
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(464, 474)
+scale = Vector2(3, 3)
+curve = SubResource("Curve2D_p8p6j")
+
 [node name="Axeman" parent="." instance=ExtResource("40_ajp66")]
 position = Vector2(464, 474)
 scale = Vector2(3, 3)
+
+[node name="MobilePlatform" parent="." instance=ExtResource("41_p8p6j")]
+position = Vector2(644, 461)
+move_direction = Vector2(1, 1)
+cast_distance = 19.975

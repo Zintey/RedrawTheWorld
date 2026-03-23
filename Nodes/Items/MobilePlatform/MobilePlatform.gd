@@ -5,6 +5,7 @@ extends AnimatableBody2D
 # --- 枚举定义 ---
 enum MoveMode { LINEAR, PATH }
 enum ActivationMode { AUTO, ON_STEP }
+enum PathBehavior { PING_PONG, LOOP } # 【新增】：样条线行为模式
 
 # --- 核心配置变量 ---
 @export var move_mode: MoveMode = MoveMode.LINEAR:
@@ -36,6 +37,12 @@ enum ActivationMode { AUTO, ON_STEP }
 
 # --- PATH (样条线) 模式特有变量 ---
 @export_node_path("Path2D") var path_node: NodePath
+
+@export var path_behavior: PathBehavior = PathBehavior.PING_PONG: # 【新增】：暴露行为选项
+	set(value):
+		path_behavior = value
+		notify_property_list_changed()
+
 @export_range(0.0, 1.0) var start_progress_ratio: float = 0.0
 
 # --- 节点引用 ---
@@ -57,7 +64,7 @@ func _validate_property(property: Dictionary) -> void:
 		if move_mode != MoveMode.LINEAR:
 			property.usage = PROPERTY_USAGE_NO_EDITOR # 隐藏直线模式的变量
 			
-	elif property.name in ["path_node", "start_progress_ratio"]:
+	elif property.name in ["path_node", "start_progress_ratio", "path_behavior"]:
 		if move_mode != MoveMode.PATH:
 			property.usage = PROPERTY_USAGE_NO_EDITOR # 隐藏样条线模式的变量
 
@@ -73,7 +80,6 @@ func _ready() -> void:
 		is_active = true
 	else:
 		if player_detector:
-			# 【修改】：同时连接“进入”和“离开”信号
 			player_detector.body_entered.connect(_on_player_detector_body_entered)
 			player_detector.body_exited.connect(_on_player_detector_body_exited)
 		else:
@@ -133,28 +139,39 @@ func _process_linear(delta: float) -> void:
 		# 前方安全，继续移动
 		global_position += direction * move_speed * delta
 
-# --- 模式 B：沿着 Path2D 移动 ---
+# --- 模式 B：沿着 Path2D 移动 (含 PING_PONG 与 LOOP 分支) ---
 func _process_path(delta: float) -> void:
 	if not path_follow: return
 	
 	var curve_length = path_follow.get_parent().curve.get_baked_length()
 	var step = (move_speed * delta) / curve_length
 	
-	path_follow.progress_ratio += step * current_path_sign
-	global_position = path_follow.global_position
+	# 【修改】：拆分往返与循环的逻辑
+	if path_behavior == PathBehavior.PING_PONG:
+		path_follow.progress_ratio += step * current_path_sign
+		global_position = path_follow.global_position
 
-	if path_follow.progress_ratio >= 1.0 and current_path_sign == 1:
-		current_path_sign = -1
-		pause_timer = pause_duration
-	elif path_follow.progress_ratio <= 0.0 and current_path_sign == -1:
-		current_path_sign = 1
-		pause_timer = pause_duration
+		if path_follow.progress_ratio >= 1.0 and current_path_sign == 1:
+			current_path_sign = -1
+			pause_timer = pause_duration
+		elif path_follow.progress_ratio <= 0.0 and current_path_sign == -1:
+			current_path_sign = 1
+			pause_timer = pause_duration
+			
+	elif path_behavior == PathBehavior.LOOP:
+		path_follow.progress_ratio += step
+		global_position = path_follow.global_position
+		
+		# 走到终点后，瞬间重置回起点，并触发停顿
+		if path_follow.progress_ratio >= 1.0:
+			path_follow.progress_ratio = 0.0
+			global_position = path_follow.global_position
+			pause_timer = pause_duration
 
 # ==========================================
-# 编辑器可视化绘图 (重点！)
+# 编辑器可视化绘图
 # ==========================================
 func _draw() -> void:
-	# 只有在编辑器里，且是直线模式，且存在碰撞体时才绘制
 	if not Engine.is_editor_hint() or move_mode != MoveMode.LINEAR:
 		return
 		
@@ -165,17 +182,12 @@ func _draw() -> void:
 	var direction = move_direction.normalized()
 	var offset = direction * cast_distance
 	
-	# 设置半透明绿色表示安全检测区
 	var fill_color = Color(0.2, 0.8, 0.2, 0.3) 
 	var outline_color = Color(0.2, 0.8, 0.2, 0.8)
 
-	# 绘制中心指示线
 	draw_line(shape_node.position, shape_node.position + offset, outline_color, 2.0)
-
-	# 移动画笔到预测位置
 	draw_set_transform(shape_node.position + offset, shape_node.rotation, shape_node.scale)
 
-	# 根据碰撞体形状绘制预测框 (支持矩形和圆形)
 	if shape_node.shape is RectangleShape2D:
 		var extents = shape_node.shape.size / 2.0
 		var rect = Rect2(-extents, shape_node.shape.size)
@@ -186,7 +198,6 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, radius, fill_color)
 		draw_arc(Vector2.ZERO, radius, 0, TAU, 32, outline_color, 2.0)
 	
-	# 重置画笔变换 (好习惯)
 	draw_set_transform(Vector2.ZERO, 0, Vector2.ONE)
 
 # ==========================================
@@ -205,23 +216,21 @@ func _setup_path_mode() -> void:
 		return
 
 	path_follow = PathFollow2D.new()
-	path_follow.loop = false
+	path_follow.loop = false # 统一设为 false，我们用代码手动接管 loop 逻辑以配合停顿
 	path_follow.rotates = false 
 	p2d.add_child(path_follow)
 	
 	path_follow.progress_ratio = start_progress_ratio
 	global_position = path_follow.global_position
 
-# 【修改】：玩家进入时激活
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is Player: 
 		is_active = true
 
-# 【新增】：玩家离开时立刻停止
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body is Player: 
 		is_active = false
-		_play_anim("stop") # 强制切回停止动画
+		_play_anim("stop")
 
 func _play_anim(anim_name: String) -> void:
 	if animation_player and animation_player.current_animation != anim_name:
