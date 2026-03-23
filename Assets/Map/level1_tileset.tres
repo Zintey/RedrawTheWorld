@@ -238,20 +238,28 @@ texture_region_size = Vector2i(32, 32)
 }
 11:9/0 = 0
 11:9/0/terrain_set = 0
+11:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:9/0/physics_layer_1/polygon_0/one_way = true
 11:9/0/metadata/_better_terrain = {
 0: [1],
 &"type": 1
 }
 12:9/0 = 0
 12:9/0/terrain_set = 0
+12:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:9/0/physics_layer_1/polygon_0/one_way = true
 12:9/0/metadata/_better_terrain = {
 0: [1],
 8: [1],
 &"type": 1
 }
 13:9/0 = 0
+13:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:9/0/physics_layer_1/polygon_0/one_way = true
 14:9/0 = 0
 14:9/0/terrain_set = 0
+14:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:9/0/physics_layer_1/polygon_0/one_way = true
 14:9/0/metadata/_better_terrain = {
 8: [1],
 &"type": 1
@@ -317,9 +325,17 @@ texture_region_size = Vector2i(32, 32)
 &"type": 1
 }
 11:10/0 = 0
+11:10/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:10/0/physics_layer_1/polygon_0/one_way = true
 12:10/0 = 0
+12:10/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:10/0/physics_layer_1/polygon_0/one_way = true
 13:10/0 = 0
+13:10/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:10/0/physics_layer_1/polygon_0/one_way = true
 14:10/0 = 0
+14:10/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:10/0/physics_layer_1/polygon_0/one_way = true
 1:11/0 = 0
 1:11/0/terrain_set = 0
 1:11/0/terrain = 3
@@ -827,8 +843,6 @@ texture_region_size = Vector2i(32, 32)
 13:9/0/terrains_peering_bit/top_right_corner = 4
 15:9/0 = 0
 15:9/0/physics_layer_0/linear_velocity = Vector2(32, 32)
-15:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -4, -16, -4)
-15:9/0/physics_layer_1/polygon_0/one_way = true
 16:9/0 = 0
 17:9/0 = 0
 18:9/0 = 0
@@ -3044,6 +3058,8 @@ terrain_set_0/terrain_11/name = "lab4"
 terrain_set_0/terrain_11/color = Color(0.7490196, 0.9019608, 0.3254902, 1)
 terrain_set_0/terrain_12/name = "lab5"
 terrain_set_0/terrain_12/color = Color(0.46875, 0.25, 0.5, 1)
+terrain_set_0/terrain_13/name = "labwall"
+terrain_set_0/terrain_13/color = Color(1, 0.9735, 0.97, 1)
 sources/4 = SubResource("TileSetAtlasSource_1tivg")
 sources/0 = SubResource("TileSetAtlasSource_p5swr")
 sources/2 = SubResource("TileSetAtlasSource_fha2s")

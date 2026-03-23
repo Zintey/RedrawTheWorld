@@ -67,13 +67,13 @@ size = Vector2(1272, 949)
 noise_type = 5
 frequency = 0.7626
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tpg3q"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p8p6j"]
 noise = SubResource("FastNoiseLite_fwdxp")
 as_normal_map = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bkwoy"]
 shader = ExtResource("5_fe12l")
-shader_parameter/normal_map = SubResource("NoiseTexture2D_tpg3q")
+shader_parameter/normal_map = SubResource("NoiseTexture2D_p8p6j")
 shader_parameter/blur_amount = 2.0
 shader_parameter/distortion_strength = 0.006000000285
 shader_parameter/specular_intensity = 0.0
@@ -529,6 +529,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtut0"]
+shader = ExtResource("39_wu11l")
+shader_parameter/fog_color = Color(0, 1, 1, 0.3)
+shader_parameter/scroll_speed = Vector2(0.03, 0.01)
+shader_parameter/top_fade_start = 0.4
+shader_parameter/top_fade_end = 0.1
+shader_parameter/bottom_fade_start = 0.8
+shader_parameter/bottom_fade_end = 0.95
+shader_parameter/side_fade_start = 0.1
+shader_parameter/side_fade_end = 0.02
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wu11l"]
 frequency = 0.0015
 
@@ -543,17 +554,6 @@ shader_parameter/bottom_color = Color(0.011147253, 0.10789118, 0.12464737, 1)
 shader_parameter/glow_intensity = 0.5
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_ajp66")
 shader_parameter/fog_speed = 0.062000002945
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtut0"]
-shader = ExtResource("39_wu11l")
-shader_parameter/fog_color = Color(0, 1, 1, 0.3)
-shader_parameter/scroll_speed = Vector2(0.03, 0.01)
-shader_parameter/top_fade_start = 0.4
-shader_parameter/top_fade_end = 0.1
-shader_parameter/bottom_fade_start = 0.8
-shader_parameter/bottom_fade_end = 0.95
-shader_parameter/side_fade_start = 0.1
-shader_parameter/side_fade_end = 0.02
 
 [sub_resource type="Curve2D" id="Curve2D_p8p6j"]
 _data = {
@@ -1096,11 +1096,21 @@ position = Vector2(308, 771)
 sprite_frames = SubResource("SpriteFrames_hbds7")
 autoplay = "default"
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="天空盒" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(-130, 260)
 
-[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+[node name="fog2" type="ColorRect" parent="天空盒"]
+z_index = -11
+material = SubResource("ShaderMaterial_wtut0")
+offset_left = -1283.0001
+offset_top = -1706.0
+offset_right = -1243.0001
+offset_bottom = -1666.0
+scale = Vector2(109.200775, 46.561264)
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="天空盒"]
 z_index = -20
 material = SubResource("ShaderMaterial_sqtca")
 offset_left = -2217.0
@@ -1110,23 +1120,13 @@ offset_bottom = -1581.0
 scale = Vector2(180.43323, 109.75827)
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="fog" type="ColorRect" parent="天空盒"]
 z_index = -12
 material = SubResource("ShaderMaterial_wtut0")
-offset_left = -1413.0
-offset_top = 406.0
-offset_right = -1373.0
-offset_bottom = 446.0
-scale = Vector2(109.200775, 46.561264)
-mouse_filter = 2
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-z_index = -7
-material = SubResource("ShaderMaterial_wtut0")
-offset_left = -1413.0001
-offset_top = -1446.0
-offset_right = -1373.0001
-offset_bottom = -1406.0
+offset_left = -1283.0
+offset_top = 146.0
+offset_right = -1243.0
+offset_bottom = 186.0
 scale = Vector2(109.200775, 46.561264)
 mouse_filter = 2
 
