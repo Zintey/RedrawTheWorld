@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbq13kyry3vfc"]
+
+[ext_resource type="Script" uid="uid://dnaf1o1p00ku8" path="res://UI/Debug/PerformanceMonitor.gd" id="1_yvwk2"]
+
+[node name="DebugUi" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="PerfPanel" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("1_yvwk2")
+
+[node name="PerfLabel" type="Label" parent="PanelContainer/PerfPanel"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "213"
+
+[node name="ToggleButton" type="Button" parent="PanelContainer/PerfPanel"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+text = "隐藏"

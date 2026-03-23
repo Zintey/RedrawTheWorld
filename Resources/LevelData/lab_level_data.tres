@@ -1,12 +1,18 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c8y3281rgetw3"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://c8y3281rgetw3"]
 
+[ext_resource type="Texture2D" uid="uid://dkx6pkw2t4lvv" path="res://Assets/RuneIcon/Temp/rune_icon7.png" id="1_qg8y1"]
 [ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_t31lt"]
+[ext_resource type="Resource" uid="uid://cthnsa3cjx77y" path="res://Resources/LevelData/city_level_data.tres" id="2_tbxpx"]
 
 [resource]
 script = ExtResource("1_t31lt")
 level_id = "level_lab"
 level_name = "巴别塔"
+level_icon = ExtResource("1_qg8y1")
 map_prefab_dir = "res://Maps/Level_Lab"
 target_rooms = 8
 tolerance = 5
+next_level_pool = {
+ExtResource("2_tbxpx"): 100
+}
 metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

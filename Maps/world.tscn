@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://biv54y4eif17v"]
+[gd_scene load_steps=12 format=3 uid="uid://biv54y4eif17v"]
 
 [ext_resource type="Shader" uid="uid://gvchrh0bssg5" path="res://Shader/world.gdshader" id="1_1h05d"]
 [ext_resource type="Script" uid="uid://duvuwsn4gxx2d" path="res://Maps/world.gd" id="1_jlatx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://2m4ob8dvog0h" path="res://Nodes/Camera/camera_player.gd" id="3_qacqj"]
 [ext_resource type="Script" uid="uid://ctjbetppyhkgi" path="res://Nodes/Room/MapGenerator.gd" id="4_oeksg"]
 [ext_resource type="PackedScene" uid="uid://cx786vokdk3qp" path="res://UI/Map/minimap.tscn" id="7_g6xbe"]
+[ext_resource type="PackedScene" uid="uid://cbq13kyry3vfc" path="res://UI/Debug/DebugUI.tscn" id="8_4h5vl"]
 
 [sub_resource type="Curve" id="Curve_qacqj"]
 _data = [Vector2(0, 0.030601382), 0.0, 0.0, 0, 0, Vector2(0.9884726, 0.9954273), 0.0, 0.0, 0, 0]
@@ -97,5 +98,7 @@ offset_left = 341.0
 offset_top = -227.0
 offset_right = 441.0
 offset_bottom = -127.0
+
+[node name="DebugUi" parent="." instance=ExtResource("8_4h5vl")]
 
 [editable path="CanvasLayer/Minimap"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://d2b7y5o6aqw4l"]
+[gd_scene load_steps=87 format=4 uid="uid://d2b7y5o6aqw4l"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bsg3r0lnttji2" path="res://Assets/Map/Level_train/close.png" id="36_4u4vq"]
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
+[ext_resource type="PackedScene" uid="uid://b26k4w8c500qd" path="res://Nodes/Enemy/Axeman/axeman.tscn" id="40_ajp66"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -601,7 +602,7 @@ tile_set = ExtResource("4_eafni")
 [node name="建筑群1" type="Parallax2D" parent="."]
 scale = Vector2(1.3745928, 1.3745928)
 scroll_scale = Vector2(0.2, 0.2)
-scroll_offset = Vector2(-47, -460.99997)
+scroll_offset = Vector2(-430, -5.9999695)
 repeat_size = Vector2(1000, 600)
 repeat_times = 5
 
@@ -903,7 +904,7 @@ region_enabled = true
 
 [node name="建筑群2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(10, -260)
+scroll_offset = Vector2(-2240, 376)
 repeat_size = Vector2(1000, 600)
 
 [node name="LabBack(11)" type="Sprite2D" parent="建筑群2"]
@@ -1090,6 +1091,7 @@ autoplay = "default"
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(-130, 260)
 
 [node name="ColorRect" type="ColorRect" parent="Parallax2D"]
 z_index = -20
@@ -1120,3 +1122,7 @@ offset_right = -1373.0001
 offset_bottom = -1406.0
 scale = Vector2(109.200775, 46.561264)
 mouse_filter = 2
+
+[node name="Axeman" parent="." instance=ExtResource("40_ajp66")]
+position = Vector2(464, 474)
+scale = Vector2(3, 3)

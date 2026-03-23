@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cimmppl02uvn8"]
 
-[ext_resource type="Script" uid="uid://dl5lgj6tvt7ol" path="res://UI/Skill/SkillTemplate/SkillTemplateBriefUi.gd" id="1_in31s"]
+[ext_resource type="Script" uid="uid://dl5lgj6tvt7ol" path="res://UI/Skill/SkillTemplate/SkillTemplateBriefUI.gd" id="1_in31s"]
 
 [node name="SkillTemplateBriefUi" type="PanelContainer"]
 offset_right = 100.0
