@@ -62,8 +62,7 @@ func rotate_stop() -> void:
 	current_rotate_speed = 0.0
 
 func check_turn_to_target() -> bool:
-	return abs(global_rotation - (target_position - global_position).normalized().angle()) <= 0.1
-
+	return abs(global_rotation - (target_position - global_position).normalized().angle()) <= 0.1 * randf_range(1.0, 2.0)
 const Fire_Bullet = preload("res://Nodes/Enemy/Cannon/FireButton/cannon_fire_button.tscn")
 
 func fire(button_size : float = 1.0) -> void:

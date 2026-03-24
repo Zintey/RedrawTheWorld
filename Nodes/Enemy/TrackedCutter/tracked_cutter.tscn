@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dak656fcyirif"]
+[gd_scene load_steps=33 format=3 uid="uid://dak656fcyirif"]
 
 [ext_resource type="Script" uid="uid://b8hgd8kluweow" path="res://Nodes/Enemy/TrackedCutter/TrackedCutter.gd" id="1_o78sm"]
 [ext_resource type="Texture2D" uid="uid://bx245ky3qieeo" path="res://Assets/Enemy/TrackedCutter/tracked_cutter_idle.png" id="2_dfbu3"]
@@ -22,6 +22,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov4us"]
 size = Vector2(80, 18.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1xfg"]
+radius = 15.000003
+height = 65.000015
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bivvb"]
 size = Vector2(56, 55.75)
@@ -908,14 +912,20 @@ shader_parameter/hit_color = Color(1, 1, 1, 1)
 
 [node name="TrackedCutter" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.8, 0.8)
-collision_layer = 0
+collision_layer = 256
 collision_mask = 32
-velocity = Vector2(0, 8284637.5)
+velocity = Vector2(0, 8714849)
 script = ExtResource("1_o78sm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(0, 9.999999)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_ov4us")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1.9073485e-06, -22.499998)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("CapsuleShape2D_f1xfg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -996,6 +1006,7 @@ metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 [node name="BodyShape" type="CollisionShape2D" parent="CenterPoint/HitBox"]
 position = Vector2(-1, -15.5)
 shape = SubResource("RectangleShape2D_tmi8u")
+disabled = true
 debug_color = Color(0.99215686, 0, 0, 0.41960785)
 
 [node name="AttackShape" type="CollisionShape2D" parent="CenterPoint/HitBox"]
@@ -1067,7 +1078,7 @@ volume_db = -8.0
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("19_fqp5f")
-max_hp = 4
+max_hp = 100
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [connection signal="area_entered" from="CenterPoint/HurtBox" to="." method="_on_hit_box_area_entered"]

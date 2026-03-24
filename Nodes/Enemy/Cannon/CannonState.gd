@@ -40,5 +40,6 @@ func take_physics_process(delta: float) -> void:
 	
 	if cannon.on_follow:
 		cannon.global_rotation += cannon.current_rotate_speed * cannon.rotate_direction * delta
-			
-	super.take_physics_process(delta)
+	
+	if !cannon.is_summoned:
+		super.take_physics_process(delta)

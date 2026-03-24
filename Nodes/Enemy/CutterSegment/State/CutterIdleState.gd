@@ -18,7 +18,7 @@ func exit() -> void:
 	if turn_timer: turn_timer.queue_free()
 
 func pick_random_dir() -> void:
-	move_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	move_dir = Vector2(randf_range(-1, 1), randf_range(-0.3, 1)).normalized()
 
 func take_physics_process(delta: float) -> void:
 	# 发现玩家，判定距离并分发状态

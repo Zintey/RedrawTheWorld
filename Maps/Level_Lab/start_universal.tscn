@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://d2b7y5o6aqw4l"]
+[gd_scene load_steps=90 format=4 uid="uid://d2b7y5o6aqw4l"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -40,7 +40,8 @@
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
 [ext_resource type="PackedScene" uid="uid://b26k4w8c500qd" path="res://Nodes/Enemy/Axeman/axeman.tscn" id="40_ajp66"]
-[ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="41_p8p6j"]
+[ext_resource type="PackedScene" uid="uid://ca17gdi25piqu" path="res://Nodes/Enemy/L3_BOOM/L3_BOOM.tscn" id="41_p8p6j"]
+[ext_resource type="PackedScene" uid="uid://ctb3ctu00aarg" path="res://Nodes/Enemy/L4/L4.tscn" id="42_np7um"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -1135,11 +1136,12 @@ position = Vector2(464, 474)
 scale = Vector2(3, 3)
 curve = SubResource("Curve2D_p8p6j")
 
-[node name="Axeman" parent="." instance=ExtResource("40_ajp66")]
-position = Vector2(464, 474)
-scale = Vector2(3, 3)
+[node name="L3Boom" parent="." instance=ExtResource("41_p8p6j")]
+position = Vector2(1102, 361)
 
-[node name="MobilePlatform" parent="." instance=ExtResource("41_p8p6j")]
-position = Vector2(644, 461)
-move_direction = Vector2(1, 1)
-cast_distance = 19.975
+[node name="Axeman" parent="." instance=ExtResource("40_ajp66")]
+position = Vector2(386, 435)
+
+[node name="L4" parent="." instance=ExtResource("42_np7um")]
+position = Vector2(936, 409)
+velocity = Vector2(0, 11467067)

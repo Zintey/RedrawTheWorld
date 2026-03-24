@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://da6pix64oiur3"]
+
+[ext_resource type="Script" uid="uid://b3ephnktc1qij" path="res://Nodes/Enemy/Axeman/SwordAura/SwordAura.gd" id="1_686qn"]
+[ext_resource type="Shader" uid="uid://dbl8t8vtr1a5b" path="res://Nodes/Enemy/Axeman/SwordAura/sword_aura.gdshader" id="2_dxgvd"]
+[ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="2_uyp5i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eawk6"]
+shader = ExtResource("2_dxgvd")
+shader_parameter/aura_color = Color(0.44313726, 0.9882353, 0.9764706, 1)
+shader_parameter/blade_thickness = 0.2190000104025
+shader_parameter/core_intensity = 0.0
+shader_parameter/trail_length = 0.17200000817
+shader_parameter/trail_distortion = 0.038000001805
+shader_parameter/turbulence_speed = 10.0
+shader_parameter/front_smoothness = 0.0590000028025
+shader_parameter/glow_spread = 0.1890000089775
+
+[sub_resource type="Gradient" id="Gradient_dxgvd"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eawk6"]
+gradient = SubResource("Gradient_dxgvd")
+width = 60
+height = 80
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u41ly"]
+size = Vector2(16, 46)
+
+[node name="SwordAura" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_686qn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eawk6")
+texture = SubResource("GradientTexture2D_eawk6")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_uyp5i")
+metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_u41ly")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

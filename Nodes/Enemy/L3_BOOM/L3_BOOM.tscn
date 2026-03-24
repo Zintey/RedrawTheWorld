@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ca17gdi25piqu"]
+[gd_scene load_steps=23 format=3 uid="uid://ca17gdi25piqu"]
 
 [ext_resource type="Shader" uid="uid://b2ymucj6mewkj" path="res://Shader/L3_BOOM.gdshader" id="1_8s3uh"]
 [ext_resource type="Texture2D" uid="uid://cwx6biy3h4ioc" path="res://Assets/Enemy/L3_BOOM/L3_BOOM.png" id="1_bqpey"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dclacuyll5qve" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomBoomDieState.gd" id="10_66lt2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_imp23"]
+radius = 32.67
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_klg28"]
 shader = ExtResource("1_8s3uh")
@@ -107,6 +108,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [18]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_k8mk2"]
 resource_name = "boom_die"
@@ -158,7 +171,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6250125),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [30.0, 330.0]
+"values": [30.0, 340.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -183,6 +196,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [18]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_1l05k"]
@@ -352,15 +377,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8s3uh"]
 radius = 30.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s3uh"]
-size = Vector2(181, 13)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_klg28"]
 resource_local_to_scene = true
 radius = 450.0
 
 [node name="L3Boom" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
+collision_layer = 256
+collision_mask = 32
 script = ExtResource("1_k8mk2")
 warning_speed = 240.0
 has_gravity = false
@@ -409,10 +433,7 @@ metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_8s3uh")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(4.5, -5.5)
-shape = SubResource("RectangleShape2D_8s3uh")
+disabled = true
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true

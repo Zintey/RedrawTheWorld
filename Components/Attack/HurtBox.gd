@@ -20,9 +20,9 @@ func _on_area_entered(area: Area2D) -> void:
 	# var owner_name = owner.name if owner else "未知节点"
 	# print("👉 [碰撞测试] ", owner_name, " 的 HurtBox 被 ", area.name, " 碰到了！")
 	
-	# if is_invincible:
+	if is_invincible:
 		# print("   -> 拦截：", owner_name, " 正处于无敌/闪烁帧。")
-		# return
+		return
 		
 	if area is HitBox:
 		# print("   -> 成功！识别为 HitBox，造成伤害：", area.damage)

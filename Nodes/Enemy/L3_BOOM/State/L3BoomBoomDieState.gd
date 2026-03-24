@@ -4,8 +4,8 @@ class_name L3BoomBoomDieState
 func enter() -> void:
 	# 停止移动，播放自爆动画
 	boom.velocity = Vector2.ZERO
+	await get_tree().create_timer(0.2).timeout
 	boom.animation_player.play("boom_die")
-	
 	# 移除受伤框，防止在爆炸动画期间还能被反复鞭尸
 	if is_instance_valid(boom.hurt_box):
 		boom.hurt_box.queue_free()

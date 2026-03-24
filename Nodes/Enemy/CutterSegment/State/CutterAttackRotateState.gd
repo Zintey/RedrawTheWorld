@@ -19,7 +19,7 @@ func take_physics_process(delta: float) -> void:
 	# 速度跟着变
 	cutter.velocity = dir * cutter.rotate_move_speed
 	# 旋转枢纽（电锯头）也跟着实时变，保证电锯永远指着玩家钻！
-	cutter.rotatable_pivot.rotation = dir.angle()
+	# cutter.rotatable_pivot.rotation = dir.angle()
 	
 	super.take_physics_process(delta)
 

@@ -236,7 +236,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:disabled")
+tracks/16/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -248,115 +248,115 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:disabled")
+tracks/17/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [SubResource("RectangleShape2D_xomst")]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape")
+tracks/18/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("RectangleShape2D_xomst")]
+"values": [SubResource("RectangleShape2D_axjrf")]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape")
+tracks/19/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape:size")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_axjrf")]
+"update": 0,
+"values": [Vector2(17.37741, 68.728004)]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape:size")
+tracks/20/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape:size")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(17.37741, 68.728004)]
+"values": [Vector2(16.890823, 71.02605)]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape:size")
+tracks/21/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(16.890823, 71.02605)]
+"values": [Vector2(-20.26542, 105.12756)]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:position")
+tracks/22/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20.26542, 105.12756)]
+"values": [Vector2(-20.499998, -104.99999)]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:position")
+tracks/23/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:rotation")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20.499998, -104.99999)]
+"values": [0.21309437]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:rotation")
+tracks/24/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:rotation")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.21309437]
+"values": [-0.13353617]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:rotation")
+tracks/25/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:disabled")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.13353617]
+"update": 1,
+"values": [false]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:disabled")
+tracks/26/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:disabled")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
@@ -367,8 +367,8 @@ tracks/26/keys = {
 }
 tracks/27/type = "value"
 tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:disabled")
+tracks/27/enabled = false
+tracks/27/path = NodePath("RotatablePivot/HurtBox:is_invincible")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
@@ -380,22 +380,10 @@ tracks/27/keys = {
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("RotatablePivot/HurtBox:is_invincible")
+tracks/28/path = NodePath("RotatablePivot/Sprite2D:material:shader_parameter/hit")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/29/type = "value"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath("RotatablePivot/Sprite2D:material:shader_parameter/hit")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -532,7 +520,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:disabled")
+tracks/10/path = NodePath("CollisionShape2D:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -544,19 +532,19 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CollisionShape2D:disabled")
+tracks/11/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.5186266, 0.58159184, 0.6560512, 0.8812551, 1.1020666, 1.2929449, 1.4133312, 1.6707189, 1.7458787, 1.9613695, 2.1000051),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 3), Vector2(-1.0000001, 9), Vector2(-1, 10), Vector2(-0.9999999, -3), Vector2(-6, -21), Vector2(-29, -41), Vector2(-50, -43), Vector2(-78, -24), Vector2(-65, 33), Vector2(-66, 36), Vector2(-14, 29), Vector2(-2, 10)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:position")
+tracks/12/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -568,7 +556,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:position")
+tracks/13/path = NodePath("CollisionShape2D:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -580,19 +568,19 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:rotation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0, 0.5186266, 0.58159184, 0.6560512, 0.8812551, 1.1020666, 1.2929449, 1.4133312, 1.6707189, 1.7458787, 1.9613695, 2.1000051),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(5, 3), Vector2(-1.0000001, 9), Vector2(-1, 10), Vector2(-0.9999999, -3), Vector2(-6, -21), Vector2(-29, -41), Vector2(-50, -43), Vector2(-78, -24), Vector2(-65, 33), Vector2(-66, 36), Vector2(-14, 29), Vector2(-2, 10)]
+"values": [0.0, 0.17053188, 0.20580214, -0.0790949, -0.5685364, -1.3088913, -1.8144354, -2.6279664, -4.213338, -4.1835084, -5.520258, -6.0446067]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:rotation")
+tracks/15/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -604,7 +592,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:rotation")
+tracks/16/path = NodePath("CollisionShape2D:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -616,67 +604,67 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("CollisionShape2D:rotation")
+tracks/17/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 0.5186266, 0.58159184, 0.6560512, 0.8812551, 1.1020666, 1.2929449, 1.4133312, 1.6707189, 1.7458787, 1.9613695, 2.1000051),
+"times": PackedFloat32Array(0, 0.67792, 0.71285754, 0.88210934, 1.1229677, 1.28137, 1.3373088, 1.4317026, 1.7136586, 1.8938651, 1.930642, 2.1000051),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.17053188, 0.20580214, -0.0790949, -0.5685364, -1.3088913, -1.8144354, -2.6279664, -4.213338, -4.1835084, -5.520258, -6.0446067]
+"values": [Vector2(-20, -102.999985), Vector2(-40.999996, -97), Vector2(-51, -99), Vector2(-78.99999, -97), Vector2(-120, -84), Vector2(-152, -30), Vector2(-132, 55), Vector2(-62.999992, 83), Vector2(22, 85), Vector2(63, 37), Vector2(65, -37.999992), Vector2(14.999999, -94)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:position")
+tracks/18/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:rotation")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0, 0.67792, 0.71285754, 0.88210934, 1.1229677, 1.28137, 1.3373088, 1.4317026, 1.7136586, 1.8938651, 1.930642, 2.1000051),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-20, -102.999985), Vector2(-40.999996, -97), Vector2(-51, -99), Vector2(-78.99999, -97), Vector2(-120, -84), Vector2(-152, -30), Vector2(-132, 55), Vector2(-62.999992, 83), Vector2(22, 85), Vector2(63, 37), Vector2(65, -37.999992), Vector2(14.999999, -94)]
+"values": [-0.16515398, -0.4663335, -0.5533762, -0.7553731, -0.87321985, -1.428513, -2.5309193, -3.6675544, -4.0113544, -4.2715025, -5.122703, -6.0210834]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:rotation")
+tracks/19/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 0.67792, 0.71285754, 0.88210934, 1.1229677, 1.28137, 1.3373088, 1.4317026, 1.7136586, 1.8938651, 1.930642, 2.1000051),
+"times": PackedFloat32Array(0, 0.6595316, 0.71285754, 0.88210934, 1.1229677, 1.28137, 1.3373088, 1.4317026, 1.7136586, 1.8938651, 1.930642, 2.1000051),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.16515398, -0.4663335, -0.5533762, -0.7553731, -0.87321985, -1.428513, -2.5309193, -3.6675544, -4.0113544, -4.2715025, -5.122703, -6.0210834]
+"values": [Vector2(-21.000002, 107.000015), Vector2(7.000002, 108), Vector2(16.000002, 101.00001), Vector2(37, 77), Vector2(54, 22.999996), Vector2(52, -40), Vector2(2, -110), Vector2(-91.00001, -109.000015), Vector2(-153, -28), Vector2(-138, 29), Vector2(-107.999985, 80), Vector2(-52.999996, 107.99999)]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:position")
+tracks/20/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:rotation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0, 0.6595316, 0.71285754, 0.88210934, 1.1229677, 1.28137, 1.3373088, 1.4317026, 1.7136586, 1.8938651, 1.930642, 2.1000051),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-21.000002, 107.000015), Vector2(7.000002, 108), Vector2(16.000002, 101.00001), Vector2(37, 77), Vector2(54, 22.999996), Vector2(52, -40), Vector2(2, -110), Vector2(-91.00001, -109.000015), Vector2(-153, -28), Vector2(-138, 29), Vector2(-107.999985, 80), Vector2(-52.999996, 107.99999)]
+"values": [0.24063522, -0.07701287, -0.12841034, -0.36892778, -0.6145203, -1.2727339, -2.4691904, -3.6535609, -4.0979853, -4.329464, -5.001883, -5.7332907]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:rotation")
+tracks/21/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:disabled")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0, 0.6595316, 0.71285754, 0.88210934, 1.1229677, 1.28137, 1.3373088, 1.4317026, 1.7136586, 1.8938651, 1.930642, 2.1000051),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.24063522, -0.07701287, -0.12841034, -0.36892778, -0.6145203, -1.2727339, -2.4691904, -3.6535609, -4.0979853, -4.329464, -5.001883, -5.7332907]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:disabled")
+tracks/22/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:disabled")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -688,70 +676,58 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:disabled")
+tracks/23/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [SubResource("RectangleShape2D_axjrf")]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape")
+tracks/24/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("RectangleShape2D_axjrf")]
+"values": [SubResource("RectangleShape2D_xomst")]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape")
+tracks/25/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape:size")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_xomst")]
+"update": 0,
+"values": [Vector2(17.37741, 68.728004)]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:shape:size")
+tracks/26/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape:size")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(17.37741, 68.728004)]
+"values": [Vector2(16.890823, 71.02605)]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:shape:size")
+tracks/27/enabled = false
+tracks/27/path = NodePath("RotatablePivot/HurtBox:is_invincible")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(16.890823, 71.02605)]
-}
-tracks/28/type = "value"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath("RotatablePivot/HurtBox:is_invincible")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -888,7 +864,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:disabled")
+tracks/10/path = NodePath("CollisionShape2D:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -900,19 +876,19 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CollisionShape2D:disabled")
+tracks/11/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.39769122, 1.2462698, 1.500005),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4.446974), Vector2(-2.9999995, 4), Vector2(25, 4.446974), Vector2(5, 3)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:position")
+tracks/12/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -924,7 +900,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:position")
+tracks/13/path = NodePath("CollisionShape2D:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -936,19 +912,19 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:rotation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.39769122, 1.2462698, 1.500005),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 4.446974), Vector2(-2.9999995, 4), Vector2(25, 4.446974), Vector2(5, 3)]
+"values": [0.0]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("RotatablePivot/HurtBox/CollisionShape2D:rotation")
+tracks/15/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -960,7 +936,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:rotation")
+tracks/16/path = NodePath("CollisionShape2D:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -972,71 +948,59 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("CollisionShape2D:rotation")
+tracks/17/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.24652204, 0.41862231, 0.64421326, 1.1581885, 1.2427295, 1.2907522, 1.3954078, 1.4148313, 1.500005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(-20.000002, -101.00001), Vector2(7, -101), Vector2(56.999996, -77), Vector2(95, -12), Vector2(111, -24), Vector2(110.99999, -25.000004), Vector2(85, -66), Vector2(62.000004, -83.99999), Vector2(36, -94), Vector2(10, -103)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:position")
+tracks/18/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:rotation")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0, 0.24652204, 0.41862231, 0.64421326, 1.1581885, 1.2427295, 1.2907522, 1.3954078, 1.4148313, 1.500005),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-20.000002, -101.00001), Vector2(7, -101), Vector2(56.999996, -77), Vector2(95, -12), Vector2(111, -24), Vector2(110.99999, -25.000004), Vector2(85, -66), Vector2(62.000004, -83.99999), Vector2(36, -94), Vector2(10, -103)]
+"values": [-6.440419, -6.020731, -5.4329257, -4.514693, -4.700088, -4.6858993, -5.302332, -5.5473027, -5.8816276, -6.2014213]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("RotatablePivot/HitBox/CollisionShape2D2:rotation")
+tracks/19/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0, 0.24652204, 0.41862231, 0.64421326, 1.1581885, 1.2427295, 1.2907522, 1.3954078, 1.4148313, 1.500005),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [-6.440419, -6.020731, -5.4329257, -4.514693, -4.700088, -4.6858993, -5.302332, -5.5473027, -5.8816276, -6.2014213]
+"values": [Vector2(-20.999996, 109.99999), Vector2(-1.9999985, 108.99999), Vector2(50, 89), Vector2(98, 20.000002), Vector2(111.00001, 39), Vector2(111, 40.999996), Vector2(81.000015, 79.00001), Vector2(60.000008, 93.00001), Vector2(34.000008, 104.00001), Vector2(6, 108.99999)]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:position")
+tracks/20/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:rotation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0, 0.24652204, 0.41862231, 0.64421326, 1.1581885, 1.2427295, 1.2907522, 1.3954078, 1.4148313, 1.500005),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-20.999996, 109.99999), Vector2(-1.9999985, 108.99999), Vector2(50, 89), Vector2(98, 20.000002), Vector2(111.00001, 39), Vector2(111, 40.999996), Vector2(81.000015, 79.00001), Vector2(60.000008, 93.00001), Vector2(34.000008, 104.00001), Vector2(6, 108.99999)]
+"values": [-6.0138426, -6.368455, -7.058717, -7.96352, -7.8301435, -7.810185, -7.2215896, -6.9419146, -6.609879, -6.301624]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("RotatablePivot/HitBox/CollisionShape2D3:rotation")
+tracks/21/path = NodePath("RotatablePivot/HurtBox:is_invincible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0, 0.24652204, 0.41862231, 0.64421326, 1.1581885, 1.2427295, 1.2907522, 1.3954078, 1.4148313, 1.500005),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-6.0138426, -6.368455, -7.058717, -7.96352, -7.8301435, -7.810185, -7.2215896, -6.9419146, -6.609879, -6.301624]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("RotatablePivot/HurtBox:is_invincible")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0, 0.66, 1.1942942, 2),
+"times": PackedFloat32Array(0, 0.26094294, 1.7982006, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -1108,7 +1072,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -1166,10 +1130,10 @@ tracks/0/path = NodePath("RotatablePivot/Sprite2D:material:shader_parameter/hit"
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.028638652),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.028638652, 0.0958107),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1221,7 +1185,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g0bmn"]
-radius = 100.0
+radius = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdxfn"]
 radius = 78.333015
@@ -1413,7 +1377,7 @@ tracks/14/keys = {
 }
 tracks/15/type = "value"
 tracks/15/imported = false
-tracks/15/enabled = true
+tracks/15/enabled = false
 tracks/15/path = NodePath("RotatablePivot/HitBox/CollisionShape2D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
@@ -1533,7 +1497,7 @@ tracks/24/keys = {
 }
 tracks/25/type = "value"
 tracks/25/imported = false
-tracks/25/enabled = true
+tracks/25/enabled = false
 tracks/25/path = NodePath("RotatablePivot/HurtBox:is_invincible")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
@@ -1572,7 +1536,7 @@ radius = 800.0
 
 [node name="CutterSegment" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
-collision_layer = 0
+collision_layer = 256
 collision_mask = 32
 script = ExtResource("1_poswk")
 rotate_move_speed = 30.0
@@ -1603,6 +1567,7 @@ metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RotatablePivot/HitBox"]
 shape = SubResource("RectangleShape2D_d127l")
+disabled = true
 debug_color = Color(0.95, 0, 0.015833091, 0.41960785)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RotatablePivot/HitBox"]
@@ -1681,4 +1646,5 @@ metadata/_custom_type_script = "uid://cken684dx7ep6"
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_b44yc")
+max_hp = 100
 metadata/_custom_type_script = "uid://b7cpenmly2med"

@@ -24,3 +24,7 @@ func _ready() -> void:
 func _on_warn_area_entered(body: Node2D) -> void:
 	if body is Player:
 		acquire_target(body) 
+
+func _on_warn_area_exited(body : Node2D) -> void:
+	if body is Player:
+		lose_target(body)

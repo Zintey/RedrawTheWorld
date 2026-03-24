@@ -5,7 +5,7 @@ const Hit_SCENE = preload("res://Nodes/Items/HitDust/HitDust.tscn")
 
 func enter() -> void:
 	cannon.animation_player.play("hit")
-	cannon.sprite_2d.material.set_shader_parameter("hit", true)
+	# cannon.sprite_2d.material.set_shader_parameter("hit", true)
 	cannon.on_follow = false
 	
 	var hit_dust :Node2D = Hit_SCENE.instantiate()
@@ -16,7 +16,7 @@ func enter() -> void:
 	super()
 
 func exit() -> void:
-	cannon.sprite_2d.material.set_shader_parameter("hit", false)
+	# cannon.sprite_2d.material.set_shader_parameter("hit", false)
 	# if is_instance_valid(agent.hurt_box):
 		# agent.hurt_box.is_invincible = false
 	super()
