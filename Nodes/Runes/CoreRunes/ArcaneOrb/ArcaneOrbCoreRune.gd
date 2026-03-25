@@ -1,14 +1,17 @@
 class_name ArcaneOrbCoreRune
 extends CoreRuneBase
 
+@export var orb_fire_sfx : AudioEvent
+
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+# @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var die = false
 
 func _start_action():
-    audio_stream_player.play()
-    var timer = get_tree().create_timer(1.5, false)
+    # audio_stream_player.play()
+    AudioManager.play_sfx(orb_fire_sfx)
+    var timer = get_tree().create_timer(0.5, false)
     timer.timeout.connect(_finish_rune_action)
     EventBus.camera_shake.emit(Vector2(20.0,20.0),0.2)
 

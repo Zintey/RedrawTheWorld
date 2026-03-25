@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://cfts6hohws0xl"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_udae1"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_devcw"]
+[ext_resource type="AudioStream" uid="uid://bg6u5nu3hq471" path="res://Audio/SFX/sfx_orb.wav" id="2_s0uuf"]
+
+[sub_resource type="Resource" id="Resource_kqv7f"]
+script = ExtResource("1_udae1")
+stream = ExtResource("2_s0uuf")
+duration = 0.3
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("2_devcw")
+clips = Array[ExtResource("1_udae1")]([SubResource("Resource_kqv7f")])
+base_volume_db = -3.0
+pitch_randomness = 0.2
+max_instances = 1
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

@@ -5,10 +5,12 @@ func enter() -> void:
 	player.animation_player.play("Kaer/run")
 	player.stats_component.current_accelerate = player.stats_component.floor_accelerate
 	player.stats_component.current_speed = player.stats_component.run_speed
-@onready var run_sfx: AudioStreamPlayer = %run_sfx
+# @onready var run_sfx: AudioStreamPlayer = %run_sfx
+@export var run_sfx : AudioEvent
 
 func play_sfx():
-	run_sfx.play()
+	# run_sfx.play()
+	AudioManager.play_sfx(run_sfx)
 
 func exit() -> void:
 	pass

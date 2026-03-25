@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
 [ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_vooq2"]
+[ext_resource type="Resource" uid="uid://dh2ybiff6fy5b" path="res://Resources/Audio/SFX/Player/player_hit.tres" id="2_w7kum"]
 [ext_resource type="Texture2D" uid="uid://d2p8hct01m1cs" path="res://Assets/Characters/Kaer/kaer_die_and_teleport.png" id="3_oh6yy"]
 [ext_resource type="Texture2D" uid="uid://vhnfidyiusxs" path="res://Assets/Characters/Kaer/kaer_walk.png" id="3_vooq2"]
 [ext_resource type="Texture2D" uid="uid://2hv135g0jig5" path="res://Assets/Characters/Kaer/kaer run2.png" id="4_nussk"]
@@ -18,11 +19,10 @@
 [ext_resource type="Script" uid="uid://d16iwiutjl7k3" path="res://Nodes/Player/State/PlayerLandState.gd" id="11_fetqx"]
 [ext_resource type="Script" uid="uid://cj6546e5l2ox4" path="res://Nodes/Player/State/PlayerUpToAirState.gd" id="11_nussk"]
 [ext_resource type="Script" uid="uid://by6sp5lyvlnde" path="res://Components/InteractorComponent/InteractorComponent.gd" id="11_w7kum"]
-[ext_resource type="AudioStream" uid="uid://c0t2sc3045270" path="res://Audio/SFX/sfx_run2.wav" id="15_vmkah"]
 [ext_resource type="Script" uid="uid://c6yb752tler4m" path="res://Nodes/Player/State/PlayerDieState.gd" id="16_6gkbq"]
+[ext_resource type="Resource" uid="uid://bemsfjg3qow30" path="res://Resources/Audio/SFX/Player/player_run.tres" id="16_w7kum"]
 [ext_resource type="Script" uid="uid://bbpug0ngb3ba6" path="res://Nodes/Player/State/PlayerTeleportState.gd" id="18_jexjf"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="19_3jhvm"]
-[ext_resource type="AudioStream" uid="uid://cxkdb0y4dt7hn" path="res://Audio/SFX/sfx_hit.wav" id="20_mrjgt"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="20_ncvkw"]
 [ext_resource type="Script" uid="uid://4twnrh5cup0w" path="res://Components/InventoryComponent/InventoryComponent.gd" id="22_owx2l"]
 [ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="23_cr8vb"]
@@ -611,9 +611,12 @@ tracks/3/path = NodePath("../StateMachine/run")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.10783569, 0.440004),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"play_sfx"
+}, {
 "args": [],
 "method": &"play_sfx"
 }]
@@ -814,6 +817,7 @@ metadata/_custom_type_script = "uid://w3c70vl01a25"
 collision_layer = 2
 collision_mask = 352
 script = ExtResource("1_q1ymb")
+hit_sfx = ExtResource("2_w7kum")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -896,12 +900,9 @@ metadata/_custom_type_script = "uid://b1rgnp3vlahtx"
 
 [node name="run" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("9_jospr")
+run_sfx = ExtResource("16_w7kum")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://ctxc34e2ody4w"
-
-[node name="run_sfx" type="AudioStreamPlayer" parent="StateMachine/run"]
-unique_name_in_owner = true
-stream = ExtResource("15_vmkah")
 
 [node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("9_08mni")
@@ -962,10 +963,6 @@ metadata/_custom_type_script = "uid://o4a5mwuwpqh5"
 unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
-
-[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_mrjgt")
-volume_db = -10.0
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

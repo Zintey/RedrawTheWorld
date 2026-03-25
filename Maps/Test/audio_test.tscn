@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjsn2246p7bcn"]
+
+[ext_resource type="Resource" uid="uid://cfts6hohws0xl" path="res://Resources/Audio/SFX/CoreRune/orb_fire_sfx.tres" id="1_u3pwa"]
+
+[sub_resource type="GDScript" id="GDScript_hvhag"]
+script/source = "extends Button
+
+@export var test_event: AudioEvent # 在右侧面板把你捏好的 .tres 文件拖进来
+
+
+func _on_pressed() -> void:
+	if test_event:
+		AudioManager.play_sfx(test_event)
+"
+
+[node name="AudioTest" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 339.0
+offset_top = 164.0
+offset_right = 347.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "play"
+script = SubResource("GDScript_hvhag")
+test_event = ExtResource("1_u3pwa")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

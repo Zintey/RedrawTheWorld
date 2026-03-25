@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal on_hit(flag: bool)
 
+@export var hit_sfx : AudioEvent
+
 # --- 本地组件引用 ---
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var stats_component: PlayerStatsComponent = $PlayerStatsComponent
@@ -18,7 +20,6 @@ signal on_hit(flag: bool)
 
 var jump_request_timer: Timer = Timer.new()
 var coyote_timer: Timer = Timer.new()
-@onready var hit_sfx: AudioStreamPlayer = $hit_sfx
 
 var last_on_floor_position: Vector2
 @onready var recovery_stamina_timer: Timer = %RecoveryStaminaTimer
@@ -102,7 +103,7 @@ func _on_took_damage(amount: int) -> void:
 	sprite_2d.material.set_shader_parameter("hit", true)
 	EventBus.camera_shake.emit(Vector2(10.0, 10.0), 0.3)
 	on_hit.emit(true)
-	hit_sfx.play()
+	AudioManager.play_sfx(hit_sfx)
 	
 	# 【恢复】：开启无敌与碰撞体禁用
 	hurt_box.is_invincible = true

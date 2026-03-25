@@ -51,7 +51,7 @@ var need_penetrate : bool = false
 func _ready() -> void:
     ray_cast = RayCast2D.new()
     ray_cast.target_position = Vector2.RIGHT * PROBE_DISTANCE
-    ray_cast.collision_mask = 1 << 4 | 1 << 5
+    ray_cast.collision_mask = 1 << 5
     ray_cast.collide_with_areas = true 
     ray_cast.collide_with_bodies = true 
     ray_cast.enabled = true
