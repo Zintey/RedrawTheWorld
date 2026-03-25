@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b75ta34eshgfu"]
+[gd_scene load_steps=9 format=3 uid="uid://b75ta34eshgfu"]
 
 [ext_resource type="Script" uid="uid://bu0rpyqtyfm0h" path="res://UI/Inventory/InventoryUI.gd" id="1_gka8b"]
 [ext_resource type="PackedScene" uid="uid://cioefrxbxsw60" path="res://UI/Inventory/runes_inventory_ui.tscn" id="1_qpvb7"]
+[ext_resource type="Resource" uid="uid://b2hcqugdd2pbo" path="res://Resources/Audio/SFX/UI/ui_deny.tres" id="4_djyr1"]
 [ext_resource type="PackedScene" uid="uid://x46trdy6pepf" path="res://UI/Skill/SkillTemplate/skill_template_ui.tscn" id="4_enobt"]
 [ext_resource type="Script" uid="uid://cchfyhrp4mcuh" path="res://UI/Inventory/SkillInventory/LeftSkillPanel.gd" id="4_gifqc"]
 [ext_resource type="PackedScene" uid="uid://dbasap1tp2h6e" path="res://UI/Inventory/SkillInventory/mini_skill_slot_ui.tscn" id="5_b8an0"]
 [ext_resource type="Resource" uid="uid://cyg5svovdpl0a" path="res://Resources/SkillData/exquisite_skill_template.tres" id="5_gifqc"]
+[ext_resource type="Resource" uid="uid://fl8eseqmyulm" path="res://Resources/Audio/SFX/UI/equip_rune.tres" id="5_n74oh"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -50,7 +52,6 @@ color = Color(0, 0, 0, 0.85)
 [node name="RunesInventoryUI" parent="PanelContainer" instance=ExtResource("1_qpvb7")]
 unique_name_in_owner = true
 layout_mode = 2
-inventory_name = "符文仓库"
 
 [node name="LeftSkillPanel" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -63,6 +64,8 @@ offset_right = 212.0
 offset_bottom = 140.0
 grow_vertical = 2
 script = ExtResource("4_gifqc")
+deny_sfx = ExtResource("4_djyr1")
+equip_sfx = ExtResource("5_n74oh")
 
 [node name="SkillTemplateUI" parent="LeftSkillPanel" instance=ExtResource("4_enobt")]
 unique_name_in_owner = true

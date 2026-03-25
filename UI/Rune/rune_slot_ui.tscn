@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cte1wladgtja5"]
+[gd_scene load_steps=8 format=3 uid="uid://cte1wladgtja5"]
 
 [ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="1_hkav2"]
 [ext_resource type="Script" uid="uid://bcbcyqts1jnye" path="res://UI/Rune/RuneSlotUI.gd" id="1_mh3ln"]
 [ext_resource type="Texture2D" uid="uid://dbjl5s4267xp5" path="res://Assets/RuneIcon/rune_slot_shape.png" id="2_rtjd7"]
 [ext_resource type="BitMap" uid="uid://cs4y054n7imor" path="res://Assets/RuneIcon/rune_slot_button_mask.png" id="3_rykew"]
+[ext_resource type="Resource" uid="uid://j0jg1rx4ou77" path="res://Resources/Audio/SFX/UI/ui_click.tres" id="4_yyl7a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rykew"]
 texture = ExtResource("2_rtjd7")
@@ -32,6 +33,7 @@ offset_bottom = 40.0
 theme = ExtResource("1_hkav2")
 theme_override_styles/panel = SubResource("StyleBoxTexture_rykew")
 script = ExtResource("1_mh3ln")
+drag_sfx = ExtResource("4_yyl7a")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

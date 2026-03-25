@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://fl8eseqmyulm"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_4wfp3"]
+[ext_resource type="AudioStream" uid="uid://1e6fuewyt1ny" path="res://Audio/SFX/UI/equip_rune.wav" id="2_321ht"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_d4v4j"]
+
+[sub_resource type="Resource" id="Resource_pmjtw"]
+script = ExtResource("1_4wfp3")
+stream = ExtResource("2_321ht")
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("2_d4v4j")
+clips = Array[ExtResource("1_4wfp3")]([SubResource("Resource_pmjtw")])
+base_volume_db = -5.0
+bus_name = &"UI"
+max_instances = 5
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

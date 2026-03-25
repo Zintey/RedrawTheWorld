@@ -2,6 +2,7 @@
 extends PanelContainer
 class_name RuneSlotUI
 
+@export var drag_sfx : AudioEvent
 @export var slot_id : int = -1
 signal rune_data_changed(rune_data : RuneData, slot_id : int)
 
@@ -58,6 +59,10 @@ func _gui_input(event: InputEvent) -> void:
 				self.rune_data = null # 清空自己，引发底层数据刷新
 				UIManager.rune_brief_closed.emit()
 				EventBus.rune_quick_unequip_requested.emit(temp) # 叫大管家收回仓库
+			
+			elif slot_type == RuneData.RuneType.ALL and rune_data != null:
+					print("【测试成功】仓库符文被右击：", rune_data.display_name)
+					EventBus.rune_auto_equip_requested.emit(rune_data)
 				
 		# 【2. 左键手搓双击装配】 -> 仅限右侧仓库里的符文（slot_type 是 ALL）
 		elif event.button_index == MOUSE_BUTTON_LEFT:
@@ -71,6 +76,7 @@ func _gui_input(event: InputEvent) -> void:
 			else:
 				# 记录第一次点击的时间
 				last_click_time = current_time
+		
 
 # ==================== 全局高亮逻辑 ====================
 func _on_global_drag_started(dragged_rune: RuneData, start_slot: RuneSlotUI) -> void:
@@ -85,6 +91,7 @@ func _on_global_drag_started(dragged_rune: RuneData, start_slot: RuneSlotUI) -> 
 
 func _on_global_drag_ended(dragged_rune: RuneData, start_slot: RuneSlotUI) -> void:
 	if highlight_border: highlight_border.hide()
+	AudioManager.play_sfx(drag_sfx)
 	self.modulate = Color(1, 1, 1, 1) 
 
 # ==================== 原生拖拽三剑客 ====================
@@ -104,6 +111,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	rune_icon.modulate.a = 0.0
 	UIManager.rune_brief_closed.emit()
 	EventBus.rune_drag_started.emit(rune_data, self)
+	AudioManager.play_sfx(drag_sfx)
 	
 	return {"source": self, "data": rune_data}
 

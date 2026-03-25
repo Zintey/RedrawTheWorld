@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_i6a2p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ue13"]
+resource_local_to_scene = true
 atlas = ExtResource("1_3656n")
 region = Rect2(2, 4, 111, 108)
 

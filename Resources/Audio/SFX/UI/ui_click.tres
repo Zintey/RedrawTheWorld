@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://j0jg1rx4ou77"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_h3q3y"]
+[ext_resource type="AudioStream" uid="uid://cn337t65bipvx" path="res://Audio/SFX/UI/ui_click.wav" id="2_6lqwk"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_ke2g7"]
+
+[sub_resource type="Resource" id="Resource_ovu12"]
+script = ExtResource("1_h3q3y")
+stream = ExtResource("2_6lqwk")
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("2_ke2g7")
+clips = Array[ExtResource("1_h3q3y")]([SubResource("Resource_ovu12")])
+base_volume_db = -6.0
+bus_name = &"UI"
+max_instances = 1
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

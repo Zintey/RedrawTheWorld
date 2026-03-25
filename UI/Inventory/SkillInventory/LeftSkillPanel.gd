@@ -1,6 +1,9 @@
 class_name LeftSkillPanel
 extends Control
 
+@export var deny_sfx : AudioEvent
+@export var equip_sfx : AudioEvent
+
 var player_skills: Array[SkillData] = [] 
 
 @onready var workbench: SkillTemplateUI = %SkillTemplateUI
@@ -17,7 +20,7 @@ func _ready() -> void:
 			
 	EventBus.rune_drag_ended.connect(_on_any_rune_changed)
 	
-	# 【新增】：接听来自右侧仓库的双击自动装配请求
+	# 【新增】：接听来自右侧仓库的双击/右击自动装配请求
 	EventBus.rune_auto_equip_requested.connect(_on_rune_auto_equip_requested)
 
 func init_skills(skills: Array[SkillData]) -> void:
@@ -29,7 +32,7 @@ func init_skills(skills: Array[SkillData]) -> void:
 		else:
 			mini_slots[i].set_skill_data(null)
 			
-	call_deferred("select_slot", 0)
+	call_deferred("select_slot", current_selected_index)
 
 func select_slot(index: int) -> void:
 	current_selected_index = index
@@ -55,10 +58,12 @@ func _on_rune_auto_equip_requested(rune_data: RuneData) -> void:
 	
 	if current_selected_index < 0 or current_selected_index >= player_skills.size(): 
 		print("【测试失败】：当前没有选中的技能！")
+		AudioManager.play_sfx(deny_sfx)
 		return
 	var current_skill = player_skills[current_selected_index]
 	if current_skill == null: 
 		print("【测试失败】：选中的技能为空壳！")
+		AudioManager.play_sfx(deny_sfx)
 		return
 
 	var target_list : Array[RuneData] = []
@@ -70,10 +75,12 @@ func _on_rune_auto_equip_requested(rune_data: RuneData) -> void:
 		RuneData.RuneType.MODIFIER: target_list = current_skill.modifier_rune_list
 		_: 
 			print("【测试失败】：未知符文类型")
+			AudioManager.play_sfx(deny_sfx)
 			return
 
 	if target_list.size() == 0: 
 		print("【测试失败】：该技能没有对应的槽位可以装配！")
+		AudioManager.play_sfx(deny_sfx)
 		return
 
 	var inserted = false
@@ -100,6 +107,7 @@ func _on_rune_auto_equip_requested(rune_data: RuneData) -> void:
 
 	# 4. 成功上膛，通知仓库销毁该符文的实体
 	EventBus.rune_auto_equipped.emit(rune_data)
+	AudioManager.play_sfx(equip_sfx)
 	
 	# 5. 瞬间刷新界面
 	workbench.update_skill_data(current_skill)
