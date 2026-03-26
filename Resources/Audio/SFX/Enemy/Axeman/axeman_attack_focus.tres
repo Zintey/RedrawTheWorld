@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://bud7qju1yypsn"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_r3t8t"]
+[ext_resource type="AudioStream" uid="uid://b6ywlgecnqf4x" path="res://Audio/SFX/Enemy/Axeman/sfx_attack1_1.wav" id="2_c6pks"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="3_p5qfn"]
+
+[sub_resource type="Resource" id="Resource_13q1o"]
+script = ExtResource("1_r3t8t")
+stream = ExtResource("2_c6pks")
+duration = 1.2
+fade_out = 0.3
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("3_p5qfn")
+clips = Array[ExtResource("1_r3t8t")]([SubResource("Resource_13q1o")])
+base_volume_db = -15.0
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

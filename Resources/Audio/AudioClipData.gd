@@ -11,3 +11,4 @@ class_name AudioClipData
 
 @export_group("混音微调 (Mixing)")
 @export_range(-24.0, 12.0) var volume_offset_db: float = 0.0 ## 单体音量微调
+@export_range(0.1, 4.0) var pitch_multiplier: float = 1.0 ## 切片独立音调/倍速 (默认1.0，不变调)

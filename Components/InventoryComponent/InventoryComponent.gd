@@ -45,7 +45,7 @@ func _ready() -> void:
 	if not EventBus.rune_auto_equipped.is_connected(_on_rune_auto_equipped):
 		EventBus.rune_auto_equipped.connect(_on_rune_auto_equipped)
 
-var equip_rune_index : int = -1
+# var equip_rune_index : int = -1
 
 # 【新增】：将卸下的符文塞回仓库
 func _on_rune_quick_unequip_requested(rune_data: RuneData) -> void:
@@ -56,7 +56,7 @@ func _on_rune_quick_unequip_requested(rune_data: RuneData) -> void:
 
 # 【新增】：自动装配成功后，将其从仓库彻底扣除
 func _on_rune_auto_equipped(rune_data: RuneData) -> void:
-	equip_rune_index = all_runes.find(rune_data)
+	# equip_rune_index = all_runes.find(rune_data)
 	remove_rune(rune_data)
 
 func add_rune(rune_data : RuneData) -> bool:

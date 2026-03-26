@@ -7,9 +7,9 @@ const RUNESLOTUI : PackedScene = preload("res://UI/Rune/rune_slot_ui.tscn")
 var is_drag_item : bool = false
 @export var skill_data : SkillData
 
-@onready var trigger_rune_v_box: HBoxContainer = %TriggerRuneVBox
-@onready var core_rune_v_box: HBoxContainer = %CoreRuneVBox
-@onready var modifier_rune_v_box: HBoxContainer = %ModifierRuneVBox
+@onready var trigger_rune_v_box: GridContainer = %TriggerRuneGrid
+@onready var core_rune_v_box: GridContainer = %CoreRuneGrid
+@onready var modifier_rune_v_box: GridContainer = %ModifierRuneGrid
 @onready var skill_template_name: Label = %SkillTemplateName
 
 func init(_skill_data : SkillData, _is_drag_item : bool = false) -> void:

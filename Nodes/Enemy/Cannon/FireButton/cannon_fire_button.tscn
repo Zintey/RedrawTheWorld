@@ -1,21 +1,22 @@
 [gd_scene load_steps=9 format=3 uid="uid://2dhucnwgcdys"]
 
-[ext_resource type="AudioStream" uid="uid://bc8mn3b1rwc2j" path="res://Audio/SFX/sfx_shoot.wav" id="2_fl2oo"]
+[ext_resource type="Resource" uid="uid://ctk2iq1tbgij2" path="res://Resources/Audio/SFX/CoreRune/pulse_sfx.tres" id="1_fl2oo"]
 [ext_resource type="SpriteFrames" uid="uid://bnriwnup0ony5" path="res://Resources/Animations/CoreRune/Pulse/pulse_sprite_frames.tres" id="2_lcrvs"]
 
 [sub_resource type="GDScript" id="GDScript_60tud"]
 script/source = "extends HitBox
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+#@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+@export var pulse_sfx : AudioEvent
 
 func _ready() -> void:
 	var timer = get_tree().create_timer(0.5, false)
 	timer.timeout.connect(_finish_rune_action)
 	self.damage = round(scale.x / 0.6)
 	EventBus.camera_shake.emit(Vector2(3.0,2.0) * scale.x,0.01)
-	audio_stream_player.play()
+	AudioManager.play_sfx(pulse_sfx)
 
 # func _process(delta: float) -> void:
 	# if caster.has_node(\"StatusComponent\"):
@@ -128,6 +129,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 2
 script = SubResource("GDScript_60tud")
+pulse_sfx = ExtResource("1_fl2oo")
 metadata/_custom_type_script = "uid://b6j1ysvtpyg80"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -153,8 +155,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_vyrv5")
 }
 autoplay = "Start"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("2_fl2oo")
-volume_db = -15.0

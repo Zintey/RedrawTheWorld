@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b26k4w8c500qd"]
+[gd_scene load_steps=30 format=3 uid="uid://b26k4w8c500qd"]
 
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="1_hpm6e"]
 [ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="1_ip6rv"]
@@ -7,8 +7,12 @@
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_wbq4m"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="3_24oic"]
 [ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="5_24oic"]
+[ext_resource type="Resource" uid="uid://bud7qju1yypsn" path="res://Resources/Audio/SFX/Enemy/Axeman/axeman_attack_focus.tres" id="6_1m0um"]
+[ext_resource type="Resource" uid="uid://g602soe6d6q2" path="res://Resources/Audio/SFX/Enemy/Axeman/axeman_attack_sword_aura.tres" id="7_lus7g"]
+[ext_resource type="Resource" uid="uid://dv8ed4nlqky2" path="res://Resources/Audio/SFX/Enemy/Axeman/axeman_attack2.tres" id="8_lus7g"]
 [ext_resource type="Script" uid="uid://bhi7hky8mrtfm" path="res://Nodes/Enemy/Axeman/State/AxemanAttack1State.gd" id="8_yxis2"]
 [ext_resource type="Script" uid="uid://cr4cocu1dglj5" path="res://Nodes/Enemy/Axeman/State/AxemanAttack2State.gd" id="9_b8igr"]
+[ext_resource type="Resource" uid="uid://dim1tdb30eytm" path="res://Resources/Audio/SFX/Enemy/Axeman/axeman_die.tres" id="9_tq7ls"]
 [ext_resource type="Script" uid="uid://bom6k5bsi7tcs" path="res://Nodes/Enemy/Axeman/State/AxemanDieState.gd" id="10_1m0um"]
 [ext_resource type="Script" uid="uid://d2wj0wfy8163j" path="res://Nodes/Enemy/Axeman/State/AxemanIdleState.gd" id="11_lus7g"]
 [ext_resource type="Script" uid="uid://dwoahlwrowxup" path="res://Nodes/Enemy/Axeman/State/AxemanWalkState.gd" id="12_tq7ls"]
@@ -138,6 +142,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [256]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/outline_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_besag"]
 resource_name = "attack_1"
@@ -204,6 +220,23 @@ tracks/4/keys = {
 "method": &"fire_sword_aura"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [ExtResource("6_1m0um")],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("7_lus7g")],
+"method": &"play_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_8b2ow"]
 resource_name = "attack_2"
@@ -257,6 +290,26 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [ExtResource("6_1m0um")],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("8_lus7g")],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("8_lus7g")],
+"method": &"play_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ip6rv"]
 resource_name = "die"
@@ -285,6 +338,32 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("9_tq7ls")],
+"method": &"play_sfx"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/outline_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_31el1"]

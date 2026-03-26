@@ -2,7 +2,8 @@ class_name PulseCoreRune extends CoreRuneBase
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@export var pulse_sfx : AudioEvent
+# @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 
 func _start_action():
@@ -12,7 +13,8 @@ func _start_action():
 	var timer = get_tree().create_timer(0.5, false)
 	timer.timeout.connect(_finish_rune_action)
 	EventBus.camera_shake.emit(Vector2(2.0,2.0),0.01)
-	audio_stream_player.play()
+	# audio_stream_player.play()
+	AudioManager.play_sfx(pulse_sfx)
 	scale.x *= speed_mul
 	
 	if caster as Player:

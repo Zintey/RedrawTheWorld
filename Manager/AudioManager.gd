@@ -83,7 +83,11 @@ func play_sfx(event: AudioEvent) -> void:
 	# 【参数装填】
 	player.stream = clip.stream
 	player.bus = event.bus_name
-	player.pitch_scale = 1.0 + randf_range(-event.pitch_randomness, event.pitch_randomness)
+	
+	# 最终倍速 = (事件基础倍速 * 切片独立倍速) + 随机波动
+	var target_pitch = (event.base_pitch * clip.pitch_multiplier) + randf_range(-event.pitch_randomness, event.pitch_randomness)
+	# 限制极值，防止引擎报错 (Godot的pitch_scale必须大于0)
+	player.pitch_scale = clamp(target_pitch, 0.01, 4.0) 
 	
 	var target_volume = event.base_volume_db + clip.volume_offset_db
 	

@@ -81,8 +81,8 @@ func pop_ui() -> Node:
 	var top_ui = ui_stack[ui_stack_top_index]
 	
 	# 【新增联动】：如果关掉的是背包，恢复显示战斗底栏
-	if top_ui is InventoryUI and is_instance_valid(combat_action_bar):
-		combat_action_bar.show()
+	# if top_ui is InventoryUI and is_instance_valid(combat_action_bar):
+		# combat_action_bar.show()
 		
 	if top_ui.has_method("close_ui"):
 		top_ui.call("close_ui")
@@ -138,8 +138,8 @@ func _on_inventory_ui_requested() -> void:
 		return
 	
 	# 【新增联动】：打开背包时，隐藏战斗底栏
-	if is_instance_valid(combat_action_bar):
-		combat_action_bar.hide()
+	# if is_instance_valid(combat_action_bar):
+		# combat_action_bar.hide()
 	
 	inventory_ui = UI_Map["InventoryUI"].instantiate()
 	inventory_ui.init(player_inventory)

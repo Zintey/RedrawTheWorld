@@ -73,7 +73,7 @@ func _on_died() -> void:
 	if state_machine:
 		state_machine.switch_to("die")
 
-# --- 视线射线检测逻辑 (超级 Debug 版) ---
+# --- 视线射线检测逻辑 (终极纯净版：只测墙壁，无视一切生物与区域) ---
 func check_line_of_sight(target: Node2D) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	var start_pos = center_point.global_position if center_point else global_position + Vector2(0, -10)
@@ -81,40 +81,24 @@ func check_line_of_sight(target: Node2D) -> bool:
 	
 	var query = PhysicsRayQueryParameters2D.create(start_pos, end_pos)
 	
-	# 【排雷 1】：排除怪物自己！防止射线一出门就打在自己脸上被挡住
+	# 排除自己 (以防万一未来你把怪物本体也放进了地形层)
 	query.exclude = [self.get_rid()] 
 	
-	# 【排雷 2】：开启全图扫描！检测所有层 (全为1的二进制)，并且包括 Area2D
-	query.collision_mask = 4294967295 
-	query.collide_with_areas = true 
+	# 【核心机制 1】：坚决关闭 Area2D 碰撞检测！
+	# 这能让射线瞬间穿透所有敌人的 HitBox、HurtBox 以及你画的巨型雷达圈 WarnArea。
+	query.collide_with_areas = false 
+	
+	# 【核心机制 2】：精准定轨 Layer 6 (地形层)
+	# 第 6 层的值是 32。这根射线现在是个绝对的“透视眼”，只对墙壁和地板起反应。
+	query.collision_mask = 32 
 	
 	var result = space_state.intersect_ray(query)
 	
-	# print("==================================")
-	# print("📡 [视线测试] ", self.name, " 正在看向 -> ", target.name)
-	# print("起点: ", start_pos, " | 终点: ", end_pos)
-	
-	if result.is_empty():
-		# print("✅ 结果：畅通无阻！什么都没撞到。")
-		return true 
-	else:
-		var hit_obj = result.collider
-		# var hit_name = hit_obj.name if hit_obj else "未知节点"
-		# var hit_class = hit_obj.get_class() if hit_obj else "未知类"
-		
-		var hit_layer = "未知"
-		if hit_obj is CollisionObject2D:
-			hit_layer = str(hit_obj.collision_layer)
-			
-		# print("❌ 结果：被挡住了！挡路者是 -> 名字: [", hit_name, "] | 类型: [", hit_class, "] | 碰撞层 Layer: [", hit_layer, "]")
-		
-		# 如果撞到的刚好是玩家本人，或者玩家身上的 HurtBox (它的 owner 是玩家)
-		if hit_obj == target or (hit_obj.owner and hit_obj.owner == target):
-			# print("🎯 结论：这个挡路者就是玩家自己！视线确认连通！")
-			return true
-		
-		# print("🧱 结论：这是真正的障碍物，视线中断！")
-		return false
+	# 【极致精简的逻辑】：
+	# 因为射线只会撞墙，所以：
+	# 结果为空 (is_empty) -> 中间没墙 -> 视野畅通无阻 (返回 true)
+	# 结果不为空 -> 撞到墙了 -> 视野被遮挡 (返回 false)
+	return result.is_empty()
 
 # --- 统一视野与描边 API ---
 func acquire_target(body: Node2D) -> void:
@@ -169,3 +153,6 @@ func flip_towards(target_pos: Vector2) -> void:
 
 func has_target() -> bool:
 	return target_body != null
+
+func play_sfx(sfx : AudioEvent) -> void:
+	AudioManager.play_sfx(sfx)

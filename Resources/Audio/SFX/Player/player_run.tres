@@ -26,4 +26,5 @@ metadata/_custom_type_script = "uid://cbcbypq21qnkl"
 script = ExtResource("2_v04l2")
 clips = Array[ExtResource("1_j3e7f")]([SubResource("Resource_wuqdi"), SubResource("Resource_v04l2")])
 base_volume_db = -3.0
+priority = 9
 metadata/_custom_type_script = "uid://cctb38u1ea3y3"

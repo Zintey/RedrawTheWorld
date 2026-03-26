@@ -48,12 +48,13 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 color = Color(0.46723962, 0.46723962, 0.23543851, 1)
 
-[node name="TriggerRuneVBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="TriggerRuneGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_behavior_recursive = 2
+columns = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,12 +65,13 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 color = Color(0.37254903, 0.23529412, 0.47058824, 1)
 
-[node name="CoreRuneVBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="CoreRuneGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_behavior_recursive = 2
+columns = 4
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -80,9 +82,10 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 color = Color(0.6642694, 0.65729254, 0.6783929, 1)
 
-[node name="ModifierRuneVBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="ModifierRuneGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_behavior_recursive = 2
+columns = 4
