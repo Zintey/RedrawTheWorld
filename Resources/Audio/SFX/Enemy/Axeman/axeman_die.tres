@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://dim1tdb30eytm"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_hl4we"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_kol7f"]
+[ext_resource type="AudioStream" uid="uid://b7y6eawvcuwu6" path="res://Audio/SFX/Enemy/Axeman/sfx_die.wav" id="2_m88jt"]
+
+[sub_resource type="Resource" id="Resource_40foo"]
+script = ExtResource("1_hl4we")
+stream = ExtResource("2_m88jt")
+fade_in = 0.2
+fade_out = 0.4
+volume_offset_db = -15.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("2_kol7f")
+clips = Array[ExtResource("1_hl4we")]([SubResource("Resource_40foo")])
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

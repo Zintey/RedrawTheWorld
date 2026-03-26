@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dgr6uyhq4pdl2"]
+[gd_scene load_steps=65 format=3 uid="uid://dgr6uyhq4pdl2"]
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://7gfdn40ekusy" path="res://Assets/Characters/Kaer/kaer all animations.png" id="7_482wx"]
 [ext_resource type="Script" uid="uid://b3wiyr6vgstnb" path="res://Nodes/Player/State/PlayerJumpState.gd" id="9_08mni"]
 [ext_resource type="Script" uid="uid://ctxc34e2ody4w" path="res://Nodes/Player/State/PlayerRunState.gd" id="9_jospr"]
+[ext_resource type="Resource" uid="uid://xss6fxsxx37o" path="res://Resources/Audio/SFX/Player/player_jump.tres" id="9_ko755"]
+[ext_resource type="Resource" uid="uid://cjfq1cec3irdi" path="res://Resources/Audio/SFX/Player/player_land.tres" id="10_0m37m"]
 [ext_resource type="Script" uid="uid://dmm6jce62sgmw" path="res://Nodes/Player/State/PlayerFallState.gd" id="10_fetqx"]
 [ext_resource type="Script" uid="uid://d16iwiutjl7k3" path="res://Nodes/Player/State/PlayerLandState.gd" id="11_fetqx"]
 [ext_resource type="Script" uid="uid://cj6546e5l2ox4" path="res://Nodes/Player/State/PlayerUpToAirState.gd" id="11_nussk"]
@@ -42,6 +44,7 @@
 [ext_resource type="Resource" uid="uid://cyrmne77djpgx" path="res://Resources/RuneData/ModifireRune/penetrate_modifier_rune.tres" id="33_i0nyt"]
 [ext_resource type="Resource" uid="uid://hlsg3v54h60l" path="res://Resources/RuneData/TriggerRune/on_hit_trigger_rune.tres" id="34_vmkah"]
 [ext_resource type="Resource" uid="uid://cyg5svovdpl0a" path="res://Resources/SkillData/exquisite_skill_template.tres" id="35_kvwmt"]
+[ext_resource type="Resource" uid="uid://bwdmgdr5ecjra" path="res://Resources/RuneData/CoreRune/pulse_core_rune.tres" id="41_uwi3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7km3q"]
 radius = 8.0
@@ -487,6 +490,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("9_ko755")],
+"method": &"play_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ncvkw"]
 resource_name = "land"
@@ -561,6 +578,20 @@ tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.06667, 0, 0.06667, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("10_0m37m")],
+"method": &"play_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mrjgt"]
@@ -808,7 +839,7 @@ type = 1
 trigger_rune_slot_count = 2
 trigger_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("27_uk6c8")])
 core_rune_slot_count = 1
-core_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("24_482wx")])
+core_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("41_uwi3s")])
 modifier_rune_slot_count = 3
 modifier_rune_list = Array[ExtResource("24_wfvtl")]([ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("29_gcfxi"), ExtResource("27_kvwmt"), ExtResource("30_rgjfc"), ExtResource("33_i0nyt")])
 metadata/_custom_type_script = "uid://w3c70vl01a25"

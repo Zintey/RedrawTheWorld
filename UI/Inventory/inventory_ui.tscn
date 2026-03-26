@@ -53,51 +53,67 @@ color = Color(0, 0, 0, 0.85)
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LeftSkillPanel" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(245, 435)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -140.0
-offset_right = 212.0
-offset_bottom = 140.0
+offset_top = -206.5
+offset_right = 222.0
+offset_bottom = 206.5
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LeftSkillPanel" type="VBoxContainer" parent="PanelContainer2/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(222, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("4_gifqc")
 deny_sfx = ExtResource("4_djyr1")
 equip_sfx = ExtResource("5_n74oh")
 
-[node name="SkillTemplateUI" parent="LeftSkillPanel" instance=ExtResource("4_enobt")]
+[node name="SkillTemplateUI" parent="PanelContainer2/MarginContainer/LeftSkillPanel" instance=ExtResource("4_enobt")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 6
 skill_data = ExtResource("5_gifqc")
 
-[node name="SkillGridContainer" type="GridContainer" parent="LeftSkillPanel"]
+[node name="SkillGridContainer" type="GridContainer" parent="PanelContainer2/MarginContainer/LeftSkillPanel"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 4
 
-[node name="MiniSkillSlotUi1" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi1" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi2" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi2" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi3" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi3" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi4" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi4" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi5" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi5" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi6" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi6" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi7" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi7" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2
 
-[node name="MiniSkillSlotUi8" parent="LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
+[node name="MiniSkillSlotUi8" parent="PanelContainer2/MarginContainer/LeftSkillPanel/SkillGridContainer" instance=ExtResource("5_b8an0")]
 layout_mode = 2

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bq0joi5uml6ls" path="res://Nodes/Runes/CoreRunes/Pulse/PulseCoreRune.gd" id="1_mr72o"]
 [ext_resource type="SpriteFrames" uid="uid://bnriwnup0ony5" path="res://Resources/Animations/CoreRune/Pulse/pulse_sprite_frames.tres" id="2_hauou"]
-[ext_resource type="AudioStream" uid="uid://bc8mn3b1rwc2j" path="res://Audio/SFX/sfx_shoot.wav" id="3_p36ad"]
+[ext_resource type="Resource" uid="uid://ctk2iq1tbgij2" path="res://Resources/Audio/SFX/CoreRune/pulse_sfx.tres" id="2_vyrv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plsh1"]
 
@@ -104,6 +104,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_mr72o")
+pulse_sfx = ExtResource("2_vyrv5")
 speed = 0.0
 teleport_point = NodePath("TeleportPoint")
 metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
@@ -141,11 +142,6 @@ shape = SubResource("CircleShape2D_hauou")
 
 [node name="TeleportPoint" type="Node2D" parent="."]
 position = Vector2(223.33333, 0)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("3_p36ad")
-volume_db = -15.0
 
 [connection signal="area_entered" from="TrackingArea" to="." method="_on_tracking_area_area_entered"]
 [connection signal="body_entered" from="TrackingArea" to="." method="_on_tracking_area_body_entered"]

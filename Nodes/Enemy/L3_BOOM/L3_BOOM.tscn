@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ca17gdi25piqu"]
+[gd_scene load_steps=24 format=3 uid="uid://ca17gdi25piqu"]
 
 [ext_resource type="Shader" uid="uid://b2ymucj6mewkj" path="res://Shader/L3_BOOM.gdshader" id="1_8s3uh"]
 [ext_resource type="Texture2D" uid="uid://cwx6biy3h4ioc" path="res://Assets/Enemy/L3_BOOM/L3_BOOM.png" id="1_bqpey"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="3_1l05k"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="4_8s3uh"]
 [ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="4_66lt2"]
+[ext_resource type="Resource" uid="uid://yfktas2ynha5" path="res://Resources/Audio/SFX/Enemy/L3_Boom/l3_boom.tres" id="6_snei6"]
 [ext_resource type="Script" uid="uid://dwudoyjtb3y7t" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomIdleState.gd" id="8_byaoi"]
 [ext_resource type="Script" uid="uid://bef6lfopl8fwn" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomWarningState.gd" id="9_usq6q"]
 [ext_resource type="Script" uid="uid://dclacuyll5qve" path="res://Nodes/Enemy/L3_BOOM/State/L3BoomBoomDieState.gd" id="10_66lt2"]
@@ -208,6 +209,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("6_snei6")],
+"method": &"play_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_1l05k"]

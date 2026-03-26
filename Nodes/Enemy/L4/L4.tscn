@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctb3ctu00aarg"]
+[gd_scene load_steps=28 format=3 uid="uid://ctb3ctu00aarg"]
 
 [ext_resource type="Texture2D" uid="uid://liococot1lwa" path="res://Assets/Enemy/L4/l4.png" id="1_0rj8r"]
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="1_cf3fd"]
@@ -6,7 +6,9 @@
 [ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="1_w7go8"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_0rj8r"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="3_w7go8"]
+[ext_resource type="Resource" uid="uid://bot5itmadidt8" path="res://Resources/Audio/SFX/Enemy/ae_load.tres" id="4_jq4qf"]
 [ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="4_ola7o"]
+[ext_resource type="Resource" uid="uid://didpsr7sdyv3w" path="res://Resources/Audio/SFX/Enemy/L4/ae_l4_fire.tres" id="5_1av7m"]
 [ext_resource type="Script" uid="uid://b187h5d21081x" path="res://Nodes/Enemy/L4/State/L4IdleState.gd" id="8_0mkic"]
 [ext_resource type="Script" uid="uid://cw57n0uuajhbc" path="res://Nodes/Enemy/L4/State/L4Attack1State.gd" id="9_wynsx"]
 [ext_resource type="Script" uid="uid://bt4inqsch6cyn" path="res://Nodes/Enemy/L4/State/L4Attack2State.gd" id="10_jq4qf"]
@@ -105,6 +107,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_hyihj"]
 resource_name = "attack1"
 length = 1.5
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -166,6 +169,23 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [ExtResource("4_jq4qf")],
+"method": &"play_sfx"
+}, {
+"args": [ExtResource("5_1av7m")],
+"method": &"play_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_wufwi"]
@@ -405,7 +425,7 @@ radius = 500.0
 [node name="L4" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 32
-velocity = Vector2(0, 11067101)
+velocity = Vector2(0, 12887717)
 script = ExtResource("1_ke1a8")
 safe_distance = 500.0
 
@@ -429,7 +449,7 @@ vframes = 4
 
 [node name="FirePoint" type="Node2D" parent="CenterPoint"]
 unique_name_in_owner = true
-position = Vector2(40, -27)
+position = Vector2(38, -37)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

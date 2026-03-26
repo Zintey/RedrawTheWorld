@@ -169,3 +169,6 @@ func flip_towards(target_pos: Vector2) -> void:
 
 func has_target() -> bool:
 	return target_body != null
+
+func play_sfx(sfx : AudioEvent) -> void:
+	AudioManager.play_sfx(sfx)

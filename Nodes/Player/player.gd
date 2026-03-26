@@ -137,3 +137,6 @@ func _on_player_teleport_request(teleport_position: Vector2) -> void:
 func _on_recovery_stamina_timeout() -> void:
 	if not health_component.is_dead:
 		stats_component.recover_stamina(1)
+
+func play_sfx(sfx : AudioEvent) -> void:
+	AudioManager.play_sfx(sfx)

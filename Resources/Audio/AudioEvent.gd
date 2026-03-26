@@ -5,6 +5,7 @@ class_name AudioEvent
 
 @export_group("全局控制 (Global)")
 @export_range(-40.0, 12.0) var base_volume_db: float = 0.0 ## 基础音量
+@export_range(0.1, 4.0) var base_pitch: float = 1.0 ## 基础音调/倍速 (调低可做巨型怪物声音)
 @export_range(0.0, 1.0) var pitch_randomness: float = 0.05 ## 随机音高波动 (+/-)
 @export var bus_name: StringName = &"SFX" ## 混音总线名称
 
