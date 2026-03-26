@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjsn2246p7bcn"]
 
-[ext_resource type="Resource" uid="uid://bot5itmadidt8" path="res://Resources/Audio/SFX/Enemy/ae_load.tres" id="1_u3pwa"]
+[ext_resource type="Resource" uid="uid://cu18crudob8so" path="res://Resources/Audio/SFX/Enemy/ae_shoot.tres" id="1_u3pwa"]
 
 [sub_resource type="GDScript" id="GDScript_hvhag"]
 script/source = "extends Button
