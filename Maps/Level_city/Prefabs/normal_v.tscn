@@ -8,7 +8,6 @@
 [ext_resource type="Shader" uid="uid://f6qht3y8kr0c" path="res://Shader/视觉shader/color_filter.gdshader" id="5_vxm4t"]
 [ext_resource type="Texture2D" uid="uid://dxp1bhqphokfs" path="res://Assets/Map/Level_city/biliboard.png" id="6_7nok4"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1274, 952)
 

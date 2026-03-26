@@ -56,6 +56,7 @@ metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
 environment = SubResource("Environment_dt1lc")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.96474224, 0.96474224, 0.9647421, 1)
 
 [node name="RoomArea" type="Area2D" parent="."]
