@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float outline_size = 1.0;
+uniform float outline_size = 0.0;
 uniform vec4 outline_color : source_color = vec4(0, 0, 0, 1);
 uniform bool hit;
 uniform vec4 hit_color : source_color = vec4(1, 1, 1, 1.0);

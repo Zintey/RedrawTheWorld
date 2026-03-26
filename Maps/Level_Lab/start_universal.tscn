@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://d2b7y5o6aqw4l"]
+[gd_scene load_steps=90 format=4 uid="uid://d2b7y5o6aqw4l"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -40,6 +40,8 @@
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
 [ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="40_ajp66"]
+[ext_resource type="PackedScene" uid="uid://c7o48ritd6e4u" path="res://Nodes/Enemy/U_Series/U2/u2_enemy.tscn" id="41_p8p6j"]
+[ext_resource type="PackedScene" uid="uid://cwqawnvgdimwj" path="res://Nodes/Enemy/U_Series/U3/u3_enemy.tscn" id="42_np7um"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -1136,3 +1138,9 @@ curve = SubResource("Curve2D_p8p6j")
 
 [node name="U1Enemy" parent="." instance=ExtResource("40_ajp66")]
 position = Vector2(404, 480)
+
+[node name="U1Enemy2" parent="." instance=ExtResource("41_p8p6j")]
+position = Vector2(1053, 459)
+
+[node name="U3Enemy" parent="." instance=ExtResource("42_np7um")]
+position = Vector2(497, 477)

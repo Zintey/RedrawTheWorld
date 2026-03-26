@@ -13,6 +13,9 @@ func _ready() -> void:
 	if screen_notifier:
 		screen_notifier.screen_exited.connect(func(): queue_free())
 
+func set_speed(_speed : float):
+	speed = _speed
+
 func _process(delta: float) -> void:
 	# 绝对直线平飞
 	global_position += direction * speed * delta
