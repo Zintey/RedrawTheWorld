@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7o48ritd6e4u"]
+[gd_scene load_steps=28 format=3 uid="uid://c7o48ritd6e4u"]
 
 [ext_resource type="Script" uid="uid://ce6id8v3ofswf" path="res://Nodes/Enemy/U_Series/U2/U2Enemy.gd" id="1_6n08l"]
 [ext_resource type="Resource" uid="uid://dv8ed4nlqky2" path="res://Resources/Audio/SFX/Enemy/Axeman/axeman_attack2.tres" id="2_nlgpj"]
 [ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_r0or1"]
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="3_b7e25"]
 [ext_resource type="Texture2D" uid="uid://cn12g7nit1f52" path="res://Assets/Enemy/U_Series/U2.png" id="3_bct60"]
+[ext_resource type="Texture2D" uid="uid://c6binomyc8m1i" path="res://Assets/normalmap/2号动画-normal.png" id="5_1jn8l"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="5_771y2"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="6_xkbo5"]
 [ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="7_ffg62"]
@@ -348,6 +349,10 @@ shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/hit = false
 shader_parameter/hit_color = Color(1, 1, 1, 1)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_17i2m"]
+diffuse_texture = ExtResource("3_bct60")
+normal_texture = ExtResource("5_1jn8l")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4r85"]
 size = Vector2(41.666668, 38.888893)
 
@@ -355,7 +360,7 @@ size = Vector2(41.666668, 38.888893)
 size = Vector2(22, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7e25"]
-size = Vector2(800, 91.388885)
+size = Vector2(800, 55.555557)
 
 [node name="U2Enemy" type="CharacterBody2D"]
 scale = Vector2(1.8, 1.8)
@@ -380,7 +385,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_rticb")
 position = Vector2(2.777778, 0)
-texture = ExtResource("3_bct60")
+texture = SubResource("CanvasTexture_17i2m")
 hframes = 15
 vframes = 4
 
@@ -414,7 +419,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarnArea"]
-position = Vector2(82.77778, -12.638894)
+position = Vector2(82.77778, -3.888889)
 shape = SubResource("RectangleShape2D_b7e25")
 
 [node name="HealthComponent" type="Node" parent="."]

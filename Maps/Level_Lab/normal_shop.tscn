@@ -19,7 +19,7 @@ shader_parameter/grid_size = Vector2(32, 32)
 shader_parameter/line_thickness = 0.05
 shader_parameter/breathe_speed = 2.0
 shader_parameter/min_brightness = 0.0
-shader_parameter/max_brightness = 1.1600000075999999
+shader_parameter/max_brightness = 1.1600000076
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cacdu"]
 shader = ExtResource("6_41bdl")

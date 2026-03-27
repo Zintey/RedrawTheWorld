@@ -13,7 +13,6 @@ func _ready() -> void:
 	if health_component:
 		health_component.hp_changed.connect(_on_hp_changed)
 		
-	# 连接那根 800x200 的超长视野雷达！
 	if warn_area:
 		warn_area.body_entered.connect(_on_warn_area_body_entered)
 		warn_area.body_exited.connect(_on_warn_area_body_exited)
@@ -33,8 +32,10 @@ func _on_hp_changed(_current: int, _max: int) -> void:
 # --- 索敌雷达 ---
 func _on_warn_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		player_in_range = body
+		# player_in_range = body
+		acquire_target(body)
 
 func _on_warn_area_body_exited(body: Node2D) -> void:
 	if body == player_in_range:
-		player_in_range = null
+		# player_in_range = null
+		lose_target(body)

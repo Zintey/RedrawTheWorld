@@ -534,8 +534,9 @@ scale = Vector2(2.5, 2.5)
 collision_layer = 256
 collision_mask = 32
 script = ExtResource("1_xm8jq")
-move_speed = 200.0
+move_speed = 150.0
 attack_1_cd_max = 8.0
+lose_target_delay = -1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -3)

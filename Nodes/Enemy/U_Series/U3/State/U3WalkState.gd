@@ -23,6 +23,7 @@ func take_physics_process(delta: float) -> void:
 	# 如果高低差太大，不架枪，只移动
 	if y_dist > 150:
 		u3.velocity.x = 0
+		switched_to.emit(self, "idle")
 	else:
 		if dist < retreat_dist:
 			# 玩家太近！倒退风筝 (反向移动)

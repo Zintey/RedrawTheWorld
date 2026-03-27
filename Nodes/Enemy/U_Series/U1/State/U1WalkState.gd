@@ -25,6 +25,7 @@ func take_physics_process(delta: float) -> void:
 	if y_dist > 150: 
 		# 不在同一层，随便走走或者站着
 		u1.velocity.x = 0
+		switched_to.emit(self, "idle")
 	else:
 		if dist < retreat_dist:
 			# 【风筝逻辑】：反向移动（后退）！注意这里用的是 -u1.move_direction

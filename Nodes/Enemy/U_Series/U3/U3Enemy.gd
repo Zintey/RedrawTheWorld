@@ -47,8 +47,10 @@ func fire_bullet() -> void:
 # --- 索敌雷达 ---
 func _on_warn_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		player_in_range = body
+		# player_in_range = body
+		acquire_target(body)
 
 func _on_warn_area_body_exited(body: Node2D) -> void:
 	if body == player_in_range:
-		player_in_range = null
+		# player_in_range = null
+		lose_target(body)
