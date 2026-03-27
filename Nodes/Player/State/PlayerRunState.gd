@@ -29,7 +29,7 @@ func take_physics_process(delta: float) -> void:
 func take_process(delta : float) -> void:
 	#if abs(player.velocity.x) <= player.stats_component.walk_speed:
 		#switched_to.emit(self, "walk")
-	
+
 	if abs(player.velocity.x) <= abs(player.stats_component.get_force().x):
 		switched_to.emit(self, "idle")
 	

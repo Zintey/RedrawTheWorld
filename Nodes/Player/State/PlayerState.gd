@@ -19,6 +19,9 @@ func take_physics_process(delta: float) -> void:
 		
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
+	
+	# if !player.stats_component.enable_move:
+	# 	switched_to.emit(self, "idle")
 
 	var direction := Input.get_axis("Key_A", "Key_D")
 	if direction and player.stats_component.enable_move:

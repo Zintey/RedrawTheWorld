@@ -22,6 +22,9 @@ func _start_action():
 		# 修改点：把 status_component 改成 stats_component
 		caster.stats_component.add_force(
 		-Vector2(velocity_direction.x * 22, velocity_direction.y * 20) * speed_mul)
+
+		caster.stats_component.enable_jump = false
+		caster.stats_component.enable_move = false
 	
 	
 
@@ -34,9 +37,9 @@ func _finish_rune_action():
 	try_emit_teleport_signal()
 	animated_sprite_2d.play("End")
 	animation_player.play_backwards("End")
+	caster.stats_component.enable_move = true
+	caster.stats_component.enable_jump = true
 	await animation_player.animation_finished
-	# caster.status_component.enable_move = true
-	# caster.status_component.enable_jump = true
 	super()
 
 
