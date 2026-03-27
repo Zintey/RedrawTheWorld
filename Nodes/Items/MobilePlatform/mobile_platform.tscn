@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bnbeamo2yst5w"]
 
 [ext_resource type="Script" uid="uid://dbmmpsr8pmeht" path="res://Nodes/Items/MobilePlatform/MobilePlatform.gd" id="1_qt64b"]
-[ext_resource type="Texture2D" uid="uid://dmlksx1fc4nfx" path="res://Assets/Items/MobilePlatform/mobile platform_2.png" id="1_wjb5g"]
+[ext_resource type="Texture2D" uid="uid://cny4pokhxd5k4" path="res://Assets/Map/Level_Lab/mobile.tres" id="2_ifwr7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjb5g"]
 size = Vector2(125, 22)
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_wjb5g")]
+"values": [ExtResource("2_ifwr7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -95,7 +95,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_wjb5g")]
+"values": [ExtResource("2_ifwr7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -172,7 +172,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_wjb5g")]
+"values": [ExtResource("2_ifwr7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -281,7 +281,7 @@ shape = SubResource("RectangleShape2D_wjb5g")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_wjb5g")
+texture = ExtResource("2_ifwr7")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
