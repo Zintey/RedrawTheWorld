@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://b4cy18a00nasr"]
+[gd_scene load_steps=13 format=4 uid="uid://b4cy18a00nasr"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_ay4tb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_poj7e"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_lto6q"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_bayyh"]
 [ext_resource type="Shader" uid="uid://cabujvmthiovt" path="res://Shader/视觉shader/glass.gdshader" id="5_bayyh"]
+[ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="6_arjrk"]
 [ext_resource type="Texture2D" uid="uid://bsg3r0lnttji2" path="res://Assets/Map/Level_train/close.png" id="6_es6rt"]
-[ext_resource type="Texture2D" uid="uid://dxjjit8n6qmsw" path="res://Assets/Map/Level_Lab/wupinzuhe.png" id="7_arjrk"]
+[ext_resource type="Texture2D" uid="uid://bq281btkjfauq" path="res://Assets/Map/Level_Lab/canvastexture/wupinzuhe.tres" id="8_18aq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 949)
@@ -36,6 +37,9 @@ door_scene = ExtResource("2_poj7e")
 "Door Constraints/Grid[0,0]_L" = true
 "Door Constraints/Grid[0,0]_R" = true
 metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.47788018, 0.47788012, 0.47788012, 1)
 
 [node name="RoomArea" type="Area2D" parent="."]
 collision_mask = 3
@@ -73,6 +77,12 @@ tile_set = ExtResource("4_bayyh")
 [node name="light" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="light"]
+position = Vector2(627, 449)
+scale = Vector2(1.2604629, 1.2604629)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("6_arjrk")
+texture_scale = 5.29
 
 [node name="Close" type="Sprite2D" parent="."]
 z_index = -1
@@ -92,7 +102,7 @@ region_rect = Rect2(0, 0, 332, 188)
 z_index = -5
 position = Vector2(372, 480)
 scale = Vector2(0.14141364, 0.1435662)
-texture = ExtResource("7_arjrk")
+texture = ExtResource("8_18aq2")
 region_enabled = true
 region_rect = Rect2(7870, 4190, 3600, 1850)
 
@@ -100,7 +110,7 @@ region_rect = Rect2(7870, 4190, 3600, 1850)
 z_index = -5
 position = Vector2(893, 480)
 scale = Vector2(0.14141364, 0.1435662)
-texture = ExtResource("7_arjrk")
+texture = ExtResource("8_18aq2")
 region_enabled = true
 region_rect = Rect2(7870, 4190, 3600, 1850)
 
@@ -108,6 +118,6 @@ region_rect = Rect2(7870, 4190, 3600, 1850)
 z_index = -1
 position = Vector2(638, 552.99994)
 scale = Vector2(0.16032353, 0.16276394)
-texture = ExtResource("7_arjrk")
+texture = ExtResource("8_18aq2")
 region_enabled = true
 region_rect = Rect2(8050, 110, 3320, 1080)

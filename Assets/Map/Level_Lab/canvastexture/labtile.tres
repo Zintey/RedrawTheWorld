@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://d4cx7di3l1n6"]
+
+[ext_resource type="Texture2D" uid="uid://dweg770gjwruw" path="res://Assets/Map/Level_Lab/labtile.png" id="1_qhlra"]
+[ext_resource type="Texture2D" uid="uid://c87fbp23fuyif" path="res://Assets/Map/Level_Lab/normal/labtile_normal.png" id="2_5tdt3"]
+
+[resource]
+diffuse_texture = ExtResource("1_qhlra")
+normal_texture = ExtResource("2_5tdt3")

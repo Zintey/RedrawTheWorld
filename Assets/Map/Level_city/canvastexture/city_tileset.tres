@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://du0n6o3b5nm8d"]
+
+[ext_resource type="Texture2D" uid="uid://r0i8kew1t4ad" path="res://Assets/Map/Level_city/city_tileset.png" id="1_411w1"]
+[ext_resource type="Texture2D" uid="uid://bpic7q334vt2m" path="res://Assets/Map/Level_city/normalmap/city 瓦片_normal.png" id="2_nb8yc"]
+
+[resource]
+diffuse_texture = ExtResource("1_411w1")
+normal_texture = ExtResource("2_nb8yc")

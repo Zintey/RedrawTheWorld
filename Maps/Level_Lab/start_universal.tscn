@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://d2b7y5o6aqw4l"]
+[gd_scene load_steps=91 format=4 uid="uid://d2b7y5o6aqw4l"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -35,13 +35,14 @@
 [ext_resource type="Texture2D" uid="uid://rsg70bfsnn54" path="res://Assets/Map/Level_Lab/bdpack/lab_back (18).png" id="24_np7um"]
 [ext_resource type="Texture2D" uid="uid://d7jteyriohes" path="res://Assets/Map/Level_Lab/bdpack/lab_back (16).png" id="25_xbtun"]
 [ext_resource type="Texture2D" uid="uid://d2g73oh1f1xy1" path="res://Assets/Map/Level_Lab/peiyangmin donghua.png" id="32_c7avt"]
-[ext_resource type="Texture2D" uid="uid://dxjjit8n6qmsw" path="res://Assets/Map/Level_Lab/wupinzuhe.png" id="33_tpg3q"]
 [ext_resource type="Texture2D" uid="uid://bsg3r0lnttji2" path="res://Assets/Map/Level_train/close.png" id="36_4u4vq"]
+[ext_resource type="Texture2D" uid="uid://bq281btkjfauq" path="res://Assets/Map/Level_Lab/canvastexture/wupinzuhe.tres" id="36_xbtun"]
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
 [ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="40_ajp66"]
 [ext_resource type="PackedScene" uid="uid://c7o48ritd6e4u" path="res://Nodes/Enemy/U_Series/U2/u2_enemy.tscn" id="41_p8p6j"]
 [ext_resource type="PackedScene" uid="uid://cwqawnvgdimwj" path="res://Nodes/Enemy/U_Series/U3/u3_enemy.tscn" id="42_np7um"]
+[ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="43_bb57q"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -574,8 +575,16 @@ metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dt1lc")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(31.949091, 23.99818)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.23529412)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.80710745, 0.8070797, 0.7815219, 1)
+color = Color(0.763581, 0.76056004, 0.72601086, 1)
 
 [node name="RoomArea" type="Area2D" parent="."]
 collision_mask = 3
@@ -1046,7 +1055,7 @@ region_rect = Rect2(0, 0, 314, 188)
 z_index = -3
 position = Vector2(1083, 732)
 scale = Vector2(0.2788251, 0.2788251)
-texture = ExtResource("33_tpg3q")
+texture = ExtResource("36_xbtun")
 region_enabled = true
 region_rect = Rect2(2840, 3210, 700, 1080)
 
@@ -1054,7 +1063,7 @@ region_rect = Rect2(2840, 3210, 700, 1080)
 z_index = -3
 position = Vector2(383, 144)
 scale = Vector2(0.17396627, 0.17396627)
-texture = ExtResource("33_tpg3q")
+texture = ExtResource("36_xbtun")
 region_enabled = true
 region_rect = Rect2(60, 2140, 3680, 970)
 
@@ -1062,7 +1071,7 @@ region_rect = Rect2(60, 2140, 3680, 970)
 z_index = -3
 position = Vector2(984, 144)
 scale = Vector2(0.17396627, 0.17396627)
-texture = ExtResource("33_tpg3q")
+texture = ExtResource("36_xbtun")
 region_enabled = true
 region_rect = Rect2(60, 2140, 3238, 970)
 
@@ -1070,7 +1079,7 @@ region_rect = Rect2(60, 2140, 3238, 970)
 z_index = -3
 position = Vector2(782, 732)
 scale = Vector2(0.2788251, 0.2788251)
-texture = ExtResource("33_tpg3q")
+texture = ExtResource("36_xbtun")
 region_enabled = true
 region_rect = Rect2(1900, 3210, 800, 1080)
 
@@ -1078,7 +1087,7 @@ region_rect = Rect2(1900, 3210, 800, 1080)
 z_index = -3
 position = Vector2(467.00003, 732)
 scale = Vector2(0.2788251, 0.2788251)
-texture = ExtResource("33_tpg3q")
+texture = ExtResource("36_xbtun")
 region_enabled = true
 region_rect = Rect2(1030, 3210, 810, 1080)
 
@@ -1086,7 +1095,7 @@ region_rect = Rect2(1030, 3210, 810, 1080)
 z_index = -3
 position = Vector2(189.00006, 732)
 scale = Vector2(0.2788251, 0.2788251)
-texture = ExtResource("33_tpg3q")
+texture = ExtResource("36_xbtun")
 region_enabled = true
 region_rect = Rect2(190, 3210, 700, 1080)
 
@@ -1144,3 +1153,21 @@ position = Vector2(1053, 459)
 
 [node name="U3Enemy" parent="." instance=ExtResource("42_np7um")]
 position = Vector2(497, 477)
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D2"]
+position = Vector2(840, 352)
+energy = 2.38
+shadow_enabled = true
+texture = ExtResource("43_bb57q")
+texture_scale = 3.38
+height = 47.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node2D2"]
+position = Vector2(404, 352)
+energy = 2.38
+shadow_enabled = true
+texture = ExtResource("43_bb57q")
+texture_scale = 3.38
+height = 47.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dmnhha4lwclrm"]
+[gd_scene load_steps=47 format=4 uid="uid://dmnhha4lwclrm"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_fsa7q"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_lep1u"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://e5filvnr5mu1" path="res://Assets/Map/Level_train/到站牌.png" id="14_pdqel"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="15_bktlv"]
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="16_7ubmx"]
+[ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="18_dbyfn"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -253,7 +254,7 @@ metadata/_custom_type_script = "uid://dgg6krhyxkjbx"
 environment = SubResource("Environment_dt1lc")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.78826606, 0.6941966, 0.65592253, 1)
+color = Color(0.68951464, 0.5785245, 0.53205836, 1)
 
 [node name="RoomArea" type="Area2D" parent="."]
 collision_mask = 3
@@ -478,3 +479,17 @@ mouse_filter = 2
 [node name="light" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="light"]
+position = Vector2(377, 513)
+energy = 0.37
+shadow_enabled = true
+texture = ExtResource("18_dbyfn")
+texture_scale = 1.82
+height = 51.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="light"]
+position = Vector2(923, 495)
+energy = 0.37
+shadow_enabled = true
+texture = ExtResource("18_dbyfn")
+texture_scale = 1.82
+height = 85.0

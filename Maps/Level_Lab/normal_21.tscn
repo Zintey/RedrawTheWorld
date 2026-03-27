@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://v61k1tggowin"]
+[gd_scene load_steps=15 format=4 uid="uid://v61k1tggowin"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_lp7ab"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_q217o"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_pidrk"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_momcy"]
+[ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="5_5rx1i"]
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="5_pidrk"]
 [ext_resource type="Texture2D" uid="uid://xm5itp8nuo4n" path="res://Assets/Map/Level_Lab/billboards/billboardpack (6).png" id="6_momcy"]
 [ext_resource type="Texture2D" uid="uid://b3o7ahg2nmbtj" path="res://Assets/Map/Level_Lab/labpack/labpak (10).png" id="7_rxmsp"]
@@ -73,6 +74,7 @@ script = ExtResource("3_pidrk")
 metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
+visible = false
 position = Vector2(1279.5, 483)
 shape = SubResource("RectangleShape2D_4wfah")
 
@@ -90,6 +92,20 @@ tile_set = ExtResource("4_momcy")
 [node name="light" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="light"]
+position = Vector2(133, 482.99997)
+rotation = -0.5235988
+color = Color(1, 0, 0, 1)
+energy = 6.3
+texture = ExtResource("5_5rx1i")
+texture_scale = 1.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="light"]
+position = Vector2(2418, 476.0001)
+rotation = 0.5235988
+color = Color(1, 0, 0, 1)
+energy = 6.25
+texture = ExtResource("5_5rx1i")
+texture_scale = 1.5
 
 [node name="decorate" type="Node2D" parent="."]
 

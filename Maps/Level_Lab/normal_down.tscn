@@ -129,14 +129,14 @@ region_enabled = true
 region_rect = Rect2(45, 764, 587, 726)
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(1070, 771.99994)
-scale = Vector2(1.527381, 1.527381)
+position = Vector2(1055.1799, 770.2065)
+scale = Vector2(2.1230595, 1.5098535)
 curve = SubResource("Curve2D_cacdu")
 
 [node name="MobilePlatform" parent="." instance=ExtResource("7_wvcxc")]
 position = Vector2(1052, 182.00006)
 scale = Vector2(1.527381, 1.527381)
-move_speed = 120.0
+move_speed = 200.0
 pause_duration = 0.0
 path_node = NodePath("../Path2D")
 path_behavior = 1

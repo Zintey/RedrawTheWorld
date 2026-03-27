@@ -102,6 +102,5 @@ offset_right = 441.0
 offset_bottom = -127.0
 
 [node name="DebugUi" parent="." instance=ExtResource("8_4h5vl")]
-visible = false
 
 [editable path="CanvasLayer/Minimap"]

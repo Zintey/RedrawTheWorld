@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://dll0865jisitm"]
+
+[ext_resource type="Texture2D" uid="uid://bp2mkaa2i0jp6" path="res://Assets/Map/level1_tileset2.png" id="1_cxp36"]
+[ext_resource type="Texture2D" uid="uid://dah3eg73hwvxi" path="res://Assets/Map/Level_city/normalmap/wapian3_normal.png" id="2_4ewdh"]
+
+[resource]
+diffuse_texture = ExtResource("1_cxp36")
+normal_texture = ExtResource("2_4ewdh")
