@@ -1,4 +1,4 @@
-[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://bk7avm0pxo67h"]
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://cny4pokhxd5k4"]
 
 [ext_resource type="Texture2D" uid="uid://dmlksx1fc4nfx" path="res://Assets/Items/MobilePlatform/mobile platform_2.png" id="1_iorn8"]
 [ext_resource type="Texture2D" uid="uid://bacd56mvj1esv" path="res://Assets/Map/Level_Lab/normal/移动平台_normal.png" id="2_gwc6n"]
