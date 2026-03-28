@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_2g36o"]
 [ext_resource type="Texture2D" uid="uid://cna101u7ab8oj" path="res://Assets/Enemy/CutterSegment/cutter_segment_sprint.png" id="2_3dm3f"]
 [ext_resource type="Texture2D" uid="uid://cjq4lkb2bh1ue" path="res://Assets/Enemy/CutterSegment/cutter_segment_attack.png" id="2_b44yc"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_ifgw3"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="2_ifgw3"]
 [ext_resource type="Script" uid="uid://cl2vbjlgrwysh" path="res://Components/StateMachine/StateMachine.gd" id="3_3dm3f"]
 [ext_resource type="Texture2D" uid="uid://bsodxuhngsv4c" path="res://Assets/Enemy/CutterSegment/cutter_segment_die.png" id="4_0cnu0"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="4_b44yc"]
@@ -1646,5 +1646,5 @@ metadata/_custom_type_script = "uid://cken684dx7ep6"
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_b44yc")
-max_hp = 100
+max_hp = 2
 metadata/_custom_type_script = "uid://b7cpenmly2med"

@@ -35,6 +35,10 @@ func init_skills(skills: Array[SkillData]) -> void:
 	call_deferred("select_slot", current_selected_index)
 
 func select_slot(index: int) -> void:
+	if mini_slots[index].skill_data == null:
+		AudioManager.play_sfx(deny_sfx)
+		return
+
 	current_selected_index = index
 	
 	for i in range(mini_slots.size()):

@@ -15,5 +15,5 @@ script = ExtResource("2_devcw")
 clips = Array[ExtResource("1_udae1")]([SubResource("Resource_kqv7f")])
 base_volume_db = -3.0
 pitch_randomness = 0.2
-max_instances = 1
+max_instances = 5
 metadata/_custom_type_script = "uid://cctb38u1ea3y3"

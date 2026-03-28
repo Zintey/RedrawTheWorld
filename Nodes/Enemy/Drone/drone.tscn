@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://suj0smkartvc" path="res://Assets/Enemy/Drone/drone_hit.png" id="3_nv5x2"]
 [ext_resource type="Texture2D" uid="uid://c5qlcs2q2fygq" path="res://Assets/Enemy/Drone/drone_die.png" id="4_quvvd"]
 [ext_resource type="PackedScene" uid="uid://f268qaqp76cr" path="res://Nodes/Enemy/Cannon/cannon.tscn" id="5_6wbkk"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="7_sot41"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="7_sot41"]
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="8_gv3dx"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="9_k7voq"]
 [ext_resource type="Script" uid="uid://dki5ysd436kj3" path="res://Nodes/Enemy/Drone/State/DroneSafeMoveState.gd" id="9_qj8sf"]
@@ -668,7 +668,7 @@ metadata/_custom_type_script = "uid://c6f0mbpbktyx"
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("15_gv3dx")
-max_hp = 100
+max_hp = 2
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [connection signal="area_entered" from="CenterPoint/HitBox" to="." method="_on_hit_box_area_entered"]

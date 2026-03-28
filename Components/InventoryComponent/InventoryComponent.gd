@@ -3,8 +3,8 @@ class_name InventoryComponent
 
 @export var rune_count : int = 20
 @export var all_runes : Array[RuneData] = []
-@export var skill_count : int = 10
-@export var all_skills : Array[SkillData] = []
+# @export var skill_count : int = 10
+# @export var all_skills : Array[SkillData] = []
 
 # 【核心修改】：将技能栏容量固定为 8
 @export var equipped_skill_count : int = 8 
@@ -16,22 +16,22 @@ func load_data():
 	var data : Dictionary = SceneManager.load_data_by_UID("Player")
 	if data.has("all_runes"):
 		all_runes = data["all_runes"]
-	if data.has("all_skills"):
-		all_skills = data["all_skills"]
+	# if data.has("all_skills"):
+		# all_skills = data["all_skills"]
 	if data.has("equipped_skills"):
 		equipped_skills = data["equipped_skills"]
 
 func save_data():
 	var data : Dictionary = {
 		"all_runes" : all_runes.duplicate_deep(),
-		"all_skills" : all_skills.duplicate_deep(),
+		# "all_skills" : all_skills.duplicate_deep(),
 		"equipped_skills" : equipped_skills.duplicate_deep()
 	}
 	SceneManager.save_data_by_UID("Player", data)
 
 func _ready() -> void:
 	all_runes.resize(rune_count)
-	all_skills.resize(skill_count)
+	# all_skills.resize(skill_count)
 	equipped_skills.resize(equipped_skill_count)
 	load_data()
 	
@@ -100,12 +100,12 @@ func add_skills(skill_list : Array[SkillData]) -> bool:
 		flag = flag and add_skill(skill)
 	return flag
 
-func remove_skill(skill_data : SkillData) -> bool:
-	if skill_data in all_skills:
-		all_skills.erase(skill_data)
-		data_changed.emit()
-		return true
-	return false
+# func remove_skill(skill_data : SkillData) -> bool:
+	# if skill_data in all_skills:
+		# all_skills.erase(skill_data)
+		# data_changed.emit()
+		# return true
+	# return false
 
 func equip_skill(skill_data : SkillData) -> bool:
 	if equipped_skills.size() >= equipped_skill_count:

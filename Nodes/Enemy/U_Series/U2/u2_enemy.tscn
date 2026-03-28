@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ce6id8v3ofswf" path="res://Nodes/Enemy/U_Series/U2/U2Enemy.gd" id="1_6n08l"]
 [ext_resource type="Resource" uid="uid://dv8ed4nlqky2" path="res://Resources/Audio/SFX/Enemy/Axeman/axeman_attack2.tres" id="2_nlgpj"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_r0or1"]
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="3_b7e25"]
 [ext_resource type="Texture2D" uid="uid://cn12g7nit1f52" path="res://Assets/Enemy/U_Series/U2.png" id="3_bct60"]
 [ext_resource type="Texture2D" uid="uid://c6binomyc8m1i" path="res://Assets/normalmap/2号动画-normal.png" id="5_1jn8l"]
@@ -342,8 +341,45 @@ _data = {
 &"walk": SubResource("Animation_yq87r")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rticb"]
-shader = ExtResource("2_r0or1")
+[sub_resource type="Shader" id="Shader_nlgpj"]
+code = "shader_type canvas_item;
+
+uniform float outline_size = 0.0;
+uniform vec4 outline_color : source_color = vec4(0, 0, 0, 1);
+uniform bool hit;
+uniform vec4 hit_color : source_color = vec4(1, 1, 1, 1.0);
+
+void fragment() {
+	if(hit)
+	{
+		if(COLOR.a > 0.0)
+		{
+			COLOR = mix(COLOR, hit_color, 0.8);
+		}
+	}
+
+
+    // 获取贴图大小（Godot 4 需要这样写）
+    vec2 tex_size = vec2(textureSize(TEXTURE, 0));
+    vec2 pixel = outline_size / tex_size;
+
+    // 周围 8 方向采样 alpha
+    float alpha =
+        texture(TEXTURE, UV + vec2(pixel.x, 0)).a +
+        texture(TEXTURE, UV + vec2(-pixel.x, 0)).a +
+        texture(TEXTURE, UV + vec2(0, pixel.y)).a +
+        texture(TEXTURE, UV + vec2(0, -pixel.y)).a +
+        texture(TEXTURE, UV + vec2(pixel.x, pixel.y)).a +
+        texture(TEXTURE, UV + vec2(-pixel.x, pixel.y)).a +
+        texture(TEXTURE, UV + vec2(pixel.x, -pixel.y)).a +
+        texture(TEXTURE, UV + vec2(-pixel.x, -pixel.y)).a;
+    if (COLOR.a <= 0.0 && alpha > 0.0)
+        COLOR = outline_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jn8l"]
+shader = SubResource("Shader_nlgpj")
 shader_parameter/outline_size = 0.0
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/hit = false
@@ -383,7 +419,7 @@ unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterPoint"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_rticb")
+material = SubResource("ShaderMaterial_1jn8l")
 position = Vector2(2.777778, 0)
 texture = SubResource("CanvasTexture_17i2m")
 hframes = 15
@@ -425,7 +461,7 @@ shape = SubResource("RectangleShape2D_b7e25")
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_xkbo5")
-max_hp = 100
+max_hp = 3
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]

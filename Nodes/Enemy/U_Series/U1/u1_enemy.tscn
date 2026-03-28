@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bx0f8d20iy1gm" path="res://Assets/Enemy/U_Series/U1.png" id="1_wd585"]
 [ext_resource type="Script" uid="uid://bed8t8rlgntc0" path="res://Nodes/Enemy/U_Series/U1/U1Enemy.gd" id="1_wf1s3"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_1he4d"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="2_s1rb4"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="3_7wj8r"]
 [ext_resource type="Texture2D" uid="uid://c3nngvmdjafri" path="res://Assets/normalmap/一号机_normal.png" id="4_nraop"]
@@ -17,8 +16,45 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_urtnp"]
 height = 42.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rticb"]
-shader = ExtResource("2_1he4d")
+[sub_resource type="Shader" id="Shader_rticb"]
+code = "shader_type canvas_item;
+
+uniform float outline_size = 0.0;
+uniform vec4 outline_color : source_color = vec4(0, 0, 0, 1);
+uniform bool hit;
+uniform vec4 hit_color : source_color = vec4(1, 1, 1, 1.0);
+
+void fragment() {
+	if(hit)
+	{
+		if(COLOR.a > 0.0)
+		{
+			COLOR = mix(COLOR, hit_color, 0.8);
+		}
+	}
+
+
+    // 获取贴图大小（Godot 4 需要这样写）
+    vec2 tex_size = vec2(textureSize(TEXTURE, 0));
+    vec2 pixel = outline_size / tex_size;
+
+    // 周围 8 方向采样 alpha
+    float alpha =
+        texture(TEXTURE, UV + vec2(pixel.x, 0)).a +
+        texture(TEXTURE, UV + vec2(-pixel.x, 0)).a +
+        texture(TEXTURE, UV + vec2(0, pixel.y)).a +
+        texture(TEXTURE, UV + vec2(0, -pixel.y)).a +
+        texture(TEXTURE, UV + vec2(pixel.x, pixel.y)).a +
+        texture(TEXTURE, UV + vec2(-pixel.x, pixel.y)).a +
+        texture(TEXTURE, UV + vec2(pixel.x, -pixel.y)).a +
+        texture(TEXTURE, UV + vec2(-pixel.x, -pixel.y)).a;
+    if (COLOR.a <= 0.0 && alpha > 0.0)
+        COLOR = outline_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nraop"]
+shader = SubResource("Shader_rticb")
 shader_parameter/outline_size = 0.0
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/hit = false
@@ -231,7 +267,7 @@ unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterPoint"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_rticb")
+material = SubResource("ShaderMaterial_nraop")
 position = Vector2(8, 0)
 texture = SubResource("CanvasTexture_1he4d")
 hframes = 16
@@ -273,7 +309,7 @@ shape = SubResource("RectangleShape2D_rticb")
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_s1rb4")
-max_hp = 100
+max_hp = 2
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]

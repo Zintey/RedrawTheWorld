@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="1_8nsy4"]
 [ext_resource type="Texture2D" uid="uid://v3dmjv36g8wk" path="res://Assets/Enemy/DroneSegment/drone_segment_idle.png" id="1_a876g"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="1_j576n"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="1_j576n"]
 [ext_resource type="Script" uid="uid://bg8r4e027f7mt" path="res://Nodes/Enemy/CannonSegment/DroneSegment.gd" id="1_o461q"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_a876g"]
 [ext_resource type="PackedScene" uid="uid://dn0nvdqp5vgwb" path="res://Nodes/Enemy/PoisonCannon/PoisonCannon.tscn" id="2_hldvy"]
@@ -481,7 +481,7 @@ debug_color = Color(0.56194204, 0.5596352, 9.5298885e-05, 0.41960785)
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_hpy74")
-max_hp = 100
+max_hp = 2
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent", "initial_state")]

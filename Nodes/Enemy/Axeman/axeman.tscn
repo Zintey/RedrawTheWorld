@@ -626,7 +626,7 @@ metadata/_custom_type_script = "uid://dwoahlwrowxup"
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_24oic")
-max_hp = 100
+max_hp = 20
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [node name="WarnArea" type="Area2D" parent="."]

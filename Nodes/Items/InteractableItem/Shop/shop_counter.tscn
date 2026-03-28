@@ -11,7 +11,7 @@ atlas = ExtResource("3_2khhe")
 region = Rect2(0, 0, 116, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2khhe"]
-size = Vector2(68, 69)
+size = Vector2(80, 123.666664)
 
 [node name="ShopCounter" type="Node2D"]
 z_index = -1
@@ -63,5 +63,5 @@ script = ExtResource("3_uj0tr")
 metadata/_custom_type_script = "uid://oq8bfdkiefkj"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(0, -12.5)
+position = Vector2(9.934107e-08, -39.833332)
 shape = SubResource("RectangleShape2D_2khhe")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://4flmkxwrkb50"]
+[gd_scene load_steps=88 format=4 uid="uid://4flmkxwrkb50"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -39,8 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://bq281btkjfauq" path="res://Assets/Map/Level_Lab/canvastexture/wupinzuhe.tres" id="36_xbtun"]
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
-[ext_resource type="Script" uid="uid://7cit4qghbiw1" path="res://Nodes/Controller/Shop/ShopRoomController.gd" id="41_xbtun"]
-[ext_resource type="PackedScene" uid="uid://3enhluplotad" path="res://Nodes/Items/InteractableItem/Shop/shop_counter.tscn" id="42_bb57q"]
 [ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="43_bb57q"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
@@ -1099,7 +1097,6 @@ region_enabled = true
 region_rect = Rect2(190, 3210, 700, 1080)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
-visible = false
 z_index = -3
 position = Vector2(308, 771)
 sprite_frames = SubResource("SpriteFrames_hbds7")
@@ -1161,26 +1158,3 @@ shadow_enabled = true
 texture = ExtResource("43_bb57q")
 texture_scale = 3.38
 height = 47.0
-
-[node name="ShopRoomController" type="Node2D" parent="."]
-position = Vector2(-497.99997, -808.9999)
-scale = Vector2(2.5, 2.5)
-script = ExtResource("41_xbtun")
-counter_scene = ExtResource("42_bb57q")
-metadata/_custom_type_script = "uid://7cit4qghbiw1"
-
-[node name="Marker2D" type="Marker2D" parent="ShopRoomController"]
-position = Vector2(311.99997, 526.3999)
-scale = Vector2(0.99999976, 0.99999976)
-
-[node name="Marker2D2" type="Marker2D" parent="ShopRoomController"]
-position = Vector2(413.99994, 526.3999)
-scale = Vector2(0.99999976, 0.99999976)
-
-[node name="Marker2D3" type="Marker2D" parent="ShopRoomController"]
-position = Vector2(518.9999, 526.3999)
-scale = Vector2(0.99999976, 0.99999976)
-
-[node name="Marker2D4" type="Marker2D" parent="ShopRoomController"]
-position = Vector2(621.9999, 526.3999)
-scale = Vector2(0.99999976, 0.99999976)

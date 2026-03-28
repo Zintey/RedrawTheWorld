@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8hgd8kluweow" path="res://Nodes/Enemy/TrackedCutter/TrackedCutter.gd" id="1_o78sm"]
 [ext_resource type="Texture2D" uid="uid://bx245ky3qieeo" path="res://Assets/Enemy/TrackedCutter/tracked_cutter_idle.png" id="2_dfbu3"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_u0h3d"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="2_u0h3d"]
 [ext_resource type="Texture2D" uid="uid://d4mejam1up6t0" path="res://Assets/Enemy/TrackedCutter/tracked_cutter_hit.png" id="3_dgcpx"]
 [ext_resource type="Texture2D" uid="uid://uquov1v4550j" path="res://Assets/Enemy/TrackedCutter/tracked_cutter_die.png" id="4_ptr7u"]
 [ext_resource type="Texture2D" uid="uid://daf5xue5l7orq" path="res://Assets/Enemy/TrackedCutter/tracked_cutter_attack1.png" id="5_ujps6"]
@@ -914,7 +914,7 @@ shader_parameter/hit_color = Color(1, 1, 1, 1)
 scale = Vector2(0.8, 0.8)
 collision_layer = 256
 collision_mask = 32
-velocity = Vector2(0, 8714849)
+velocity = Vector2(0, 8736395)
 script = ExtResource("1_o78sm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1078,7 +1078,7 @@ volume_db = -8.0
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("19_fqp5f")
-max_hp = 100
+max_hp = 3
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [connection signal="area_entered" from="CenterPoint/HurtBox" to="." method="_on_hit_box_area_entered"]

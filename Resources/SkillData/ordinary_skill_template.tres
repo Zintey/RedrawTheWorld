@@ -1,20 +1,19 @@
-[gd_resource type="Resource" script_class="SkillData" load_steps=4 format=3 uid="uid://bynw861y3gjbt"]
+[gd_resource type="Resource" script_class="SkillData" load_steps=5 format=3 uid="uid://bynw861y3gjbt"]
 
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_e575x"]
+[ext_resource type="Resource" uid="uid://ri15ria72rcx" path="res://Resources/RuneData/CoreRune/arcane_orb_core_rune.tres" id="2_475uf"]
 [ext_resource type="Script" uid="uid://w3c70vl01a25" path="res://Resources/SkillData.gd" id="2_frilr"]
-[ext_resource type="Texture2D" uid="uid://cyu4wf2hfvgfb" path="res://Assets/RuneIcon/Temp/rune_icon2.png" id="3_frilr"]
+[ext_resource type="Resource" uid="uid://kdt36bga48ri" path="res://Resources/RuneData/TriggerRune/key_lbt_hit_trigger_rune.tres" id="3_frilr"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_frilr")
 skill_id = "ordinary_skill_template"
-skill_name = "普通"
-skill_description = "普通型号的技能模板"
-skill_icon = ExtResource("3_frilr")
+base_cooldown = 0.25
 trigger_rune_slot_count = 1
-trigger_rune_list = Array[ExtResource("1_e575x")]([null])
+trigger_rune_list = Array[ExtResource("1_e575x")]([ExtResource("3_frilr")])
 core_rune_slot_count = 1
-core_rune_list = Array[ExtResource("1_e575x")]([null])
-modifier_rune_slot_count = 2
-modifier_rune_list = Array[ExtResource("1_e575x")]([null, null])
+core_rune_list = Array[ExtResource("1_e575x")]([ExtResource("2_475uf")])
+modifier_rune_slot_count = 3
+modifier_rune_list = Array[ExtResource("1_e575x")]([null, null, null])
 metadata/_custom_type_script = "uid://w3c70vl01a25"

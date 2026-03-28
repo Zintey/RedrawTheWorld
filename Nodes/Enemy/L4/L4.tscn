@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://liococot1lwa" path="res://Assets/Enemy/L4/l4.png" id="1_0rj8r"]
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="1_cf3fd"]
 [ext_resource type="Script" uid="uid://8vwusqcwywp" path="res://Nodes/Enemy/L4/L4.gd" id="1_ke1a8"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="1_w7go8"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="1_w7go8"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_0rj8r"]
 [ext_resource type="Script" uid="uid://b7cpenmly2med" path="res://Components/Attack/HealthComponent.gd" id="3_w7go8"]
 [ext_resource type="Resource" uid="uid://bot5itmadidt8" path="res://Resources/Audio/SFX/Enemy/ae_load.tres" id="4_jq4qf"]
@@ -425,7 +425,7 @@ radius = 500.0
 [node name="L4" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 32
-velocity = Vector2(0, 14498879)
+velocity = Vector2(0, 14511059)
 script = ExtResource("1_ke1a8")
 safe_distance = 500.0
 
@@ -537,5 +537,5 @@ collision_mask = 32
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_w7go8")
-max_hp = 100
+max_hp = 3
 metadata/_custom_type_script = "uid://b7cpenmly2med"
