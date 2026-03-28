@@ -1,5 +1,5 @@
 @tool
-class_name SkillData extends Resource
+class_name SkillData extends ItemData
 
 enum SkillType {
 	OR_TRIGGER,
@@ -8,9 +8,17 @@ enum SkillType {
 
 @export var skill_id : String = ""
 @export var type : SkillType = SkillType.OR_TRIGGER
-@export var skill_name : String = ""
-@export_multiline var skill_description : String = ""
-@export var skill_icon : Texture2D
+
+var skill_name :
+	get():
+		return item_name
+var skill_description : String :
+	get():
+		return description + skill_description
+
+var skill_icon : Texture2D :
+	get():
+		return icon
 
 # 【新增】：技能的基础冷却时间（秒）
 @export var base_cooldown : float = 0.5 
@@ -32,3 +40,10 @@ enum SkillType {
 		modifier_rune_slot_count = max(0, val)
 		modifier_rune_list.resize(modifier_rune_slot_count)
 @export var modifier_rune_list : Array[RuneData] = []
+
+
+func apply_effect(player: Node2D) -> bool:
+	var inventory = player.inventory_component
+	if inventory and inventory.add_skill(self):
+		return true
+	return false

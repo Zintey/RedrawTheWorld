@@ -12,7 +12,7 @@ const UI_Map : Dictionary = {
 	"SkillTemplateBriefUI": preload("uid://cimmppl02uvn8"),
 }
 
-signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
+# signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
 
 
 # --- 新增：用于缓存玩家的四大组件 ---
@@ -44,7 +44,7 @@ func _ready() -> void:
 	EventBus.player_components_ready.connect(_on_player_components_ready)
 	EventBus.level_transition_started.connect(_on_level_transition_started)
 
-	rune_world_brief_requested.connect(_show_rune_world_brief)
+	EventBus.rune_world_brief_requested.connect(_show_rune_world_brief)
 
 	EventBus.skill_world_brief_requested.connect(_on_skill_world_brief_requested)
 	EventBus.skill_world_brief_closed.connect(_on_skill_world_brief_closed)

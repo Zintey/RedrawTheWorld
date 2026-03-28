@@ -7,8 +7,9 @@ func enter() -> void:
 	if boss.has_target():
 		boss.flip_towards(boss.target_body.global_position)
 	
-	boss.attack_1_timer = boss.attack_1_cd_max
+	boss.attack_1_timer = randf_range(boss.attack_1_cd_min, boss.attack_1_cd_max)
 	boss.animation_player.play("attack_1")
+
 
 func take_physics_process(delta: float) -> void:
 	super.take_physics_process(delta)

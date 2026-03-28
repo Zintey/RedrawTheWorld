@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf8x6e6yaotju"]
+
+[ext_resource type="Script" uid="uid://c6dovjelxgomn" path="res://Manager/LootManager.gd" id="1_d4ta0"]
+[ext_resource type="Resource" uid="uid://ri15ria72rcx" path="res://Resources/RuneData/CoreRune/arcane_orb_core_rune.tres" id="2_5o5rb"]
+[ext_resource type="Resource" uid="uid://dep0cg4sks11m" path="res://Resources/RuneData/CoreRune/heal_orb_core_rune.tres" id="3_bj0vl"]
+[ext_resource type="Resource" uid="uid://bwdmgdr5ecjra" path="res://Resources/RuneData/CoreRune/pulse_core_rune.tres" id="4_jhjon"]
+[ext_resource type="Resource" uid="uid://bx2g6cf7a1vvd" path="res://Resources/SkillData/medium_skill.tres" id="5_oc6q5"]
+[ext_resource type="Resource" uid="uid://cyg5svovdpl0a" path="res://Resources/SkillData/exquisite_skill_template.tres" id="6_oqid4"]
+
+[node name="LootManager" type="Node"]
+script = ExtResource("1_d4ta0")
+original_pools = {
+"tier_1": {
+"RUNE_POOL": [ExtResource("2_5o5rb"), ExtResource("3_bj0vl"), ExtResource("4_jhjon")],
+"SKILL_POOL": [ExtResource("5_oc6q5"), ExtResource("6_oqid4")]
+},
+"tier_2": {
+"RUNE_POOL": [],
+"SKILL_POOL": []
+},
+"tier_3": {
+"RUNE_POOL": [],
+"SKILL_POOL": []
+}
+}

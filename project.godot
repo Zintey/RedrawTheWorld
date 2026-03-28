@@ -25,6 +25,8 @@ SceneManager="*res://Manager/SceneManager.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 GameManager="*res://Manager/GameManager.tscn"
 AudioManager="*res://Manager/AudioManager.gd"
+PriceManager="*res://Manager/PriceManager.gd"
+LootManager="*res://Manager/LootManager.tscn"
 
 [display]
 

@@ -35,9 +35,9 @@ func _ready() -> void:
 	equipped_skills.resize(equipped_skill_count)
 	load_data()
 	
-	for i in range(equipped_skill_count):
-		if equipped_skills[i] == null:
-			equipped_skills[i] = SkillData.new()
+	# for i in range(equipped_skill_count):
+		# if equipped_skills[i] == null:
+			# equipped_skills[i] = SkillData.new()
 
 	# 【新增】：监听快捷装卸事件
 	if not EventBus.rune_quick_unequip_requested.is_connected(_on_rune_quick_unequip_requested):

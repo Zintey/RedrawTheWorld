@@ -25,6 +25,9 @@ func _ready():
 	elif GameManager.current_level_data != null:
 		# 正常从主菜单带着数据进来的。说明此时主菜单已经发过信号拉好黑屏了，直接建图
 		_generate_current_level()
+	else:
+		GameManager.start_new_run(GameManager.debug_seed, GameManager.debug_start_level) #打包暂时添加
+		EventBus.level_transition_started.emit(true)
 
 # UI 黑屏拉好后（开局模式），会发这个信号。world 收到后建图
 func _on_ready_to_change_scene():

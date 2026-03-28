@@ -26,13 +26,14 @@ func take_physics_process(delta: float) -> void:
 	var y_dist = abs(boss.target_body.global_position.y - boss.global_position.y)
 	
 	if y_dist <= y_detection_limit: 
-		# 贴脸距离
-		if dist < attack_2_range:
-			switched_to.emit(self, "attack_2")
-			return
+		
 		# 中远距离
-		elif dist > attack_1_min_range and boss.attack_1_timer <= 0:
+		if boss.attack_1_timer <= 0:
 			switched_to.emit(self, "attack_1")
+			return
+		# 贴脸距离
+		elif dist < attack_2_range:
+			switched_to.emit(self, "attack_2")
 			return
 
 	super.take_physics_process(delta)

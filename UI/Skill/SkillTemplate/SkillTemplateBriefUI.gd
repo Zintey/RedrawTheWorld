@@ -18,15 +18,27 @@ func _ready() -> void:
 	update_ui()
 
 func _process(delta: float) -> void:
+	# 1. 实时获取屏幕的绝对宽高
+	var viewport_size = get_viewport_rect().size
+	var target_pos = Vector2.ZERO
+	
 	if is_instance_valid(world_target):
 		var screen_pos = world_target.get_global_transform_with_canvas().origin
 		var offset_x = -size.x / 2.0
-		var offset_y = -size.y - 15.0 # 头顶间距
-		global_position = screen_pos + Vector2(offset_x, offset_y)
+		var offset_y = -size.y - 15.0 
+		# 计算出理想的坐标
+		target_pos = screen_pos + Vector2(offset_x, offset_y)
 	else:
-		var current_position = Vector2(min(get_global_mouse_position().x, get_viewport_rect().size.x - size.x), 
-		min(get_global_mouse_position().y, get_viewport_rect().size.y - size.y))
-		global_position = current_position
+		# 鼠标跟随的理想坐标
+		target_pos = get_global_mouse_position()
+
+	# === 【核心修复】：边界绝对钳制 (Clamp) ===
+	# X 轴：不能小于 0 (左边界)，不能大于 屏幕宽度减去自身宽度 (右边界)
+	target_pos.x = clamp(target_pos.x, 0, viewport_size.x - size.x)
+	# Y 轴：不能小于 0 (上边界)，不能大于 屏幕高度减去自身高度 (下边界)
+	target_pos.y = clamp(target_pos.y, 0, viewport_size.y - size.y)
+	
+	global_position = target_pos
 
 func update_ui() -> void:
 	if not skill_data or not is_node_ready(): return

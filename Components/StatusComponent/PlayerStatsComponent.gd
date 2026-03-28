@@ -3,6 +3,9 @@ class_name PlayerStatsComponent extends Node
 signal stamina_changed(current_stamina: int, max_stamina: int)
 
 @export var max_stamina: int = 6
+
+@export var current_gold: int = 500
+
 var current_stamina: int
 
 # @export var max_mp: int = 10
@@ -48,3 +51,12 @@ func get_force() -> Vector2:
 	var force = _push_force
 	_push_force = Vector2.ZERO
 	return force
+
+
+# 扣钱函数
+func spend_gold(amount: int) -> bool:
+	if current_gold >= amount:
+		current_gold -= amount
+		# EventBus.player_gold_changed.emit(current_gold) # 如果有UI可以发信号刷新
+		return true
+	return false

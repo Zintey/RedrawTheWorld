@@ -1,8 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://3enhluplotad"]
+[gd_scene load_steps=8 format=3 uid="uid://3enhluplotad"]
 
+[ext_resource type="Script" uid="uid://c01rj3pjiabvx" path="res://Nodes/Items/InteractableItem/Shop/ShopCounter.gd" id="1_ky53u"]
 [ext_resource type="Texture2D" uid="uid://cehaogbdrtk0q" path="res://Assets/Map/Level_Lab/shop.png" id="1_v87gc"]
+[ext_resource type="Texture2D" uid="uid://cxa02e5lxul3f" path="res://Assets/RuneIcon/rune_list2.png" id="3_2khhe"]
+[ext_resource type="Script" uid="uid://oq8bfdkiefkj" path="res://Nodes/Interactable/InteractableArea.gd" id="3_uj0tr"]
+[ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="4_joect"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joect"]
+atlas = ExtResource("3_2khhe")
+region = Rect2(0, 0, 116, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2khhe"]
+size = Vector2(68, 69)
 
 [node name="ShopCounter" type="Node2D"]
+z_index = -1
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_ky53u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BaseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_v87gc")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -41.666664)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_joect")
+
+[node name="PriceLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -28.333336
+offset_right = 20.0
+offset_bottom = -3.3333359
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("4_joect")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 12
+text = "40G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BriefMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -56.666664)
+
+[node name="InteractableArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("3_uj0tr")
+metadata/_custom_type_script = "uid://oq8bfdkiefkj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_2khhe")

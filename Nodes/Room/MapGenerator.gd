@@ -27,9 +27,19 @@ func _cache_all_prefabs():
 		return
 		
 	for file in dir.get_files():
-		if file.ends_with(".tscn") or file.ends_with(".scn"):
-			var type_key = file.get_basename().split("_")[0].to_lower()
-			var scene = load(map_prefab_dir.path_join(file))
+		# 【核心修复】：强行剔除打包后可能附加的 .remap 后缀
+		var clean_file = file.trim_suffix(".remap")
+		
+		# 使用清洗干净的文件名进行判断
+		if clean_file.ends_with(".tscn") or clean_file.ends_with(".scn"):
+			var type_key = clean_file.get_basename().split("_")[0].to_lower()
+			
+			# 【注意】：传递给 load() 的必须也是清洗后的路径
+			# Godot 底层如果发现处于 EXE 环境，会自动把 .tscn 映射回真正的资源
+			var scene = load(map_prefab_dir.path_join(clean_file))
+			if not scene:
+				continue
+				
 			var inst = scene.instantiate()
 			
 			if inst is RoomBase:
@@ -40,7 +50,7 @@ func _cache_all_prefabs():
 					"scene": scene,
 					"size": inst.grid_size,
 					"doors": doors,
-					"name": file
+					"name": clean_file
 				})
 			inst.free()
 
@@ -114,11 +124,12 @@ func _match_and_instantiate(data: Map.RoomData) -> RoomBase:
 		push_error("死锁警告: 坐标 %s 匹配失败！" % data.grid_pos)
 		return null
 		
-	# 【强制接入】：使用 GameManager 的上帝骰子抽签预制体
+	# 【强制接入】：使用 GameManager.map_rng 抽取物理预制体外观！
 	var chosen = null
 	if has_node("/root/GameManager"):
-		chosen = get_node("/root/GameManager").pick_random_from_array(valid_candidates)
+		chosen = GameManager.pick_random_from_array(valid_candidates, GameManager.map_rng)
 	else:
+		# 纯后备防崩溃
 		chosen = valid_candidates.pick_random()
 		
 	var inst = chosen.scene.instantiate() as RoomBase

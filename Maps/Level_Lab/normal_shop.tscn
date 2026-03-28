@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c5v0khcn6la2u"]
+[gd_scene load_steps=12 format=4 uid="uid://c5v0khcn6la2u"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_41bdl"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_tpind"]
@@ -6,7 +6,6 @@
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_7ijdh"]
 [ext_resource type="Shader" uid="uid://bhrdcr4j0unrl" path="res://Shader/视觉shader/haker2.gdshader" id="4_goelj"]
 [ext_resource type="Shader" uid="uid://cbo5ysjhrgn3b" path="res://Shader/视觉shader/hacker.gdshader" id="6_41bdl"]
-[ext_resource type="Texture2D" uid="uid://cehaogbdrtk0q" path="res://Assets/Map/Level_Lab/shop.png" id="7_41bdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 949)
@@ -90,23 +89,3 @@ metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea"]
 position = Vector2(636, 342)
 shape = SubResource("RectangleShape2D_goelj")
-
-[node name="Shop" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(312, 523)
-texture = ExtResource("7_41bdl")
-
-[node name="Shop2" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(414, 523)
-texture = ExtResource("7_41bdl")
-
-[node name="Shop3" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(519, 523)
-texture = ExtResource("7_41bdl")
-
-[node name="Shop4" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(622, 523)
-texture = ExtResource("7_41bdl")

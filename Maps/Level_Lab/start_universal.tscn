@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://4flmkxwrkb50"]
+[gd_scene load_steps=90 format=4 uid="uid://4flmkxwrkb50"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -39,9 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://bq281btkjfauq" path="res://Assets/Map/Level_Lab/canvastexture/wupinzuhe.tres" id="36_xbtun"]
 [ext_resource type="Shader" uid="uid://c488al2g0okxp" path="res://Shader/视觉shader/nightsky.gdshader" id="38_fsul5"]
 [ext_resource type="Shader" uid="uid://b21wciojl50cd" path="res://Shader/视觉shader/fog.gdshader" id="39_wu11l"]
-[ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="40_ajp66"]
-[ext_resource type="PackedScene" uid="uid://c7o48ritd6e4u" path="res://Nodes/Enemy/U_Series/U2/u2_enemy.tscn" id="41_p8p6j"]
-[ext_resource type="PackedScene" uid="uid://cwqawnvgdimwj" path="res://Nodes/Enemy/U_Series/U3/u3_enemy.tscn" id="42_np7um"]
+[ext_resource type="Script" uid="uid://7cit4qghbiw1" path="res://Nodes/Controller/Shop/ShopRoomController.gd" id="41_xbtun"]
+[ext_resource type="PackedScene" uid="uid://3enhluplotad" path="res://Nodes/Items/InteractableItem/Shop/shop_counter.tscn" id="42_bb57q"]
 [ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="43_bb57q"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
@@ -1145,15 +1144,6 @@ position = Vector2(464, 474)
 scale = Vector2(3, 3)
 curve = SubResource("Curve2D_p8p6j")
 
-[node name="U1Enemy" parent="." instance=ExtResource("40_ajp66")]
-position = Vector2(404, 480)
-
-[node name="U1Enemy2" parent="." instance=ExtResource("41_p8p6j")]
-position = Vector2(1053, 459)
-
-[node name="U3Enemy" parent="." instance=ExtResource("42_np7um")]
-position = Vector2(497, 477)
-
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Node2D2"]
@@ -1171,3 +1161,26 @@ shadow_enabled = true
 texture = ExtResource("43_bb57q")
 texture_scale = 3.38
 height = 47.0
+
+[node name="ShopRoomController" type="Node2D" parent="."]
+position = Vector2(-497.99997, -808.9999)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("41_xbtun")
+counter_scene = ExtResource("42_bb57q")
+metadata/_custom_type_script = "uid://7cit4qghbiw1"
+
+[node name="Marker2D" type="Marker2D" parent="ShopRoomController"]
+position = Vector2(311.99997, 526.3999)
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="Marker2D2" type="Marker2D" parent="ShopRoomController"]
+position = Vector2(413.99994, 526.3999)
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="Marker2D3" type="Marker2D" parent="ShopRoomController"]
+position = Vector2(518.9999, 526.3999)
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="Marker2D4" type="Marker2D" parent="ShopRoomController"]
+position = Vector2(621.9999, 526.3999)
+scale = Vector2(0.99999976, 0.99999976)

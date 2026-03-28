@@ -3,7 +3,8 @@ class_name Axeman
 
 @export_category("Axeman Core Settings")
 @export var move_speed: float = 60.0 ## Boss 走路压迫玩家的速度
-@export var attack_1_cd_max: float = 3.0 ## 剑气大招的冷却时间（秒）。决定了 Boss 连发剑气的频率。
+@export var attack_1_cd_max: float = 8.0 ## 剑气大招的冷却时间（秒）。决定了 Boss 连发剑气的频率。
+@export var attack_1_cd_min: float = 5.0
 
 var attack_1_timer: float = 0.0
 

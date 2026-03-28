@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://b26k4w8c500qd"]
 
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="1_hpm6e"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="1_ip6rv"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="1_ip6rv"]
 [ext_resource type="Texture2D" uid="uid://du4pc753ppe31" path="res://Assets/Enemy/Axeman/axeman.png" id="1_wbq4m"]
 [ext_resource type="Script" uid="uid://dg6li31j833lu" path="res://Nodes/Enemy/Axeman/Axeman.gd" id="1_xm8jq"]
 [ext_resource type="Script" uid="uid://bfvm3rxhfpsel" path="res://Components/Attack/HurtBox.gd" id="2_wbq4m"]
@@ -532,10 +532,10 @@ radius = 500.0
 [node name="Axeman" type="CharacterBody2D"]
 scale = Vector2(2.5, 2.5)
 collision_layer = 256
-collision_mask = 32
+collision_mask = 96
 script = ExtResource("1_xm8jq")
 move_speed = 150.0
-attack_1_cd_max = 8.0
+attack_1_cd_min = 4.0
 lose_target_delay = -1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -626,7 +626,7 @@ metadata/_custom_type_script = "uid://dwoahlwrowxup"
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_24oic")
-max_hp = 10
+max_hp = 100
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [node name="WarnArea" type="Area2D" parent="."]

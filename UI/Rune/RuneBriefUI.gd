@@ -18,23 +18,27 @@ func init(_rune_data : RuneData, _world_target: Node2D = null) -> void:
 	update_ui()
 
 func _process(delta: float) -> void:
+	# 1. 实时获取屏幕的绝对宽高
+	var viewport_size = get_viewport_rect().size
+	var target_pos = Vector2.ZERO
+	
 	if is_instance_valid(world_target):
-		# 1. 转换屏幕坐标
 		var screen_pos = world_target.get_global_transform_with_canvas().origin
-
-		# === 【核心修复】：精算水平与垂直偏移 ===
-		# global_position 设置的是 UI 的左上角。
-		# 我们需要在 X 轴上，向左移半个 UI 的宽度 (-size.x / 2.0)。
-		# 在 Y 轴上，向上移整个 UI 的高度 (-size.y) 再加上一个和头顶的固定间距。
 		var offset_x = -size.x / 2.0
-		var offset_y = -size.y - 15.0 # -15 是飘在物体头顶的间距，可自行微调
-
-		global_position = screen_pos + Vector2(offset_x, offset_y)
+		var offset_y = -size.y - 15.0 
+		# 计算出理想的坐标
+		target_pos = screen_pos + Vector2(offset_x, offset_y)
 	else:
-		# 保留原本的鼠标跟随逻辑 (也处理了边界拦截)
-		var current_position = Vector2(min(get_global_mouse_position().x, get_viewport_rect().size.x - size.x), 
-		min(get_global_mouse_position().y, get_viewport_rect().size.y - size.y))
-		global_position = current_position
+		# 鼠标跟随的理想坐标
+		target_pos = get_global_mouse_position()
+
+	# === 【核心修复】：边界绝对钳制 (Clamp) ===
+	# X 轴：不能小于 0 (左边界)，不能大于 屏幕宽度减去自身宽度 (右边界)
+	target_pos.x = clamp(target_pos.x, 0, viewport_size.x - size.x)
+	# Y 轴：不能小于 0 (上边界)，不能大于 屏幕高度减去自身高度 (下边界)
+	target_pos.y = clamp(target_pos.y, 0, viewport_size.y - size.y)
+	
+	global_position = target_pos
 
 func _ready():
 	z_index = 4000

@@ -9,9 +9,10 @@ class_name RuneDropEntity extends RigidBody2D
 
 func _ready() -> void:
 	if rune_data:
-		sprite.texture = rune_data.icon
+		# 【核心修复】：如果是场景里手动摆放的掉落物，深拷贝切断绑定！
+		rune_data = rune_data.duplicate(true)
+		sprite.texture = rune_data.icon 
 		
-	# 确保 sprite 位置复位到刚体中心，防止残留偏移
 	sprite.position = Vector2.ZERO
 		
 	# 监听交互信号

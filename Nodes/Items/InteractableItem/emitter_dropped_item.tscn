@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://caqeyalei8giw"]
+[gd_scene load_steps=7 format=3 uid="uid://caqeyalei8giw"]
 
 [ext_resource type="PackedScene" uid="uid://bhydnbq6l5xef" path="res://Nodes/Items/InteractableItem/interactable_item.tscn" id="1_8l0s4"]
 [ext_resource type="Script" uid="uid://cd3pb2pymq4rn" path="res://Nodes/Items/InteractableItem/EmitterDroppedItem.gd" id="2_h3t5i"]
@@ -10,16 +10,24 @@ shader = ExtResource("3_ig2ym")
 shader_parameter/outline_size = 0.0
 shader_parameter/outline_color = Color(0, 1, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig2ym"]
+resource_local_to_scene = true
+size = Vector2(220, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0voll"]
+resource_local_to_scene = true
+size = Vector2(107, 105)
+
 [node name="EmitterDroppedItem" instance=ExtResource("1_8l0s4")]
 script = ExtResource("2_h3t5i")
 
 [node name="ItemSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_0voll")
 
-[node name="TipArea" parent="." index="1"]
-collision_mask = 2
+[node name="CollisionShape2D" parent="TipArea" index="0"]
+shape = SubResource("RectangleShape2D_ig2ym")
 
-[node name="InteractableArea" parent="." index="2"]
-collision_mask = 2
+[node name="CollisionShape2D" parent="InteractableArea" index="0"]
+shape = SubResource("RectangleShape2D_0voll")
 
 [editable path="TipTextArea"]

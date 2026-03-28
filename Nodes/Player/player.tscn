@@ -928,7 +928,6 @@ script = ExtResource("22_owx2l")
 rune_count = 50
 all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah")])
 skill_count = 15
-equipped_skill_count = 5
 equipped_skills = Array[ExtResource("23_cr8vb")]([SubResource("Resource_jgjx4"), ExtResource("35_kvwmt")])
 metadata/_custom_type_script = "uid://4twnrh5cup0w"
 

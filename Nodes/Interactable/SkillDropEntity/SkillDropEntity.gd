@@ -7,9 +7,11 @@ class_name SkillDropEntity extends RigidBody2D
 
 func _ready() -> void:
 	if skill_data:
-		sprite.texture = skill_data.skill_icon # 使用 SkillData 里的图标
+		# 【核心修复】：如果是场景里手动摆放的掉落物，深拷贝切断绑定！
+		skill_data = skill_data.duplicate(true)
+		sprite.texture = skill_data.skill_icon 
 		
-	sprite.position = Vector2.ZERO # 确保对齐
+	sprite.position = Vector2.ZERO
 		
 	# 监听雷达塔传来的交互信号
 	interactable_area.focused.connect(_on_focused)

@@ -1,4 +1,4 @@
-class_name RuneData extends Resource
+class_name RuneData extends ItemData
 
 enum RuneType {
 	ALL,
@@ -24,5 +24,12 @@ enum RuneType {
 @export var parameters: Dictionary = {}
 
 # UI
-@export var icon : Texture2D = preload("res://Assets/RuneIcon/Temp/rune_icon1.png")
-@export_multiline var description : String = "这是一个符文"
+# @export var icon : Texture2D = preload("res://Assets/RuneIcon/Temp/rune_icon1.png")
+# @export_multiline var description : String = "这是一个符文"
+
+
+func apply_effect(player: Node2D) -> bool:
+	var inventory = player.get_node_or_null("InventoryComponent")
+	if inventory and inventory.add_rune(self):
+		return true
+	return false

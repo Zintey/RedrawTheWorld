@@ -20,11 +20,12 @@ var grid_map: Dictionary = {}
 
 var normal_templates: Array = []
 var start_templates: Array = []
-var special_templates: Dictionary = {} # 存放Boss等特殊房间的真实尺寸模板
+var special_templates: Dictionary = {}
 var leaf_config: Dictionary = {}
 
 func generate_map(config: Dictionary) -> Map:
-	randomize()
+	# 【修改】：删除了破坏种子的 randomize() !
+	
 	normal_templates = config.get("normal_templates", [])
 	start_templates = config.get("start_templates", [])
 	special_templates = config.get("special_templates", {})
@@ -47,12 +48,10 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	rooms.clear()
 	grid_map.clear()
 	
-	# === 弹性基准变量获取 ===
 	var target_rooms = config.get("target_rooms", 15)
 	var tolerance = config.get("tolerance", 2)
 	var min_critical_path = config.get("min_critical_path", 5)
 	
-	# 计算需要为特殊房间预留几个坑位
 	var special_order = []
 	if leaf_config.has("boss"):
 		for i in range(leaf_config["boss"]): special_order.append("boss")
@@ -61,7 +60,6 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 		for i in range(leaf_config[k]): special_order.append(k)
 		
 	var special_count = special_order.size()
-	# 算一下普通房间的期望生长区间
 	var normal_target = target_rooms - special_count
 	var min_normal = max(1, normal_target - tolerance)
 	var max_normal = normal_target + tolerance
@@ -85,11 +83,12 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	# ==========================================
 	var normal_rooms_generated = 1 
 	while normal_rooms_generated < max_normal and not open_edges.is_empty():
-		# 弹性收敛：如果普通房间数量已经达标，有 20% 概率提前踩刹车，不再生长
-		if normal_rooms_generated >= min_normal and randf() < 0.2:
+		# 【修改】：使用 map_rng 替代全局 randf()
+		if normal_rooms_generated >= min_normal and GameManager.map_rng.randf() < 0.2:
 			break
 			
-		var edge_idx = randi() % open_edges.size()
+		# 【修改】：使用 map_rng 替代全局 randi()
+		var edge_idx = GameManager.map_rng.randi() % open_edges.size()
 		var edge = open_edges[edge_idx]
 		open_edges.remove_at(edge_idx)
 		
@@ -101,15 +100,14 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 		
 		if valid_options.is_empty(): continue
 			
-		var chosen = valid_options.pick_random()
+		# 【修改】：使用带 map_rng 的 pick_random_from_array
+		var chosen = GameManager.pick_random_from_array(valid_options, GameManager.map_rng)
 		var new_depth = rooms[edge.room_id].depth + 1
 		var new_room = _create_room(chosen.origin, chosen.template.size, new_depth)
 		
-		# 只有成功接上了，才把门记录到 required_doors 里
 		rooms[edge.room_id].required_doors.append({"local_pos": edge.local_pos, "dir": edge.dir})
 		new_room.required_doors.append({"local_pos": chosen.socket.l_pos, "dir": chosen.socket.dir})
 		
-		# 把新房间多余的门加入开放边缘池，继续生长
 		for door in chosen.template.doors:
 			if door.l_pos == chosen.socket.l_pos and door.dir == chosen.socket.dir: continue
 			open_edges.append({
@@ -120,20 +118,18 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 			})
 		normal_rooms_generated += 1
 		
-	if normal_rooms_generated < min_normal: return false # 憋死了，没长开
+	if normal_rooms_generated < min_normal: return false
 
 	# ==========================================
 	# Phase 2: 真实模板接驳特殊房间 (封口)
 	# ==========================================
-	# 按深度把剩下的开放门排序。这样第一顺位的 Boss 房一定会优先尝试最远端的门。
 	open_edges.sort_custom(func(a, b): return rooms[a.room_id].depth > rooms[b.room_id].depth)
 	
 	for sp_type in special_order:
 		var placed = false
-		var pool = special_templates.get(sp_type, normal_templates) # 找不到对应预制体就用normal兜底
+		var pool = special_templates.get(sp_type, normal_templates)
 		if pool.is_empty(): pool = normal_templates
 		
-		# 遍历剩下的边缘，尝试把 Boss房的真实大尺寸塞进去
 		for i in range(open_edges.size()):
 			var edge = open_edges[i]
 			var target_grid = edge.grid_pos + DIR_OFFSETS[edge.dir]
@@ -143,14 +139,13 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 			var valid_options = _find_valid_options(pool, req_dir, target_grid)
 			
 			if not valid_options.is_empty():
-				# 找到了合适的接驳点！
-				var chosen = valid_options.pick_random()
+				# 【修改】：使用带 map_rng 的 pick_random_from_array
+				var chosen = GameManager.pick_random_from_array(valid_options, GameManager.map_rng)
 				var new_depth = rooms[edge.room_id].depth + 1
 				var new_room = _create_room(chosen.origin, chosen.template.size, new_depth)
 				new_room.type = sp_type
 				
 				rooms[edge.room_id].required_doors.append({"local_pos": edge.local_pos, "dir": edge.dir})
-				# 【核心修复】：对于死胡同，我们只开启接驳用的这一个门！
 				new_room.required_doors.append({"local_pos": chosen.socket.l_pos, "dir": chosen.socket.dir})
 				
 				open_edges.remove_at(i)
@@ -162,15 +157,10 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 			print("[Debug] ❌ 无法接驳特殊房间 [%s]，地形过于狭窄或没有门能对上，退回重试！" % sp_type)
 			return false
 
-	# ==========================================
-	# Phase 3: 校验最短路线并清理
-	# ==========================================
 	var max_depth = 0
 	for r in rooms: max_depth = max(max_depth, r.depth)
 	if max_depth < min_critical_path: return false
 	
-	# 注意：剩下没被用到的 open_edges 直接丢弃！
-	# 这样它们对应的父节点就不会把它们加入 required_doors，在游戏中就会渲染为实心的墙壁。
 	return true
 
 func _find_valid_options(templates: Array, req_dir: String, target_grid: Vector2i) -> Array:
@@ -184,7 +174,9 @@ func _find_valid_options(templates: Array, req_dir: String, target_grid: Vector2
 	return valid
 
 func _get_start_template() -> Dictionary:
-	if start_templates.size() > 0: return start_templates.pick_random()
+	# 【修改】：使用带 map_rng 的 pick_random_from_array
+	if start_templates.size() > 0: 
+		return GameManager.pick_random_from_array(start_templates, GameManager.map_rng)
 	return {
 		"size": Vector2i(1, 1),
 		"doors": [
