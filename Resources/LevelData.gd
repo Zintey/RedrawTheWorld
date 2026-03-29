@@ -14,3 +14,11 @@ class_name LevelData
 @export_group("Routing")
 @export var self_loop_weight: int = 0
 @export var next_level_pool: Dictionary = {} # { LevelData : int }
+
+@export_group("BGM")
+@export var idle_bgm : AudioClipData
+@export var attack_bgm : AudioClipData
+@export var shop_bgm : AudioClipData
+@export var boss_bgm : AudioClipData
+@export var special_bgm : AudioClipData
+

@@ -23,12 +23,19 @@ signal died(enemy_node: Node)
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var lose_target_timer: Timer
 
+var die_flag: bool = false
+
 # 统一方向控制系统
 enum Direction { Left = -1, Right = 1 }
 @export var move_direction: Direction = Direction.Right
 
 # 真正的锁定目标
-var target_body: Node2D = null
+var target_body: Node2D = null:
+	set(target):
+		if die_flag:
+			target = null
+		else:
+			target_body = target
 # 只是进入了圆形区域，但还需要经过射线验证的“嫌疑目标”
 var player_in_range: Node2D = null
 
@@ -70,6 +77,8 @@ func _on_died() -> void:
 	remove_from_group("Enemy")
 	died.emit(self)
 	set_outline(false)
+	die_flag = true
+	target_body = null
 	if state_machine:
 		state_machine.switch_to("die")
 
@@ -102,6 +111,7 @@ func check_line_of_sight(target: Node2D) -> bool:
 
 # --- 统一视野与描边 API ---
 func acquire_target(body: Node2D) -> void:
+	if die_flag: return
 	target_body = body
 	player_in_range = body
 	if not lose_target_timer.is_stopped():

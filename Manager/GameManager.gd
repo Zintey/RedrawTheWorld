@@ -17,6 +17,7 @@ var current_level_data: LevelData
 @export var debug_seed: String = "GAME_SEED123"
 @export var debug_start_level: LevelData
 
+
 func start_new_run(seed_str: String, starting_level: LevelData):
 	current_seed = seed_str
 	current_depth = 1

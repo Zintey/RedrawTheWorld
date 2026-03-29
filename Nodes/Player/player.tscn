@@ -788,6 +788,7 @@ fill_to = Vector2(0.5014245, 0)
 size = Vector2(100, 100)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 10
 collision_layer = 2
 collision_mask = 352
 script = ExtResource("1_q1ymb")

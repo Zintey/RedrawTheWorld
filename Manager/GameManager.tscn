@@ -5,5 +5,5 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_s7c1s")
-debug_seed = "SEED12345"
+debug_seed = "SEED1234"
 debug_start_level = ExtResource("2_li60t")

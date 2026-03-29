@@ -1,8 +1,23 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://c8y3281rgetw3"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://c8y3281rgetw3"]
 
+[ext_resource type="AudioStream" uid="uid://lfn0v015xbc3" path="res://Audio/BGM/bgm_battle.wav" id="1_6y07m"]
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_gggxt"]
 [ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_t31lt"]
 [ext_resource type="Texture2D" uid="uid://bt77irs1smdol" path="res://Assets/UI/icons3.png" id="1_tbxpx"]
+[ext_resource type="AudioStream" uid="uid://o1mdp2gsxp12" path="res://Audio/BGM/bgm_idle1.wav" id="2_gggxt"]
 [ext_resource type="Resource" uid="uid://cthnsa3cjx77y" path="res://Resources/LevelData/city_level_data.tres" id="2_tbxpx"]
+
+[sub_resource type="Resource" id="Resource_8siqo"]
+script = ExtResource("1_gggxt")
+stream = ExtResource("1_6y07m")
+volume_offset_db = -6.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[sub_resource type="Resource" id="Resource_8fedc"]
+script = ExtResource("1_gggxt")
+stream = ExtResource("2_gggxt")
+volume_offset_db = -6.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
 
 [resource]
 script = ExtResource("1_t31lt")
@@ -15,4 +30,6 @@ tolerance = 5
 next_level_pool = {
 ExtResource("2_tbxpx"): 100
 }
+idle_bgm = SubResource("Resource_8fedc")
+attack_bgm = SubResource("Resource_8siqo")
 metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

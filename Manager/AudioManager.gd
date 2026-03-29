@@ -166,9 +166,10 @@ func _recycle_player(player: AudioStreamPlayer) -> void:
 # BGM 播放黑盒核心逻辑 (双唱机模型)
 # ==========================================
 ## 播放新的 BGM。crossfade_time 为交叉淡入淡出所需的时间（秒）
-func play_bgm(stream: AudioStream, crossfade_time: float = 2.0) -> void:
+func play_bgm(clip: AudioClipData, crossfade_time: float = 3.0) -> void:
 	var current_player = _bgm_players[_current_bgm_idx]
 	
+	var stream: AudioStream = clip.stream
 	# 如果已经在播同一首歌，且没有静音，直接忽略
 	if current_player.stream == stream and current_player.playing:
 		return 
@@ -190,7 +191,7 @@ func play_bgm(stream: AudioStream, crossfade_time: float = 2.0) -> void:
 	
 	# 当前唱机淡出，下一台唱机淡入
 	_bgm_tween.tween_property(current_player, "volume_db", MIN_DB, crossfade_time)
-	_bgm_tween.tween_property(next_player, "volume_db", 0.0, crossfade_time)
+	_bgm_tween.tween_property(next_player, "volume_db", clip.volume_offset_db, crossfade_time)
 	
 	# 动画结束后把旧唱机彻底停掉，节省性能
 	_bgm_tween.chain().tween_callback(current_player.stop)

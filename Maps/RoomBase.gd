@@ -32,7 +32,7 @@ enum RoomState { UNVISITED, ACTIVE, CLEARED }
 		_refresh_gizmo()
 		
 @export var door_depth_tiles: int = 2
-@export var room_type: String = "Normal"
+var room_type: String = "Normal"
 
 @export_group("Combat Config")
 @export var total_waves: int = 1
@@ -285,7 +285,7 @@ func _place_door_instance(door_pos_tile: Vector2i, dir: String) -> void:
 # ==========================================
 func _on_player_entered() -> void:
 	if current_state != RoomState.UNVISITED: return
-		
+
 	if room_type.to_lower() in ["start", "shop", "treasure"] or total_waves <= 0 or not _has_any_spawners():
 		_unlock_room()
 		return
@@ -302,10 +302,17 @@ func _has_any_spawners() -> bool:
 	return spawners_root.get_child_count() > 0
 
 func _lock_room() -> void:
+	AudioManager.play_bgm(GameManager.current_level_data.attack_bgm)
+
 	for door in instantiated_doors:
 		if door.has_method("close"): door.close(true) 
 
 func _unlock_room() -> void:
+	
+	match room_type.to_lower():
+		"shop": AudioManager.play_bgm(GameManager.current_level_data.shop_bgm)
+		_: AudioManager.play_bgm(GameManager.current_level_data.idle_bgm)
+
 	current_state = RoomState.CLEARED
 	for door in instantiated_doors:
 		if door.has_method("open"): door.open(true) 

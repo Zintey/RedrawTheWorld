@@ -41,7 +41,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.777778, 0)]
+"values": [Vector2(17.222, 9.444)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -90,6 +90,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(8.611112, -1.6666665)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [256]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/outline_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_t4r85"]
@@ -204,6 +228,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(17.222223, 9.444445)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/outline_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterPoint/Sprite2D:material:shader_parameter/hit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_mef1w"]
@@ -379,6 +439,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jn8l"]
+resource_local_to_scene = true
 shader = SubResource("Shader_nlgpj")
 shader_parameter/outline_size = 0.0
 shader_parameter/outline_color = Color(0, 0, 0, 1)
@@ -396,7 +457,7 @@ size = Vector2(41.666668, 38.888893)
 size = Vector2(22, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7e25"]
-size = Vector2(800, 55.555557)
+size = Vector2(800, 62.222225)
 
 [node name="U2Enemy" type="CharacterBody2D"]
 scale = Vector2(1.8, 1.8)
@@ -420,7 +481,7 @@ unique_name_in_owner = true
 [node name="Sprite2D" type="Sprite2D" parent="CenterPoint"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_1jn8l")
-position = Vector2(2.777778, 0)
+position = Vector2(17.222, 9.444)
 texture = SubResource("CanvasTexture_17i2m")
 hframes = 15
 vframes = 4
@@ -455,7 +516,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarnArea"]
-position = Vector2(82.77778, -3.888889)
+position = Vector2(82.77778, -0.5555561)
 shape = SubResource("RectangleShape2D_b7e25")
 
 [node name="HealthComponent" type="Node" parent="."]
