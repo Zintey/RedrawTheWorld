@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://cc2r5crui014k"]
 
 [ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_fdpkq"]
-[ext_resource type="Texture2D" uid="uid://bcbycnjyov1t2" path="res://Assets/RuneIcon/Temp/rune_icon3.png" id="1_tmfw3"]
+[ext_resource type="Texture2D" uid="uid://c0gotkgx2hfmu" path="res://Assets/UI/icons2.png" id="1_tmfw3"]
 
 [resource]
 script = ExtResource("1_fdpkq")

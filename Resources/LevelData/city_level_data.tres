@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://cthnsa3cjx77y"]
 
 [ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_22enm"]
-[ext_resource type="Texture2D" uid="uid://348irmkgs0kl" path="res://icon.svg" id="1_ig8ik"]
+[ext_resource type="Texture2D" uid="uid://s01mx5iacrrx" path="res://Assets/UI/icons1.png" id="1_s3iy4"]
 [ext_resource type="Resource" uid="uid://cc2r5crui014k" path="res://Resources/LevelData/train_level_data.tres" id="2_s3iy4"]
 
 [resource]
 script = ExtResource("1_22enm")
 level_id = "level_city"
 level_name = "城市"
-level_icon = ExtResource("1_ig8ik")
+level_icon = ExtResource("1_s3iy4")
 map_prefab_dir = "res://Maps/Level_city/Prefabs"
 self_loop_weight = 50
 next_level_pool = {
