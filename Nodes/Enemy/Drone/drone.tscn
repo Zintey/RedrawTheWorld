@@ -561,7 +561,7 @@ size = Vector2(66, 58)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sot41"]
 resource_local_to_scene = true
-radius = 450.0
+radius = 800.0
 
 [node name="Drone" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.6, 0.6)
@@ -634,7 +634,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint/WarnArea"]
-visible = false
 shape = SubResource("CircleShape2D_sot41")
 debug_color = Color(0.56194204, 0.5596352, 9.5298885e-05, 0.41960785)
 

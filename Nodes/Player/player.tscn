@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dgr6uyhq4pdl2"]
+[gd_scene load_steps=66 format=3 uid="uid://dgr6uyhq4pdl2"]
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
@@ -41,8 +41,11 @@
 [ext_resource type="Resource" uid="uid://bygfavcgilmq3" path="res://Resources/RuneData/ModifireRune/swirl_modifier_rune.tres" id="32_6bxkd"]
 [ext_resource type="Resource" uid="uid://cyrmne77djpgx" path="res://Resources/RuneData/ModifireRune/penetrate_modifier_rune.tres" id="33_i0nyt"]
 [ext_resource type="Resource" uid="uid://hlsg3v54h60l" path="res://Resources/RuneData/TriggerRune/on_hit_trigger_rune.tres" id="34_vmkah"]
+[ext_resource type="Resource" uid="uid://bdeuk5jwve3k4" path="res://Resources/RuneData/TriggerRune/receive_signalA_trigger_rune.tres" id="40_uwi3s"]
 [ext_resource type="Resource" uid="uid://bynw861y3gjbt" path="res://Resources/SkillData/ordinary_skill_template.tres" id="40_w7kum"]
+[ext_resource type="Resource" uid="uid://b2leapfhnl5bh" path="res://Resources/RuneData/ModifireRune/signalA_modifier_rune.tres" id="41_u6xjn"]
 [ext_resource type="Resource" uid="uid://bwdmgdr5ecjra" path="res://Resources/RuneData/CoreRune/pulse_core_rune.tres" id="41_uwi3s"]
+[ext_resource type="Resource" uid="uid://bjoc2hm2do8y8" path="res://Resources/SkillData/lost_skill_template.tres" id="44_u6xjn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7km3q"]
 radius = 8.0
@@ -915,8 +918,8 @@ metadata/_custom_type_script = "uid://b7cpenmly2med"
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("22_owx2l")
 rune_count = 50
-all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah"), ExtResource("41_uwi3s")])
-equipped_skills = Array[ExtResource("23_cr8vb")]([ExtResource("40_w7kum")])
+all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah"), ExtResource("41_uwi3s"), ExtResource("40_uwi3s"), ExtResource("41_u6xjn")])
+equipped_skills = Array[ExtResource("23_cr8vb")]([ExtResource("40_w7kum"), ExtResource("44_u6xjn")])
 metadata/_custom_type_script = "uid://4twnrh5cup0w"
 
 [node name="PlayerStatsComponent" type="Node" parent="."]

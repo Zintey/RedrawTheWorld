@@ -160,7 +160,7 @@ region_rect = Rect2(363, 1290, 95, 93)
 unique_name_in_owner = true
 
 [node name="EnemySpawner" type="Marker2D" parent="Spawners"]
-position = Vector2(666, 224)
+position = Vector2(1002, 404)
 gizmo_extents = 213.2
 script = ExtResource("11_epcpn")
 enemy_pool = Array[PackedScene]([ExtResource("12_epcpn")])
@@ -174,14 +174,14 @@ enemy_pool = Array[PackedScene]([ExtResource("13_ervyo")])
 metadata/_custom_type_script = "uid://cu61rdx8i48iw"
 
 [node name="EnemySpawner4" type="Marker2D" parent="Spawners"]
-position = Vector2(1345, 309)
+position = Vector2(1389, 443)
 gizmo_extents = 213.2
 script = ExtResource("11_epcpn")
 enemy_pool = Array[PackedScene]([ExtResource("14_epcpn")])
 metadata/_custom_type_script = "uid://cu61rdx8i48iw"
 
 [node name="EnemySpawner3" type="Marker2D" parent="Spawners"]
-position = Vector2(1697.2, 475)
+position = Vector2(1729, 451)
 gizmo_extents = 213.2
 script = ExtResource("11_epcpn")
 enemy_pool = Array[PackedScene]([ExtResource("15_epcpn")])

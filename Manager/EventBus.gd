@@ -59,3 +59,8 @@ signal skill_world_brief_requested(skill_data: SkillData, target: Node2D)
 signal skill_world_brief_closed()
 
 signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
+
+
+
+# 信号符文
+signal emit_rune_signalA()

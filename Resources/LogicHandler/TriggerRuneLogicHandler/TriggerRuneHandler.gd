@@ -5,6 +5,7 @@ const TRIGGER_LOGIC_MAP : Dictionary = {
 	"key_rbt_hit_trigger_rune" : preload("res://Resources/LogicHandler/TriggerRuneLogicHandler/TriggerRuneLogic/key_rbt_hit_trigger_rune_logic.gd"),
 	"key_space_hit_trigger_rune" : preload("res://Resources/LogicHandler/TriggerRuneLogicHandler/TriggerRuneLogic/key_space_hit_trigger_rune_logic.gd"),
 	"on_hit_trigger_rune" : preload("uid://ko1aa7unvxcf"),
+	"receive_signalA_trigger_rune" : preload("uid://c7mrs7n5cwc8y"),
 }
 
 # 【修改】：增加 blackboard 参数

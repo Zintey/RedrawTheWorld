@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://b2leapfhnl5bh"]
+
+[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_7y83i"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_dpyy6"]
+
+[resource]
+script = ExtResource("1_dpyy6")
+rune_id = "signalA_modifier_rune"
+type = 3
+display_name = "信号A"
+icon = ExtResource("1_7y83i")
+description = "核心符文摧毁时发射信号A
+"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

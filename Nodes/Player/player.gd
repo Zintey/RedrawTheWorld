@@ -46,6 +46,10 @@ func _ready() -> void:
 	
 	EventBus.player_components_ready.emit(health_component, stats_component, inventory_component, skill_component)
 
+	EventBus.emit_rune_signalA.connect(func ():
+		skill_component.post_event("SIGNALA", 0.2)
+	)
+
 func _process(delta: float) -> void:
 	stats_component.fire_facing_left = (rune_emitter.sprites.global_rotation_degrees >= -90.0 
 										and rune_emitter.sprites.global_rotation_degrees < 90.0)

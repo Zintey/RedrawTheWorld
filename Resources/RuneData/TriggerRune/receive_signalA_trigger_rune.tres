@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://bdeuk5jwve3k4"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_q1q28"]
+[ext_resource type="Texture2D" uid="uid://cyfrs35mn5uqd" path="res://Assets/RuneIcon/Temp/rune_icon5.png" id="1_s57ay"]
+
+[resource]
+script = ExtResource("1_q1q28")
+rune_id = "receive_signalA_trigger_rune"
+display_name = "接收信号A"
+icon = ExtResource("1_s57ay")
+metadata/_custom_type_script = "uid://d05jh4768kl1k"
