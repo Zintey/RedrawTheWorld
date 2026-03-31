@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cayp4ycwj1nar"]
+[gd_scene load_steps=13 format=3 uid="uid://cayp4ycwj1nar"]
 
 [ext_resource type="Resource" uid="uid://cfts6hohws0xl" path="res://Resources/Audio/SFX/CoreRune/orb_fire_sfx.tres" id="2_88g7d"]
 [ext_resource type="Shader" uid="uid://tfnce25bmpoe" path="res://Shader/Orb.gdshader" id="2_eermd"]
@@ -6,6 +6,37 @@
 [ext_resource type="Script" uid="uid://b6hti6ohl0h6w" path="res://Nodes/Runes/CoreRunes/ArcaneOrb/ArcaneOrbCoreRune.gd" id="2_y4kjk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4kjk"]
+
+[sub_resource type="Gradient" id="Gradient_eermd"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_88g7d"]
+gradient = SubResource("Gradient_eermd")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.51282054, 0.50427353)
+fill_to = Vector2(0.76353276, 0.35042736)
+
+[sub_resource type="Curve" id="Curve_mhw4c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.40351772), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_if1a3"]
+curve = SubResource("Curve_mhw4c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eermd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 19.0
+angle_min = -232.7
+angle_max = 112.70001
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_if1a3")
+color = Color(0.54901963, 0.83137256, 0.8745098, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_88g7d"]
 shader = ExtResource("2_eermd")
@@ -31,6 +62,13 @@ metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_y4kjk")
 debug_color = Color(0.897163, 0.00019637347, 0.7744937, 0.41960785)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CollisionShape2D"]
+scale = Vector2(0.3333333, 0.3333333)
+amount = 20
+texture = SubResource("GradientTexture2D_88g7d")
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_eermd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 unique_name_in_owner = true

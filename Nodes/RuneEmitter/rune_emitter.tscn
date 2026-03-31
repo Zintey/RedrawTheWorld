@@ -17,10 +17,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/EmitterSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-22, -2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/EmitterSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ihphd"]
 resource_name = "fire"
-length = 0.4
+length = 0.25
 step = 0.075
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -29,10 +53,34 @@ tracks/0/path = NodePath("Sprites/EmitterSprite:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.060000002, 0.120000005, 0.18),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/EmitterSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07762898, 0.17150694),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-22, -2), Vector2(0, -2), Vector2(-22, -2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/EmitterSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.07845729, 0.17276861),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.833), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37kc2"]
@@ -65,13 +113,14 @@ position = Vector2(-22, -2)
 texture = ExtResource("1_ihphd")
 hframes = 4
 
-[node name="EmitterPoint" type="Node2D" parent="Sprites/EmitterSprite"]
-unique_name_in_owner = true
-position = Vector2(-45.29638, 3.5641973)
-
-[node name="RuneSprite" type="Sprite2D" parent="Sprites"]
+[node name="RuneSprite" type="Sprite2D" parent="Sprites/EmitterSprite"]
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
-scale = Vector2(0.3, 0.3)
+position = Vector2(21.999998, 1.9999999)
+scale = Vector2(0.29999998, 0.29999998)
 region_rect = Rect2(116, 0, 116, 114)
+
+[node name="EmitterPoint" type="Node2D" parent="Sprites/EmitterSprite"]
+unique_name_in_owner = true
+position = Vector2(-45.29638, 3.5641973)

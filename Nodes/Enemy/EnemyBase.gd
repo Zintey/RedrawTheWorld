@@ -55,7 +55,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if has_gravity and not is_on_floor():
 		velocity.y += gravity * delta
-
 	# --- 视线(RayCast)遮挡自动检测 ---
 	if is_instance_valid(player_in_range):
 		if check_line_of_sight(player_in_range):
@@ -67,11 +66,14 @@ func _physics_process(delta: float) -> void:
 			if target_body == player_in_range and lose_target_timer.is_stopped():
 				lose_target(player_in_range)
 
-func _on_took_damage(amount: int) -> void:
+func _on_took_damage(amount: int, knockback_force : Vector2) -> void:
 	if health_component.is_dead:
 		return
 	if state_machine and state_machine.current_state.name != "die":
 		state_machine.switch_to("hit")
+		var mat = sprite_2d.material as ShaderMaterial
+		if mat: mat.set_shader_parameter("hit", true)
+		get_tree().create_timer(0.08).timeout.connect(func(): if mat: mat.set_shader_parameter("hit", false))
 
 func _on_died() -> void:
 	remove_from_group("Enemy")

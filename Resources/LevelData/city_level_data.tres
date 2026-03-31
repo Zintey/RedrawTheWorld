@@ -1,8 +1,23 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://cthnsa3cjx77y"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://cthnsa3cjx77y"]
 
 [ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_22enm"]
 [ext_resource type="Texture2D" uid="uid://s01mx5iacrrx" path="res://Assets/UI/icons1.png" id="1_s3iy4"]
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_yhgro"]
+[ext_resource type="AudioStream" uid="uid://lfn0v015xbc3" path="res://Audio/BGM/bgm_battle.wav" id="2_h006l"]
 [ext_resource type="Resource" uid="uid://cc2r5crui014k" path="res://Resources/LevelData/train_level_data.tres" id="2_s3iy4"]
+[ext_resource type="AudioStream" uid="uid://o1mdp2gsxp12" path="res://Audio/BGM/bgm_idle1.wav" id="3_nkbay"]
+
+[sub_resource type="Resource" id="Resource_8kxig"]
+script = ExtResource("1_yhgro")
+stream = ExtResource("2_h006l")
+volume_offset_db = -6.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[sub_resource type="Resource" id="Resource_i3y6t"]
+script = ExtResource("1_yhgro")
+stream = ExtResource("3_nkbay")
+volume_offset_db = -6.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
 
 [resource]
 script = ExtResource("1_22enm")
@@ -14,4 +29,9 @@ self_loop_weight = 50
 next_level_pool = {
 ExtResource("2_s3iy4"): 50
 }
+idle_bgm = SubResource("Resource_i3y6t")
+attack_bgm = SubResource("Resource_8kxig")
+shop_bgm = SubResource("Resource_i3y6t")
+boss_bgm = SubResource("Resource_8kxig")
+special_bgm = SubResource("Resource_i3y6t")
 metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

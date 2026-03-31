@@ -7,7 +7,6 @@ class_name L3Boom
 @export var warning_speed : float = 120.0
 @export var wander_radius : float = 200.0
 @export var boom_distance : float = 50.0
-
 @onready var warn_area: Area2D = %WarnArea
 
 func _ready() -> void:

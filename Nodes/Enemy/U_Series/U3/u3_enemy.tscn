@@ -373,7 +373,7 @@ normal_texture = ExtResource("5_c30w4")
 size = Vector2(20, 44.444447)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk8eb"]
-size = Vector2(800, 80)
+size = Vector2(1500, 80)
 
 [node name="U3Enemy" type="CharacterBody2D"]
 scale = Vector2(1.8, 1.8)

@@ -457,7 +457,7 @@ size = Vector2(41.666668, 38.888893)
 size = Vector2(22, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7e25"]
-size = Vector2(800, 62.222225)
+size = Vector2(1200, 62.222)
 
 [node name="U2Enemy" type="CharacterBody2D"]
 scale = Vector2(1.8, 1.8)

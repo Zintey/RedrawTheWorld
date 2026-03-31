@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
 uniform float curvature : hint_range(0.0, 1.0) = 0.2;
-uniform float scanline_count : hint_range(0.0, 1000.0) = 200.0;
+uniform float scanline_count : hint_range(0.0, 5000.0) = 200.0;
 uniform float scanline_speed : hint_range(0.0, 10.0) = 1.0;
 
 uniform bool is_hit = false;

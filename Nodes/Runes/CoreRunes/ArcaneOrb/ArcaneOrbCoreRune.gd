@@ -47,7 +47,8 @@ func _on_area_entered(area: Area2D) -> void:
     if is_returning or need_penetrate:
         return 
         
-    if rebound_cnt <= 0:
+    # if rebound_cnt <= 0:
+    if area is HurtBox:
         _finish_rune_action()
 
 func _on_body_entered(body: Node2D) -> void:

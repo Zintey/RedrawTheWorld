@@ -32,4 +32,7 @@ ExtResource("2_tbxpx"): 100
 }
 idle_bgm = SubResource("Resource_8fedc")
 attack_bgm = SubResource("Resource_8siqo")
+shop_bgm = SubResource("Resource_8fedc")
+boss_bgm = SubResource("Resource_8siqo")
+special_bgm = SubResource("Resource_8fedc")
 metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

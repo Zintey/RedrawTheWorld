@@ -311,7 +311,7 @@ _data = {
 size = Vector2(22, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rticb"]
-size = Vector2(500, 61.111)
+size = Vector2(587.41, 61.111)
 
 [node name="U1Enemy" type="CharacterBody2D"]
 scale = Vector2(1.8, 1.8)
@@ -363,7 +363,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarnArea"]
-position = Vector2(203.8889, 1.1111107)
+position = Vector2(101.111115, 1.1111107)
 shape = SubResource("RectangleShape2D_rticb")
 
 [node name="HealthComponent" type="Node" parent="."]

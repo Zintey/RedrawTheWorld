@@ -845,7 +845,7 @@ shape = SubResource("RectangleShape2D_7km3q")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -22)
-energy = 0.0
+energy = 0.1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_mrjgt")
 texture_scale = 6.01
@@ -940,7 +940,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExampleNode" type="ExampleNode" parent="."]
-rotation = 2047.1484
+rotation = 4332.326
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

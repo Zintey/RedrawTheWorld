@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://cc2r5crui014k"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=8 format=3 uid="uid://cc2r5crui014k"]
 
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_8nw4k"]
 [ext_resource type="Script" uid="uid://cmuo45ofvu2gx" path="res://Resources/LevelData.gd" id="1_fdpkq"]
 [ext_resource type="Texture2D" uid="uid://c0gotkgx2hfmu" path="res://Assets/UI/icons2.png" id="1_tmfw3"]
+[ext_resource type="AudioStream" uid="uid://lfn0v015xbc3" path="res://Audio/BGM/bgm_battle.wav" id="2_8nruj"]
+[ext_resource type="AudioStream" uid="uid://o1mdp2gsxp12" path="res://Audio/BGM/bgm_idle1.wav" id="3_5t11a"]
+
+[sub_resource type="Resource" id="Resource_f4y3f"]
+script = ExtResource("1_8nw4k")
+stream = ExtResource("2_8nruj")
+volume_offset_db = -6.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[sub_resource type="Resource" id="Resource_qiqd2"]
+script = ExtResource("1_8nw4k")
+stream = ExtResource("3_5t11a")
+volume_offset_db = -6.0
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
 
 [resource]
 script = ExtResource("1_fdpkq")
@@ -10,4 +25,9 @@ level_name = "列车"
 level_icon = ExtResource("1_tmfw3")
 map_prefab_dir = "res://Maps/Level_Train"
 target_rooms = 5
+idle_bgm = SubResource("Resource_qiqd2")
+attack_bgm = SubResource("Resource_f4y3f")
+shop_bgm = SubResource("Resource_qiqd2")
+boss_bgm = SubResource("Resource_f4y3f")
+special_bgm = SubResource("Resource_qiqd2")
 metadata/_custom_type_script = "uid://cmuo45ofvu2gx"

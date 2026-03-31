@@ -13,7 +13,7 @@ rune_id = "tracking_modifier_rune"
 type = 3
 display_name = "追踪符文"
 parameters = {
-"tracking": 1000.0
+"tracking": 10000.0
 }
 icon = SubResource("AtlasTexture_kejfd")
 description = "使发射出去的符文有追踪效果"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://pssblhuk8dch"]
+[gd_scene load_steps=23 format=3 uid="uid://pssblhuk8dch"]
 
 [ext_resource type="Shader" uid="uid://tfnce25bmpoe" path="res://Shader/Orb.gdshader" id="1_g8oqu"]
 [ext_resource type="Texture2D" uid="uid://pqvsnhkxntf4" path="res://Assets/Items/AttackFx/poison_fx.png" id="1_inj42"]
@@ -8,6 +8,37 @@
 [ext_resource type="Script" uid="uid://bkn65boqidp82" path="res://Nodes/Enemy/PoisonOrb/State/OrbOnLandState.gd" id="6_gm6ws"]
 [ext_resource type="Script" uid="uid://bwnc24kxjs3x5" path="res://Nodes/Enemy/PoisonOrb/State/OrbEndState.gd" id="7_ng8lp"]
 [ext_resource type="Script" uid="uid://b6j1ysvtpyg80" path="res://Components/Attack/HitBox.gd" id="8_gm6ws"]
+
+[sub_resource type="Gradient" id="Gradient_eermd"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gm6ws"]
+gradient = SubResource("Gradient_eermd")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.51282054, 0.50427353)
+fill_to = Vector2(0.76353276, 0.35042736)
+
+[sub_resource type="Curve" id="Curve_ng8lp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.40351772), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m4gnl"]
+curve = SubResource("Curve_ng8lp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pquet"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 19.0
+angle_min = -232.7
+angle_max = 112.70001
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_m4gnl")
+color = Color(2.0214916e-06, 0.9138871, 0.6443472, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qpbo1"]
 shader = ExtResource("1_g8oqu")
@@ -141,6 +172,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(48, 12)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GPUParticles2D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("GPUParticles2D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8oqu"]
 size = Vector2(48, 12)
@@ -272,6 +327,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(0, -7)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GPUParticles2D:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("GPUParticles2D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_qpbo1"]
 resource_name = "on_land"
@@ -386,6 +465,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [true, false, true, false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles2D:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GPUParticles2D:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_inj42"]
 resource_name = "start"
@@ -487,6 +590,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(-15, 0), Vector2(1, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GPUParticles2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.34),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g8oqu"]
 _data = {
@@ -500,6 +627,15 @@ _data = {
 collision_layer = 4
 collision_mask = 32
 script = ExtResource("1_qpbo1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+scale = Vector2(0.3333333, 0.3333333)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_gm6ws")
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_pquet")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
