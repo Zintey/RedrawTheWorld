@@ -14,3 +14,18 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# 忽略 C++ 编译中间产物
+*.obj
+*.exp
+*.lib
+*.pdb
+.sconsign.dblite
+godot-cpp/  # 如果你没用子模块，必须忽略它；如果用了，Git会自动处理
+
+# 忽略临时 DLL 文件
+bin/~*
+
+# 忽略 IDE 的本地缓存文件夹
+.vs/
+.vscode/

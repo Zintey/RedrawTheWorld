@@ -1,0 +1,17 @@
+[configuration]
+entry_symbol = "redraw_library_init"
+compatibility_minimum = 4.5
+reloadable = true
+
+[libraries]
+; 匹配 Godot 编辑器环境
+windows.editor.x86_64 = "res://bin/libredraw.windows.template_debug.x86_64.dll"
+
+; 匹配游戏调试运行环境
+windows.debug.x86_64 = "res://bin/libredraw.windows.template_debug.x86_64.dll"
+
+; 匹配游戏最终打包发布的 Release 环境
+windows.release.x86_64 = "res://bin/libredraw.windows.template_release.x86_64.dll"
+
+; 终极兜底方案，如果引擎只认系统架构，就用这条
+windows.x86_64 = "res://bin/libredraw.windows.template_debug.x86_64.dll"
