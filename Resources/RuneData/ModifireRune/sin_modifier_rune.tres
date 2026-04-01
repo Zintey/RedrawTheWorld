@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://13yg12x8jsha"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_d2qbw"]
+[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_kxofh"]
+
+[resource]
+script = ExtResource("1_d2qbw")
+rune_id = "sin_modifier_rune"
+type = 3
+display_name = "正弦化符文"
+parameters = {
+"amount": 1000.0
+}
+icon = ExtResource("1_kxofh")
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

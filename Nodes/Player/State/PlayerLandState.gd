@@ -6,6 +6,8 @@ const DUST_SCENE : PackedScene = preload("res://Nodes/Items/Dust/Dust.tscn")
 func enter() -> void:
 	player.last_on_floor_position = player.global_position
 	player.animation_player.play("Kaer/land")
+
+	player.skill_component.post_event("Landing", 0.1)
 	player.stats_component.can_jump = true
 	var dust :Node2D = DUST_SCENE.instantiate()
 	dust.global_position = player.global_position

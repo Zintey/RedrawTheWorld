@@ -11,7 +11,7 @@ var die = false
 func _start_action():
     # audio_stream_player.play()
     AudioManager.play_sfx(orb_fire_sfx)
-    var timer = get_tree().create_timer(0.5, false)
+    var timer = get_tree().create_timer(life_time * life_time_mul, false)
     timer.timeout.connect(_finish_rune_action)
     EventBus.camera_shake.emit(Vector2(20.0,20.0),0.2)
 
@@ -37,12 +37,14 @@ func _finish_rune_action():
     velocity = Vector2.ZERO
     
     try_emit_teleport_signal()
+    bigger_multiple = 1.0
     animated_sprite_2d.play("End")
     
     await animated_sprite_2d.animation_finished
     super._finish_rune_action()
 
 func _on_area_entered(area: Area2D) -> void:
+    super(area)
     # 【穿透核心】：处于回旋状态，或者带有穿透符文时，直接免疫销毁，切豆腐一样穿过去！
     if is_returning or need_penetrate:
         return 
@@ -52,6 +54,7 @@ func _on_area_entered(area: Area2D) -> void:
         _finish_rune_action()
 
 func _on_body_entered(body: Node2D) -> void:
+    super(body)
     # 【穿透核心】：处于回旋状态，或者带有穿透符文时，直接免疫销毁，切豆腐一样穿过去！
     if is_returning or need_penetrate:
         return 

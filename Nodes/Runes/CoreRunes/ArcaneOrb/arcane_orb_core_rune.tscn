@@ -13,8 +13,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_88g7d"]
 gradient = SubResource("Gradient_eermd")
-width = 32
-height = 32
+width = 16
+height = 16
 fill = 1
 fill_from = Vector2(0.51282054, 0.50427353)
 fill_to = Vector2(0.76353276, 0.35042736)
@@ -36,7 +36,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.59999996
 scale_max = 1.1999999
 scale_curve = SubResource("CurveTexture_if1a3")
-color = Color(0.54901963, 0.83137256, 0.8745098, 1)
+color = Color(0.49, 0.93200004, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_88g7d"]
 shader = ExtResource("2_eermd")
@@ -55,7 +55,9 @@ collision_layer = 8
 collision_mask = 48
 script = ExtResource("2_y4kjk")
 orb_fire_sfx = ExtResource("2_88g7d")
-speed = 1200.0
+speed = 800.0
+life_time = 0.6
+bigger_multiple_base = 2.0
 metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -65,7 +67,7 @@ debug_color = Color(0.897163, 0.00019637347, 0.7744937, 0.41960785)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CollisionShape2D"]
 scale = Vector2(0.3333333, 0.3333333)
-amount = 20
+amount = 10
 texture = SubResource("GradientTexture2D_88g7d")
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_eermd")

@@ -18,7 +18,7 @@ func take_unhandled_input(event: InputEvent) -> void:
 	super.take_unhandled_input(event)
 
 func take_physics_process(delta: float) -> void:
-	
+	player.skill_component.post_event("hanging", 0.1)
 	super.take_physics_process(delta)
 
 func take_process(delta : float) -> void:

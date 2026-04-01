@@ -5,7 +5,7 @@ class_name SkillComponent extends Node
 @export var inventory_component : InventoryComponent
 
 var skill_list : Array[SkillData]
-var trigger_rune_handler : TriggerRuneHandler
+# var trigger_rune_handler : TriggerRuneHandler
 
 # 【新增：黑板与CD系统】
 var blackboard : Dictionary = {}	  # 记录当前发生的事件及剩余缓冲时间
@@ -21,7 +21,7 @@ func _ready() -> void:
 	else:
 		skill_list = inventory_component.equipped_skills
 
-	trigger_rune_handler = TriggerRuneHandler.new()
+	# trigger_rune_handler = TriggerRuneHandler.new()
 
 # 【新增】：向黑板发布事件（贴便签）
 func post_event(event_name: String, duration: float) -> void:
@@ -111,8 +111,9 @@ func check_skill_triggered(skill : SkillData) -> bool:
 		if trigger_rune == null: continue
 		
 		# 将黑板字典传给逻辑处理器
-		var is_rune_trigger : bool = trigger_rune_handler.check_is_rune_triggered(trigger_rune, blackboard, skill_owner)
-		
+		# var is_rune_trigger : bool = trigger_rune_handler.check_is_rune_triggered(trigger_rune, blackboard, skill_owner)
+		var is_rune_trigger : bool = blackboard.has(trigger_rune.blackboard)
+
 		if skill.type == skill.SkillType.AND_TRIGGER:
 			is_skill_trigger = is_skill_trigger and is_rune_trigger
 		elif skill.type == skill.SkillType.OR_TRIGGER:
@@ -125,8 +126,11 @@ func check_skill_triggered(skill : SkillData) -> bool:
 		# 【修复 2：精力扣除 Bug】算出最终消耗，扣除时严格带上倍率！
 		var final_cost = skill_stamina_cost * skill_stamina_cost_multiple
 		
-		if is_skill_trigger and stats_component.current_stamina >= final_cost:
-			stats_component.reduce_stamina(final_cost) # 这里终于乘上倍率了！
-			return true
+		if is_skill_trigger:
+			if stats_component.current_stamina >= final_cost:
+				stats_component.reduce_stamina(final_cost) 
+				return true
+			else:
+				post_event("stamina_empty", 0.1)
 			
 	return false

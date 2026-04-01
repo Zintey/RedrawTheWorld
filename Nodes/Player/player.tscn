@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dgr6uyhq4pdl2"]
+[gd_scene load_steps=73 format=3 uid="uid://dgr6uyhq4pdl2"]
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
@@ -45,7 +45,14 @@
 [ext_resource type="Resource" uid="uid://bynw861y3gjbt" path="res://Resources/SkillData/ordinary_skill_template.tres" id="40_w7kum"]
 [ext_resource type="Resource" uid="uid://b2leapfhnl5bh" path="res://Resources/RuneData/ModifireRune/signalA_modifier_rune.tres" id="41_u6xjn"]
 [ext_resource type="Resource" uid="uid://bwdmgdr5ecjra" path="res://Resources/RuneData/CoreRune/pulse_core_rune.tres" id="41_uwi3s"]
+[ext_resource type="Resource" uid="uid://bht1eg7ylebk4" path="res://Resources/RuneData/TriggerRune/empty_trigger_rune.tres" id="42_y2jqc"]
+[ext_resource type="Resource" uid="uid://cobqykkjp2je6" path="res://Resources/RuneData/TriggerRune/hang_trigger_rune.tres" id="43_3deu0"]
+[ext_resource type="Resource" uid="uid://dre6yj0swsrt2" path="res://Resources/RuneData/ModifireRune/absorb_modifier_rune.tres" id="44_3deu0"]
 [ext_resource type="Resource" uid="uid://bjoc2hm2do8y8" path="res://Resources/SkillData/lost_skill_template.tres" id="44_u6xjn"]
+[ext_resource type="Resource" uid="uid://dmmhtsqbi5l25" path="res://Resources/RuneData/TriggerRune/landing_trigger_rune.tres" id="45_o80yi"]
+[ext_resource type="Resource" uid="uid://xj17n7uubwi8" path="res://Resources/RuneData/ModifireRune/bigger_modifier_rune.tres" id="46_0uqe3"]
+[ext_resource type="Resource" uid="uid://d1rjiv77q43dk" path="res://Resources/RuneData/ModifireRune/extend_life_modifier_rune.tres" id="47_ggcla"]
+[ext_resource type="Resource" uid="uid://13yg12x8jsha" path="res://Resources/RuneData/ModifireRune/sin_modifier_rune.tres" id="48_xhobd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7km3q"]
 radius = 8.0
@@ -918,7 +925,7 @@ metadata/_custom_type_script = "uid://b7cpenmly2med"
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("22_owx2l")
 rune_count = 50
-all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("25_gcfxi"), ExtResource("30_rgjfc"), ExtResource("30_rgjfc"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah"), ExtResource("41_uwi3s"), ExtResource("40_uwi3s"), ExtResource("41_u6xjn")])
+all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah"), ExtResource("41_uwi3s"), ExtResource("40_uwi3s"), ExtResource("41_u6xjn"), ExtResource("42_y2jqc"), ExtResource("43_3deu0"), ExtResource("44_3deu0"), ExtResource("45_o80yi"), ExtResource("46_0uqe3"), ExtResource("46_0uqe3"), ExtResource("47_ggcla"), ExtResource("48_xhobd")])
 equipped_skills = Array[ExtResource("23_cr8vb")]([ExtResource("40_w7kum"), ExtResource("44_u6xjn")])
 metadata/_custom_type_script = "uid://4twnrh5cup0w"
 
@@ -940,7 +947,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExampleNode" type="ExampleNode" parent="."]
-rotation = 4332.326
+rotation = 17347.836
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

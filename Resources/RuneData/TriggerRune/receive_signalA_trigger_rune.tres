@@ -7,5 +7,6 @@
 script = ExtResource("1_q1q28")
 rune_id = "receive_signalA_trigger_rune"
 display_name = "接收信号A"
+blackboard = "SIGNALA"
 icon = ExtResource("1_s57ay")
 metadata/_custom_type_script = "uid://d05jh4768kl1k"

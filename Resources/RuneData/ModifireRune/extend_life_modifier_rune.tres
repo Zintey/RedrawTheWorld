@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://d1rjiv77q43dk"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_maroa"]
+[ext_resource type="Texture2D" uid="uid://cyu4wf2hfvgfb" path="res://Assets/RuneIcon/Temp/rune_icon2.png" id="1_usg45"]
+
+[resource]
+script = ExtResource("1_maroa")
+rune_id = "extend_life_modifier_rune"
+type = 3
+display_name = "延时符文"
+parameters = {
+"extenging_amount": 0.5
+}
+icon = ExtResource("1_usg45")
+description = "核心存在时间延长 0.5 倍
+"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

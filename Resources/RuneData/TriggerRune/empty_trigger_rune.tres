@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://bht1eg7ylebk4"]
+
+[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_7oj51"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_ciegu"]
+
+[resource]
+script = ExtResource("1_ciegu")
+rune_id = "empty_trigger_rune"
+display_name = "空仓触发符文"
+blackboard = "stamina_empty"
+stamina_cost = -10.0
+cooldown_add = 10.0
+icon = ExtResource("1_7oj51")
+description = "当尝试释放任何技能精力不够时触发"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

@@ -2,7 +2,7 @@ class_name CoreRuneBase extends HitBox
 
 const PROBE_DISTANCE : float = 5.0 
 const MIN_SPEED_EPS: float = 0.0001
-const CATCH_DISTANCE: float = 20.0 # 判定接住回旋镖的距离
+const CATCH_DISTANCE: float = 30.0 # 判定接住回旋镖的距离
 
 var modifier_handler : ModifierRuneHandler
 var caster: PhysicsBody2D
@@ -14,6 +14,10 @@ var velocity_direction: Vector2 = Vector2.RIGHT
 var velocity : Vector2 = Vector2.RIGHT * 1.0
 var speed_mul: float = 1.0
 var effect_list: Dictionary = {}
+
+# 生命时间
+@export var life_time : float = 0.5
+var life_time_mul : float = 1.0
 
 # 传送
 var is_teleport : bool = false
@@ -48,14 +52,36 @@ var is_returning : bool = false
 var can_penetrate : bool = true
 var need_penetrate : bool = false
 
+# 击中回能
+var absorb_stamina : int = 0
+
+# 巨大化
+@export var bigger_multiple_base : float = 1.0
+var bigger_multiple : float = 1.0
+var bigger_timer : Timer
+
+# 正弦化移动
+var sin_moving_amount : float = 0.0
+var sin_moving_dir : Vector2
+var sin_moving_time : float = 0.0    # 用来控制正弦运动 
+
 func _ready() -> void:
     ray_cast = RayCast2D.new()
     ray_cast.target_position = Vector2.RIGHT * PROBE_DISTANCE
     ray_cast.collision_mask = 1 << 5
     ray_cast.collide_with_areas = true 
     ray_cast.collide_with_bodies = true 
+    ray_cast.hit_from_inside = true
     ray_cast.enabled = true
     add_child(ray_cast)
+
+    # 巨大化
+    bigger_timer = Timer.new()
+    bigger_timer.wait_time = 0.01
+    bigger_timer.one_shot = false
+    add_child(bigger_timer)
+    bigger_timer.timeout.connect(func (): scale *= bigger_multiple)
+    bigger_timer.start()
 
 func init(_data: RuneData, _caster: Node2D, _modifiers: Array[RuneData]):
     self.core_rune_data = _data
@@ -95,6 +121,7 @@ func init(_data: RuneData, _caster: Node2D, _modifiers: Array[RuneData]):
                 clone.call_deferred("init", _data, _caster, _modifiers)
 
     velocity = velocity_direction * speed * speed_mul
+    sin_moving_dir = velocity.rotated(PI / 2).normalized()
     rotation = velocity_direction.angle()
 
     _start_action()
@@ -121,12 +148,20 @@ func try_emit_teleport_signal():
         else:
             EventBus.player_teleport_request.emit(teleport_point.global_position)
 
+func _on_area_entered(area: Area2D) -> void:
+    print("enter")
+    if area is HurtBox:
+        caster.stats_component.recover_stamina(absorb_stamina)
+
+func _on_body_entered(body: Node2D) -> void:
+    pass
+
 func _finish_rune_action():
     if can_swirl and need_swirl and not is_returning:
         is_returning = true
         ray_cast.enabled = false 
         return
-        
+
     queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -142,6 +177,8 @@ func _physics_process(delta: float) -> void:
             return
             
         velocity = dir_to_target.normalized() * (speed * speed_mul * swirl_speed_multiplier)
+
+
         
     # ==================== 正常飞行状态 ====================
     else:
@@ -175,6 +212,11 @@ func _physics_process(delta: float) -> void:
                 velocity = velocity.bounce(normal)
                 global_position += normal * 0.6 
 
-    if velocity.length() > MIN_SPEED_EPS:
-        rotation = velocity.angle()
-    global_position += velocity * delta
+    var final_velocity : Vector2 = velocity
+    final_velocity += sin_moving_amount * sin_moving_dir * sin(sin_moving_time * 30)
+    final_velocity = final_velocity.normalized() * velocity.length()
+    sin_moving_time += delta
+
+    if final_velocity.length() > MIN_SPEED_EPS:
+        rotation = final_velocity.angle()
+    global_position += final_velocity * delta

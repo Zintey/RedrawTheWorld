@@ -9,13 +9,14 @@ var die = false
 
 func _start_action():
     audio_stream_player.play()
+    var timer = get_tree().create_timer(life_time * life_time_mul, false)
+    timer.timeout.connect(_finish_rune_action)
     await animation_player.animation_finished
-    
     if !die:
         animation_player.play("idle")
 
-    await animation_player.animation_finished
-    _finish_rune_action()
+    # await animation_player.animation_finished
+    # _finish_rune_action()
 
 func _finish_rune_action():
     if can_swirl and need_swirl and not is_returning:
@@ -35,6 +36,7 @@ func _finish_rune_action():
     velocity = Vector2.ZERO
     
     try_emit_teleport_signal()
+    bigger_multiple = 1.0
     animation_player.play("end")
     await animation_player.animation_finished
     super._finish_rune_action() 

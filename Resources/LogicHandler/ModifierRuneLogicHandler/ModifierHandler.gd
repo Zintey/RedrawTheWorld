@@ -12,6 +12,10 @@ const MODIFIER_LOGIC_MAP : Dictionary = {
 	"swirl_modifier_rune" : preload("uid://c5gaixmdqp6gm"),
 	"penetrate_modifier_rune" : preload("uid://cxwim0182c2h5"),
 	"signalA_modifier_rune" : preload("uid://bff4i1ckocp0q"),
+	"absorb_modifier_rune" : preload("uid://c2hde47300pr8"),
+	"bigger_modifier_rune" : preload("uid://c00u7xdvklvl4"),
+	"extend_life_modifier_rune" : preload("uid://diwai34e80yuq"),
+	"sin_modifier_rune" : preload("uid://srojhssga1sm"),
 }
 
 

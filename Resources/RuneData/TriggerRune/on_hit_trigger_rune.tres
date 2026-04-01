@@ -10,7 +10,8 @@ region = Rect2(464, 0, 116, 0)
 [resource]
 script = ExtResource("2_46jsr")
 rune_id = "on_hit_trigger_rune"
-display_name = "按键触发符文"
+display_name = "受击触发符文"
+blackboard = "took_damage"
 icon = SubResource("AtlasTexture_46jsr")
 description = "键盘空格键 
 按下时将激活该符文所在的技能"

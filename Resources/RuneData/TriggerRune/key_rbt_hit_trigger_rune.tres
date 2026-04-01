@@ -11,6 +11,7 @@ region = Rect2(1044, 0, 116, 114)
 script = ExtResource("1_f7c0v")
 rune_id = "key_rbt_hit_trigger_rune"
 display_name = "按键触发符文"
+blackboard = "RMB"
 icon = SubResource("AtlasTexture_bl1vc")
 description = "鼠标右键
 按下时将激活该符文所在的技能"

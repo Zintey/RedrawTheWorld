@@ -36,6 +36,7 @@ func take_damage(amount: int, knockback_force : Vector2) -> void:
 		health_component.decrease_hp(amount)
 		if collision_layer == (1 << 4):
 			Engine.time_scale = 0.05
+			print("frezze time")
 			AudioManager.play_sfx(preload("uid://b5cjlus3fk7wm"))
 			get_tree().create_timer(0.08, true, false, true).timeout.connect(func () : Engine.time_scale = 1.0)
 		

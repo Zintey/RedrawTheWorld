@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://dmmhtsqbi5l25"]
+
+[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_kwfdc"]
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_6j2xm"]
+
+[resource]
+script = ExtResource("2_6j2xm")
+rune_id = "landing_trigger_rune"
+display_name = "着陆触发符文"
+blackboard = "Landing"
+icon = ExtResource("1_kwfdc")
+description = "当装备者着陆时触发"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"

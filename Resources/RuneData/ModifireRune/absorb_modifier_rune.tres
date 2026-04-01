@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://dre6yj0swsrt2"]
+
+[ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_a4g1h"]
+[ext_resource type="Texture2D" uid="uid://dkx6pkw2t4lvv" path="res://Assets/RuneIcon/Temp/rune_icon7.png" id="1_xnh36"]
+
+[resource]
+script = ExtResource("1_a4g1h")
+rune_id = "absorb_modifier_rune"
+type = 3
+display_name = "吸能符文"
+stamina_cost = 3.0
+parameters = {
+"absorb_amount": 4
+}
+icon = ExtResource("1_xnh36")
+description = "打中敌人将吸取4点能量"
+metadata/_custom_type_script = "uid://d05jh4768kl1k"
