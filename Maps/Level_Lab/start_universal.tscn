@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://4flmkxwrkb50"]
+[gd_scene load_steps=92 format=4 uid="uid://4flmkxwrkb50"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://dykyq7we5n5b1" path="res://Nodes/Interactable/RuneDropEntity/rune_drop_entity.tscn" id="42_bb57q"]
 [ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="43_bb57q"]
 [ext_resource type="Resource" uid="uid://cobqykkjp2je6" path="res://Resources/RuneData/TriggerRune/hang_trigger_rune.tres" id="43_hbds7"]
+[ext_resource type="PackedScene" uid="uid://cqk58ahudm61x" path="res://Nodes/Interactable/Health/heart_drop.tscn" id="44_bb57q"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -1168,3 +1169,6 @@ position = Vector2(445, 429)
 [node name="RuneDropEntity" parent="." instance=ExtResource("42_bb57q")]
 position = Vector2(677, 329)
 rune_data = ExtResource("43_hbds7")
+
+[node name="HeartDrop" parent="." instance=ExtResource("44_bb57q")]
+position = Vector2(349, 419)

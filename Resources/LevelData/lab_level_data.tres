@@ -25,8 +25,7 @@ level_id = "level_lab"
 level_name = "巴别塔"
 level_icon = ExtResource("1_tbxpx")
 map_prefab_dir = "res://Maps/Level_Lab"
-target_rooms = 8
-tolerance = 5
+target_rooms = 6
 next_level_pool = {
 ExtResource("2_tbxpx"): 100
 }

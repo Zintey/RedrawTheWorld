@@ -26,10 +26,12 @@ func decrease_hp(amount: float) -> void:
 		is_dead = true
 		died.emit()
 
-func recover_hp(amount: float) -> void:
+func recover_hp(amount: float) -> bool:
 	if is_dead:
-		return
-		
+		return false
+	if current_hp >= max_hp:
+		return false
 	current_hp += amount
 	current_hp = min(max_hp, current_hp)
 	hp_changed.emit(current_hp, max_hp)
+	return true

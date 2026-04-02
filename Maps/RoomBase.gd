@@ -2,6 +2,8 @@
 extends Node2D
 class_name RoomBase
 
+
+
 signal player_entered_room(room: RoomBase)
 signal combat_started
 signal combat_ended
@@ -39,8 +41,7 @@ var room_type: String = "Normal"
 @export var wave_interval: float = 0.0
 
 @export_group("Reward Config")
-@export var reward_pool: Array[PackedScene] = []
-@export var reward_chance: float = 1.0
+@export var drop_configs: Array[DropConfig] = []
 @export var drop_spawn_point: Node2D
 
 @export_group("DoorConfig")
@@ -69,7 +70,6 @@ var spawners_root: Node2D
 # ==========================================
 func _enter_tree():
 	if Engine.is_editor_hint():
-		# 创建一个专门用于在编辑器里画图的节点，并置于100层防遮挡！
 		if not editor_gizmo:
 			editor_gizmo = Node2D.new()
 			editor_gizmo.z_index = 100 
@@ -198,14 +198,13 @@ func calculate_boundary() -> void:
 	boundary.top    = used.position.y * ts.y
 	boundary.bottom = used.end.y      * ts.y
 
-# 【修改】：不再接收外部强制传参，房间只用自己面板上设置的 base_unit_tiles！
 func setup_doors_by_slots(required_doors: Array) -> void:
 	if Engine.is_editor_hint(): return
 	if not tile_map_layer: return
 	await get_tree().process_frame
 	
 	var all_cleared: Array[Vector2i] = []
-	var unit_tiles = base_unit_tiles # 取自身的配置参数
+	var unit_tiles = base_unit_tiles
 	
 	for req in required_doors:
 		var start_x = req.local_pos.x * unit_tiles.x
@@ -213,7 +212,6 @@ func setup_doors_by_slots(required_doors: Array) -> void:
 		var cells: Array[Vector2i] = []
 		var door_pos_tile: Vector2i
 		
-		# 精准计算瓦片起始点
 		match req.dir:
 			"U":
 				door_pos_tile = Vector2i(start_x + unit_tiles.x / 2 - door_width_tiles / 2, start_y)
@@ -238,18 +236,14 @@ func setup_doors_by_slots(required_doors: Array) -> void:
 		
 		_place_door_instance(door_pos_tile, req.dir)
 
-	# if Engine.has_meta("BetterTerrain"):
-	# 	var bt = get_tree().get_first_node_in_group("BetterTerrain")
-	# 	if bt: bt.update_terrain_cells(tile_map_layer, all_cleared)
 	var cells_to_update: Array[Vector2i] = []
 	for cell in all_cleared:
 		cells_to_update.append(cell)
-		cells_to_update.append(cell + Vector2i(1, 0))  # 右邻居
-		cells_to_update.append(cell + Vector2i(-1, 0)) # 左邻居
-		cells_to_update.append(cell + Vector2i(0, 1))  # 下邻居
-		cells_to_update.append(cell + Vector2i(0, -1)) # 上邻居
+		cells_to_update.append(cell + Vector2i(1, 0))  
+		cells_to_update.append(cell + Vector2i(-1, 0)) 
+		cells_to_update.append(cell + Vector2i(0, 1))  
+		cells_to_update.append(cell + Vector2i(0, -1)) 
 		
-	# 2. 直接调用 BetterTerrain 单例强制更新它们
 	if has_node("/root/BetterTerrain"):
 		BetterTerrain.update_terrain_cells(tile_map_layer, cells_to_update)
 
@@ -258,7 +252,6 @@ func _place_door_instance(door_pos_tile: Vector2i, dir: String) -> void:
 	var door_inst = door_scene.instantiate()
 	add_child(door_inst)
 	
-	# 【完美恢复】：计算精确的偏移量 pivot_offset
 	var door_local_pos = tile_map_layer.position + tile_map_layer.map_to_local(door_pos_tile)
 	var pivot_offset := Vector2(0, -64) 
 	
@@ -274,7 +267,6 @@ func _place_door_instance(door_pos_tile: Vector2i, dir: String) -> void:
 			
 	door_inst.position = door_local_pos
 	
-	# 【完美修复】：使用 call_deferred 避开节点初始化的生命周期抢跑陷阱
 	if door_inst.has_method("open"):
 		instantiated_doors.append(door_inst)
 		if current_state == RoomState.UNVISITED or current_state == RoomState.CLEARED:
@@ -308,7 +300,6 @@ func _lock_room() -> void:
 		if door.has_method("close"): door.close(true) 
 
 func _unlock_room() -> void:
-	
 	match room_type.to_lower():
 		"shop": AudioManager.play_bgm(GameManager.current_level_data.shop_bgm)
 		_: AudioManager.play_bgm(GameManager.current_level_data.idle_bgm)
@@ -358,24 +349,27 @@ func _check_wave_cleared() -> void:
 	_start_next_wave()
 
 func spawn_rewards() -> void:
-	if reward_pool.is_empty() or randf() > reward_chance: return
-		
-	var reward_scene = reward_pool.pick_random()
-	if reward_scene:
-		var reward_inst = reward_scene.instantiate()
-		add_child(reward_inst)
-
-		var spawn_pos: Vector2
-		if drop_spawn_point:
-			spawn_pos = to_local(drop_spawn_point.global_position)
-		else:
-			var center_x = (boundary.left + boundary.right) / 2.0
-			var center_y = (boundary.top + boundary.bottom) / 2.0
-			spawn_pos = tile_map_layer.map_to_local(tile_map_layer.local_to_map(Vector2(center_x, center_y)))
+	if drop_configs.is_empty(): return
+	
+	for config in drop_configs:
+		if not config or not config.item_scene:
+			continue
 			
-		reward_inst.position = spawn_pos
-		if reward_inst is RigidBody2D:
-			var random_angle = randf_range(-PI * 0.75, -PI * 0.25)
-			var throw_force = randf_range(400.0, 600.0) 
-			var impulse = Vector2(cos(random_angle), sin(random_angle)) * throw_force
-			reward_inst.apply_central_impulse(impulse)
+		if GameManager.drop_rng.randf() <= config.drop_chance:
+			var reward_inst = config.item_scene.instantiate()
+			add_child(reward_inst)
+
+			var spawn_pos: Vector2
+			if drop_spawn_point:
+				spawn_pos = to_local(drop_spawn_point.global_position)
+			else:
+				var center_x = (boundary.left + boundary.right) / 2.0
+				var center_y = (boundary.top + boundary.bottom) / 2.0
+				spawn_pos = tile_map_layer.map_to_local(tile_map_layer.local_to_map(Vector2(center_x, center_y)))
+				
+			reward_inst.position = spawn_pos
+			if reward_inst is RigidBody2D:
+				var random_angle = GameManager.drop_rng.randf_range(-PI * 0.75, -PI * 0.25)
+				var throw_force = GameManager.drop_rng.randf_range(400.0, 600.0) 
+				var impulse = Vector2(cos(random_angle), sin(random_angle)) * throw_force
+				reward_inst.apply_central_impulse(impulse)

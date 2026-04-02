@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqk58ahudm61x"]
+
+[ext_resource type="PackedScene" uid="uid://c1qtj80jmmyqi" path="res://Nodes/Interactable/pick_item.tscn" id="1_k8lda"]
+[ext_resource type="Texture2D" uid="uid://beejbdepndqok" path="res://Assets/Items/health_drop_animation.png" id="2_djgo1"]
+[ext_resource type="Script" uid="uid://hwsn0mp4e7md" path="res://Resources/Items/HeartDropData.gd" id="2_hv3ox"]
+
+[sub_resource type="Resource" id="Resource_801vt"]
+script = ExtResource("2_hv3ox")
+metadata/_custom_type_script = "uid://hwsn0mp4e7md"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djgo1"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv3ox"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_801vt"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyg0o"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gspk"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2pjo"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlqav"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu4r1"]
+atlas = ExtResource("2_djgo1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25vnq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djgo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv3ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_801vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyg0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gspk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2pjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlqav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu4r1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="HeartDrop" instance=ExtResource("1_k8lda")]
+item_data = SubResource("Resource_801vt")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_25vnq")
+autoplay = "default"
+frame_progress = 0.87130487
