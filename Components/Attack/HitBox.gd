@@ -2,7 +2,7 @@ extends Area2D
 class_name HitBox
 
 ## 造成的伤害值
-@export var damage: int = 1
+@export var damage: float = 0.5
 ## 预留：击退力度（以后做受击击退时很有用）
 @export var knockback_force: float = 1000.0
 

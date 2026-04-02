@@ -32,21 +32,20 @@ func _on_unfocused() -> void:
 	EventBus.skill_world_brief_closed.emit()
 
 func _on_interacted(interactor: Node2D) -> void:
-	var inventory = interactor.get_node_or_null("InventoryComponent")
-	if inventory:
-		if inventory.add_skill(skill_data):
-			# 拾取成功，呼叫 EventBus 关闭 UI
-			EventBus.skill_world_brief_closed.emit()
-			
-			freeze = true 
-			interactable_area.queue_free() 
-			
-			var tween = create_tween()
-			tween.tween_property(sprite, "scale", Vector2.ZERO, 0.2)
-			tween.parallel().tween_property(sprite, "global_position", interactor.global_position, 0.2)
-			tween.tween_callback(queue_free)
-		else:
-			_show_dynamic_floating_text("工作台已满！", Color(1.0, 0.2, 0.2))
+
+	if skill_data.apply_effect(interactor):
+		# 拾取成功，呼叫 EventBus 关闭 UI
+		EventBus.skill_world_brief_closed.emit()
+		
+		freeze = true 
+		interactable_area.queue_free() 
+		
+		var tween = create_tween()
+		tween.tween_property(sprite, "scale", Vector2.ZERO, 0.2)
+		tween.parallel().tween_property(sprite, "global_position", interactor.global_position, 0.2)
+		tween.tween_callback(queue_free)
+	else:
+		_show_dynamic_floating_text("工作台已满！", Color(1.0, 0.2, 0.2))
 
 # 【极客函数】：凭空捏造一个漂浮文字，用完即毁
 func _show_dynamic_floating_text(msg: String, text_color: Color) -> void:

@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			if target_body == player_in_range and lose_target_timer.is_stopped():
 				lose_target(player_in_range)
 
-func _on_took_damage(amount: int, knockback_force : Vector2) -> void:
+func _on_took_damage(amount: float, knockback_force : Vector2) -> void:
 	if health_component.is_dead:
 		return
 	if state_machine and state_machine.current_state.name != "die":

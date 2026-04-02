@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dosi5waexdmnh"]
+
+[ext_resource type="Texture2D" uid="uid://b73ark2gk2q1" path="res://Assets/Items/coin1.png" id="1_4c33l"]
+[ext_resource type="Script" uid="uid://dv74b2nwa1cu7" path="res://Resources/ItemData.gd" id="1_u0bq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayl0e"]
+atlas = ExtResource("1_4c33l")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_u0bq6")
+item_name = "coin_normal"
+icon = SubResource("AtlasTexture_ayl0e")
+metadata/_custom_type_script = "uid://dv74b2nwa1cu7"

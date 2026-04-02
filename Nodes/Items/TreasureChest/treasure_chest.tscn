@@ -45,10 +45,8 @@ func open_chest() -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4fik"]
 size = Vector2(34, 15.5)
 
-[sub_resource type="Animation" id="Animation_1xmvu"]
-resource_name = "idle"
-length = 0.03333667
-step = 0.05
+[sub_resource type="Animation" id="Animation_74uaq"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,8 +96,10 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_74uaq"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_1xmvu"]
+resource_name = "idle"
+length = 0.03333667
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -213,7 +213,7 @@ _data = {
 size = Vector2(108.5, 66.5)
 
 [node name="TreasureChest" type="RigidBody2D"]
-collision_layer = 32
+collision_layer = 0
 collision_mask = 32
 script = SubResource("GDScript_1xmvu")
 

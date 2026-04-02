@@ -97,7 +97,7 @@ func drop_through_platform() -> void:
 
 
 # --- 战斗、状态与事件响应逻辑 ---
-func _on_took_damage(amount: int, knockback_force : Vector2) -> void:
+func _on_took_damage(amount: float, knockback_force : Vector2) -> void:
 	if health_component.is_dead:
 		return
 

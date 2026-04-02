@@ -1,7 +1,7 @@
 extends Area2D
 class_name HurtBox
 
-signal took_damage(amount: int, knockback_force : Vector2)
+signal took_damage(amount: float, knockback_force : Vector2)
 
 @export var health_component: HealthComponent
 @export var is_invincible: bool = false
@@ -30,7 +30,7 @@ func _on_area_entered(area: Area2D) -> void:
 	# else:
 		# print("   -> 失败：撞上来的 ", area.name, " 不是 HitBox，它的实际类型/类名是：", area.get_class())
 
-func take_damage(amount: int, knockback_force : Vector2) -> void:
+func take_damage(amount: float, knockback_force : Vector2) -> void:
 	took_damage.emit(amount, knockback_force)
 	if health_component:
 		health_component.decrease_hp(amount)

@@ -65,17 +65,14 @@ func _on_interacted(interactor: Node2D) -> void:
 		_show_floating_text("金币不足！", Color(1.0, 0.2, 0.2))
 		return
 		
-	# 【防线2：多态策略装载】柜台闭着眼睛直接呼叫基类方法
 	if item_data.apply_effect(interactor):
-		# 成功 -> 扣钱，关 UI，打烊
-		stats.spend_gold(price)
+		stats.spend_coin(price)
 		
 		if item_data is RuneData: UIManager.rune_brief_closed.emit()
 		elif item_data is SkillData: EventBus.skill_world_brief_closed.emit()
 		
 		_execute_sold_out(interactor.global_position)
 	else:
-		# 失败（满了） -> 拒绝扣款
 		_show_floating_text("空间已满！", Color(1.0, 0.2, 0.2))
 
 func _execute_sold_out(player_pos: Vector2) -> void:

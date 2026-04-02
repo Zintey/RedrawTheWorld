@@ -4,7 +4,7 @@ signal stamina_changed(current_stamina: int, max_stamina: int)
 
 @export var max_stamina: int = 6
 
-@export var current_gold: int = 500
+@export var current_coin: int = 500
 
 var current_stamina: int
 
@@ -52,11 +52,14 @@ func get_force() -> Vector2:
 	_push_force = Vector2.ZERO
 	return force
 
+func add_coin(amount: int) -> bool:
+	current_coin += amount
+	return true
 
 # 扣钱函数
-func spend_gold(amount: int) -> bool:
-	if current_gold >= amount:
-		current_gold -= amount
-		# EventBus.player_gold_changed.emit(current_gold) # 如果有UI可以发信号刷新
+func spend_coin(amount: int) -> bool:
+	if current_coin >= amount:
+		current_coin -= amount
+		# EventBus.player_gold_changed.emit(current_coin) # 如果有UI可以发信号刷新
 		return true
 	return false
