@@ -947,7 +947,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExampleNode" type="ExampleNode" parent="."]
-rotation = 17597.08
+rotation = 18400.896
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

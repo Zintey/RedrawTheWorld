@@ -122,6 +122,7 @@ Debug_Key_T={
 2d_physics/layer_7="单向平台"
 2d_physics/layer_8="交互物"
 2d_physics/layer_9="敌人"
+2d_physics/layer_10="物理物"
 
 [physics]
 

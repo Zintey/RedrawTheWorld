@@ -35,3 +35,16 @@ func recover_hp(amount: float) -> bool:
 	current_hp = min(max_hp, current_hp)
 	hp_changed.emit(current_hp, max_hp)
 	return true
+
+func extend_hp(amount: float) -> bool:
+	if max_hp >= 20: return false
+	max_hp = min(max_hp + amount, 20)
+	recover_hp(amount)
+	hp_changed.emit(current_hp, max_hp)
+	return true
+
+func shorted_hp(amount: float) -> bool:
+	max_hp -= amount
+	hp_changed.emit(current_hp, max_hp)
+	if max_hp <= 0: died.emit()
+	return true

@@ -12,9 +12,8 @@ region = Rect2(0, 0, 116, 114)
 size = Vector2(70, 70)
 
 [node name="RuneDropEntity" type="RigidBody2D"]
-collision_layer = 0
-collision_mask = 32
-lock_rotation = true
+collision_layer = 128
+collision_mask = 162
 script = ExtResource("1_mrv4h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

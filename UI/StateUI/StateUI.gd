@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+extends Control
 class_name StateUI
 
 const Health_Item = preload("uid://dumkogvctaypc")
@@ -10,6 +10,7 @@ var stats_component: PlayerStatsComponent
 
 @onready var health_box: HBoxContainer = %HealthBox
 @onready var stamina_box: HBoxContainer = %StaminaBox
+@onready var coin_label: Label = %CoinLabel
 
 func init(_health_component: HealthComponent, _stats_component: PlayerStatsComponent) -> void:
 	health_component = _health_component
@@ -20,13 +21,18 @@ func _ready() -> void:
 		init_health_box()
 		init_stamina_box()
 	)
-	
 	if health_component and stats_component:
 		update_health_box(health_component.current_hp, health_component.max_hp)
 		update_stamina_box(stats_component.current_stamina, stats_component.max_stamina)
 		
 		health_component.hp_changed.connect(update_health_box)
 		stats_component.stamina_changed.connect(update_stamina_box)
+
+		stats_component.coin_changed.connect(update_coin_label)
+		update_coin_label(stats_component.current_coin)
+
+
+func update_coin_label(current_coin: int) : coin_label.text = str(current_coin)
 
 func init_health_box() -> void:
 	for item in health_box.get_children(): item.queue_free()

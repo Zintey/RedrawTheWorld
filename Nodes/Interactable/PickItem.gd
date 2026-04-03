@@ -11,4 +11,3 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if item_data.apply_effect(body):
 		queue_free()
-

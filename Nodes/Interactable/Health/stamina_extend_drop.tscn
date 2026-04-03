@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=3 uid="uid://dnd2whxkda3iy"]
+
+[ext_resource type="PackedScene" uid="uid://c1qtj80jmmyqi" path="res://Nodes/Interactable/pick_item.tscn" id="1_j61gb"]
+[ext_resource type="Script" uid="uid://bstfrda5r0w1c" path="res://Resources/Items/StaminaExtendDrop.gd" id="2_p1wmj"]
+[ext_resource type="Texture2D" uid="uid://cty1a41ssgyy7" path="res://Assets/Items/max_mp_crystal_spritesheet.png" id="3_q22ei"]
+
+[sub_resource type="Resource" id="Resource_q22ei"]
+script = ExtResource("2_p1wmj")
+metadata/_custom_type_script = "uid://bstfrda5r0w1c"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q22ei"]
+resource_local_to_scene = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4kwv"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srhmd"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo24e"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w08dc"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubbus"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfuto"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmy17"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyu7p"]
+atlas = ExtResource("3_q22ei")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxkxl"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4kwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srhmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo24e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w08dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubbus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfuto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmy17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyu7p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4kwv"]
+resource_local_to_scene = true
+radius = 12.0
+
+[node name="StaminaExtendDrop" instance=ExtResource("1_j61gb")]
+angular_damp = 58.304
+item_data = SubResource("Resource_q22ei")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_q22ei")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_xxkxl")
+autoplay = "default"
+frame_progress = 0.38377506
+
+[node name="CollisionShape2D" parent="PickArea" index="0"]
+shape = SubResource("CircleShape2D_e4kwv")

@@ -1,6 +1,7 @@
 class_name PlayerStatsComponent extends Node
 
 signal stamina_changed(current_stamina: int, max_stamina: int)
+signal coin_changed(current_coin: int)
 
 @export var max_stamina: int = 6
 
@@ -44,6 +45,19 @@ func recover_stamina(amount: int) -> void:
 	current_stamina = min(current_stamina + amount, max_stamina)
 	stamina_changed.emit(current_stamina, max_stamina)
 
+func shorten_stamina(amount: int) -> bool:
+	max_stamina = max(max_stamina - amount, 0)
+	current_stamina = max_stamina
+	stamina_changed.emit(current_stamina, max_stamina)
+	return true
+
+func extend_stamina(amount: int) -> bool:
+	if max_stamina >= 100: return false
+	max_stamina = min(max_stamina + amount, 100)
+	current_stamina = max_stamina
+	stamina_changed.emit(current_stamina, max_stamina)
+	return true
+
 func add_force(force: Vector2) -> void:
 	_push_force += force
 
@@ -54,12 +68,13 @@ func get_force() -> Vector2:
 
 func add_coin(amount: int) -> bool:
 	current_coin += amount
+	coin_changed.emit(current_coin)
 	return true
 
 # 扣钱函数
 func spend_coin(amount: int) -> bool:
 	if current_coin >= amount:
 		current_coin -= amount
-		# EventBus.player_gold_changed.emit(current_coin) # 如果有UI可以发信号刷新
+		coin_changed.emit(current_coin)
 		return true
 	return false

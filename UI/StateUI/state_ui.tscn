@@ -1,22 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnn0ilaf1c77q"]
+[gd_scene load_steps=5 format=3 uid="uid://bnn0ilaf1c77q"]
 
 [ext_resource type="Script" uid="uid://biucodewpl86n" path="res://UI/StateUI/StateUI.gd" id="1_hfiuq"]
+[ext_resource type="Texture2D" uid="uid://b73ark2gk2q1" path="res://Assets/Items/coin1.png" id="2_hfiuq"]
+[ext_resource type="Theme" uid="uid://ccgnr7do5lk08" path="res://UI/Theme/SkillUITheme.tres" id="3_5fpbw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo824"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fpbw"]
+atlas = ExtResource("2_hfiuq")
+region = Rect2(0, 0, 32, 32)
 
-[node name="StateUI" type="PanelContainer"]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 242.0
-offset_bottom = 98.0
+[node name="StateUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_oo824")
 script = ExtResource("1_hfiuq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 242.0
+offset_bottom = 112.0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -34,3 +42,31 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_5fpbw")
+
+[node name="CoinLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_5fpbw")
+text = "999"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(80, 42)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_bottom = 42.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5

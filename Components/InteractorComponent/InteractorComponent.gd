@@ -42,7 +42,5 @@ func _physics_process(delta: float) -> void:
 			focused_item.focused.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
-	# 【注意】请确保你在项目的 Input Map 里配置了 "Interact" 动作（比如绑定按键 F）
 	if event.is_action_pressed("Interact") and is_instance_valid(focused_item):
-		# 把 Player 本体传过去
 		focused_item.interacted.emit(get_parent())
