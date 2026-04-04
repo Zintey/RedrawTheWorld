@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://drct5xbs77nkc"]
+[gd_scene load_steps=22 format=3 uid="uid://drct5xbs77nkc"]
 
 [ext_resource type="PackedScene" uid="uid://c1qtj80jmmyqi" path="res://Nodes/Interactable/pick_item.tscn" id="1_ktx8j"]
 [ext_resource type="Texture2D" uid="uid://080ba2k26n0" path="res://Assets/Items/coin2.png" id="2_4vv07"]
 [ext_resource type="Script" uid="uid://4njiobdw54xr" path="res://Resources/Items/Coin/CoinData.gd" id="3_jejnp"]
+[ext_resource type="Resource" uid="uid://bpoaccndggtle" path="res://Resources/Audio/SFX/Pickup/ae_pickup_coin_rare.tres" id="4_jejnp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sf3ph"]
 atlas = ExtResource("2_4vv07")
@@ -14,6 +15,9 @@ coin_amount = 10
 item_name = "coin_normal"
 icon = SubResource("AtlasTexture_sf3ph")
 metadata/_custom_type_script = "uid://4njiobdw54xr"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sf3ph"]
+resource_local_to_scene = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vv07"]
 atlas = ExtResource("2_4vv07")
@@ -107,10 +111,21 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmci7"]
+resource_local_to_scene = true
+radius = 12.0
+
 [node name="CoinRare" instance=ExtResource("1_ktx8j")]
 item_data = SubResource("Resource_lmci7")
+sfx_data = ExtResource("4_jejnp")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_sf3ph")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_7kcwf")
 autoplay = "default"
 frame_progress = 0.6559781
+
+[node name="CollisionShape2D" parent="PickArea" index="0"]
+shape = SubResource("CircleShape2D_lmci7")

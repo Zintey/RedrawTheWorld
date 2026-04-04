@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://didrm1bieck7p"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_egt7h"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_fiktw"]
+[ext_resource type="AudioStream" uid="uid://1wbfhbvgpudw" path="res://Audio/SFX/Pickup/Extend1.wav" id="2_ic545"]
+
+[sub_resource type="Resource" id="Resource_gwku1"]
+script = ExtResource("1_egt7h")
+stream = ExtResource("2_ic545")
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("2_fiktw")
+clips = Array[ExtResource("1_egt7h")]([SubResource("Resource_gwku1")])
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

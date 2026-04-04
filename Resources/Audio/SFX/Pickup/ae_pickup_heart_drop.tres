@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=5 format=3 uid="uid://byv3ydgcaj5lj"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_egdtk"]
+[ext_resource type="AudioStream" uid="uid://42o3sltnbtoh" path="res://Audio/SFX/Pickup/recover_health.wav" id="2_76de1"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_fgcna"]
+
+[sub_resource type="Resource" id="Resource_euw6q"]
+script = ExtResource("1_egdtk")
+stream = ExtResource("2_76de1")
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
+
+[resource]
+script = ExtResource("2_fgcna")
+clips = Array[ExtResource("1_egdtk")]([SubResource("Resource_euw6q")])
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

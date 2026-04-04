@@ -7,6 +7,9 @@ signal coin_changed(current_coin: int)
 
 @export var current_coin: int = 500
 
+@export_group("sfx") # 音效配置
+@export var extend_stamina_sfx : AudioEvent
+
 var current_stamina: int
 
 # @export var max_mp: int = 10
@@ -56,6 +59,8 @@ func extend_stamina(amount: int) -> bool:
 	max_stamina = min(max_stamina + amount, 100)
 	current_stamina = max_stamina
 	stamina_changed.emit(current_stamina, max_stamina)
+	if (extend_stamina_sfx):
+		AudioManager.play_sfx(extend_stamina_sfx);
 	return true
 
 func add_force(force: Vector2) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://dgr6uyhq4pdl2"]
+[gd_scene load_steps=77 format=3 uid="uid://dgr6uyhq4pdl2"]
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://d16iwiutjl7k3" path="res://Nodes/Player/State/PlayerLandState.gd" id="11_fetqx"]
 [ext_resource type="Script" uid="uid://cj6546e5l2ox4" path="res://Nodes/Player/State/PlayerUpToAirState.gd" id="11_nussk"]
 [ext_resource type="Script" uid="uid://by6sp5lyvlnde" path="res://Components/InteractorComponent/InteractorComponent.gd" id="11_w7kum"]
+[ext_resource type="Resource" uid="uid://wp507lnkufxc" path="res://Resources/Audio/SFX/Pickup/ae_pick_up.tres" id="14_nrcu7"]
 [ext_resource type="Script" uid="uid://c6yb752tler4m" path="res://Nodes/Player/State/PlayerDieState.gd" id="16_6gkbq"]
 [ext_resource type="Resource" uid="uid://bemsfjg3qow30" path="res://Resources/Audio/SFX/Player/player_run.tres" id="16_w7kum"]
 [ext_resource type="Script" uid="uid://bbpug0ngb3ba6" path="res://Nodes/Player/State/PlayerTeleportState.gd" id="18_jexjf"]
@@ -31,8 +32,10 @@
 [ext_resource type="Resource" uid="uid://ri15ria72rcx" path="res://Resources/RuneData/CoreRune/arcane_orb_core_rune.tres" id="24_482wx"]
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="24_wfvtl"]
 [ext_resource type="Resource" uid="uid://b167b3woxelxu" path="res://Resources/RuneData/ModifireRune/rebound_modifier_rune.tres" id="25_gcfxi"]
+[ext_resource type="Resource" uid="uid://byv3ydgcaj5lj" path="res://Resources/Audio/SFX/Pickup/ae_pickup_heart_drop.tres" id="26_lqkpy"]
 [ext_resource type="Resource" uid="uid://dvm5l7xa4xyxo" path="res://Resources/RuneData/ModifireRune/teleport_modifier_rune.tres" id="26_rgjfc"]
 [ext_resource type="Resource" uid="uid://dil31cdbwe6p6" path="res://Resources/RuneData/ModifireRune/tracking_modifier_rune.tres" id="27_kvwmt"]
+[ext_resource type="Resource" uid="uid://didrm1bieck7p" path="res://Resources/Audio/SFX/Pickup/ae_extend_health.tres" id="27_nrcu7"]
 [ext_resource type="Script" uid="uid://elh1fc70u2yc" path="res://Components/StatusComponent/PlayerStatsComponent.gd" id="28_cr8vb"]
 [ext_resource type="Script" uid="uid://o4a5mwuwpqh5" path="res://Components/SkillComponent/SkillComponent.gd" id="28_l15v1"]
 [ext_resource type="Resource" uid="uid://chrml6v4rgxlw" path="res://Resources/RuneData/ModifireRune/gravity_modifier_rune.tres" id="29_gcfxi"]
@@ -53,6 +56,7 @@
 [ext_resource type="Resource" uid="uid://xj17n7uubwi8" path="res://Resources/RuneData/ModifireRune/bigger_modifier_rune.tres" id="46_0uqe3"]
 [ext_resource type="Resource" uid="uid://d1rjiv77q43dk" path="res://Resources/RuneData/ModifireRune/extend_life_modifier_rune.tres" id="47_ggcla"]
 [ext_resource type="Resource" uid="uid://13yg12x8jsha" path="res://Resources/RuneData/ModifireRune/sin_modifier_rune.tres" id="48_xhobd"]
+[ext_resource type="Resource" uid="uid://ybuksc3h813k" path="res://Resources/Audio/SFX/Pickup/ae_extend_stamina.tres" id="53_cdwgc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7km3q"]
 radius = 8.0
@@ -861,6 +865,7 @@ texture_scale = 6.01
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("11_w7kum")
+pick_up_sfx = ExtResource("14_nrcu7")
 metadata/_custom_type_script = "uid://by6sp5lyvlnde"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractorComponent"]
@@ -920,6 +925,8 @@ metadata/_custom_type_script = "uid://bbpug0ngb3ba6"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("19_3jhvm")
+recover_hp_sfx = ExtResource("26_lqkpy")
+extend_hp_sfx = ExtResource("27_nrcu7")
 metadata/_custom_type_script = "uid://b7cpenmly2med"
 
 [node name="InventoryComponent" type="Node" parent="."]
@@ -932,6 +939,7 @@ metadata/_custom_type_script = "uid://4twnrh5cup0w"
 [node name="PlayerStatsComponent" type="Node" parent="."]
 script = ExtResource("28_cr8vb")
 max_stamina = 12
+extend_stamina_sfx = ExtResource("53_cdwgc")
 metadata/_custom_type_script = "uid://elh1fc70u2yc"
 
 [node name="SkillComponent" type="Node" parent="." node_paths=PackedStringArray("skill_owner", "stats_component", "inventory_component")]
@@ -947,7 +955,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExampleNode" type="ExampleNode" parent="."]
-rotation = 18400.896
+rotation = 19394.42
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

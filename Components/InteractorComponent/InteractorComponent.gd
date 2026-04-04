@@ -1,5 +1,7 @@
 class_name InteractorComponent extends Area2D
 
+@export var pick_up_sfx : AudioEvent
+
 var items_in_range: Array[InteractableArea] = []
 var focused_item: InteractableArea = null
 
@@ -44,3 +46,5 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact") and is_instance_valid(focused_item):
 		focused_item.interacted.emit(get_parent())
+		if (pick_up_sfx):
+			AudioManager.play_sfx(pick_up_sfx)

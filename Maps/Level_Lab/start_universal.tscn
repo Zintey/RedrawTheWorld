@@ -1182,41 +1182,47 @@ position = Vector2(80, -76)
 [node name="CoinNormal2" parent="Drop" instance=ExtResource("45_n63er")]
 position = Vector2(50, -51)
 
+[node name="CoinNormal4" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(104, -29)
+
+[node name="CoinNormal5" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(66, -9)
+
+[node name="CoinNormal6" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(-36, -64)
+
+[node name="CoinNormal7" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(-7, -89)
+
+[node name="CoinNormal8" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(-63, -28)
+
+[node name="CoinNormal9" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(-70, 31)
+
+[node name="CoinNormal10" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(18, -71)
+
+[node name="CoinNormal11" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(34, -102)
+
+[node name="CoinNormal12" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(80, -43)
+
+[node name="CoinNormal13" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(126, -66)
+
+[node name="CoinNormal14" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(154, -127)
+
+[node name="CoinNormal15" parent="Drop" instance=ExtResource("45_n63er")]
+position = Vector2(157, -59)
+
 [node name="CoinRare" parent="Drop" instance=ExtResource("46_up66y")]
 position = Vector2(111, -105)
 
-[node name="CoinRare2" parent="Drop" instance=ExtResource("46_up66y")]
-position = Vector2(-45, -78)
-
-[node name="CoinRare3" parent="Drop" instance=ExtResource("46_up66y")]
-position = Vector2(-1, -46)
-
 [node name="CoinNormal3" parent="Drop" instance=ExtResource("45_n63er")]
 position = Vector2(69, -103)
-
-[node name="StaminaExtendDrop" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(-7, -73)
-
-[node name="StaminaExtendDrop2" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(23, -67)
-
-[node name="StaminaExtendDrop3" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(11, -94)
-
-[node name="StaminaExtendDrop4" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(-12, -101)
-
-[node name="StaminaExtendDrop5" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(39, -104)
-
-[node name="StaminaExtendDrop6" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(262, -83)
-
-[node name="StaminaExtendDrop7" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(-105, -60)
-
-[node name="StaminaExtendDrop8" parent="Drop" instance=ExtResource("46_hkitp")]
-position = Vector2(-127, -86)
 
 [node name="StaminaExtendDrop9" parent="Drop" instance=ExtResource("46_hkitp")]
 position = Vector2(-81, -66)
