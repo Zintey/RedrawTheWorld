@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://v61k1tggowin"]
+[gd_scene load_steps=35 format=4 uid="uid://v61k1tggowin"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_epcpn"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_q217o"]
@@ -6,25 +6,75 @@
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_pidrk"]
 [ext_resource type="PackedScene" uid="uid://cqk58ahudm61x" path="res://Nodes/Interactable/Health/heart_drop.tscn" id="4_epcpn"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_momcy"]
+[ext_resource type="PackedScene" uid="uid://b6h1sdv0cp2ja" path="res://Nodes/Interactable/Coin/coin_normal.tscn" id="4_qx6up"]
 [ext_resource type="Texture2D" uid="uid://s5o8r7d8oppl" path="res://Assets/Map/light texture/light2.png" id="5_5rx1i"]
 [ext_resource type="PackedScene" uid="uid://drct5xbs77nkc" path="res://Nodes/Interactable/Coin/coin_rare.tscn" id="5_e2ksk"]
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="5_pidrk"]
 [ext_resource type="Texture2D" uid="uid://xm5itp8nuo4n" path="res://Assets/Map/Level_Lab/billboards/billboardpack (6).png" id="6_momcy"]
+[ext_resource type="PackedScene" uid="uid://dfuxefg6c4njf" path="res://Nodes/Interactable/Health/heart_extend_drop.tscn" id="7_l8spf"]
 [ext_resource type="Texture2D" uid="uid://b3o7ahg2nmbtj" path="res://Assets/Map/Level_Lab/labpack/labpak (10).png" id="7_rxmsp"]
 [ext_resource type="Shader" uid="uid://btq4kkb86745n" path="res://Shader/视觉shader/green_glow.gdshader" id="8_5rx1i"]
+[ext_resource type="PackedScene" uid="uid://355nyhp43l6y" path="res://Nodes/Items/TreasureChest/treasure_chest.tscn" id="8_w7f08"]
 [ext_resource type="Texture2D" uid="uid://dn41mcdcr36gv" path="res://Assets/Map/Level_Lab/labpack/labpak (11).png" id="9_frbcc"]
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="11_epcpn"]
 [ext_resource type="PackedScene" uid="uid://dak656fcyirif" path="res://Nodes/Enemy/TrackedCutter/tracked_cutter.tscn" id="15_epcpn"]
 
-[sub_resource type="Resource" id="Resource_ervyo"]
+[sub_resource type="Resource" id="Resource_egscv"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("4_qx6up")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_4o5dn"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("4_qx6up")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_rqa34"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("4_qx6up")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_6h4gn"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("4_qx6up")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_tot6i"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("5_e2ksk")
+drop_chance = 0.5
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_uesyx"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("5_e2ksk")
+drop_chance = 0.5
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_2txvr"]
 script = ExtResource("3_e2ksk")
 item_scene = ExtResource("4_epcpn")
 metadata/_custom_type_script = "uid://1uqeduu0euht"
 
-[sub_resource type="Resource" id="Resource_qx6up"]
+[sub_resource type="Resource" id="Resource_t5u8v"]
 script = ExtResource("3_e2ksk")
-item_scene = ExtResource("5_e2ksk")
-drop_chance = 0.2
+item_scene = ExtResource("4_epcpn")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_m2yxv"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("4_epcpn")
+drop_chance = 0.5
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_ivkvy"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("7_l8spf")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_w0gd1"]
+script = ExtResource("3_e2ksk")
+item_scene = ExtResource("8_w7f08")
 metadata/_custom_type_script = "uid://1uqeduu0euht"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
@@ -79,7 +129,7 @@ size = Vector2(2595, 123)
 script = ExtResource("1_epcpn")
 grid_size = Vector2i(2, 1)
 door_scene = ExtResource("2_q217o")
-drop_configs = Array[ExtResource("3_e2ksk")]([SubResource("Resource_ervyo"), SubResource("Resource_ervyo"), SubResource("Resource_qx6up")])
+drop_configs = Array[ExtResource("3_e2ksk")]([SubResource("Resource_egscv"), SubResource("Resource_4o5dn"), SubResource("Resource_rqa34"), SubResource("Resource_6h4gn"), SubResource("Resource_tot6i"), SubResource("Resource_uesyx"), SubResource("Resource_2txvr"), SubResource("Resource_t5u8v"), SubResource("Resource_m2yxv"), SubResource("Resource_ivkvy"), SubResource("Resource_w0gd1")])
 drop_spawn_point = NodePath("RewardPoint")
 "Door Constraints/Grid[0,0]_U" = true
 "Door Constraints/Grid[0,0]_D" = true

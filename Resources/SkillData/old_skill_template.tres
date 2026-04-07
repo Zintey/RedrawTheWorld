@@ -8,16 +8,11 @@
 [resource]
 script = ExtResource("2_vkdfy")
 skill_id = "old_skill_template"
-skill_description = "这个技能模板有点老旧了
-只有这么几个符文槽位
-
-上面还有没取下来的符文"
-skill_icon = ExtResource("4_oo6wx")
 trigger_rune_slot_count = 1
 trigger_rune_list = Array[ExtResource("1_haxa3")]([null])
 core_rune_slot_count = 1
 core_rune_list = Array[ExtResource("1_haxa3")]([ExtResource("2_ebqgk")])
 modifier_rune_slot_count = 1
 modifier_rune_list = Array[ExtResource("1_haxa3")]([null])
-description = null
+icon = ExtResource("4_oo6wx")
 metadata/_custom_type_script = "uid://w3c70vl01a25"

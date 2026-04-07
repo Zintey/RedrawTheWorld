@@ -61,7 +61,7 @@ func _on_interacted(interactor: Node2D) -> void:
 	if not stats: return
 	
 	# 【防线1：验资】
-	if stats.current_gold < price:
+	if stats.current_coin < price:
 		_show_floating_text("金币不足！", Color(1.0, 0.2, 0.2))
 		return
 		

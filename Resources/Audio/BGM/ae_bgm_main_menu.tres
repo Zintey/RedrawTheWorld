@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AudioEvent" load_steps=3 format=3 uid="uid://d3ideyjt1io1e"]
+
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_t2qr4"]
+[ext_resource type="Script" uid="uid://cctb38u1ea3y3" path="res://Resources/Audio/AudioEvent.gd" id="2_vkhrs"]
+
+[resource]
+script = ExtResource("2_vkhrs")
+metadata/_custom_type_script = "uid://cctb38u1ea3y3"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh4bphpd58awh"]
+[gd_scene load_steps=12 format=3 uid="uid://bh4bphpd58awh"]
 
 [ext_resource type="Texture2D" uid="uid://b6a3ulrpkfm1r" path="res://Assets/UI/main_menu.png" id="1_pybfu"]
+[ext_resource type="Script" uid="uid://cbcbypq21qnkl" path="res://Resources/Audio/AudioClipData.gd" id="1_sphs1"]
 [ext_resource type="Texture2D" uid="uid://rhr5jjfpkx3h" path="res://Assets/UI/hourglass.png" id="2_x0uo6"]
 [ext_resource type="FontFile" uid="uid://uvosnydhl1kn" path="res://Assets/Fonts/WenQuanZhengHei-2.ttf" id="3_6mxa6"]
 [ext_resource type="AudioStream" uid="uid://dytvne8f6xm08" path="res://Audio/BGM/bgm_main_menu.wav" id="4_2lgqy"]
@@ -9,11 +10,11 @@
 script/source = "extends Control
 
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@export var main_menu_bgm : AudioClipData
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	audio_stream_player.play()
+	AudioManager.play_bgm(main_menu_bgm, 0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,12 +31,17 @@ func _on_start_button_mouse_exited() -> void:
 
 
 func _on_start_button_button_up() -> void:
-	get_tree().change_scene_to_file(\"uid://bubmv5k671ypc\")
+	get_tree().change_scene_to_file(\"uid://biv54y4eif17v\")
 
 
 func _on_quit_button_button_up() -> void:
 	get_tree().quit()
 "
+
+[sub_resource type="Resource" id="Resource_76nds"]
+script = ExtResource("1_sphs1")
+stream = ExtResource("4_2lgqy")
+metadata/_custom_type_script = "uid://cbcbypq21qnkl"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mxa6"]
 atlas = ExtResource("2_x0uo6")
@@ -74,6 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_6mxa6")
+main_menu_bgm = SubResource("Resource_76nds")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -120,10 +127,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_6mxa6")
 text = "退出游戏"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_2lgqy")
-volume_db = -10.0
 
 [connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]

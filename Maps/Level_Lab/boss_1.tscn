@@ -1,16 +1,80 @@
-[gd_scene load_steps=16 format=4 uid="uid://b8xia7ongjg2c"]
+[gd_scene load_steps=33 format=4 uid="uid://b8xia7ongjg2c"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_wox3g"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_y38a5"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_fyyxj"]
+[ext_resource type="Script" uid="uid://1uqeduu0euht" path="res://Resources/DropConfig.gd" id="3_kkklc"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_gaqme"]
+[ext_resource type="PackedScene" uid="uid://b6h1sdv0cp2ja" path="res://Nodes/Interactable/Coin/coin_normal.tscn" id="4_olsmj"]
 [ext_resource type="Texture2D" uid="uid://b0uiotjxe7loy" path="res://Assets/Map/Level_Lab/labbossback.png" id="5_fyyxj"]
+[ext_resource type="PackedScene" uid="uid://drct5xbs77nkc" path="res://Nodes/Interactable/Coin/coin_rare.tscn" id="5_w0gd1"]
+[ext_resource type="PackedScene" uid="uid://cqk58ahudm61x" path="res://Nodes/Interactable/Health/heart_drop.tscn" id="6_0p2k0"]
 [ext_resource type="Texture2D" uid="uid://bwr03g51anp0b" path="res://Assets/Enemy/Eden/eden_body.png" id="6_gaqme"]
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="7_gaqme"]
+[ext_resource type="PackedScene" uid="uid://dfuxefg6c4njf" path="res://Nodes/Interactable/Health/heart_extend_drop.tscn" id="7_njvku"]
+[ext_resource type="PackedScene" uid="uid://355nyhp43l6y" path="res://Nodes/Items/TreasureChest/treasure_chest.tscn" id="8_olsmj"]
 [ext_resource type="Shader" path="res://Shader/视觉shader/godray.gdshader" id="8_tuh4x"]
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="9_0qxoe"]
 [ext_resource type="PackedScene" uid="uid://b26k4w8c500qd" path="res://Nodes/Enemy/Axeman/axeman.tscn" id="10_qbymy"]
 [ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="11_oim2u"]
+
+[sub_resource type="Resource" id="Resource_egscv"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("4_olsmj")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_4o5dn"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("4_olsmj")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_rqa34"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("4_olsmj")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_6h4gn"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("4_olsmj")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_tot6i"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("5_w0gd1")
+drop_chance = 0.5
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_uesyx"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("5_w0gd1")
+drop_chance = 0.5
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_2txvr"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("6_0p2k0")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_t5u8v"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("6_0p2k0")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_m2yxv"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("6_0p2k0")
+drop_chance = 0.5
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_ivkvy"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("7_njvku")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
+
+[sub_resource type="Resource" id="Resource_w0gd1"]
+script = ExtResource("3_kkklc")
+item_scene = ExtResource("8_olsmj")
+metadata/_custom_type_script = "uid://1uqeduu0euht"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyyxj"]
 size = Vector2(2443, 1261.1826)
@@ -50,10 +114,12 @@ shader_parameter/color = Color(0.29827124, 0.0066232365, 0, 0.8)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
-[node name="StartRoom" type="Node2D"]
+[node name="StartRoom" type="Node2D" node_paths=PackedStringArray("drop_spawn_point")]
 script = ExtResource("1_wox3g")
 grid_size = Vector2i(2, 4)
 door_scene = ExtResource("2_y38a5")
+drop_configs = Array[ExtResource("3_kkklc")]([SubResource("Resource_egscv"), SubResource("Resource_4o5dn"), SubResource("Resource_rqa34"), SubResource("Resource_6h4gn"), SubResource("Resource_tot6i"), SubResource("Resource_uesyx"), SubResource("Resource_2txvr"), SubResource("Resource_t5u8v"), SubResource("Resource_m2yxv"), SubResource("Resource_ivkvy"), SubResource("Resource_w0gd1")])
+drop_spawn_point = NodePath("RewardPoint")
 "Door Constraints/Grid[0,0]_U" = true
 "Door Constraints/Grid[0,0]_L" = true
 "Door Constraints/Grid[0,1]_L" = false
@@ -209,3 +275,5 @@ gizmo_extents = 213.2
 script = ExtResource("9_0qxoe")
 enemy_pool = Array[PackedScene]([ExtResource("11_oim2u")])
 metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="RewardPoint" type="Marker2D" parent="."]
