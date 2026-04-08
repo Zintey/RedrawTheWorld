@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://4flmkxwrkb50"]
+[gd_scene load_steps=97 format=4 uid="uid://4flmkxwrkb50"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_mecnb"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_k07le"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://b6h1sdv0cp2ja" path="res://Nodes/Interactable/Coin/coin_normal.tscn" id="45_n63er"]
 [ext_resource type="PackedScene" uid="uid://dnd2whxkda3iy" path="res://Nodes/Interactable/Health/stamina_extend_drop.tscn" id="46_hkitp"]
 [ext_resource type="PackedScene" uid="uid://drct5xbs77nkc" path="res://Nodes/Interactable/Coin/coin_rare.tscn" id="46_up66y"]
+[ext_resource type="VideoStream" uid="uid://0fw635tw4unm" path="res://Assets/Videos/cutscene1.mp4" id="49_up66y"]
 
 [sub_resource type="Environment" id="Environment_dt1lc"]
 background_mode = 3
@@ -570,6 +571,7 @@ point_count = 1
 
 [node name="StartRoom" type="Node2D"]
 script = ExtResource("1_mecnb")
+intro_video = ExtResource("49_up66y")
 door_scene = ExtResource("2_k07le")
 "Door Constraints/Grid[0,0]_U" = false
 "Door Constraints/Grid[0,0]_D" = false

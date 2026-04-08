@@ -64,3 +64,10 @@ signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
 
 # 信号符文
 signal emit_rune_signalA()
+
+
+# ==============================
+# --- 过场动画信号 ---
+# ==============================
+signal cutscene_started(video_stream: VideoStream) # 传递要播放的视频
+signal cutscene_finished()                         # 动画结束（播完或跳过）

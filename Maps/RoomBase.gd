@@ -10,6 +10,11 @@ signal combat_ended
 
 enum RoomState { UNVISITED, ACTIVE, CLEARED }
 
+# 【新增】：过场动画配置
+@export_group("Cutscene Config")
+@export var intro_video: VideoStream
+var _has_played_cutscene: bool = false
+
 @export_group("Grid Config")
 @export var grid_size: Vector2i = Vector2i(1, 1):
 	set(v):
@@ -64,6 +69,8 @@ var editor_gizmo: Node2D
 
 var enemy_container: Node2D
 var spawners_root: Node2D
+
+
 
 # ==========================================
 # 【编辑器专属】：动态面板与无遮挡渲染
@@ -277,6 +284,11 @@ func _place_door_instance(door_pos_tile: Vector2i, dir: String) -> void:
 # ==========================================
 func _on_player_entered() -> void:
 	if current_state != RoomState.UNVISITED: return
+
+	if intro_video and not _has_played_cutscene:
+		_has_played_cutscene = true
+		EventBus.cutscene_started.emit(intro_video)
+		await EventBus.cutscene_finished 
 
 	if room_type.to_lower() in ["start", "shop", "treasure"] or total_waves <= 0 or not _has_any_spawners():
 		_unlock_room()

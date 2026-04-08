@@ -10,6 +10,7 @@ const UI_Map : Dictionary = {
 	"LevelTransitionUI": preload("uid://bhxo80b3fo2kb"),
 	"CombatActionBarUI": preload("uid://cml8s0s5nwonw"),
 	"SkillTemplateBriefUI": preload("uid://cimmppl02uvn8"),
+	"CutsceneUI" : preload("uid://bqtn010dc3ggn"),
 }
 
 # signal rune_world_brief_requested(rune_data: RuneData, target: Node2D)
@@ -48,6 +49,8 @@ func _ready() -> void:
 
 	EventBus.skill_world_brief_requested.connect(_on_skill_world_brief_requested)
 	EventBus.skill_world_brief_closed.connect(_on_skill_world_brief_closed)
+
+	EventBus.cutscene_started.connect(_on_cutscene_started)
 
 var combat_action_bar : CombatActionBarUI
 
@@ -240,3 +243,10 @@ func _on_skill_world_brief_closed() -> void:
 	if skill_world_brief:
 		skill_world_brief.queue_free()
 		skill_world_brief = null
+
+
+func _on_cutscene_started(video_stream: VideoStream) -> void:
+	var cutscene_ui = UI_Map["CutsceneUI"].instantiate()
+	cutscene_ui.z_index = 4096 # 保证它盖住一切
+	add_child(cutscene_ui)
+	cutscene_ui.play_video(video_stream)

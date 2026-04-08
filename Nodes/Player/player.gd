@@ -50,6 +50,16 @@ func _ready() -> void:
 		skill_component.post_event("SIGNALA", 0.2)
 	)
 
+	EventBus.cutscene_started.connect(func(stream): 
+		if not health_component.is_dead:
+			state_machine.switch_to("teleport") # 借用 teleport 状态让玩家无敌且不可控
+	)
+	
+	EventBus.cutscene_finished.connect(func(): 
+		if not health_component.is_dead:
+			state_machine.switch_to("idle") # 播完切回普通待机状态
+	)
+
 func _process(delta: float) -> void:
 	stats_component.fire_facing_left = (rune_emitter.sprites.global_rotation_degrees >= -90.0 
 										and rune_emitter.sprites.global_rotation_degrees < 90.0)
