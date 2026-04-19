@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://cobqykkjp2je6"]
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://cobqykkjp2je6"]
 
-[ext_resource type="Texture2D" uid="uid://cyu4wf2hfvgfb" path="res://Assets/RuneIcon/Temp/rune_icon2.png" id="1_cvwqs"]
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_yjeod"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjeod"]
+load_path = "res://.godot/imported/rune_list3.png-ca7522f5fd6e6fe045fa389fdea670fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvwqs"]
+atlas = SubResource("CompressedTexture2D_yjeod")
+region = Rect2(580, 0, 116, 114)
 
 [resource]
 script = ExtResource("1_yjeod")
 rune_id = "hang_trigger_rune"
 display_name = "滞空触发符文"
 blackboard = "hanging"
-icon = ExtResource("1_cvwqs")
+icon = SubResource("AtlasTexture_cvwqs")
 description = "当装备者处于滞空状态时触发"
 metadata/_custom_type_script = "uid://d05jh4768kl1k"

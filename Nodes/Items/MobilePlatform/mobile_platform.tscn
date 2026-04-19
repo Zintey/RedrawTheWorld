@@ -268,7 +268,7 @@ color_ramp = SubResource("GradientTexture1D_mm202")
 size = Vector2(122, 10)
 
 [node name="MobilePlatform" type="AnimatableBody2D"]
-collision_layer = 32
+collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_qt64b")
 move_mode = 1

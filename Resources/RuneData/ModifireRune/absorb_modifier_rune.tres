@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://dre6yj0swsrt2"]
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://dre6yj0swsrt2"]
 
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="1_a4g1h"]
-[ext_resource type="Texture2D" uid="uid://dkx6pkw2t4lvv" path="res://Assets/RuneIcon/Temp/rune_icon7.png" id="1_xnh36"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a4g1h"]
+load_path = "res://.godot/imported/rune_list3.png-ca7522f5fd6e6fe045fa389fdea670fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnh36"]
+atlas = SubResource("CompressedTexture2D_a4g1h")
+region = Rect2(0, 0, 116, 114)
 
 [resource]
 script = ExtResource("1_a4g1h")
@@ -12,6 +18,6 @@ stamina_cost = 3.0
 parameters = {
 "absorb_amount": 4
 }
-icon = ExtResource("1_xnh36")
+icon = SubResource("AtlasTexture_xnh36")
 description = "打中敌人将吸取4点能量"
 metadata/_custom_type_script = "uid://d05jh4768kl1k"

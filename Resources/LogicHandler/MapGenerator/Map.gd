@@ -24,7 +24,7 @@ var special_templates: Dictionary = {}
 var leaf_config: Dictionary = {}
 
 func generate_map(config: Dictionary) -> Map:
-	# 【修改】：删除了破坏种子的 randomize() !
+	
 	
 	normal_templates = config.get("normal_templates", [])
 	start_templates = config.get("start_templates", [])
@@ -36,12 +36,12 @@ func generate_map(config: Dictionary) -> Map:
 	
 	while attempts < max_attempts:
 		if _try_generate_blueprint(config):
-			print("[Debug] ✅ 蓝图生成成功！尝试次数: ", attempts + 1, " 最终房间数: ", rooms.size())
+			print("[Debug] 蓝图生成成功！尝试次数: ", attempts + 1, " 最终房间数: ", rooms.size())
 			return self
 		attempts += 1
-		print("[Debug] ⚠️ 生成尝试 %d 失败，地形过于受限，触发重试..." % attempts)
+		print("[Debug] 生成尝试 %d 失败" % attempts)
 		
-	push_error("生成失败！请检查特殊房间(如Boss房)是否尺寸过大，导致一直找不到空地接驳。")
+	push_error("生成失败！。")
 	return self
 
 func _try_generate_blueprint(config: Dictionary) -> bool:
@@ -64,7 +64,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	var min_normal = max(1, normal_target - tolerance)
 	var max_normal = normal_target + tolerance
 	
-	# 1. 放置 Start 房间
+	# 放置 Start 房间
 	var start_tmpl = _get_start_template()
 	var start_room = _create_room(Vector2i.ZERO, start_tmpl.size, 0)
 	start_room.type = "start" 
@@ -79,15 +79,15 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 		})
 		
 	# ==========================================
-	# Phase 1: 疯狂生长普通房间 (主干道生长)
+	# 普通房间 
 	# ==========================================
 	var normal_rooms_generated = 1 
 	while normal_rooms_generated < max_normal and not open_edges.is_empty():
-		# 【修改】：使用 map_rng 替代全局 randf()
+		
 		if normal_rooms_generated >= min_normal and GameManager.map_rng.randf() < 0.2:
 			break
 			
-		# 【修改】：使用 map_rng 替代全局 randi()
+		
 		var edge_idx = GameManager.map_rng.randi() % open_edges.size()
 		var edge = open_edges[edge_idx]
 		open_edges.remove_at(edge_idx)
@@ -100,7 +100,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 		
 		if valid_options.is_empty(): continue
 			
-		# 【修改】：使用带 map_rng 的 pick_random_from_array
+		
 		var chosen = GameManager.pick_random_from_array(valid_options, GameManager.map_rng)
 		var new_depth = rooms[edge.room_id].depth + 1
 		var new_room = _create_room(chosen.origin, chosen.template.size, new_depth)
@@ -121,7 +121,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	if normal_rooms_generated < min_normal: return false
 
 	# ==========================================
-	# Phase 2: 真实模板接驳特殊房间 (封口)
+	# 特殊房间
 	# ==========================================
 	open_edges.sort_custom(func(a, b): return rooms[a.room_id].depth > rooms[b.room_id].depth)
 	
@@ -154,7 +154,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 				break
 				
 		if not placed:
-			print("[Debug] ❌ 无法接驳特殊房间 [%s]，地形过于狭窄或没有门能对上，退回重试！" % sp_type)
+			print("[Debug] 无法接驳特殊房间 [%s]，地形过于狭窄或没有门能对上" % sp_type)
 			return false
 
 	var max_depth = 0
@@ -174,7 +174,7 @@ func _find_valid_options(templates: Array, req_dir: String, target_grid: Vector2
 	return valid
 
 func _get_start_template() -> Dictionary:
-	# 【修改】：使用带 map_rng 的 pick_random_from_array
+	
 	if start_templates.size() > 0: 
 		return GameManager.pick_random_from_array(start_templates, GameManager.map_rng)
 	return {

@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="RuneData" load_steps=3 format=3 uid="uid://dmmhtsqbi5l25"]
+[gd_resource type="Resource" script_class="RuneData" load_steps=4 format=3 uid="uid://dmmhtsqbi5l25"]
 
-[ext_resource type="Texture2D" uid="uid://dm0vlmnprm7tc" path="res://Assets/RuneIcon/Temp/rune_icon1.png" id="1_kwfdc"]
 [ext_resource type="Script" uid="uid://d05jh4768kl1k" path="res://Resources/RuneData.gd" id="2_6j2xm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0mlw"]
+load_path = "res://.godot/imported/rune_list3.png-ca7522f5fd6e6fe045fa389fdea670fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwfdc"]
+atlas = SubResource("CompressedTexture2D_b0mlw")
+region = Rect2(696, 0, 116, 114)
 
 [resource]
 script = ExtResource("2_6j2xm")
 rune_id = "landing_trigger_rune"
 display_name = "着陆触发符文"
 blackboard = "Landing"
-icon = ExtResource("1_kwfdc")
+icon = SubResource("AtlasTexture_kwfdc")
 description = "当装备者着陆时触发"
 metadata/_custom_type_script = "uid://d05jh4768kl1k"
