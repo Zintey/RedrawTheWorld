@@ -5,7 +5,7 @@ signal on_hit(flag: bool)
 
 @export var hit_sfx : AudioEvent
 
-# --- 本地组件引用 ---
+
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var stats_component: PlayerStatsComponent = $PlayerStatsComponent
 @onready var inventory_component: InventoryComponent = $InventoryComponent
@@ -52,12 +52,12 @@ func _ready() -> void:
 
 	EventBus.cutscene_started.connect(func(stream): 
 		if not health_component.is_dead:
-			state_machine.switch_to("teleport") # 借用 teleport 状态让玩家无敌且不可控
+			state_machine.switch_to("teleport")
 	)
 	
 	EventBus.cutscene_finished.connect(func(): 
 		if not health_component.is_dead:
-			state_machine.switch_to("idle") # 播完切回普通待机状态
+			state_machine.switch_to("idle")
 	)
 
 func _process(delta: float) -> void:
@@ -75,11 +75,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if health_component.is_dead:
 		return 
 		
-	# 【新增】：按下S键，直接触发下落穿透单向平台
+	# 按S键，下落单向平台
 	if event.is_action_pressed("Key_S") and is_on_floor():
 		drop_through_platform()
 		
-	# 【修改】：不再直接检查技能，而是向黑板发送 0.1秒(手感最佳)的缓冲事件
 	if event.is_action_pressed("LMB"):
 		skill_component.post_event("LMB", 0.1)
 	elif event.is_action_pressed("RMB"):
@@ -89,29 +88,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Debug_Key_T"):
 		print("测试：玩家发起换层请求！")
-		# 传入 false，代表这不是刚开局，而是中途切层
 		EventBus.level_transition_started.emit(false)
 
-# --- 平台互动逻辑 ---
-# 【新增】：处理从单向平台漏下去的逻辑
 func drop_through_platform() -> void:
-	# 临时关闭玩家对第 7 层（单向平台层）的碰撞检测
 	set_collision_mask_value(7, false)
 	
-	# 等待 0.2 秒，让重力把玩家拉下去
 	await get_tree().create_timer(0.2).timeout
 	
-	# 恢复对第 7 层的碰撞检测（加个节点是否还在树上的判断，防止等待期间玩家被销毁报错）
 	if is_inside_tree():
 		set_collision_mask_value(7, true)
 
 
-# --- 战斗、状态与事件响应逻辑 ---
 func _on_took_damage(amount: float, knockback_force : Vector2) -> void:
 	if health_component.is_dead:
 		return
 
-	# 【新增】：受击时向黑板发送 0.5秒 的状态便签，供技能读取
 	skill_component.post_event("took_damage", 0.5)
 
 	sprite_2d.material.set_shader_parameter("hit", true)
@@ -119,12 +110,10 @@ func _on_took_damage(amount: float, knockback_force : Vector2) -> void:
 	on_hit.emit(true)
 	AudioManager.play_sfx(hit_sfx)
 	
-	# 【恢复】：开启无敌与碰撞体禁用
 	hurt_box.is_invincible = true
 	hurt_collision_shape.disabled = true
 	hurt_box.set_deferred("monitorable", false)
 	
-	# 【恢复】：0.8秒后的无敌帧结束与表现重置
 	var recover_timer = get_tree().create_timer(0.8)
 	recover_timer.timeout.connect(func():
 		if is_instance_valid(sprite_2d):
@@ -139,15 +128,12 @@ func _on_took_damage(amount: float, knockback_force : Vector2) -> void:
 func _on_player_died() -> void:
 	state_machine.switch_to("die")
 
-# --- 传送机制 ---
 func _on_player_teleport_request(teleport_position: Vector2) -> void:
 	if health_component.is_dead:
 		return
-	# 改变坐标，并切入你的传送状态（PlayerTeleportState）
 	global_position = teleport_position
 	state_machine.switch_to("teleport")
 
-# --- 精力恢复逻辑 ---
 func _on_recovery_stamina_timeout() -> void:
 	if not health_component.is_dead:
 		stats_component.recover_stamina(1)

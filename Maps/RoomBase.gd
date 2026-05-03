@@ -72,9 +72,6 @@ var spawners_root: Node2D
 
 
 
-# ==========================================
-# 【编辑器专属】：动态面板与无遮挡渲染
-# ==========================================
 func _enter_tree():
 	if Engine.is_editor_hint():
 		if not editor_gizmo:
@@ -168,9 +165,8 @@ func _on_gizmo_draw():
 				
 		editor_gizmo.draw_rect(rect, Color(0.2, 0.9, 0.2, 0.6))
 
-# ==========================================
-# 【游戏运行】：波次战斗、掉落与开门逻辑
-# ==========================================
+
+# 波次战斗、掉落与开门逻辑
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	calculate_boundary()
@@ -279,9 +275,7 @@ func _place_door_instance(door_pos_tile: Vector2i, dir: String) -> void:
 		if current_state == RoomState.UNVISITED or current_state == RoomState.CLEARED:
 			door_inst.call_deferred("open", false, true)
 
-# ==========================================
-# 战斗波次与控制机制
-# ==========================================
+
 func _on_player_entered() -> void:
 	if current_state != RoomState.UNVISITED: return
 

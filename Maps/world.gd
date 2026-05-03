@@ -16,22 +16,16 @@ func _ready():
 		mat.set_shader_parameter("is_hit", flag)
 	)
 
-	# 【核心】：兼容 F5 直接启动和主菜单启动
 	if GameManager.current_level_data == null and GameManager.debug_start_level != null:
-		# F5启动：没数据，激活大管家的调试启动器
 		GameManager.start_new_run(GameManager.debug_seed, GameManager.debug_start_level)
-		# 强制呼叫开局过渡 UI
 		EventBus.level_transition_started.emit(true)
 	elif GameManager.current_level_data != null:
-		# 正常从主菜单带着数据进来的。说明此时主菜单已经发过信号拉好黑屏了，直接建图
 		_generate_current_level()
 	else:
-		GameManager.start_new_run(GameManager.debug_seed, GameManager.debug_start_level) #打包暂时添加
+		GameManager.start_new_run(GameManager.debug_seed, GameManager.debug_start_level) 
 		EventBus.level_transition_started.emit(true)
 
-# UI 黑屏拉好后（开局模式），会发这个信号。world 收到后建图
 func _on_ready_to_change_scene():
-	# 确保是直接运行world导致的开局，才在这里响应
 	if get_tree().current_scene == self or get_tree().current_scene.name == "World":
 		_generate_current_level()
 
@@ -46,7 +40,7 @@ func _generate_current_level():
 	map_generator.map_config["tolerance"] = level_data.tolerance
 	map_generator.leaf_room_allocation = level_data.leaf_room_allocation
 	
-	map_generator.prefab_metadata.clear()
+	map_generator.prefab_data.clear()
 	map_generator._cache_all_prefabs()
 
 	var generated_map = map_generator.generate_new_map()
@@ -68,13 +62,11 @@ func _generate_current_level():
 			
 		minimap.update_minimap(start_room)
 		
-	# 延迟一帧，确保地图就绪，通知UI开灯
 	call_deferred("_notify_rebuild_finished")
 
 func _notify_rebuild_finished():
 	EventBus.map_rebuild_finished.emit()
 
-# 游戏中途过场指令
 func _on_execute_map_rebuild():
 	player.state_machine.switch_to("teleport")
 	
@@ -83,12 +75,10 @@ func _on_execute_map_rebuild():
 		if game_camera.has_method("_apply_top_camera_area"):
 			game_camera._apply_top_camera_area()
 	
-	# 【修复】：清空小地图的历史状态
 	minimap.clear_state()
 	
 	_generate_current_level()
 
-# === 以下保持原有交互不变 ===
 func _input(event):
 	if event.is_action_pressed("OpenMap"):
 		_toggle_map()
