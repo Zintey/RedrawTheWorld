@@ -5,11 +5,8 @@ class_name SkillComponent extends Node
 @export var inventory_component : InventoryComponent
 
 var skill_list : Array[SkillData]
-# var trigger_rune_handler : TriggerRuneHandler
-
-
-var blackboard : Dictionary = {}	  # 记录当前发生的事件及剩余缓冲时间
-var skill_cooldowns : Dictionary = {} # 记录每个技能的当前剩余CD
+var blackboard : Dictionary = {}
+var skill_cooldowns : Dictionary = {}
 
 func _ready() -> void:
 	var owner_name: String = skill_owner.name if skill_owner else "未知节点"
@@ -21,14 +18,10 @@ func _ready() -> void:
 	else:
 		skill_list = inventory_component.equipped_skills
 
-	# trigger_rune_handler = TriggerRuneHandler.new()
-
-
 func post_event(event_name: String, duration: float) -> void:
 	blackboard[event_name] = duration
 
 func _physics_process(delta: float) -> void:
-	# 更新黑板便签的倒计时
 	var expired_events = []
 	for event in blackboard.keys():
 		blackboard[event] -= delta
@@ -37,12 +30,10 @@ func _physics_process(delta: float) -> void:
 	for event in expired_events:
 		blackboard.erase(event)
 		
-	# 更新技能的冷却时间
 	for skill in skill_cooldowns.keys():
 		if skill_cooldowns[skill] > 0:
 			skill_cooldowns[skill] -= delta
 			
-	# 如果黑板上有事件，每帧去评估技能是否触发
 	if not blackboard.is_empty():
 		check_skills_triggered()
 
@@ -54,14 +45,12 @@ func check_skills_triggered() -> void:
 		if skill == null:
 			continue
 			
-		# 如果技能还在冷却中，直接跳过
 		if skill_cooldowns.get(skill, 0.0) > 0.0:
 			continue
 			
 		var is_triggered : bool = check_skill_triggered(skill)
 		
 		if is_triggered:
-			# 精算最终冷却时间，最小 0.1 秒
 			var cd_add = 0.0
 			var cd_mult = 1.0
 			
@@ -74,10 +63,8 @@ func check_skills_triggered() -> void:
 				
 			var final_cd = max(0.1, (skill.base_cooldown + cd_add) * cd_mult)
 			
-			# 触发成功，进入最终算出的CD
 			skill_cooldowns[skill] = final_cd
 			
-			# 生成法术工厂并直接调用发射器
 			var skill_circle = SkillCircleHandler.new(skill, skill_owner)
 			add_child(skill_circle)
 			skill_owner.rune_emitter.fire(skill)
@@ -109,8 +96,6 @@ func check_skill_triggered(skill : SkillData) -> bool:
 	for trigger_rune in trigger_rune_list:
 		if trigger_rune == null: continue
 		
-		# 将黑板字典传给逻辑处理器
-		# var is_rune_trigger : bool = trigger_rune_handler.check_is_rune_triggered(trigger_rune, blackboard, skill_owner)
 		var is_rune_trigger : bool = blackboard.has(trigger_rune.blackboard)
 
 		if skill.type == skill.SkillType.AND_TRIGGER:

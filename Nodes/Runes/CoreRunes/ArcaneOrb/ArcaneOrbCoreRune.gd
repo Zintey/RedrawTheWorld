@@ -1,15 +1,11 @@
-class_name ArcaneOrbCoreRune
-extends CoreRuneBase
 
-@export var orb_fire_sfx : AudioEvent
+class_name ArcaneOrbCoreRune extends CoreRuneBase
 
+@export var orb_fire_sfx: AudioEvent
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
-# @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-
 var die = false
 
 func _start_action():
-    # audio_stream_player.play()
     AudioManager.play_sfx(orb_fire_sfx)
     var timer = get_tree().create_timer(life_time * life_time_mul, false)
     timer.timeout.connect(_finish_rune_action)
@@ -20,52 +16,37 @@ func _start_action():
         animated_sprite_2d.play("Idle")
 
 func _finish_rune_action():
-    if can_swirl and need_swirl and not is_returning:
-        super._finish_rune_action()
-        return 
-        
-    if is_returning:
-        var dir_to_target = last_caster_pos - global_position
-        if dir_to_target.length() > CATCH_DISTANCE:
-            return 
-
-    if die: 
-        return
-    die = true
+    if die: return
     
-    set_physics_process(false) 
+    on_life_timeout.emit()
+    var request = {"can_destroy": true, "hit_type": "timeout"}
+    on_check_destroy.emit(request)
+    
+    if not request.can_destroy: return
+        
+    die = true
+    set_physics_process(false)
     velocity = Vector2.ZERO
     
-    try_emit_teleport_signal()
-    bigger_multiple = 1.0
-    animated_sprite_2d.play("End")
+    var tp_comp = get_node_or_null("TeleportComponent")
+    if tp_comp: tp_comp.try_teleport()
     
+    animated_sprite_2d.play("End")
     await animated_sprite_2d.animation_finished
-    super._finish_rune_action()
+    on_destroyed.emit()
+    queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-    super(area)
-    # 【穿透核心】：处于回旋状态，或者带有穿透符文时，直接免疫销毁，切豆腐一样穿过去！
-    if is_returning or need_penetrate:
-        return 
-        
-    # if rebound_cnt <= 0:
     if area is HurtBox:
-        _finish_rune_action()
+        on_hit.emit(area)
+        var request = {"can_destroy": true, "hit_type": "area", "hit_target": area}
+        on_check_destroy.emit(request)
+        if request.can_destroy:
+            _finish_rune_action()
 
 func _on_body_entered(body: Node2D) -> void:
-    super(body)
-    # 【穿透核心】：处于回旋状态，或者带有穿透符文时，直接免疫销毁，切豆腐一样穿过去！
-    if is_returning or need_penetrate:
-        return 
-        
-    if rebound_cnt <= 0:
+    on_hit.emit(body) 
+    var request = {"can_destroy": true, "hit_type": "body", "hit_target": body}
+    on_check_destroy.emit(request)
+    if request.can_destroy:
         _finish_rune_action()
-
-func _on_tracking_area_body_entered(body: Node2D) -> void:
-    if is_returning: return 
-    tracking_target = body
-
-func _on_tracking_area_area_entered(area: Area2D) -> void:
-    if is_returning: return 
-    tracking_target = area.owner

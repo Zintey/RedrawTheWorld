@@ -57,7 +57,6 @@ script = ExtResource("2_y4kjk")
 orb_fire_sfx = ExtResource("2_88g7d")
 speed = 800.0
 life_time = 0.6
-bigger_multiple_base = 2.0
 metadata/_custom_type_script = "uid://bfvm3rxhfpsel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
