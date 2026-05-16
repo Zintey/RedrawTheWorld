@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bryvwedw2nb8b"]
+[gd_scene load_steps=15 format=4 uid="uid://bryvwedw2nb8b"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_cacdu"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_5d7p1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Shader" uid="uid://bnm1wtmuaftdo" path="res://Shader/视觉shader/backlines.gdshader" id="5_cacdu"]
 [ext_resource type="Texture2D" uid="uid://c7hfgefufmbbp" path="res://Assets/Map/Level_Lab/labpack/labpack (3).png" id="5_ujevs"]
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="6_ssatn"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="8_2nssr"]
+[ext_resource type="PackedScene" uid="uid://ca17gdi25piqu" path="res://Nodes/Enemy/L3_BOOM/L3_BOOM.tscn" id="9_gy53m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 949)
@@ -135,3 +137,20 @@ path_node = NodePath("../Path2D2")
 position = Vector2(857.99994, 771.99994)
 scale = Vector2(1.527381, 1.527381)
 curve = SubResource("Curve2D_ssatn")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(454.2, 475)
+gizmo_extents = 213.2
+script = ExtResource("8_2nssr")
+enemy_pool = Array[PackedScene]([ExtResource("9_gy53m")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner4" type="Marker2D" parent="Spawners"]
+position = Vector2(3012.2, 475)
+gizmo_extents = 213.2
+script = ExtResource("8_2nssr")
+enemy_pool = Array[PackedScene]([ExtResource("9_gy53m")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

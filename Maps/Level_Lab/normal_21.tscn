@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://v61k1tggowin"]
+[gd_scene load_steps=38 format=4 uid="uid://v61k1tggowin"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_epcpn"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_q217o"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://dn41mcdcr36gv" path="res://Assets/Map/Level_Lab/labpack/labpak (11).png" id="9_frbcc"]
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="11_epcpn"]
 [ext_resource type="PackedScene" uid="uid://dak656fcyirif" path="res://Nodes/Enemy/TrackedCutter/tracked_cutter.tscn" id="15_epcpn"]
+[ext_resource type="PackedScene" uid="uid://b8y4oaxrm7tj6" path="res://Nodes/Enemy/Drone/drone.tscn" id="19_kpvhc"]
+[ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="20_rtm46"]
+[ext_resource type="PackedScene" uid="uid://ca17gdi25piqu" path="res://Nodes/Enemy/L3_BOOM/L3_BOOM.tscn" id="21_sfqp8"]
 
 [sub_resource type="Resource" id="Resource_egscv"]
 script = ExtResource("3_e2ksk")
@@ -223,14 +226,21 @@ region_enabled = true
 region_rect = Rect2(363, 1290, 95, 93)
 
 [node name="RewardPoint" type="Marker2D" parent="."]
-position = Vector2(1231, 450)
+position = Vector2(1280, 288)
 gizmo_extents = 305.3
 
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="EnemySpawner4" type="Marker2D" parent="Spawners"]
+position = Vector2(2219, 218)
+gizmo_extents = 213.2
+script = ExtResource("11_epcpn")
+enemy_pool = Array[PackedScene]([ExtResource("15_epcpn")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
 [node name="EnemySpawner3" type="Marker2D" parent="Spawners"]
-position = Vector2(1169, 486)
+position = Vector2(849, 169)
 gizmo_extents = 213.2
 script = ExtResource("11_epcpn")
 enemy_pool = Array[PackedScene]([ExtResource("15_epcpn")])
@@ -243,3 +253,26 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirWall"]
 position = Vector2(1260.5, -43.5)
 shape = SubResource("RectangleShape2D_epcpn")
+
+[node name="Spawners2" type="Node2D" parent="."]
+
+[node name="EnemySpawner3" type="Marker2D" parent="Spawners2"]
+position = Vector2(1840, 288)
+gizmo_extents = 213.2
+script = ExtResource("11_epcpn")
+enemy_pool = Array[PackedScene]([ExtResource("19_kpvhc")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners2"]
+position = Vector2(515, 842)
+gizmo_extents = 213.2
+script = ExtResource("11_epcpn")
+enemy_pool = Array[PackedScene]([ExtResource("19_kpvhc")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners2"]
+position = Vector2(411, 169)
+gizmo_extents = 213.2
+script = ExtResource("11_epcpn")
+enemy_pool = Array[PackedScene]([ExtResource("20_rtm46"), ExtResource("21_sfqp8")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

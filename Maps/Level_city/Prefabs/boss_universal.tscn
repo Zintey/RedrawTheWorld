@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://j5omx1nnpcr8"]
+[gd_scene load_steps=20 format=4 uid="uid://j5omx1nnpcr8"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_u74m1"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_xrslw"]
@@ -11,6 +11,8 @@
 [ext_resource type="Shader" uid="uid://ds0f73dm3lqyd" path="res://Shader/视觉shader/wind sway.gdshader" id="8_4qj0t"]
 [ext_resource type="Texture2D" uid="uid://b3d1sfi212erc" path="res://Assets/Map/Level_city/city_tree.png" id="9_hurnj"]
 [ext_resource type="Texture2D" uid="uid://d085j4m2psubl" path="res://Assets/Map/Level_city/city_decorate.png" id="10_3o3qh"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="12_3ih7a"]
+[ext_resource type="PackedScene" uid="uid://b26k4w8c500qd" path="res://Nodes/Enemy/Axeman/axeman.tscn" id="13_4qj0t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(2552, 1910.5)
@@ -206,3 +208,13 @@ scale = Vector2(0.7565834, 0.7565834)
 texture = ExtResource("10_3o3qh")
 region_enabled = true
 region_rect = Rect2(634, 609, 274, 235)
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner6" type="Marker2D" parent="Spawners"]
+position = Vector2(1278, 1395)
+gizmo_extents = 213.2
+script = ExtResource("12_3ih7a")
+enemy_pool = Array[PackedScene]([ExtResource("13_4qj0t")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

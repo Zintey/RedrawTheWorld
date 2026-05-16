@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
-[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="2_vooq2"]
+[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_vooq2"]
 [ext_resource type="Resource" uid="uid://dh2ybiff6fy5b" path="res://Resources/Audio/SFX/Player/player_hit.tres" id="2_w7kum"]
 [ext_resource type="Texture2D" uid="uid://d2p8hct01m1cs" path="res://Assets/Characters/Kaer/kaer_die_and_teleport.png" id="3_oh6yy"]
 [ext_resource type="Texture2D" uid="uid://vhnfidyiusxs" path="res://Assets/Characters/Kaer/kaer_walk.png" id="3_vooq2"]
@@ -955,7 +955,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExampleNode" type="ExampleNode" parent="."]
-rotation = 19502.621
+rotation = 19628.799
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

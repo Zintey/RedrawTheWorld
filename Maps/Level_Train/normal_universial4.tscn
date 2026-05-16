@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://g3yu1hhlji5"]
+[gd_scene load_steps=10 format=4 uid="uid://g3yu1hhlji5"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_j77a7"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_kp41l"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_26poo"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_wjwrx"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="5_bhaws"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="6_26poo"]
+[ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="7_wjwrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 949)
@@ -82,3 +84,20 @@ metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea"]
 position = Vector2(641, 463)
 shape = SubResource("RectangleShape2D_j77a7")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner3" type="Marker2D" parent="Spawners"]
+position = Vector2(891, 468)
+gizmo_extents = 213.2
+script = ExtResource("6_26poo")
+enemy_pool = Array[PackedScene]([ExtResource("7_wjwrx")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners"]
+position = Vector2(269, 485)
+gizmo_extents = 213.2
+script = ExtResource("6_26poo")
+enemy_pool = Array[PackedScene]([ExtResource("7_wjwrx")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

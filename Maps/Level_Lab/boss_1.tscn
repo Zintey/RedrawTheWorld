@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="7_gaqme"]
 [ext_resource type="PackedScene" uid="uid://dfuxefg6c4njf" path="res://Nodes/Interactable/Health/heart_extend_drop.tscn" id="7_njvku"]
 [ext_resource type="PackedScene" uid="uid://355nyhp43l6y" path="res://Nodes/Items/TreasureChest/treasure_chest.tscn" id="8_olsmj"]
-[ext_resource type="Shader" path="res://Shader/视觉shader/godray.gdshader" id="8_tuh4x"]
+[ext_resource type="Shader" uid="uid://dgq6e08n28ic6" path="res://Shader/视觉shader/godray.gdshader" id="8_tuh4x"]
 [ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="9_0qxoe"]
 [ext_resource type="PackedScene" uid="uid://b26k4w8c500qd" path="res://Nodes/Enemy/Axeman/axeman.tscn" id="10_qbymy"]
 [ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="11_oim2u"]

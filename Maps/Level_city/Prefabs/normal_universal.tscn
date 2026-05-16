@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfqiqipgn5rp4"]
+[gd_scene load_steps=16 format=4 uid="uid://cfqiqipgn5rp4"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_tfgja"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_cx4tp"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://d085j4m2psubl" path="res://Assets/Map/Level_city/city_decorate.png" id="5_nf85v"]
 [ext_resource type="Texture2D" uid="uid://dxp1bhqphokfs" path="res://Assets/Map/Level_city/biliboard.png" id="6_5ri61"]
 [ext_resource type="Texture2D" uid="uid://b2fog6y54a454" path="res://Assets/Map/Level_city/city_zhuzi2.png" id="7_hcp2e"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="9_xtqi5"]
+[ext_resource type="PackedScene" uid="uid://c7o48ritd6e4u" path="res://Nodes/Enemy/U_Series/U2/u2_enemy.tscn" id="10_ak2yy"]
+[ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="11_60rrl"]
+[ext_resource type="PackedScene" uid="uid://cwqawnvgdimwj" path="res://Nodes/Enemy/U_Series/U3/u3_enemy.tscn" id="12_png24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1274, 949)
@@ -138,3 +142,34 @@ scale = Vector2(0.618, -0.618)
 texture = ExtResource("7_hcp2e")
 region_enabled = true
 region_rect = Rect2(447, 16, 65, 272)
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(454.2, 475)
+gizmo_extents = 213.2
+script = ExtResource("9_xtqi5")
+enemy_pool = Array[PackedScene]([ExtResource("10_ak2yy")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners"]
+position = Vector2(762.2, 475)
+gizmo_extents = 213.2
+script = ExtResource("9_xtqi5")
+enemy_pool = Array[PackedScene]([ExtResource("11_60rrl")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner5" type="Marker2D" parent="Spawners"]
+position = Vector2(401, 781)
+gizmo_extents = 213.2
+script = ExtResource("9_xtqi5")
+enemy_pool = Array[PackedScene]([ExtResource("11_60rrl")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner6" type="Marker2D" parent="Spawners"]
+position = Vector2(827, 792)
+gizmo_extents = 213.2
+script = ExtResource("9_xtqi5")
+enemy_pool = Array[PackedScene]([ExtResource("12_png24")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
