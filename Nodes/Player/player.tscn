@@ -1,8 +1,8 @@
-[gd_scene load_steps=77 format=3 uid="uid://dgr6uyhq4pdl2"]
+[gd_scene load_steps=80 format=3 uid="uid://dgr6uyhq4pdl2"]
 
 [ext_resource type="Script" uid="uid://coy6m7087agl4" path="res://Nodes/Player/player.gd" id="1_q1ymb"]
 [ext_resource type="Texture2D" uid="uid://dh0tk7fdekxxk" path="res://Assets/Characters/Kaer/kaer_idle.png" id="2_7km3q"]
-[ext_resource type="Shader" uid="uid://cukhus8yuecs4" path="res://Shader/character.gdshader" id="2_vooq2"]
+[ext_resource type="Shader" uid="uid://dw6l1iyr1cfar" path="res://Shader/character.gdshader" id="2_vooq2"]
 [ext_resource type="Resource" uid="uid://dh2ybiff6fy5b" path="res://Resources/Audio/SFX/Player/player_hit.tres" id="2_w7kum"]
 [ext_resource type="Texture2D" uid="uid://d2p8hct01m1cs" path="res://Assets/Characters/Kaer/kaer_die_and_teleport.png" id="3_oh6yy"]
 [ext_resource type="Texture2D" uid="uid://vhnfidyiusxs" path="res://Assets/Characters/Kaer/kaer_walk.png" id="3_vooq2"]
@@ -54,8 +54,11 @@
 [ext_resource type="Resource" uid="uid://bjoc2hm2do8y8" path="res://Resources/SkillData/lost_skill_template.tres" id="44_u6xjn"]
 [ext_resource type="Resource" uid="uid://dmmhtsqbi5l25" path="res://Resources/RuneData/TriggerRune/landing_trigger_rune.tres" id="45_o80yi"]
 [ext_resource type="Resource" uid="uid://xj17n7uubwi8" path="res://Resources/RuneData/ModifireRune/bigger_modifier_rune.tres" id="46_0uqe3"]
+[ext_resource type="Resource" uid="uid://0bg1rnxfxtsw" path="res://Resources/RuneData/TriggerRune/key_space_trigger_rune.tres" id="46_bxcas"]
 [ext_resource type="Resource" uid="uid://d1rjiv77q43dk" path="res://Resources/RuneData/ModifireRune/extend_life_modifier_rune.tres" id="47_ggcla"]
 [ext_resource type="Resource" uid="uid://13yg12x8jsha" path="res://Resources/RuneData/ModifireRune/sin_modifier_rune.tres" id="48_xhobd"]
+[ext_resource type="Resource" uid="uid://kdt36bga48ri" path="res://Resources/RuneData/TriggerRune/key_lbt_hit_trigger_rune.tres" id="51_vmxae"]
+[ext_resource type="Resource" uid="uid://fhnr2a5d7slw" path="res://Resources/RuneData/TriggerRune/key_rbt_hit_trigger_rune.tres" id="52_go6jx"]
 [ext_resource type="Resource" uid="uid://ybuksc3h813k" path="res://Resources/Audio/SFX/Pickup/ae_extend_stamina.tres" id="53_cdwgc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7km3q"]
@@ -932,7 +935,7 @@ metadata/_custom_type_script = "uid://b7cpenmly2med"
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("22_owx2l")
 rune_count = 50
-all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("25_gcfxi"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("29_gcfxi"), ExtResource("30_rgjfc"), ExtResource("31_rgjfc"), ExtResource("31_rgjfc"), ExtResource("25_gcfxi"), ExtResource("32_6bxkd"), ExtResource("33_i0nyt"), ExtResource("34_vmkah"), ExtResource("41_uwi3s"), ExtResource("40_uwi3s"), ExtResource("41_u6xjn"), ExtResource("42_y2jqc"), ExtResource("43_3deu0"), ExtResource("44_3deu0"), ExtResource("45_o80yi"), ExtResource("46_0uqe3"), ExtResource("46_0uqe3"), ExtResource("47_ggcla"), ExtResource("48_xhobd")])
+all_runes = Array[ExtResource("24_wfvtl")]([ExtResource("41_uwi3s"), ExtResource("23_l15v1"), ExtResource("24_482wx"), ExtResource("43_3deu0"), ExtResource("48_xhobd"), ExtResource("42_y2jqc"), ExtResource("34_vmkah"), ExtResource("31_rgjfc"), ExtResource("32_6bxkd"), ExtResource("45_o80yi"), ExtResource("44_3deu0"), ExtResource("46_0uqe3"), ExtResource("29_gcfxi"), ExtResource("25_gcfxi"), ExtResource("41_u6xjn"), ExtResource("46_bxcas"), ExtResource("30_rgjfc"), ExtResource("26_rgjfc"), ExtResource("27_kvwmt"), ExtResource("33_i0nyt"), ExtResource("51_vmxae"), ExtResource("52_go6jx"), ExtResource("47_ggcla"), ExtResource("40_uwi3s")])
 equipped_skills = Array[ExtResource("23_cr8vb")]([ExtResource("40_w7kum"), ExtResource("44_u6xjn")])
 metadata/_custom_type_script = "uid://4twnrh5cup0w"
 
@@ -955,7 +958,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExampleNode" type="ExampleNode" parent="."]
-rotation = 19507.031
+rotation = 19942.926
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="RecoveryStaminaTimer" to="." method="_on_recovery_stamina_timer_timeout"]

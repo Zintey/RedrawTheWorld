@@ -59,7 +59,7 @@ func _cache_all_prefabs():
 # 生成一张新地图并把房间实例化到场景里，返回地图数据
 # 会先整理配置、补齐兜底模板，然后调 Map 类算出蓝图，最后逐个匹配预制体并摆好位置
 func generate_new_map() -> Map:
-	# 统一转小写，避免大小写不一致导致匹配失败
+	
 	var clean_alloc = {}
 	for k in leaf_room_allocation.keys(): clean_alloc[k.to_lower()] = leaf_room_allocation[k]
 	var clean_normal = normal_room_prefix.to_lower()

@@ -12,9 +12,9 @@ func _ready() -> void:
 	var owner_name: String = skill_owner.name if skill_owner else "未知节点"
 	
 	if stats_component == null:
-		printerr(owner_name, " 的 SkillComponent 没有设置 stats_component 属性！")
+		printerr(owner_name, " 的 SkillComponent 没有设置 stats_component 属性")
 	if inventory_component == null:
-		printerr(owner_name, " 的 SkillComponent 没有设置 inventory_component 属性！")
+		printerr(owner_name, " 的 SkillComponent 没有设置 inventory_component 属性")
 	else:
 		skill_list = inventory_component.equipped_skills
 
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			expired_events.append(event)
 	for event in expired_events:
 		blackboard.erase(event)
-		
+	
 	for skill in skill_cooldowns.keys():
 		if skill_cooldowns[skill] > 0:
 			skill_cooldowns[skill] -= delta

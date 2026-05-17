@@ -57,7 +57,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	var tolerance = config.get("tolerance", 2)
 	var min_critical_path = config.get("min_critical_path", 5)
 	
-	# 把特殊房间展开成有序列表，boss 优先排前面（最深的叶子节点给 boss）
+	# 把特殊房间展开成有序列表，boss 优先排前面(最深的叶子节点给 boss)
 	var special_order = []
 	if leaf_config.has("boss"):
 		for i in range(leaf_config["boss"]): special_order.append("boss")
@@ -70,7 +70,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	var min_normal = max(1, normal_target - tolerance)
 	var max_normal = normal_target + tolerance
 	
-	# --- 第一步：放起始房间 ---
+	# 放起始房间
 	var start_tmpl = _get_start_template()
 	var start_room = _create_room(Vector2i.ZERO, start_tmpl.size, 0)
 	start_room.type = "start" 
@@ -85,7 +85,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 			"dir": door.dir
 		})
 		
-	# --- 第二步：随机扩展普通房间 ---
+	# 随机扩展普通房间
 	var normal_rooms_generated = 1  # 把 start 算进去
 	while normal_rooms_generated < max_normal and not open_edges.is_empty():
 		
@@ -129,7 +129,7 @@ func _try_generate_blueprint(config: Dictionary) -> bool:
 	# 普通房间没到下限，这次生成作废
 	if normal_rooms_generated < min_normal: return false
 
-	# --- 第三步：把特殊房间挂到最深的叶子节点上 ---
+	# 把特殊房间挂到最深的叶子节点上
 	# 按深度从大到小排，优先把 boss 塞进最深处
 	open_edges.sort_custom(func(a, b): return rooms[a.room_id].depth > rooms[b.room_id].depth)
 	
