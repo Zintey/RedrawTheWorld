@@ -55,9 +55,9 @@ shake_decay_curve = SubResource("Curve_qacqj")
 
 [node name="BackLayer" type="CanvasLayer" parent="."]
 layer = -100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="BackLayer"]
-visible = false
 material = SubResource("ShaderMaterial_y565o")
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://fta61sws0l02"]
+[gd_scene load_steps=11 format=4 uid="uid://fta61sws0l02"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_4q75y"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_0bqva"]
@@ -6,6 +6,9 @@
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_owgr6"]
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="5_0bqva"]
 [ext_resource type="Texture2D" uid="uid://cyxead4xcbcpo" path="res://Assets/Map/Level_Lab/labpack/labpack (5).png" id="6_i6rnr"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="7_wepql"]
+[ext_resource type="PackedScene" uid="uid://b8y4oaxrm7tj6" path="res://Nodes/Enemy/Drone/drone.tscn" id="8_e33ky"]
+[ext_resource type="PackedScene" uid="uid://bt1ofw67bk74q" path="res://Nodes/Enemy/CannonSegment/drone_segment.tscn" id="9_ab0da"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 949)
@@ -86,3 +89,19 @@ scale = Vector2(0.4381249, 0.4381249)
 texture = ExtResource("6_i6rnr")
 region_enabled = true
 region_rect = Rect2(1794, 1336, 1022, 188)
+
+[node name="Spawners2" type="Node2D" parent="."]
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners2"]
+position = Vector2(333, 357)
+gizmo_extents = 213.2
+script = ExtResource("7_wepql")
+enemy_pool = Array[PackedScene]([ExtResource("8_e33ky")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners2"]
+position = Vector2(807, 490)
+gizmo_extents = 213.2
+script = ExtResource("7_wepql")
+enemy_pool = Array[PackedScene]([ExtResource("9_ab0da")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

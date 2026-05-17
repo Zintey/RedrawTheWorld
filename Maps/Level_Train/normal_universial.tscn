@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://0g0p5xollj40"]
+[gd_scene load_steps=13 format=4 uid="uid://0g0p5xollj40"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_ucrdi"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_cp6dj"]
 [ext_resource type="Script" uid="uid://c7vt2pv2fm3r3" path="res://Components/Camera/CameraArea.gd" id="3_po7hk"]
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="3_xpetw"]
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="6_hdrb6"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="7_mgsvc"]
+[ext_resource type="PackedScene" uid="uid://c7o48ritd6e4u" path="res://Nodes/Enemy/U_Series/U2/u2_enemy.tscn" id="8_ucrdi"]
+[ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="9_cp6dj"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="15_tly1d"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wfah"]
 size = Vector2(1272, 569)
@@ -143,3 +145,20 @@ metadata/_custom_type_script = "uid://c7vt2pv2fm3r3"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraArea"]
 position = Vector2(631, 301)
 shape = SubResource("RectangleShape2D_hdrb6")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(217, 215)
+gizmo_extents = 213.2
+script = ExtResource("7_mgsvc")
+enemy_pool = Array[PackedScene]([ExtResource("8_ucrdi")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner4" type="Marker2D" parent="Spawners"]
+position = Vector2(964, 204)
+gizmo_extents = 213.2
+script = ExtResource("7_mgsvc")
+enemy_pool = Array[PackedScene]([ExtResource("9_cp6dj")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bhhoy1b16igvl"]
+[gd_scene load_steps=42 format=4 uid="uid://bhhoy1b16igvl"]
 
 [ext_resource type="Script" uid="uid://dgg6krhyxkjbx" path="res://Maps/RoomBase.gd" id="1_r0p5e"]
 [ext_resource type="PackedScene" uid="uid://dhxafhhi7j5dy" path="res://Nodes/Items/ProcessRelated/door.tscn" id="2_5eux7"]
@@ -6,6 +6,10 @@
 [ext_resource type="TileSet" uid="uid://lkqybpp1psbr" path="res://Assets/Map/level1_tileset.tres" id="4_u6g24"]
 [ext_resource type="Shader" uid="uid://qfyvoi1rylbx" path="res://Shader/视觉shader/cyberglow.gdshader" id="7_u6g24"]
 [ext_resource type="PackedScene" uid="uid://bnbeamo2yst5w" path="res://Nodes/Items/MobilePlatform/mobile_platform.tscn" id="8_xlkwf"]
+[ext_resource type="Script" uid="uid://cu61rdx8i48iw" path="res://Nodes/Room/EnemySpawner.gd" id="9_m4aac"]
+[ext_resource type="PackedScene" uid="uid://b8y4oaxrm7tj6" path="res://Nodes/Enemy/Drone/drone.tscn" id="10_vgh3e"]
+[ext_resource type="PackedScene" uid="uid://b58rvnlicnb7k" path="res://Nodes/Enemy/U_Series/U1/u1_enemy.tscn" id="11_2nd54"]
+[ext_resource type="PackedScene" uid="uid://cwqawnvgdimwj" path="res://Nodes/Enemy/U_Series/U3/u3_enemy.tscn" id="12_inrvt"]
 [ext_resource type="Texture2D" uid="uid://e5filvnr5mu1" path="res://Assets/Map/Level_train/到站牌.png" id="14_wfpe7"]
 [ext_resource type="Texture2D" uid="uid://8aekf8su8clt" path="res://Assets/Map/Level_train/train_decorate.png" id="15_p1v50"]
 
@@ -354,17 +358,14 @@ region_rect = Rect2(688, 16, 189, 75)
 
 [node name="MobilePlatform" parent="." instance=ExtResource("8_xlkwf")]
 position = Vector2(866, 1260)
-move_mode = 1
 path_node = NodePath("../Path2")
 
 [node name="MobilePlatform2" parent="." instance=ExtResource("8_xlkwf")]
 position = Vector2(311, 1249)
-move_mode = 1
 path_node = NodePath("../Path1")
 
 [node name="MobilePlatform3" parent="." instance=ExtResource("8_xlkwf")]
 position = Vector2(603, 703)
-move_mode = 1
 move_speed = 200.0
 path_node = NodePath("../Path3")
 
@@ -377,3 +378,41 @@ curve = SubResource("Curve2D_3t1u1")
 
 [node name="Path3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kyflh")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners"]
+position = Vector2(820, 846)
+gizmo_extents = 213.2
+script = ExtResource("9_m4aac")
+enemy_pool = Array[PackedScene]([ExtResource("10_vgh3e")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners"]
+position = Vector2(438, 997)
+gizmo_extents = 213.2
+script = ExtResource("9_m4aac")
+enemy_pool = Array[PackedScene]([ExtResource("10_vgh3e")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner5" type="Marker2D" parent="Spawners"]
+position = Vector2(603, 1627)
+gizmo_extents = 213.2
+script = ExtResource("9_m4aac")
+enemy_pool = Array[PackedScene]([ExtResource("11_2nd54")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner3" type="Marker2D" parent="Spawners"]
+position = Vector2(374, 206)
+gizmo_extents = 213.2
+script = ExtResource("9_m4aac")
+enemy_pool = Array[PackedScene]([ExtResource("12_inrvt")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
+
+[node name="EnemySpawner6" type="Marker2D" parent="Spawners"]
+position = Vector2(904, 196)
+gizmo_extents = 213.2
+script = ExtResource("9_m4aac")
+enemy_pool = Array[PackedScene]([ExtResource("12_inrvt")])
+metadata/_custom_type_script = "uid://cu61rdx8i48iw"
